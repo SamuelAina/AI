@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div>
+	  <form action='/main' method='post'>
+		<b>Firstname:</b><input name='firstname' type='text' value='{{ _firstname }}'><br/>
+		<b>Surname:</b><input name='surname' type='text' value='{{ _surname }}'><br/>
+		<input type=submit value=OK>
+		</form><br/><br/>
+		<br/><br/>{{ _firstname }}
+		<br/><br/>{{ _surname }} 
+		<br/><br/>Predicted: {{ predicted_country }}
+    </div>
+  </body>
+</html>
