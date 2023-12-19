@@ -6,3 +6,14 @@ DECLARE @sql NVARCHAR(MAX)='SELECT @val=[COL_2] FROM ['+ @temp_feebooking_cf + '
 PRINT   @sql
 EXEC   (@sql)
 EXECUTE sp_executesql @sql,@ParmDefinition,@val =@val OUTPUT 
+
++++++++++++++++++++++++++++++
+DECLARE @temp_feebooking_cf NVARCHAR(255) = 'YourTableNameHere' -- Replace with your table name
+DECLARE @val VARCHAR(255)
+DECLARE @ParmDefinition NVARCHAR(500) = N'@val VARCHAR(255) OUTPUT';
+DECLARE @sql NVARCHAR(MAX) = 'SELECT @val=[COL_2] FROM [' + @temp_feebooking_cf + '] WHERE COL_1=''ID'''
+
+PRINT @sql -- For debugging
+EXECUTE sp_executesql @sql, @ParmDefinition, @val = @val OUTPUT
+
+-- Use @val here as needed
