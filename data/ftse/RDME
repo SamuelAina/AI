@@ -1,19 +1,21 @@
-TEST-FILE
+function isTextInDropdown(text, dropdownId) {
+    var isFound = false;
+    $('#' + dropdownId + ' option').each(function() {
+        if ($(this).text() === text) {
+            isFound = true;
+            return false; // This breaks the .each loop
+        }
+    });
+    return isFound;
+}
 
-DECLARE @val VARCHAR(255)
-DECLARE @ParmDefinition NVARCHAR(500)=N'@val VARCHAR(255) OUTPUT';
-DECLARE @sql NVARCHAR(MAX)='SELECT @val=[COL_2] FROM ['+ @temp_feebooking_cf + '] WHERE COL_1=''ID'''
-PRINT   @sql
-EXEC   (@sql)
-EXECUTE sp_executesql @sql,@ParmDefinition,@val =@val OUTPUT 
+// Usage
+var textToCheck = "Your Text Here";
+var dropdownId = "tbl_list";
+var result = isTextInDropdown(textToCheck, dropdownId);
 
-+++++++++++++++++++++++++++++
-DECLARE @temp_feebooking_cf NVARCHAR(255) = 'YourTableNameHere' -- Replace with your table name
-DECLARE @val VARCHAR(255)
-DECLARE @ParmDefinition NVARCHAR(500) = N'@val VARCHAR(255) OUTPUT';
-DECLARE @sql NVARCHAR(MAX) = 'SELECT @val=[COL_2] FROM [' + @temp_feebooking_cf + '] WHERE COL_1=''ID'''
-
-PRINT @sql -- For debugging
-EXECUTE sp_executesql @sql, @ParmDefinition, @val = @val OUTPUT
-
--- Use @val here as needed
+if (result) {
+    console.log("Text is in the dropdown.");
+} else {
+    console.log("Text is not in the dropdown.");
+}
