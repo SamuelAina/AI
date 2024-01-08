@@ -19,3 +19,28 @@ if (result) {
 } else {
     console.log("Text is not in the dropdown.");
 }
+
+Hi 
+I understand you want us to develop a tracker like the Deal Tracker.
+
+1, the best approch is to base your tracker on an existing one, althougfh your requirements will alway be different.
+2, you need to decide which data fields you wnt to capture and provide us with the list, together with data definition.
+3, there are currently over 20 trackers each of them with their own unique features. The most successful among them are the ones where there is a willing and knowlwdgible member of the owning team who acts a a busuness analyst and works with the developer to facilitate the project. This is very important to make the project work.
+5, Some of the important features of the tracker:
+1, capture of important data with auidit trail of changes to them
+2, security 
+access control
+- user role assinment/management
+- control over what records users can see based on a specified key field
+- control over which fields users can see based on assigned role
+
+4, Please provide the following initial information regarding the proposed tracker:
+Name and contact of business analyst from your team.
+Name of the tracker
+Main purpose of the tracker
+Key fields you want to capture: (Sample list is provided based on Deal Tracker)
+
+Once this is recieved we can begin working on a prototype that we can work with your business analyst to develop a fully working tracker.
+
+Rgdz
+Sam
