@@ -44,3 +44,31 @@ Once this is recieved we can begin working on a prototype that we can work with 
 
 Rgdz
 Sam
+
+
+
+Hello,
+
+I understand that you are interested in developing a tracker similar to the Deal Tracker. Here's a structured approach to begin this project:
+
+1. **Base Model**: It's advisable to base your tracker on an existing model. However, your specific requirements may vary.
+
+2. **Data Fields Specification**: Please decide and provide a list of the data fields you want to capture, including their definitions.
+
+3. **Team Collaboration**: There are over 20 different trackers, each with unique features. The most successful ones involve a knowledgeable member from the owning team, acting as a business analyst, collaborating closely with the developer. This role is crucial for the success of the project.
+
+4. **Initial Information Request**:
+   - Name and contact details of the business analyst from your team.
+   - Name of the tracker.
+   - Main purpose of the tracker.
+   - Key fields you wish to capture (a sample list based on the Deal Tracker can be provided for reference).
+
+5. **Key Features of the Tracker**:
+   - Capture of critical data with an audit trail for changes.
+   - Security features including:
+     - Access control.
+     - User role assignment/management.
+     - Record visibility control based on a specified key field.
+     - Field visibility control based on assigned roles.
+
+Once we receive this initial information, we can start working on a prototype in collaboration with your business analyst to develop a fully functional tracker.
