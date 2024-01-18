@@ -47,3 +47,75 @@ I want to devide a list of items into pages. The items are in consecutive sequen
 
 SET @firstItemOfPage = ((@pageNo - 1) * @entriesPerPage) + 1;
 SET @lastItemOfPage = MIN(@pageNo * @entriesPerPage, @totalNumberOfEntries);
+
+
+
+==========================
+
+1. User Account and Authentication:
+
+- Users can create an account and log in to access the application.
+
+- Secure authentication ensures user data privacy and integrity.
+
+
+
+2. History Log:
+
+- The app maintains a history of all user enquiries.
+
+- Users can view their past enquiries upon logging in, aiding in tracking and referencing.
+
+
+
+3. Enquiry Submission:
+
+- Users can submit a new enquiry through a dedicated input section.
+
+- The input section features a large, user-friendly text box to facilitate easy typing of enquiries.
+
+
+
+4. Content Analysis:
+
+- The app is equipped with a function to evaluate the content of the enquiry.
+
+- It specifically checks for relevance to financial matters before proceeding with the processing.
+
+
+
+5. Enquiry Processing:
+
+- Relevant enquiries undergo a processing step where the original sentence is analysed for risk.
+
+- If the enquiry passes the relevance check, an amended version of the sentence is generated and displayed below the input box.
+
+
+
+6. Explanation Feature:
+
+- An optional "Notes" section provides explanations for the proposed amendments, offering insight into the changes and the rationale behind them.
+
+
+
+7. Risk Severity Indicators:
+
+- The application uses coloured badges to signify the severity level of the risk associated with the original enquiry.
+
+- These visual indicators assist users in quickly identifying the risk levels before and after the amendments.
+
+
+
+Additional Notes:
+
+- The app requires an internet connection for real-time processing and history synchronization.
+
+- The user interface will be intuitive and accessible to accommodate a wide range of users.
+
+- Privacy and data protection will be paramount, ensuring user data is handled securely.
+
+
+
+End-User Benefits:
+
+Risk GPT will serve as a critical tool for individuals and businesses seeking to mitigate communication risks, especially in the domain of financial matters. It will enhance the clarity of communication, reduce the potential for misunderstanding, and ensure that sensitive information is conveyed appropriately.
