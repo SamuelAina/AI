@@ -44,3 +44,6 @@
 </html>
 
 I want to devide a list of items into pages. The items are in consecutive sequence of row id starting with 1 and the increasing by step of 1. Total number of items is @totalNumberOfEntries, number of entries per pages is @entriesPerPage, current page is @pageNo. The first item row id for a page is @firstItemOfPage and the last item for that page is @lastItemOfPage. Give me the T-SQL expression for @firstItemOfPage and @lastItemOfPage
+
+SET @firstItemOfPage = ((@pageNo - 1) * @entriesPerPage) + 1;
+SET @lastItemOfPage = MIN(@pageNo * @entriesPerPage, @totalNumberOfEntries);
