@@ -119,3 +119,11 @@ Additional Notes:
 End-User Benefits:
 
 Risk GPT will serve as a critical tool for individuals and businesses seeking to mitigate communication risks, especially in the domain of financial matters. It will enhance the clarity of communication, reduce the potential for misunderstanding, and ensure that sensitive information is conveyed appropriately.
+
+
+DESCRIPTION
+An app that lets the users type in a statement which the app analises ant determines --if the statement is relevant to finance
+--If the phrasing of the statement is appropriate in terms of risks and propertary
+--Scores the statement for appropriateness on the scale of 1 (good) to 9 (bad)
+--Provides alternative, more appropriate phrasing
+The interface consists of a text input area and it displays the result under the text area. The app also retains a history of past statements and their result which can be view at the lower part of the page.
