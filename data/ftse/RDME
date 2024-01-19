@@ -127,3 +127,7 @@ An app that lets the users type in a statement which the app analises ant determ
 --Scores the statement for appropriateness on the scale of 1 (good) to 9 (bad)
 --Provides alternative, more appropriate phrasing
 The interface consists of a text input area and it displays the result under the text area. The app also retains a history of past statements and their result which can be view at the lower part of the page.
+
++++++++++++++++++
+
+This application offers a unique platform where users can input a statement for analysis. The app evaluates the statement to discern its relevance to financial matters. It then assesses the statement's phrasing, focusing on risk and proprietary language. Each statement is rated on a scale from 1 (good) to 9 (bad), reflecting its appropriateness. Additionally, the app suggests alternative phrasing options that are more suitable. The user interface features a text input area, with results displayed directly below. For added convenience, the app maintains a history of previously entered statements and their evaluations, accessible at the bottom of the interface.
