@@ -217,3 +217,26 @@ To diagnose the issue:
 - Check the server configuration and `web.config` settings.
 
 Understanding the context and specifics of your situation would help in providing a more precise solution. If you have more details about how the form is being submitted, or any specific error messages, that would be helpful to know.
+
+
+
+using System.Collections.Generic;
+using System.Web.Script.Serialization;
+
+public string ConvertFormToJson()
+{
+    // Create a dictionary to hold the form data
+    var formData = new Dictionary<string, string>();
+
+    // Loop through the Request.Form collection
+    foreach (var key in Request.Form.AllKeys)
+    {
+        formData[key] = Request.Form[key];
+    }
+
+    // Serialize the dictionary to JSON
+    var serializer = new JavaScriptSerializer();
+    string json = serializer.Serialize(formData);
+
+    return json;
+}
