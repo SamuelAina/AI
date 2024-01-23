@@ -240,3 +240,23 @@ public string ConvertFormToJson()
 
     return json;
 }
+
+=========================================================================================
+=========================================================================================
+[Friday 9:47 AM] Aina, Samuel
+I added the following description to Risk-GPT on confluence. I also suggested 2 more features.
+ 
+Description:
+This application offers a unique platform where users can input a statement for analysis. The app evaluates the statement to discern its relevance to financial matters. It then assesses the statement's phrasing, focusing on risk and proprietary language. Each statement is rated on a scale from 1 (good) to 9 (bad), reflecting its appropriateness. Additionally, the app suggests alternative phrasing options that are more suitable. The user interface features a text input area, with results displayed directly below. For added convenience, the app maintains a history of previously entered statements and their evaluations, accessible at the bottom of the interface.
+ 
+Suggested features:
+
+1. Allow users to set specific parameters or preferences for analysis, such as industry-specific jargon, regional financial norms, or different levels of risk tolerance.
+ 
+2. Include sentiment analysis to gauge the tone of the statement, such as positive, negative, or neutral, which is particularly useful in financial communications.
+ 
+let me know if they are OK
+
+
+[Friday 9:49 AM]
+Looks good. Can you please go ahead and start coding this.
