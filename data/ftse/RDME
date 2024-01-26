@@ -320,3 +320,13 @@ Please investigate and act accordingly:
 
 [Friday 9:49 AM]
 Looks good. Can you please go ahead and start coding this.
+
+
+risk tolerance.
+		Settings page
+Parameters for analysis:
+			1, Financial industry-specific language in the rephrasing  [] Include [] Exclude [] Don’t mind
+			2, Set the risk tolerance to one of the following:  []aggressive [] moderate [] conservative
+			3, Base the analysis on regional norms for [R1], [R2]….. (check boxes)
+	
+
