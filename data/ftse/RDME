@@ -329,7 +329,16 @@ Parameters for analysis:
 			2, Set the risk tolerance to one of the following:  []aggressive [] moderate [] conservative
 			3, Base the analysis on regional norms for [R1], [R2]….. (check boxes)
 	
-
+===============================================================================================================================
 
 https://github.com/ValaryLim/lynx-blockchain-risk-scoring/tree/master
 
+As discussed 
+•	PFA link for the repo . GitHub - ValaryLim/lynx-blockchain-risk-scoring: BT4103 Capstone Project for Lynx Analytics
+•	Please go through the sentiment analysis and scoring folders
+•	I will share the scraped data
+•	input : given entity like “Ethereum(ETH)” and start date and end date 
+•	output – using sentiment analysis and calculate risk score of scraped articles
+•	scheduling a call for updates
+
+https://github.com/charry1729/riskscoring
