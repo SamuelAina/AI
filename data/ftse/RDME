@@ -342,3 +342,15 @@ As discussed
 •	scheduling a call for updates
 
 https://github.com/charry1729/riskscoring
+
+
+=====================================================================
+I'm looking for data files:
+roberta_2020_reddit = pd.read_csv('./data/roberta/2020_roberta_reddit.csv')
+roberta_2020_twitter = pd.read_csv('./data/roberta/2020_roberta_twitter.csv')
+roberta_2020_conventional = pd.read_csv('./data/roberta/2020_roberta_conventional.csv')
+roberta_2020_crypto = pd.read_csv('./data/roberta/2020_roberta_crypto.csv')
+
+data_2020 = pd.read_csv("./data/all_predicted_2020.csv")
+thresholds_df = pd.read_csv('data/entity_thresholds.csv')
+hacks_list = pd.read_csv('./data/hacks_list_2020.csv')
