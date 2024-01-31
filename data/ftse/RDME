@@ -362,5 +362,26 @@ You have more course for pride and satisfaction than most people.
 Whichever course we take in our lives there will always be advantages and disadvantages
 Nobodys circomstance is perfect. Do not be discouraged by the danger that appears to be raging around you or be distracted the apparent glitter overseas. Just know to take good care of yourself and continue to be the omoluabi that you are.
 If you should be compelled to japa, that is a choice you have the right to make. But it will also be a big loss for the community that values and cherishes you enormously. 
+=========================
 
+I have been able to run the sentiment analysis routine with a limited amount of data. The result is poor because we need a lot of data to train the model. How do we plan to get the training data?
+
+Requirement
+•	input : given entity like “Ethereum(ETH)” and start date and end date 
+•	output: using sentiment analysis and calculate risk score of scraped articles
+
+In order to do the above, we need to create a database into which we will run a batch process using the model.
+Your user interface an then use the result from the database to display user request.
+
+We can use an SQLlite database for this purpose:
+Table name: resultTable
+Columns:
+	content_id	     -- unique id identifying the content	
+	source	         -- twitter, reddit, 
+	article_date     -- date of the article
+	sentiment_score  -- sentiment 0 or 1 from the sentiment analysis model
+    entity           -- entity like “Ethereum(ETH)”
+	
+	
+Please let me know what you think about this.
 
