@@ -38,3 +38,4 @@ for i, source in enumerate(sources):
     plt.legend()
     plt.title(source)
 plt.show()
+creating issues reports in geo-economic, political, environmental and technology domains.
