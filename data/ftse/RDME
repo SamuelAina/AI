@@ -48,3 +48,35 @@ Skipping X(1,1), X(R,C)=X(1,C)+X(R,1)  Or X(1,C)=X(R,C)+X(R,1) or X(R,1)=X(1,C)+
 
 Give me the table of the grid.
 
+
+import numpy as np
+import pandas as pd
+
+def generate_puzzle():
+    # Set random seed for reproducibility (optional)
+    np.random.seed(42)
+
+    # Randomly select integers for the first row and first column
+    first_row = np.random.randint(1, 101, 4)
+    first_col = np.random.randint(1, 101, 4)
+
+    # Initialize the grid with zeros
+    grid = np.zeros((4, 4), dtype=int)
+
+    # Fill the first row and first column
+    grid[0, :] = first_row
+    grid[:, 0] = first_col
+
+    # Fill the rest of the grid based on the constraint: X(R,C) = X(1,C) + X(R,1)
+    for R in range(1, 4):
+        for C in range(1, 4):
+            grid[R, C] = grid[0, C] + grid[R, 0]
+
+    # Convert the grid to a DataFrame for better readability (optional)
+    df_grid = pd.DataFrame(grid, columns=['C1', 'C2', 'C3', 'C4'], index=['R1', 'R2', 'R3', 'R4'])
+    return df_grid
+
+# Generate and print the puzzle
+puzzle_grid = generate_puzzle()
+print(puzzle_grid)
+
