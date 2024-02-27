@@ -39,3 +39,12 @@ for i, source in enumerate(sources):
     plt.title(source)
 plt.show()
 creating issues reports in geo-economic, political, environmental and technology domains.
+
+=======================================
+I have a 4 x 4 grid.
+The value in each cell is identified as X(R,C) where R is the row number and C is the column number.
+Randomly fill the grid with integers from 1 to 100 ensuring the following constraint:
+Skipping X(1,1), X(R,C)=X(1,C)+X(R,1)  Or X(1,C)=X(R,C)+X(R,1) or X(R,1)=X(1,C)+X(R,C) 
+
+Give me the table of the grid.
+
