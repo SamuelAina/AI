@@ -80,3 +80,29 @@ def generate_puzzle():
 puzzle_grid = generate_puzzle()
 print(puzzle_grid)
 
+========================================================
+Problem Statement:
+The GPRA team plays a pivotal role in addressing global challenges, but the efficiency of generating issue reports is hindered by the complexity of country-specific issues in geo-economic, political, environmental, social, and technology domains. In this hackathon, we seek innovative solutions to expedite the GPRA issue reporting process, reduce the time taken, and enhance the accuracy of generated issues by addressing region-specific complexities.
+
+Key Components:
+1. Data Integration and Analysis: Aggregate and integrate diverse datasets (or scrap news data) related to geo-economic, political, environmental, social, and technology factors for countries. Implement a robust data analysis pipeline to extract relevant insights from the datasets.
+
+2. Multidimensional Issue Identification: Develop algorithms to identify and categorize country-specific issues across the designated domains. 
+
+3. Automation of Report Generation: Design a system that automates the generation of GPRA issue reports for each country. Ensure the output is clear, concise, and easily understandable for decision-makers.
+
+4. Efficiency Enhancement Strategies: Implement optimization techniques to reduce the time taken to generate issue reports. Explore parallel processing, machine learning, or other advanced methods to expedite the analysis.
+
+5. Accuracy Improvement Measures: Incorporate feedback loops and machine learning algorithms to enhance the accuracy of issue identification over time.
+
+Judging Criteria:
+
+1. Speed and Efficiency: Evaluate how effectively the solution accelerates the GPRA issue reporting process.
+
+2. Accuracy and Precision: Assess the accuracy and precision of the generated issues in reflecting the true challenges faced by countries.
+
+3. Innovation in Analysis: Consider the innovativeness of the analytical methods employed to identify and categorize multidimensional issues.
+
+4. User-Friendly Interface: Gauge the usability and clarity of the user interface for GPRA analysts and decision-makers.
+
+5. Scalability and Adaptability: Examine the scalability of the solution to handle a diverse range of countries and its adaptability to changing geopolitical landscapes.
