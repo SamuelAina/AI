@@ -118,4 +118,38 @@ Issue 3: Climate Change and Sustainable Finance: The UK government has set ambit
 Issue 4: Digital Transformation and Fintech Innovation: The UK is known for its thriving fintech ecosystem and digital innovation in financial services. As technology continues to revolutionize the banking industry, banking companies operating in the emerging markets need to embrace digital transformation, adopt innovative fintech solutions, and enhance their digital capabilities to meet evolving customer expectations and remain competitive. Justification of relevance to the bank: Embracing digital transformation and incorporating fintech innovations is essential for a banking company operating in the emerging markets to improve operational efficiency, enhance customer experience, and leverage new business opportunities. Relevance and importance percentage: 20%. This percentage reflects the significance of digital transformation and fintech innovation in shaping the bank's business model, customer interactions, and long-term growth potential.
 
 Issue 5: Geopolitical Developments and Trade Policies: Geopolitical developments, including shifts in global alliances, trade policies, and diplomatic relations, have significant implications for international businesses. The UK's geopolitical position, as it establishes new trade agreements and navigates international relations, can impact banking companies operating in the emerging markets due to potential changes in trade barriers, investment flows, and market access. Justification of relevance to the bank: A banking company operating in the emerging markets needs to monitor geopolitical developments closely to anticipate potential disruptions in cross-border transactions, trade policies, and political stability, which can have a significant impact on its operations and risk profile. Relevance and importance percentage: 15%. This percentage reflects the potential impact of geopolitical developments on the bank's operations, market dynamics, and risk management strategies
+===========================================================================================
+
+		1. Use Case and solution Presentation including below pointers:
+			i. Introduction of team and concepts:
+				1) Business Unit
+				Team name: Sam
+Member/Lead: Samuel Aina
+GSF Fin Group Investment   
+Global Support Functions - Finance Group Investments.
+				Finance Rapid Development & Support
+				2) Role
+				Developer
+				3) Technology interests
+				SQL Server, C#, Python, AI, ML, Tensorflow and LLMs.
+				4) Reason for choosing the problem statement
+				I am a keen enthusiast of AI/LLM and am convinced that it can be put to effective use and great advantage in the Standard Chartered Bank. This project in particular provides the opportunity to demonstrate that.
+			ii. Problem Statement and Solution
+				1) Tech Stack
+				External APIs (News API web scraper and ChatGPT LLM), Python script and  Flask API (for the Internet service), SQLite databse, HTML/Javascript/CSS
+				2) Architecture
+				
+				3) Features covered in the prototype
+				1, Automatic seraching and downloading of news articles for given date, country and relevant serch pattern.
+				2, Automatic retrieval and summarisation of article text
+				3, Automatic extraction of relevant impact analysis from he content and classifcation into various domains (i.e. Technological, Geoeconomic, Social, Politica, Environmental and Othersl)
+				4, Automatic phrasing of the issues commentary.
+				5, Easy layout of the user interface with fixed filtering and helpful colour coding.
+				4) Future/ production plans
+				1, Pages will be added to facilitate its use in collaborative mode - e.g. User registration page, user management pageetc
+				2, The database may be upgraded to SQL Server which is more scalable.
+				3, A templating feature will be added to facilitate the generation of different types of issues reports
+				4, More filtering options to be added
+				5, More web scraping APIs will be considered so that the efficiency and reach of the web search can be imroved upon.
+				6, There are many competing LLM APIs - e.g. ChatGPT, Gemini/Bard, Llama etc) It should be possible to configute this App to enable users select different  LLMs. 
 
