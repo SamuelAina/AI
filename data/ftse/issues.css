@@ -1,0 +1,252 @@
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .checkbox-group label {
+            margin-right: 20px; /* Adjust the space between each checkbox */
+        }
+
+        .div-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .div-group-right {
+            margin-left: 40;
+        }
+
+        .div-group-justfy-right {
+            margin-left: auto; /* Pushes this child to the right */
+        }
+
+        h6{margin-top: 25;}
+
+        .panel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Adjust the space between panels */
+            margin-top: 40;
+        }
+
+        .panel {
+            background-color: #f0f0f0; /* Light grey background */
+            border: 1px solid #ddd; /* Light grey border */
+            padding: 20px; /* Padding inside the panels */
+            border-radius: 5px; /* Rounded corners */
+            margin-top: 4;
+
+            position: relative;
+        }
+        .issue-panel-pack-color{
+            background-color: #fffee5;
+        }
+        .stylish-button {
+            background-color: #4CAF50; /* Green background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 10px 20px; /* Reduced padding */
+            text-align: center; /* Center the text (if applicable) */
+            text-decoration: none; /* Remove underlines from links */
+            display: inline-block; /* Allow setting dimensions */
+            font-size: 14px; /* Reduced font size */
+            margin: 2px 1px; /* Reduced margin */
+            cursor: pointer; /* Change mouse cursor on hover */
+            border-radius: 5px; /* Slightly smaller rounded corners */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+        }
+
+        .stylish-button:hover {
+            background-color: #45a049; /* Darker shade of green on hover */
+            transform: scale(1.05); /* Slightly increase button size, less than before */
+        }
+
+        #btndvgetarticles {
+        background-color: #007bff; /* Blue background */
+        color: white; /* White text */
+        padding: 5px 10px; /* Reduced padding for a smaller button */
+        font-size: 12px; /* Smaller text size */
+        border: none; /* No border */
+        cursor: pointer; /* Cursor changes to a hand icon when hovering over the button */
+        border-radius: 3px; /* Smaller rounded corners */
+        transition: background-color 0.2s, transform 0.2s; /* Smooth transition for background color and transform */
+        }
+
+        #btndvgetarticles:hover {
+        background-color: #0056b3; /* Darker shade of blue when hovering */
+        transform: scale(1.03); /* Slightly enlarge the button on hover, less than before */
+        }
+
+        #btndvgetarticles:disabled {
+        background-color: #cccccc; /* Gray background for disabled state */
+        cursor: not-allowed; /* Cursor indicates the button is not clickable */
+        opacity: 0.7; /* Make the button appear faded when disabled */
+        }
+
+    #pleaseWaitMessage {
+      display: none;
+      color: red;
+      background-color: #cef10b;
+      border: 1px solid red;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    
+    @keyframes blinkAnimation {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+    }
+
+    #pleaseWaitMessage {
+    animation: blinkAnimation 2s linear infinite;
+    }
+
+	/* General styling for the checkbox containers */
+	.checkbox-container {
+		display: inline-block;
+		margin: 5px;
+		border: 2px solid transparent; /* Default border to ensure consistency */
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+	/* Styling for individual checkboxes */
+	input[type="checkbox"] {
+		margin-right: 5px;
+	}
+
+	/* Specific border colors for each domain */
+	.geoeconomics {
+		border-color: blue;
+	}
+
+	.technology {
+		border-color: red;
+	}
+
+	.environmental {
+		border-color: green;
+	}
+
+	.others {
+		border-color: purple;
+	}
+
+	.social {
+		border-color: yellow;
+	}	
+	
+	.political {
+		border-color: black;
+	}	
+
+.btn-bottom-left {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    /* Additional button styling */
+}
+
+.btn-bottom-right {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    /* Additional button styling */
+}
+
+/* Base badge styling */
+.badge {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    /*background-color: red;  Badge background color */
+    color: white; /* Badge text color */
+    padding: 5px 10px; /* Adjust padding */
+    border-radius: 5px; /* Rounded corners for the badge */
+    font-size: 0.75em; /* Adjust font size */
+}
+
+/* Severity level specific styles */
+.badge-0 {
+    color: black;
+    background-color: white; /* Light green */
+}
+
+.badge-10 {
+    color: black;
+    background-color: #ccffcc; /* Light green */
+}
+
+.badge-20 {
+    color: black;
+    background-color: #b3ff99;
+}
+
+.badge-30 {
+    color: black;
+    background-color: #99ff66;
+}
+
+.badge-40 {
+    color: black;
+    background-color: #80ff33;
+}
+
+.badge-50 {
+    color: black;
+    background-color: #66ff00; /* Pure green */
+}
+
+.badge-60 {
+    color: black;
+    background-color: #ffcc00; /* Yellow */
+}
+
+.badge-70 {
+    color: black;
+    background-color: #ff9933;
+}
+
+.badge-80 {
+    background-color: #ff6600; /* Orange */
+}
+
+.badge-90 {
+    background-color: #ff5050; /* Light red */
+}
+
+.badge-100 {
+    background-color: #ff0000; /* Red */
+}  
+
+/* Header Styles */
+    .page-header {
+        display: flex;
+        align-items: center;
+        background: darkgrey;
+        color: #fff;
+        padding: 10px 10px;
+    }
+    
+    .page-header .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo {
+        height: 50px; /* Adjust as per your logo's aspect ratio */
+        margin-right: 20px;
+    }
+    
+    .app-title {
+        font-size: 24px;
+        font-weight: normal;
+    }
+
