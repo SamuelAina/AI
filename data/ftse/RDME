@@ -197,3 +197,54 @@ DBCC SHRINKFILE (MyDataFile, 100);
 - **Monitor file growth settings**: Ensure your database files are set to grow in a controlled manner that minimizes the need to release unused space frequently.
 
 Shrinking operations can be resource-intensive and affect database performance. Therefore, they should ideally be performed during maintenance windows or periods of low activity.
+
+#####################
+
+To determine the free space in a SQL Server database, you can use several methods, including system stored procedures, system views, or SQL Server Management Studio (SSMS) reports. Below are some common approaches to find out the free space in both the data files and log files of your database:
+
+### 1. Using the `sp_spaceused` Stored Procedure
+This system stored procedure provides information about the total and unused space in the database.
+
+```sql
+EXEC sp_spaceused;
+```
+Running this command gives you an overview of the database size, unallocated space, and the size of the data and index information.
+
+### 2. Using the `sys.database_files` System View
+You can query this system view to get detailed information about the files in the database, including their size and available space.
+
+```sql
+SELECT 
+    name AS FileName, 
+    type_desc AS FileType,
+    size/128.0 AS CurrentSizeMB, 
+    size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0 AS FreeSpaceMB
+FROM 
+    sys.database_files;
+```
+This query shows the file name, type (ROWS for data and LOG for log files), current size in megabytes, and free space in megabytes for each file in the database.
+
+### 3. Using the `sys.dm_db_file_space_usage` Dynamic Management View (DMV)
+This DMV is useful for finding space usage information for tempdb specifically.
+
+```sql
+SELECT 
+    name AS FileName, 
+    type_desc AS FileType,
+    size/128.0 AS CurrentSizeMB, 
+    (size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS FreeSpaceMB
+FROM 
+    tempdb.sys.database_files;
+```
+This query is specifically targeted at tempdb, but you can adapt it for other databases by changing the context using `USE [DatabaseName];` before running a similar query.
+
+### 4. SQL Server Management Studio (SSMS) Reports
+If you prefer a graphical interface, SSMS offers a range of reports that include disk usage by tables, databases, etc.
+
+- Connect to your database instance in SSMS.
+- Right-click on the database you want to inspect.
+- Select **Reports** > **Standard Reports** > **Disk Usage**.
+
+This report provides a visual representation of the disk space used by the database and includes details about the database size, unallocated space, and space used by data and log files.
+
+These methods will help you understand the space utilization in your database, allowing for better database management and planning for future growth or maintenance activities.
