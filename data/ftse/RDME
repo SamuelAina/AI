@@ -153,3 +153,47 @@ Global Support Functions - Finance Group Investments.
 				5, More web scraping APIs will be considered so that the efficiency and reach of the web search can be imroved upon.
 				6, There are many competing LLM APIs - e.g. ChatGPT, Gemini/Bard, Llama etc) It should be possible to configute this App to enable users select different  LLMs. 
 
+**********
+
+
+In SQL Server, releasing unused disk space back to the operating system can be achieved through two primary methods: `DBCC SHRINKDATABASE` and `DBCC SHRINKFILE`. It's essential to use these commands cautiously because they can lead to fragmentation and potentially impact performance. Before proceeding, ensure you have a full backup of your database in case you need to restore it.
+
+### 1. DBCC SHRINKDATABASE
+This command is used to shrink the size of the data and log files in a database. 
+
+Syntax:
+```sql
+DBCC SHRINKDATABASE (database_name, target_percent)
+```
+- `database_name`: The name of the database you want to shrink.
+- `target_percent`: The desired free space as a percentage of the database size after the shrink operation. For example, `10` means 10% free space.
+
+Example:
+```sql
+DBCC SHRINKDATABASE (MyDatabase, 10);
+```
+
+### 2. DBCC SHRINKFILE
+This command shrinks the size of the specified data or log file for a database.
+
+Syntax:
+```sql
+DBCC SHRINKFILE (file_name, target_size)
+```
+- `file_name`: The logical name of the file to shrink. You can get this name from the `sys.database_files` catalog view.
+- `target_size`: The desired size of the file in megabytes. If `0` is specified, SQL Server will shrink the file to the smallest size possible.
+
+Example:
+```sql
+DBCC SHRINKFILE (MyDataFile, 100);
+```
+
+### Considerations Before Shrinking
+- **Shrinking a database should be done with caution** and typically only in specific scenarios, such as after archiving a significant amount of data. Regularly shrinking databases as part of routine maintenance is not recommended because it can cause fragmentation and degrade performance.
+- After shrinking, **it's advisable to reorganize indexes** to mitigate the impact of fragmentation.
+
+### Alternatives to Shrinking
+- **Review data retention policies**: Instead of frequently shrinking files, consider if old or unnecessary data can be archived or purged, reducing the need for future shrinks.
+- **Monitor file growth settings**: Ensure your database files are set to grow in a controlled manner that minimizes the need to release unused space frequently.
+
+Shrinking operations can be resource-intensive and affect database performance. Therefore, they should ideally be performed during maintenance windows or periods of low activity.
