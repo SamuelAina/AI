@@ -248,3 +248,72 @@ If you prefer a graphical interface, SSMS offers a range of reports that include
 This report provides a visual representation of the disk space used by the database and includes details about the database size, unallocated space, and space used by data and log files.
 
 These methods will help you understand the space utilization in your database, allowing for better database management and planning for future growth or maintenance activities.
+
+
+########################
+In SQL Server, determining whether a string is numeric can be approached in several ways, each with its own advantages and considerations. The method you choose may depend on the specific requirements of your query, such as the range of acceptable numeric formats (integers, decimals, scientific notation, etc.) and the version of SQL Server you are using. Here are some common methods:
+
+### 1. `ISNUMERIC` Function
+
+The `ISNUMERIC` function is the most straightforward way to check if a string is numeric. It returns `1` if the string can be converted to any numeric type and `0` otherwise.
+
+```sql
+SELECT CASE WHEN ISNUMERIC(yourColumn) = 1 THEN 'Numeric' ELSE 'Not Numeric' END AS CheckResult
+FROM yourTable;
+```
+
+**Pros:**
+- Simple and easy to use.
+
+**Cons:**
+- Can return `1` for strings that might not convert cleanly to a specific numeric type you're interested in (e.g., currency symbols, scientific notation).
+- It considers some special characters like `+`, `-`, and `.` as numeric under certain conditions, which might not be desired.
+
+### 2. `TRY_CAST`, `TRY_CONVERT`, and `TRY_PARSE`
+
+Starting with SQL Server 2012, these functions attempt to convert a string to a specified data type, returning `NULL` if the conversion fails. For numeric checks, `TRY_CAST` and `TRY_CONVERT` are more precise than `ISNUMERIC`.
+
+```sql
+SELECT CASE WHEN TRY_CAST(yourColumn AS FLOAT) IS NOT NULL THEN 'Numeric' ELSE 'Not Numeric' END AS CheckResult
+FROM yourTable;
+```
+
+Replace `FLOAT` with the specific numeric type you're interested in, if necessary.
+
+**Pros:**
+- More accurate than `ISNUMERIC` for checking if a string can be converted to a specific numeric type.
+- `TRY_CONVERT` and `TRY_PARSE` allow for culture-specific formatting considerations (useful for decimals in different locales).
+
+**Cons:**
+- Not available in SQL Server versions before 2012.
+
+### 3. `PATINDEX` and `LIKE`
+
+For more specific numeric checks (e.g., integers only), you might resort to pattern matching, though it's more complex and less efficient.
+
+```sql
+SELECT CASE WHEN PATINDEX('%[^0-9]%', yourColumn) > 0 THEN 'Not Numeric' ELSE 'Numeric' END AS CheckResult
+FROM yourTable;
+```
+
+Or using `LIKE` for simpler patterns:
+
+```sql
+SELECT CASE WHEN yourColumn NOT LIKE '%[^0-9]%' THEN 'Numeric' ELSE 'Not Numeric' END AS CheckResult
+FROM yourTable;
+```
+
+**Pros:**
+- Offers customizable pattern matching to fit specific numeric formats.
+- Works on all SQL Server versions.
+
+**Cons:**
+- More complex and potentially less efficient.
+- Not suitable for all numeric types without significant complexity.
+
+### Conclusion
+
+The "best" method depends on your specific needs:
+- For a general numeric check, `ISNUMERIC` is easiest but least precise.
+- For type-specific checks or SQL Server 2012 and later, `TRY_CAST`, `TRY_CONVERT`, and `TRY_PARSE` are preferable.
+- For custom pattern checks or older SQL Server versions, `PATINDEX` or `LIKE` can be utilized, acknowledging their complexity and performance considerations.
