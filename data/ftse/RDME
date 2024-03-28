@@ -155,4 +155,10 @@ The "best" method depends on your specific needs:
 - For type-specific checks or SQL Server 2012 and later, `TRY_CAST`, `TRY_CONVERT`, and `TRY_PARSE` are preferable.
 - For custom pattern checks or older SQL Server versions, `PATINDEX` or `LIKE` can be utilized, acknowledging their complexity and performance considerations.
 ################
-17925 ,17924 ,17923 ,17895 ,17894 ,17893 ,17892 ,17882 ,17881 ,17870 ,17869 ,17868 ,17859 ,17858 ,17857 ,17856 ,17822 ,17821 ,17820 ,17809 ,17808 ,17807 ,17806 ,17791 ,17790 ,17741 ,17731 ,17730 ,17719 ,17718 ,17709 ,17708 ,17707 ,17696
+
+Neeti,
+It was great working with you.
+You hired me into SCB and you were my first boss there.
+You are an incredible personality with exceptional xxx atributes  and fantastiic xxxx atittude.  A valued and trusted coleague and a formidable chess player :)
+We must endeavour to keep in touch!!!
+Sam
