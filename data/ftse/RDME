@@ -353,3 +353,52 @@ const data = [
     { id: 2, name: "Jane Doe", email: "jane@example.com" }
 ];
 storeDataInIndexedDB("myDatabase", "myStore", data);
+
+
+######
+
+// Function to open a connection to the IndexedDB database and add data with custom keys
+function storeDataWithCustomKeyInIndexedDB(dbName, storeName, data) {
+    // Open a connection to the database
+    const request = indexedDB.open(dbName, 1);
+
+    // Handle the event for upgrading needed to create the object store
+    request.onupgradeneeded = function(event) {
+        const db = event.target.result;
+        // Create an object store without specifying a keyPath
+        db.createObjectStore(storeName); // No keyPath specified here
+    };
+
+    // Handle successful database opening
+    request.onsuccess = function(event) {
+        const db = event.target.result;
+        // Create a transaction to write data
+        const transaction = db.transaction(storeName, "readwrite");
+        // Get the object store
+        const store = transaction.objectStore(storeName);
+        // Add data to the store, each item should include a separate key
+        data.forEach(item => {
+            if (item.key && item.data) {
+                store.add(item.data, item.key);
+            } else {
+                console.error('Item missing key or data:', item);
+            }
+        });
+        // Complete the transaction
+        transaction.oncomplete = function() {
+            console.log("All data has been added to the database successfully!");
+        };
+    };
+
+    // Handle errors during the database request
+    request.onerror = function(event) {
+        console.error('Database error:', event.target.error);
+    };
+}
+
+// Example usage
+const data = [
+    { key: 1, data: { name: "John Doe", email: "john@example.com" } },
+    { key: 2, data: { name: "Jane Doe", email: "jane@example.com" } }
+];
+storeDataWithCustomKeyInIndexedDB("myDatabase", "myStore", data);
