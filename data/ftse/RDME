@@ -526,3 +526,158 @@ deleteDataFromIndexedDB("myDatabase", "myStore", 1, function(err, result) {
         console.log('Result:', result);
     }
 });
+==================================================
+=====================================================
+====================================================
+=====================================================
+
+
+class DbIdxStore {
+	constructor(dbName, storeName) {
+		this.dbName = dbName;
+		this.storeName = storeName;
+	  }
+  
+
+    upd(data) {
+		// Open a connection to the database
+		const request = indexedDB.open(this.dbName, 1);
+
+		// Handle the event for upgrading needed to create the object store
+		request.onupgradeneeded = function(event) {
+			const db = event.target.result;
+			// Create an object store without specifying a keyPath
+			db.createObjectStore(this.storeName); // No keyPath specified here
+		};
+
+		// Handle successful database opening
+		request.onsuccess = function(event) {
+			const db = event.target.result;
+			// Create a transaction to write data
+			const transaction = db.transaction(this.storeName, "readwrite");
+			// Get the object store
+			const store = transaction.objectStore(this.storeName);
+			// Add data to the store, each item should include a separate key
+			data.forEach(item => {
+				if (item.key && item.data) {
+					store.put(item.data, item.key);
+				} else {
+					console.error('Item missing key or data:', item);
+				}
+			});
+			// Complete the transaction
+			transaction.oncomplete = function() {
+				console.log("All data has been added to the database successfully!");
+			};
+		};
+
+		// Handle errors during the database request
+		request.onerror = function(event) {
+			console.error('Database error:', event.target.error);
+		};
+	}
+
+   updOne(key, mydata){
+	   upd("myDatabase", "myStore", [{key:key, data:mydata}]);
+	}
+
+	rtv(key, callback) {
+		// Open a connection to the database
+		const request = indexedDB.open(this.dbName, 1);
+
+		// Handle the event for upgrading needed to create the object store
+		request.onupgradeneeded = function(event) {
+			const db = event.target.result;
+			// Create an object store if not already exists
+			if (!db.objectStoreNames.contains(this.storeName)) {
+				db.createObjectStore(this.storeName);
+			}
+		};
+
+		// Handle successful database opening
+		request.onsuccess = function(event) {
+			const db = event.target.result;
+			// Create a transaction to read data
+			const transaction = db.transaction(this.storeName, "readonly");
+			// Get the object store
+			const store = transaction.objectStore(this.storeName);
+			// Retrieve the data by key
+			const dataRequest = store.get(key);
+
+			// Handle successful data retrieval
+			dataRequest.onsuccess = function() {
+				if (dataRequest.result) {
+					console.log("Data retrieved successfully:", dataRequest.result);
+					if (callback) {
+						callback(null, dataRequest.result); // Callback with no error and the data
+					}
+				} else {
+					console.log("No data found with the given key.");
+					if (callback) {
+						callback(new Error("No data found"), null); // Callback with error
+					}
+				}
+			};
+		};
+
+		// Handle errors during the database request
+		request.onerror = function(event) {
+			console.error('Database error:', event.target.error);
+			if (callback) {
+				callback(event.target.error, null); // Callback with error
+			}
+		};
+	}
+
+	del(key, callback) {
+		// Open a connection to the database
+		const request = indexedDB.open(this.dbName, 1);
+
+		// Handle the event for upgrading needed to create the object store
+		request.onupgradeneeded = function(event) {
+			const db = event.target.result;
+			// Create an object store if not already exists
+			if (!db.objectStoreNames.contains(this.storeName)) {
+				db.createObjectStore(this.storeName);
+			}
+		};
+
+		// Handle successful database opening
+		request.onsuccess = function(event) {
+			const db = event.target.result;
+			console.log("db",db);
+			// Create a transaction to write data
+			const transaction = db.transaction(this.storeName, "readwrite");
+			console.log(this.storeName);
+			// Get the object store
+			const store = transaction.objectStore(this.storeName);
+			// Delete the data by key
+			const deleteRequest = store.delete(key);
+
+			// Handle successful deletion
+			deleteRequest.onsuccess = function() {
+				console.log("Data deleted successfully.");
+				if (callback) {
+					callback(null, "Data deleted successfully."); // Callback with no error
+				}
+			};
+
+			// Complete the transaction
+			transaction.oncomplete = function() {
+				console.log("Transaction completed.");
+			};
+
+			transaction.onerror = function(event) {
+				console.error("Transaction error:", transaction.error);
+			};
+		};
+
+		// Handle errors during the database request
+		request.onerror = function(event) {
+			console.error('Database error:', event.target.error);
+			if (callback) {
+				callback(event.target.error, null); // Callback with error
+			}
+		};
+	}
+}
