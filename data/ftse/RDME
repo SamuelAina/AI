@@ -402,3 +402,65 @@ const data = [
     { key: 2, data: { name: "Jane Doe", email: "jane@example.com" } }
 ];
 storeDataWithCustomKeyInIndexedDB("myDatabase", "myStore", data);
+
+
+###£#££££££££##########
+
+
+// Function to retrieve data from IndexedDB by key
+function getDataFromIndexedDB(dbName, storeName, key, callback) {
+    // Open a connection to the database
+    const request = indexedDB.open(dbName, 1);
+
+    // Handle the event for upgrading needed to create the object store
+    request.onupgradeneeded = function(event) {
+        const db = event.target.result;
+        // Create an object store if not already exists
+        if (!db.objectStoreNames.contains(storeName)) {
+            db.createObjectStore(storeName);
+        }
+    };
+
+    // Handle successful database opening
+    request.onsuccess = function(event) {
+        const db = event.target.result;
+        // Create a transaction to read data
+        const transaction = db.transaction(storeName, "readonly");
+        // Get the object store
+        const store = transaction.objectStore(storeName);
+        // Retrieve the data by key
+        const dataRequest = store.get(key);
+
+        // Handle successful data retrieval
+        dataRequest.onsuccess = function() {
+            if (dataRequest.result) {
+                console.log("Data retrieved successfully:", dataRequest.result);
+                if (callback) {
+                    callback(null, dataRequest.result); // Callback with no error and the data
+                }
+            } else {
+                console.log("No data found with the given key.");
+                if (callback) {
+                    callback(new Error("No data found"), null); // Callback with error
+                }
+            }
+        };
+    };
+
+    // Handle errors during the database request
+    request.onerror = function(event) {
+        console.error('Database error:', event.target.error);
+        if (callback) {
+            callback(event.target.error, null); // Callback with error
+        }
+    };
+}
+
+// Example usage
+getDataFromIndexedDB("myDatabase", "myStore", 1, function(err, data) {
+    if (err) {
+        console.error('Error retrieving data:', err);
+    } else {
+        console.log('Retrieved data:', data);
+    }
+});
