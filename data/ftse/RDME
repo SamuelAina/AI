@@ -986,3 +986,39 @@ If I have an object pgObj which is an array
 give me a Javascript class that allows me to paginate pgObj
 enable Initialisation of the class with pgObj and entriesPerPage
 let the class have the following functions/properties: totalNumberOfPages,pageNo,numberOfRowsInPage
+
+
+@@@@@@@######@@@@@@@@@@@
+
+class Paginator {
+    constructor(pgObj, entriesPerPage) {
+        this.pgObj = pgObj;
+        this.entriesPerPage = entriesPerPage;
+        this.currentPage = 1; // Default to the first page on initialization
+    }
+
+    get totalNumberOfPages() {
+        return Math.ceil(this.pgObj.length / this.entriesPerPage);
+    }
+
+    get pageNo() {
+        return this.currentPage;
+    }
+
+    get numberOfRowsInPage() {
+        return this._getCurrentPageData().length;
+    }
+
+    setCurrentPage(pageNumber) {
+        if (pageNumber < 1 || pageNumber > this.totalNumberOfPages) {
+            throw new Error("Invalid page number.");
+        }
+        this.currentPage = pageNumber;
+    }
+
+    _getCurrentPageData() {
+        const startIndex = (this.currentPage - 1) * this.entriesPerPage;
+        const endIndex = startIndex + this.entriesPerPage;
+        return this.pgObj.slice(startIndex, endIndex);
+    }
+}
