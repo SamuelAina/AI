@@ -464,3 +464,65 @@ getDataFromIndexedDB("myDatabase", "myStore", 1, function(err, data) {
         console.log('Retrieved data:', data);
     }
 });
+
+#############################£#£££
+
+// Function to delete data from IndexedDB by key
+function deleteDataFromIndexedDB(dbName, storeName, key, callback) {
+    // Open a connection to the database
+    const request = indexedDB.open(dbName, 1);
+
+    // Handle the event for upgrading needed to create the object store
+    request.onupgradeneeded = function(event) {
+        const db = event.target.result;
+        // Create an object store if not already exists
+        if (!db.objectStoreNames.contains(storeName)) {
+            db.createObjectStore(storeName);
+        }
+    };
+
+    // Handle successful database opening
+    request.onsuccess = function(event) {
+        const db = event.target.result;
+        // Create a transaction to write data
+        const transaction = db.transaction(storeName, "readwrite");
+        // Get the object store
+        const store = transaction.objectStore(storeName);
+        // Delete the data by key
+        const deleteRequest = store.delete(key);
+
+        // Handle successful deletion
+        deleteRequest.onsuccess = function() {
+            console.log("Data deleted successfully.");
+            if (callback) {
+                callback(null, "Data deleted successfully."); // Callback with no error
+            }
+        };
+
+        // Complete the transaction
+        transaction.oncomplete = function() {
+            console.log("Transaction completed.");
+        };
+
+        transaction.onerror = function(event) {
+            console.error("Transaction error:", transaction.error);
+        };
+    };
+
+    // Handle errors during the database request
+    request.onerror = function(event) {
+        console.error('Database error:', event.target.error);
+        if (callback) {
+            callback(event.target.error, null); // Callback with error
+        }
+    };
+}
+
+// Example usage
+deleteDataFromIndexedDB("myDatabase", "myStore", 1, function(err, result) {
+    if (err) {
+        console.error('Error deleting data:', err);
+    } else {
+        console.log('Result:', result);
+    }
+});
