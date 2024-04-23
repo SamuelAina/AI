@@ -681,3 +681,118 @@ class DbIdxStore {
 		};
 	}
 }
+
+
+£££££_____£££££££££££££££
+
+
+class DbIdxStore {
+    constructor(dbName, storeName) {
+        this.dbName = dbName;
+        this.storeName = storeName;
+    }
+
+    upd(data) {
+        const request = indexedDB.open(this.dbName, 1);
+        const self = this;  // Preserve the context of 'this'
+
+        request.onupgradeneeded = function (event) {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(self.storeName)) {
+                db.createObjectStore(self.storeName);
+            }
+        };
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction(self.storeName, "readwrite");
+            const store = transaction.objectStore(self.storeName);
+            data.forEach(item => {
+                if (item.key && item.data) {
+                    store.put(item.data, item.key);
+                } else {
+                    console.error('Item missing key or data:', item);
+                }
+            });
+            transaction.oncomplete = function () {
+                console.log("All data has been added to the database successfully!");
+            };
+        };
+
+        request.onerror = function (event) {
+            console.error('Database error:', event.target.error);
+        };
+    }
+
+    updOne(key, mydata) {
+        this.upd([{ key: key, data: mydata }]);
+    }
+
+    rtv(key, callback) {
+        const request = indexedDB.open(this.dbName, 1);
+        const self = this;
+
+        request.onupgradeneeded = function (event) {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(self.storeName)) {
+                db.createObjectStore(self.storeName);
+            }
+        };
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction(self.storeName, "readonly");
+            const store = transaction.objectStore(self.storeName);
+            const dataRequest = store.get(key);
+
+            dataRequest.onsuccess = function () {
+                if (dataRequest.result) {
+                    console.log("Data retrieved successfully:", dataRequest.result);
+                    callback(null, dataRequest.result);
+                } else {
+                    console.log("No data found with the given key.");
+                    callback(new Error("No data found"), null);
+                }
+            };
+        };
+
+        request.onerror = function (event) {
+            console.error('Database error:', event.target.error);
+            callback(event.target.error, null);
+        };
+    }
+
+    del(key, callback) {
+        const request = indexedDB.open(this.dbName, 1);
+        const self = this;
+
+        request.onupgradeneeded = function (event) {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(self.storeName)) {
+                db.createObjectStore(self.storeName);
+            }
+        };
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction(self.storeName, "readwrite");
+            const store = transaction.objectStore(self.storeName);
+            const deleteRequest = store.delete(key);
+
+            deleteRequest.onsuccess = function () {
+                console.log("Data deleted successfully.");
+                callback(null, "Data deleted successfully.");
+            };
+
+            transaction.onerror = function (event) {
+                console.error("Transaction error:", transaction.error);
+                callback(transaction.error, null);
+            };
+        };
+
+        request.onerror = function (event) {
+            console.error('Database error:', event.target.error);
+            callback(event.target.error, null);
+        };
+    }
+}
