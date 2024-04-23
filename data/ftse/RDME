@@ -980,3 +980,9 @@ Usage:
     return x
 })
 
+
+==================================
+If I have an object pgObj which is an array
+give me a Javascript class that allows me to paginate pgObj
+enable Initialisation of the class with pgObj and entriesPerPage
+let the class have the following functions/properties: totalNumberOfPages,pageNo,numberOfRowsInPage
