@@ -311,3 +311,45 @@ We may have set out with very lofty dreams and visions, the path to which would 
 - **Regulatory Framework Alignment**: Fields specifically mentioning regulatory frameworks and reporting requirements ([LCR Report Template section], [CFMR Report Template section], [IRRBB Treatment]) indicate the app's alignment with specific regulatory frameworks, facilitating compliance with liquidity, market, and operational risk requirements.
 
 In summary, this app seems to be a complex, multi-functional platform designed to manage, track, and report on the compliance and approval processes for financial products and services, ensuring alignment with internal policies and external regulatory requirements. It likely serves users in risk management, compliance, and product management roles within financial institutions.
++++++++++++
+
+
+// Function to open a connection to the IndexedDB database and add data
+function storeDataInIndexedDB(dbName, storeName, data) {
+    // Open a connection to the database
+    const request = indexedDB.open(dbName, 1);
+
+    // Handle the event for upgrading needed to create the object store
+    request.onupgradeneeded = function(event) {
+        const db = event.target.result;
+        // Create an object store with a given name and keyPath
+        db.createObjectStore(storeName, { keyPath: "id" });
+    };
+
+    // Handle successful database opening
+    request.onsuccess = function(event) {
+        const db = event.target.result;
+        // Create a transaction to write data
+        const transaction = db.transaction(storeName, "readwrite");
+        // Get the object store
+        const store = transaction.objectStore(storeName);
+        // Add data to the store
+        data.forEach(item => store.add(item));
+        // Complete the transaction
+        transaction.oncomplete = function() {
+            console.log("All data has been added to the database successfully!");
+        };
+    };
+
+    // Handle errors during the database request
+    request.onerror = function(event) {
+        console.error('Database error:', event.target.error);
+    };
+}
+
+// Example usage
+const data = [
+    { id: 1, name: "John Doe", email: "john@example.com" },
+    { id: 2, name: "Jane Doe", email: "jane@example.com" }
+];
+storeDataInIndexedDB("myDatabase", "myStore", data);
