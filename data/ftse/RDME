@@ -45,18 +45,77 @@
   window.onload = addButtons;
 </script>
 
+========================================================================================================
 
-User Role	Button	Status	Visibility
-Country User (Requester)	Update	New Request	TRUE
-Country User (Requester)	Reffer back	Pending	TRUE
-ACFO/Delegate	Approve	Pending	TRUE
-ACFO/Delegate	Reject	Pending	TRUE
-ACFO/Delegate	Reffer back	Approved	TRUE
-GFS Recipient (Admin)	Update	*ANY*	TRUE
-GFS Recipient (Admin)	Reffer back	*ANY*	TRUE
-GFS Recipient (Admin)	Approve	*ANY*	TRUE
-GFS Recipient (Admin)	Reject	*ANY*	TRUE
-Admin (Superuser)	Update	*ANY*	TRUE
-Admin (Superuser)	Reffer back	*ANY*	TRUE
-Admin (Superuser)	Approve	*ANY*	TRUE
-Admin (Superuser)	Reject	*ANY*	TRUE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Editable Table</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>Editable Table</h2>
+<table id="editableTable">
+    <thead>
+        <tr>
+            <th>User Role</th>
+            <th>Button</th>
+            <th>Status</th>
+            <th>Visibility</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Rows will be added dynamically here -->
+    </tbody>
+</table>
+<button onclick="addRow()">Add New Row</button>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+button {
+    margin-top: 10px;
+}
+
+
+
+=====-
+
+window.onload = function() {
+    // Initialize with a default row
+    addRow("Country User (Requester)", "Update", "New Request", "TRUE");
+}
+
+function addRow(userRole = '', button = '', status = '', visibility = '') {
+    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow(table.rows.length);
+    
+    let cell1 = newRow.insertCell(0);
+    let cell2 = newRow.insertCell(1);
+    let cell3 = newRow.insertCell(2);
+    let cell4 = newRow.insertCell(3);
+
+    cell1.contentEditable = true;
+    cell2.contentEditable = true;
+    cell3.contentEditable = true;
+    cell4.contentEditable = true;
+
+    cell1.innerHTML = userRole;
+    cell2.innerHTML = button;
+    cell3.innerHTML = status;
+    cell4.innerHTML = visibility;
+}
+
+// Additional functions like save to server can be added here
+
