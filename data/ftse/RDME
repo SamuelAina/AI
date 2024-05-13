@@ -92,3 +92,17 @@ function addRow(userRole = '', button = '', status = '', visibility = false) {
 
 ========================================================
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+button {
+    margin-top: 10px;
+}
+
+
