@@ -119,3 +119,11 @@ function addRow(userRole = '', button = '', status = '', visibility = '') {
 
 // Additional functions like save to server can be added here
 
+.....
+--User role --dropdown using the following data [{"og_id":65,"og_name":"ACFO\/Delegate"},{"og_id":64,"og_name":"Admin (GFS Recipient)"},{"og_id":1,"og_name":"Admin (Superuser)"},{"og_id":66,"og_name":"Country User"}]
+
+--Status -- dopdown using the following data [{"st_id":26,"st_name":"Approved by ACFO"},{"st_id":1,"st_name":"New Request"},{"st_id":17,"st_name":"Pending ACFO Approval"},{"st_id":29,"st_name":"Refered back"},{"st_id":27,"st_name":"Rejected by ACFO"}]
+
+--Button -- dropdown using the following data [{"bt_id","Update"},{"bt_id","Approve"},{"bt_id","Reject"},{"bt_id","Refer Back"}]
+
+--Visibility -- checkbox
