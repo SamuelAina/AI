@@ -264,3 +264,15 @@ function addRow(userRole = '', button = '', status = '', visibility = false) {
     cell4.appendChild(visibilityCheckbox);
 }
 
+
+
+===========================
+
+
+
+function deleteAllRows() {
+    const tableBody = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
+    while (tableBody.rows.length > 0) {
+        tableBody.deleteRow(0);
+    }
+}
