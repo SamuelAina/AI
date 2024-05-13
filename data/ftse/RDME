@@ -1,52 +1,3 @@
-<tr>
-<td nowrap="" align="center" colspan="2" class="auto-style9">
-<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td>
-</tr>
-=====
-<tr>
-  <td nowrap="" align="center" colspan="2" class="auto-style9">
-    <input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update">
-  </td>
-</tr>
-<script>
-  // Function to add buttons
-  function addButtons() {
-    // Locate the parent TD element by the existing button's ID
-    var parent = document.getElementById('sub').parentNode;
-    
-    // Create [Refer back] button
-    var referBackButton = document.createElement('input');
-    referBackButton.type = 'button';
-    referBackButton.value = 'Refer back';
-    referBackButton.className = 'btn';
-    referBackButton.onclick = function() { /* add function or refer back logic here */ };
-
-    // Create [Approve] button
-    var approveButton = document.createElement('input');
-    approveButton.type = 'button';
-    approveButton.value = 'Approve';
-    approveButton.className = 'btn';
-    approveButton.onclick = function() { /* add approve logic here */ };
-
-    // Create [Reject] button
-    var rejectButton = document.createElement('input');
-    rejectButton.type = 'button';
-    rejectButton.value = 'Reject';
-    rejectButton.className = 'btn';
-    rejectButton.onclick = function() { /* add reject logic here */ };
-
-    // Append new buttons to the parent TD
-    parent.appendChild(referBackButton);
-    parent.appendChild(approveButton);
-    parent.appendChild(rejectButton);
-  }
-
-  // Call the function to add buttons when the page is ready
-  window.onload = addButtons;
-</script>
-
-========================================================================================================
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,29 +26,14 @@
 </html>
 
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-button {
-    margin-top: 10px;
-}
 
-
-
-=====-
+==========================
 
 window.onload = function() {
-    // Initialize with a default row
-    addRow("Country User (Requester)", "Update", "New Request", "TRUE");
+    addRow(); // Start with an empty row for user input
 }
 
-function addRow(userRole = '', button = '', status = '', visibility = '') {
+function addRow(userRole = '', button = '', status = '', visibility = false) {
     const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
     const newRow = table.insertRow(table.rows.length);
     
@@ -106,24 +42,53 @@ function addRow(userRole = '', button = '', status = '', visibility = '') {
     let cell3 = newRow.insertCell(2);
     let cell4 = newRow.insertCell(3);
 
-    cell1.contentEditable = true;
-    cell2.contentEditable = true;
-    cell3.contentEditable = true;
-    cell4.contentEditable = true;
+    // User Role Dropdown
+    let userRoleSelect = document.createElement('select');
+    [
+        {"og_id":65, "og_name":"ACFO/Delegate"},
+        {"og_id":64, "og_name":"Admin (GFS Recipient)"},
+        {"og_id":1, "og_name":"Admin (Superuser)"},
+        {"og_id":66, "og_name":"Country User"}
+    ].forEach(role => {
+        let option = new Option(role.og_name, role.og_id);
+        userRoleSelect.options.add(option);
+    });
+    userRoleSelect.value = userRole;
+    cell1.appendChild(userRoleSelect);
 
-    cell1.innerHTML = userRole;
-    cell2.innerHTML = button;
-    cell3.innerHTML = status;
-    cell4.innerHTML = visibility;
+    // Button Dropdown
+    let buttonSelect = document.createElement('select');
+    ["Update", "Approve", "Reject", "Refer Back"].forEach(bt => {
+        let option = new Option(bt, bt);
+        buttonSelect.options.add(option);
+    });
+    buttonSelect.value = button;
+    cell2.appendChild(buttonSelect);
+
+    // Status Dropdown
+    let statusSelect = document.createElement('select');
+    [
+        {"st_id":26, "st_name":"Approved by ACFO"},
+        {"st_id":1, "st_name":"New Request"},
+        {"st_id":17, "st_name":"Pending ACFO Approval"},
+        {"st_id":29, "st_name":"Referred back"},
+        {"st_id":27, "st_name":"Rejected by ACFO"}
+    ].forEach(st => {
+        let option = new Option(st.st_name, st.st_id);
+        statusSelect.options.add(option);
+    });
+    statusSelect.value = status;
+    cell3.appendChild(statusSelect);
+
+    // Visibility Checkbox
+    let visibilityCheckbox = document.createElement('input');
+    visibilityCheckbox.type = 'checkbox';
+    visibilityCheckbox.checked = visibility;
+    cell4.appendChild(visibilityCheckbox);
 }
 
 // Additional functions like save to server can be added here
 
-.....
---User role --dropdown using the following data [{"og_id":65,"og_name":"ACFO\/Delegate"},{"og_id":64,"og_name":"Admin (GFS Recipient)"},{"og_id":1,"og_name":"Admin (Superuser)"},{"og_id":66,"og_name":"Country User"}]
 
---Status -- dopdown using the following data [{"st_id":26,"st_name":"Approved by ACFO"},{"st_id":1,"st_name":"New Request"},{"st_id":17,"st_name":"Pending ACFO Approval"},{"st_id":29,"st_name":"Refered back"},{"st_id":27,"st_name":"Rejected by ACFO"}]
+========================================================
 
---Button -- dropdown using the following data [{"bt_id","Update"},{"bt_id","Approve"},{"bt_id","Reject"},{"bt_id","Refer Back"}]
-
---Visibility -- checkbox
