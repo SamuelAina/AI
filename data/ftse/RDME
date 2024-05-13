@@ -44,3 +44,19 @@
   // Call the function to add buttons when the page is ready
   window.onload = addButtons;
 </script>
+
+
+User Role	Button	Status	Visibility
+Country User (Requester)	Update	New Request	TRUE
+Country User (Requester)	Reffer back	Pending	TRUE
+ACFO/Delegate	Approve	Pending	TRUE
+ACFO/Delegate	Reject	Pending	TRUE
+ACFO/Delegate	Reffer back	Approved	TRUE
+GFS Recipient (Admin)	Update	*ANY*	TRUE
+GFS Recipient (Admin)	Reffer back	*ANY*	TRUE
+GFS Recipient (Admin)	Approve	*ANY*	TRUE
+GFS Recipient (Admin)	Reject	*ANY*	TRUE
+Admin (Superuser)	Update	*ANY*	TRUE
+Admin (Superuser)	Reffer back	*ANY*	TRUE
+Admin (Superuser)	Approve	*ANY*	TRUE
+Admin (Superuser)	Reject	*ANY*	TRUE
