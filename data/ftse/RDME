@@ -2,3 +2,45 @@
 <td nowrap="" align="center" colspan="2" class="auto-style9">
 <input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td>
 </tr>
+=====
+<tr>
+  <td nowrap="" align="center" colspan="2" class="auto-style9">
+    <input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update">
+  </td>
+</tr>
+<script>
+  // Function to add buttons
+  function addButtons() {
+    // Locate the parent TD element by the existing button's ID
+    var parent = document.getElementById('sub').parentNode;
+    
+    // Create [Refer back] button
+    var referBackButton = document.createElement('input');
+    referBackButton.type = 'button';
+    referBackButton.value = 'Refer back';
+    referBackButton.className = 'btn';
+    referBackButton.onclick = function() { /* add function or refer back logic here */ };
+
+    // Create [Approve] button
+    var approveButton = document.createElement('input');
+    approveButton.type = 'button';
+    approveButton.value = 'Approve';
+    approveButton.className = 'btn';
+    approveButton.onclick = function() { /* add approve logic here */ };
+
+    // Create [Reject] button
+    var rejectButton = document.createElement('input');
+    rejectButton.type = 'button';
+    rejectButton.value = 'Reject';
+    rejectButton.className = 'btn';
+    rejectButton.onclick = function() { /* add reject logic here */ };
+
+    // Append new buttons to the parent TD
+    parent.appendChild(referBackButton);
+    parent.appendChild(approveButton);
+    parent.appendChild(rejectButton);
+  }
+
+  // Call the function to add buttons when the page is ready
+  window.onload = addButtons;
+</script>
