@@ -387,3 +387,30 @@ function addChangeListener(element) {
 }
 
 [{"og_id":65,"button":"update","st_id":26,"visibility":1},{"og_id":65,"button":"update","st_id":26,"visibility":1}...]
+
+
+
+function extractTableData() {
+    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
+    const rows = table.rows;
+    const jsonData = [];
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const userRoleSelect = row.cells[0].getElementsByTagName('select')[0];
+        const buttonSelect = row.cells[1].getElementsByTagName('select')[0];
+        const statusSelect = row.cells[2].getElementsByTagName('select')[0];
+        const visibilityCheckbox = row.cells[3].getElementsByTagName('input')[0];
+
+        const dataObject = {
+            og_id: parseInt(userRoleSelect.value),
+            button: buttonSelect.value,
+            st_id: parseInt(statusSelect.value),
+            visibility: visibilityCheckbox.checked ? 1 : 0
+        };
+
+        jsonData.push(dataObject);
+    }
+
+    return JSON.stringify(jsonData);
+}
