@@ -322,3 +322,68 @@ function deleteRow(btn) {
 }
 
 
+=================================================================
+
+function addRow(userRole = '', button = '', status = '', visibility = false) {
+    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow(table.rows.length);
+
+    // Each cell setup
+    let cell1 = newRow.insertCell(0);
+    let cell2 = newRow.insertCell(1);
+    let cell3 = newRow.insertCell(2);
+    let cell4 = newRow.insertCell(3);
+
+    // User Role Dropdown
+    let userRoleSelect = document.createElement('select');
+    userRoleSelect.dataset.original = userRole;  // Store original value for comparison
+    [
+        {"og_id":65, "og_name":"ACFO/Delegate"},
+        {"og_id":64, "og_name":"Admin (GFS Recipient)"},
+        {"og_id":1, "og_name":"Admin (Superuser)"},
+        {"og_id":66, "og_name":"Country User"}
+    ].forEach(role => {
+        let option = new Option(role.og_name, role.og_id);
+        userRoleSelect.options.add(option);
+    });
+    userRoleSelect.value = userRole;
+    cell1.appendChild(userRoleSelect);
+    addChangeListener(userRoleSelect);
+
+    // Status Dropdown
+    let statusSelect = document.createElement('select');
+    statusSelect.dataset.original = status;
+    [
+        {"st_id":26, "st_name":"Approved by ACFO"},
+        {"st_id":1, "st_name":"New Request"},
+        {"st_id":17, "st_name":"Pending ACFO Approval"},
+        {"st_id":29, "st_name":"Referred back"},
+        {"st_id":27, "st_name":"Rejected by ACFO"}
+    ].forEach(st => {
+        let option = new Option(st.st_name, st.st_id);
+        statusSelect.options.add(option);
+    });
+    statusSelect.value = status;
+    cell3.appendChild(statusSelect);
+    addChangeListener(statusSelect);
+
+    // Visibility Checkbox
+    let visibilityCheckbox = document.createElement('input');
+    visibilityCheckbox.type = 'checkbox';
+    visibilityCheckbox.checked = visibility;
+    visibilityCheckbox.dataset.original = visibility;
+    cell4.appendChild(visibilityCheckbox);
+    addChangeListener(visibilityCheckbox);
+}
+
+function addChangeListener(element) {
+    element.addEventListener('change', function() {
+        if (this.type === 'checkbox') {
+            this.style.backgroundColor = (this.checked.toString() === this.dataset.original) ? '' : 'yellow';
+        } else {
+            this.style.backgroundColor = (this.value === this.dataset.original) ? '' : 'yellow';
+        }
+    });
+}
+
+
