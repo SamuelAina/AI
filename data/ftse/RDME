@@ -276,3 +276,25 @@ function deleteAllRows() {
         tableBody.deleteRow(0);
     }
 }
+
+
+==================================================================
+function highlightRow(rowNumber) {
+    // Get the table body
+    const tableBody = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
+
+    // Check if the row number is valid
+    if(rowNumber >= 0 && rowNumber < tableBody.rows.length) {
+        // Remove highlight from all rows
+        for (let i = 0; i < tableBody.rows.length; i++) {
+            tableBody.rows[i].style.border = 'none';  // Reset the border of all rows
+        }
+        
+        // Apply a red border to the specified row
+        tableBody.rows[rowNumber].style.border = '2px solid red';
+    } else {
+        console.error("Invalid row number");
+    }
+}
+
+
