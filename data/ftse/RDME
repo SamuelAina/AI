@@ -298,3 +298,27 @@ function highlightRow(rowNumber) {
 }
 
 
+==========================================
+function toggleHighlightRow(btn) {
+    // Get the row containing the clicked button
+    let row = btn.parentNode.parentNode;
+
+    // Check the current border style to determine whether to highlight or remove highlight
+    if (row.style.border === '2px solid red') {
+        // If already highlighted, remove the highlight
+        row.style.border = 'none';
+    } else {
+        // If not highlighted, apply the red border
+        row.style.border = '2px solid red';
+    }
+}
+
+function deleteRow(btn) {
+    toggleHighlightRow(btn);  // Toggle the highlight on click
+
+    // Optional: Remove the row if needed
+    // let row = btn.parentNode.parentNode;
+    // row.parentNode.removeChild(row);
+}
+
+
