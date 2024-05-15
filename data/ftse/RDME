@@ -440,3 +440,42 @@ FROM
 =====================================================================
 
 [{"og_id":65,"button":"Approve","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":26,"visibility":1},{"og_id":66,"button":"Update","st_id":26,"visibility":1},{"og_id":66,"button":"Approve","st_id":29,"visibility":1},{"og_id":64,"button":"Update","st_id":1,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":64,"button":"Approve","st_id":17,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":1,"button":"Update","st_id":1,"visibility":1},{"og_id":1,"button":"Update","st_id":29,"visibility":1},{"og_id":1,"button":"Approve","st_id":26,"visibility":1},{"og_id":1,"button":"Reject","st_id":27,"visibility":1}]
+
+++++++
+
+
+DECLARE @json NVARCHAR(MAX) = '[{"og_id":65,"button":"Approve","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":26,"visibility":1},{"og_id":66,"button":"Update","st_id":26,"visibility":1},{"og_id":66,"button":"Approve","st_id":29,"visibility":1},{"og_id":64,"button":"Update","st_id":1,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":64,"button":"Approve","st_id":17,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":1,"button":"Update","st_id":1,"visibility":1},{"og_id":1,"button":"Update","st_id":29,"visibility":1},{"og_id":1,"button":"Approve","st_id":26,"visibility":1},{"og_id":1,"button":"Reject","st_id":27,"visibility":1}]';
+
+-- Remove the outer square brackets
+SET @json = SUBSTRING(@json, 2, LEN(@json) - 2);
+
+-- Replace the JSON object delimiters with a delimiter that STRING_SPLIT can handle
+SET @json = REPLACE(@json, '},{', '}|{');
+
+-- Add a leading and trailing delimiter for easy parsing
+SET @json = '|' + @json + '|';
+
+WITH JsonObjects AS (
+    SELECT 
+        value = SUBSTRING(@json, start_pos, CHARINDEX('|', @json, start_pos) - start_pos)
+    FROM (
+        SELECT 
+            start_pos = number + 1
+        FROM master.dbo.spt_values
+        WHERE type = 'P' AND number <= LEN(@json)
+            AND SUBSTRING(@json, number, 1) = '|'
+    ) AS Positions
+),
+ParsedJson AS (
+    SELECT 
+        SUBSTRING(value, CHARINDEX('"og_id":', value) + 8, CHARINDEX(',', value, CHARINDEX('"og_id":', value)) - CHARINDEX('"og_id":', value) - 8) AS og_id,
+        SUBSTRING(value, CHARINDEX('"button":', value) + 10, CHARINDEX('"', value, CHARINDEX('"button":', value) + 10) - CHARINDEX('"button":', value) - 10) AS button,
+        SUBSTRING(value, CHARINDEX('"st_id":', value) + 8, CHARINDEX(',', value, CHARINDEX('"st_id":', value)) - CHARINDEX('"st_id":', value) - 8) AS st_id
+    FROM JsonObjects
+)
+
+SELECT 
+    CAST(og_id AS INT) AS og_id,
+    button,
+    CAST(st_id AS INT) AS st_id
+FROM ParsedJson;
