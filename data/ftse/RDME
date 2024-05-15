@@ -419,3 +419,22 @@ function extractTableData() {
 
 {"_f":"usp_update_org_status_buttons","_p":"Tracker_TestDb01_ONCD04","JsonData":"{\"formData\":\"[{\\\"og_id\\\":65,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":27,\\\"visibility\\\":1}]\"}"}
 
+++++++++
+
+
+DECLARE @json NVARCHAR(MAX) = '{"_f":"usp_update_org_status_buttons","_p":"Tracker_TestDb01_ONCD04","JsonData":"{\"formData\":\"[{\\\"og_id\\\":65,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":27,\\\"visibility\\\":1}]\"}"}'
+
+-- Extracting the formData JSON string
+DECLARE @formData NVARCHAR(MAX)
+
+SET @formData = (SELECT JSON_VALUE(@json, '$.JsonData'))
+SET @formData = (SELECT JSON_VALUE(@formData, '$.formData'))
+
+-- Parsing the formData JSON array
+SELECT 
+    JSON_VALUE(f.value, '$.og_id') AS og_id,
+    JSON_VALUE(f.value, '$.button') AS button,
+    JSON_VALUE(f.value, '$.st_id') AS st_id
+FROM 
+    OPENJSON(@formData) WITH (value NVARCHAR(MAX) '$') f
+
