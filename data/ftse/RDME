@@ -437,4 +437,6 @@ SELECT
     JSON_VALUE(f.value, '$.st_id') AS st_id
 FROM 
     OPENJSON(@formData) WITH (value NVARCHAR(MAX) '$') f
+=====================================================================
 
+[{"og_id":65,"button":"Approve","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":26,"visibility":1},{"og_id":66,"button":"Update","st_id":26,"visibility":1},{"og_id":66,"button":"Approve","st_id":29,"visibility":1},{"og_id":64,"button":"Update","st_id":1,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":64,"button":"Approve","st_id":17,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":1,"button":"Update","st_id":1,"visibility":1},{"og_id":1,"button":"Update","st_id":29,"visibility":1},{"og_id":1,"button":"Approve","st_id":26,"visibility":1},{"og_id":1,"button":"Reject","st_id":27,"visibility":1}]
