@@ -479,3 +479,6 @@ SELECT
     button,
     CAST(st_id AS INT) AS st_id
 FROM ParsedJson;
+
+
+Invalid length parameter passed to the LEFT or SUBSTRING function.
