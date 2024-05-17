@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Schedule Meeting</title>
+</head>
+<body>
+
+<h2>Schedule Meeting</h2>
+<form action="/schedule_meeting" method="post">
+    <label for="meeting_title">Meeting Title:</label><br>
+    <input type="text" id="meeting_title" name="meeting_title" required><br>
+
+    <label for="meeting_date">Date:</label><br>
+    <input type="date" id="meeting_date" name="meeting_date" required><br>
+
+    <label for="meeting_time">Time:</label><br>
+    <input type="time" id="meeting_time" name="meeting_time" required><br>
+
+    <label for="participants">Participants:</label><br>
+    <select id="participants" name="participants" multiple required>
+        <option value="">Select Participants</option>
+        <!-- Populate with users/stakeholders -->
+    </select><br>
+
+    <input type="submit" value="Schedule">
+</form>
+
+</body>
+</html>

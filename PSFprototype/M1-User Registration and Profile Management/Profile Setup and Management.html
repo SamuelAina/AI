@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" >
+<title>Profile Management</title>
+<link rel="stylesheet" href="../main.css">
+<script src="../common.js"></script>
+</head>
+<body>
+<div class="container"> 
+  <h2>Profile Management</h2>
+  <form id="profileForm">
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
+    
+    <label for="contact">Contact Number:</label>
+    <input type="text" id="contact" name="contact" required>
+    
+    <label for="bankinfo">Bank Information:</label>
+    <input type="text" id="bankinfo" name="bankinfo" required>
+    
+    <button type="submit">Update Profile</button>
+    <button type="button" onclick="mainPage()">Main Page</button>
+  </form>
+</div> 
+
+<script>
+repopulateFormDataFromLoc("profileForm");
+document.getElementById('profileForm').onsubmit = function(event) {
+  event.preventDefault();
+  extractFormDataToLoc("profileForm")
+  alert('Profile Updated Successfully!');
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roles Management</title>
+<!--
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  .container { max-width: 600px; margin: auto; }
+  label, input, button { display: block; width: 100%; }
+  input, button { padding: 10px; margin-top: 5px; }
+  button { background-color: #4CAF50; color: white; border: none; cursor: pointer; width:104% }
+  button:hover { background-color: #45a049; }
+</style>	
+-->
+<link rel="stylesheet" href="../main.css">
+<script src="../common.js"></script>
+</head>
+<body>
+    <h2>Manage User Permissions</h2>
+    <form id="permissionsForm">
+        <div class="form-group">
+            <label for="roleSelect">Select User Role:</label>
+            <select id="roleSelect" name="roleSelect">
+                <option value="investor">Investor</option>
+                <option value="projectManager">Project Manager</option>
+                <option value="freelancer">Freelancer</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Assign Permissions:</label>
+            <input type="checkbox" id="profileManagement" name="permissions" value="profileManagement">
+            <label for="profileManagement">Profile Management</label>
+            <input type="checkbox" id="investmentTracking" name="permissions" value="investmentTracking">
+            <label for="investmentTracking">Investment and Contribution Tracking</label>
+            <input type="checkbox" id="workstreamManagement" name="permissions" value="workstreamManagement">
+            <label for="workstreamManagement">Workstream Management</label>
+            <input type="checkbox" id="profitCalculation" name="permissions" value="profitCalculation">
+            <label for="profitCalculation">Profit Sharing Calculation</label>
+            <input type="checkbox" id="communicationTools" name="permissions" value="communicationTools">
+            <label for="communicationTools">Communication and Collaboration Tools</label>
+            <input type="checkbox" id="documentManagement" name="permissions" value="documentManagement">
+            <label for="documentManagement">Document Management</label>
+        </div>
+        <button type="button" onclick="submitForm()">Submit</button>
+		<button type="button" onclick="mainPage()">Main Page</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            const role = document.getElementById('roleSelect').value;
+            const checkboxes = document.querySelectorAll('input[name="permissions"]:checked');
+            let selectedPermissions = [];
+            checkboxes.forEach((checkbox) => {
+                selectedPermissions.push(checkbox.value);
+            });
+            alert('Role: ' + role + '\\nPermissions: ' + selectedPermissions.join(', '));
+			extractFormDataToLocByRole("permissionsForm");
+            // Here you would typically handle the data further, e.g., sending it to a server
+        }
+		
+		function extractFormDataToLocByRole(formId) {
+			var form = document.getElementById(formId);
+			var elements = form.elements;
+			var formData = {};
+
+			for (var i = 0; i < elements.length; i++) {
+				var element = elements[i];
+				if (element.id && element.type !== "submit") {
+				    if(element.type=="checkbox"){
+					   formData[element.id] = element.checked;
+					}else{
+					   formData[element.id] = element.value;
+					}
+				}
+			}
+			console.log("formData:",formData);
+			saveToLocalStorage(formId+formData.roleSelect, formData)
+			return JSON.stringify(formData);
+		}
+
+		/*
+		function loadFromLocalStorage(key) {
+			const jsonString = localStorage.getItem(key.toUpperCase());
+			return JSON.parse(jsonString);
+		}
+
+		function saveToLocalStorage(key, jsonData) {
+			const jsonString = JSON.stringify(jsonData);
+			localStorage.setItem(key.toUpperCase(), jsonString);
+		}
+		*/
+		var selectElement = document.getElementById('roleSelect');
+		selectElement.addEventListener('change', getSelectedRole);
+		
+		getSelectedRole();
+		function getSelectedRole() {
+			var selectedOptionText = selectElement.options[selectElement.selectedIndex].text;
+			storedSelectedValues=loadFromLocalStorage("permissionsForm"+selectedOptionText)		
+
+			applyPermissions({
+					"roleSelect": false,
+					"profileManagement": false,
+					"investmentTracking": false,
+					"workstreamManagement": false,
+					"profitCalculation": false,
+					"communicationTools": false,
+					"documentManagement": false
+				});			
+			  applyPermissions(storedSelectedValues);				
+			}			
+			if(storedSelectedValues){			
+
+			}
+		
+		function applyPermissions(data) {
+			// Set the checked status of each checkbox
+			document.getElementById('profileManagement').checked = data.profileManagement;
+			document.getElementById('investmentTracking').checked = data.investmentTracking;
+			document.getElementById('workstreamManagement').checked = data.workstreamManagement;
+			document.getElementById('profitCalculation').checked = data.profitCalculation;
+			document.getElementById('communicationTools').checked = data.communicationTools;
+			document.getElementById('documentManagement').checked = data.documentManagement;
+		}
+		
+
+    </script>
+</body>
+</html>

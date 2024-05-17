@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Manage Budget</title>
+</head>
+<body>
+
+<h2>Manage Budget</h2>
+<form action="/update_budget" method="post">
+    <label for="budget_period">Budget Period:</label><br>
+    <select id="budget_period" name="budget_period" required>
+        <option value="">Select Period</option>
+        <option value="monthly">Monthly</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="annually">Annually</option>
+    </select><br>
+
+    <label for="new_budget_amount">New Budget Amount (£):</label><br>
+    <input type="number" id="new_budget_amount" name="new_budget_amount" step="0.01" required><br>
+
+    <input type="submit" value="Update Budget">
+</form>
+
+<!-- Placeholder for dynamically generated budget content -->
+<div id="current_budget">
+    <!-- Example content (replace with server-side generated content) -->
+    <!-- <p>Current budget details...</p> -->
+</div>
+
+</body>
+</html>

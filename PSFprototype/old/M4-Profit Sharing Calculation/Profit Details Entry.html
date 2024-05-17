@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Enter Profit Details</title>
+</head>
+<body>
+
+<h2>Enter Profit Details for Calculation</h2>
+<form action="/submit_profit_details" method="post">
+    <label for="profit_period">Profit Period:</label><br>
+    <select id="profit_period" name="profit_period" required>
+        <option value="Q1">Q1</option>
+        <option value="Q2">Q2</option>
+        <option value="Q3">Q3</option>
+        <option value="Q4">Q4</option>
+    </select><br>
+
+    <label for="total_profit">Total Profit (£):</label><br>
+    <input type="number" id="total_profit" name="total_profit" step="0.01" required><br>
+
+    <input type="submit" value="Submit Profit Details">
+</form>
+
+</body>
+</html>

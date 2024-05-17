@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Localization Settings</title>
+</head>
+<body>
+
+<h2>Localization Settings</h2>
+<form action="/update_localization_settings" method="post">
+    <label for="language_select">Language:</label><br>
+    <select id="language_select" name="language" required>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <!-- Add more languages as needed -->
+    </select><br>
+
+    <label for="currency_select">Currency:</label><br>
+    <select id="currency_select" name="currency" required>
+        <option value="USD">USD</option>
+        <option value="EUR">Euro</option>
+        <option value="GBP">British Pound</option>
+        <!-- Add more currencies as needed -->
+    </select><br>
+
+    <input type="submit" value="Update Settings">
+</form>
+
+</body>
+</html>

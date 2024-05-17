@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Messaging</title>
+</head>
+<body>
+
+<h2>Messaging</h2>
+<form action="/send_message" method="post">
+    <label for="recipient_select">Select Recipient:</label><br>
+    <select id="recipient_select" name="recipient_id" required>
+        <option value="">Select a Recipient</option>
+        <!-- Populate with users/stakeholders -->
+    </select><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+
+    <input type="submit" value="Send Message">
+</form>
+
+</body>
+</html>

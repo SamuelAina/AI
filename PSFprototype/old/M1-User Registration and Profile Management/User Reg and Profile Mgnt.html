@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>User Registration and Profile Management</title>
+
+</head>
+<body>
+
+<h2>User Registration</h2>
+<form action="/submit_registration" method="post">
+    <label for="full_name">Full Name:</label><br>
+    <input type="text" id="full_name" name="full_name" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="mobile_phone">Mobile Phone:</label><br>
+    <input type="tel" id="mobile_phone" name="mobile_phone" required><br><br>
+
+    <label for="stakeholder_position">Stakeholder Position:</label><br>
+    <select id="stakeholder_position" name="stakeholder_position" required>
+        <option value="investor">Investor</option>
+        <option value="project_manager">Project Manager</option>
+        <option value="freelancer">Freelancer</option>
+        <!-- Add other positions as needed -->
+    </select><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+
+    <input type="submit" value="Register">
+</form>
+
+<h2>Profile Management</h2>
+<form action="/update_profile" method="post">
+    <!-- Assuming user is logged in and their details are fetched for editing -->
+    <label for="edit_full_name">Full Name:</label><br>
+    <input type="text" id="edit_full_name" name="full_name"><br>
+
+    <label for="edit_email">Email:</label><br>
+    <input type="email" id="edit_email" name="email"><br>
+
+    <label for="edit_mobile_phone">Mobile Phone:</label><br>
+    <input type="tel" id="edit_mobile_phone" name="mobile_phone"><br>
+
+    <label for="edit_stakeholder_position">Stakeholder Position:</label><br>
+    <select id="edit_stakeholder_position" name="stakeholder_position">
+        <option value="investor">Investor</option>
+        <option value="project_manager">Project Manager</option>
+        <option value="freelancer">Freelancer</option>
+        <!-- Add other positions as needed -->
+    </select><br>
+
+    <input type="submit" value="Update Profile">
+</form>
+
+</body>
+</html>

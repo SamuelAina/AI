@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Customization Options</title>
+</head>
+<body>
+
+<h2>Customization Options</h2>
+<form action="/update_customization_options" method="post">
+    <label for="theme_select">Theme:</label><br>
+    <select id="theme_select" name="theme" required>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <!-- Add more themes as needed -->
+    </select><br>
+
+    <label for="font_size_select">Font Size:</label><br>
+    <select id="font_size_select" name="font_size" required>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+        <!-- Add more font sizes as needed -->
+    </select><br>
+
+    <input type="submit" value="Save Changes">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Share Updates</title>
+</head>
+<body>
+
+<h2>Share an Update</h2>
+<form action="/share_update" method="post">
+    <label for="update_title">Update Title:</label><br>
+    <input type="text" id="update_title" name="update_title" required><br>
+
+    <label for="update_content">Content:</label><br>
+    <textarea id="update_content" name="update_content" rows="4" cols="50" required></textarea><br>
+
+    <label for="document">Attach Document (optional):</label><br>
+    <input type="file" id="document" name="document"><br>
+
+    <input type="submit" value="Share">
+</form>
+
+</body>
+</html>

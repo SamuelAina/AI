@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Conflict Resolution Outcome</title>
+</head>
+<body>
+
+<h2>Conflict Resolution Outcome</h2>
+<form action="/submit_resolution_outcome" method="post">
+    <label for="conflict_id">Conflict ID:</label><br>
+    <input type="text" id="conflict_id" name="conflict_id" required><br>
+
+    <label for="resolution_outcome">Resolution Outcome:</label><br>
+    <textarea id="resolution_outcome" name="resolution_outcome" rows="4" cols="50" required></textarea><br>
+
+    <label for="resolution_date">Resolution Date:</label><br>
+    <input type="date" id="resolution_date" name="resolution_date" required><br>
+
+    <input type="submit" value="Submit Outcome">
+</form>
+
+</body>
+</html>

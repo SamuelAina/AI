@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Report a Conflict</title>
+</head>
+<body>
+
+<h2>Report a Conflict</h2>
+<form action="/submit_conflict_report" method="post">
+    <label for="conflict_date">Date of Conflict:</label><br>
+    <input type="date" id="conflict_date" name="conflict_date" required><br>
+
+    <label for="conflict_description">Description of Conflict:</label><br>
+    <textarea id="conflict_description" name="conflict_description" rows="4" cols="50" required></textarea><br>
+
+    <label for="affected_parties">Affected Parties:</label><br>
+    <input type="text" id="affected_parties" name="affected_parties" required><br>
+
+    <input type="submit" value="Submit Conflict Report">
+</form>
+
+</body>
+</html>

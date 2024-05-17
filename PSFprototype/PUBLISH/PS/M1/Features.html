@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Profit Sharing Formula App</title>
+    <link rel="stylesheet" href="../main.css">
+	<script src="../common.js"></script>
+</head>
+<body>
+    <form>
+        <h1>W E L L C O M E</h1>
+    </form>
+    <form id="frmLoggedIn">     
+        <ul>
+            <li><a href="Profile Setup and Management.html">Profile Setup and Management</a></ol>
+            <li><a href="Roles and Permissions Management.html">Manage User Permissions</a></ol>
+            <li><a href="User login.html">Log out</a></ol>
+        </ul>
+    </form>  
+    <form id="frmNotLoggedIn">
+        <ul>
+            <li><a href="User login.html">Log In</a></ol>
+            <li><a href="Account Creation Page.html">Create an account</a></ol>               
+        </ul>
+    </form>      
+</body>
+<script>
+    checkLoggedIn();
+    document.addEventListener('DOMContentLoaded',
+    function(){
+        var frmLoggedIn = document.getElementById('frmLoggedIn');
+        var frmNotLoggedIn = document.getElementById('frmNotLoggedIn');
+        frmLoggedIn.style.display = 'none'; 
+        frmNotLoggedIn.style.display = 'none'; 
+        if(app_session.LOGED_IN){
+            frmLoggedIn.style.display = 'block';        
+        }else{
+            frmNotLoggedIn.style.display = 'block';
+        }
+    }
+);
+
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Skills and Effort Recording</title>
+</head>
+<body>
+
+<h2>Skills and Effort Recording</h2>
+<form action="/submit_skills_effort" method="post">
+    <label for="skill_date">Date:</label><br>
+    <input type="date" id="skill_date" name="skill_date" required><br>
+
+    <label for="skill">Skill/Contribution:</label><br>
+    <input type="text" id="skill" name="skill" required><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+
+    <input type="submit" value="Record Skill/Effort">
+</form>
+
+</body>
+</html>

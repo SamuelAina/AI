@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration - Step 3</title>
+
+<link rel="stylesheet" href="../main.css">
+<script src="../common.js"></script>
+</head>
+<body>
+<h1>Financial and Compliance Details</h1>
+<form id="regStep3Form">
+    <label for="bank">Bank Account Details:</label>
+    <input type="text" id="bank" name="bank" required>
+
+    <label for="currency">Preferred Currency:</label>
+    <select id="currency" name="currency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <!-- Add other currencies as needed -->
+    </select>
+    
+	<div>
+    <label for="terms">Accept Terms and Conditions:</label>
+    <input type="checkbox" id="terms" name="terms" required>
+	</div>
+
+    <button type="submit" onclick="doComplete()">Complete Registration</button>
+</form>
+</body>
+<script>
+repopulateFormDataFromLoc("regStep3Form");
+function doComplete(){ 
+   extractFormDataToLoc("regStep3Form")
+   window.location.href = "User login.html";
+   event.preventDefault();  
+}
+</script>
+</html>

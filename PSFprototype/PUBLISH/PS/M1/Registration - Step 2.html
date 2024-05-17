@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration - Step 2</title>
+<link rel="stylesheet" href="../main.css">
+<script src="../common.js"></script>
+</head>
+<body>
+<h1>Account Credentials</h1>
+<form id="regStep2Form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="password2">Password (again):</label>
+    <input type="password" id="password2" name="password2" required>
+	
+    <label for="occupation">Occupation:</label>
+    <input type="text" id="occupation" name="occupation" required>
+
+    <!--
+    <label for="role">Role in App:</label>
+    <select id="role" name="role">
+        <option value="investor">Investor</option>
+        <option value="project_manager">Project Manager</option>
+        <option value="freelancer">Freelancer</option>
+    </select>        
+    -->
+
+
+    <button type="submit" onclick="doNext()" >Next</button>
+</form>
+</body>
+<script>
+repopulateFormDataFromLoc("regStep2Form");
+function doNext(){ 
+   extractFormDataToLoc("regStep2Form")
+   window.location.href = "Registration - Step 3.html";
+   event.preventDefault();  
+}
+</script>
+</html>

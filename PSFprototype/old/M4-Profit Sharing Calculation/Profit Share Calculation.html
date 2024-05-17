@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Calculate Profit Shares</title>
+</head>
+<body>
+
+<h2>Calculate Profit Shares</h2>
+<form action="/calculate_profit_shares" method="post">
+    <label for="calculation_period">Select Period for Calculation:</label><br>
+    <select id="calculation_period" name="calculation_period" required>
+        <option value="Q1">Q1</option>
+        <option value="Q2">Q2</option>
+        <option value="Q3">Q3</option>
+        <option value="Q4">Q4</option>
+    </select><br>
+
+    <input type="submit" value="Calculate Shares">
+</form>
+
+</body>
+</html>

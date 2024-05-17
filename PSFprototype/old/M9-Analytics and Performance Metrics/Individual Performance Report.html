@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Individual Performance Report</title>
+</head>
+<body>
+
+<h2>Individual Performance Report</h2>
+<form action="/view_performance_report" method="post">
+    <label for="stakeholder_select">Select Stakeholder:</label><br>
+    <select id="stakeholder_select" name="stakeholder_id" required>
+        <option value="">Select a Stakeholder</option>
+        <!-- Populate with stakeholders -->
+    </select><br>
+
+    <input type="submit" value="View Report">
+</form>
+
+<!-- Placeholder for dynamically generated performance report -->
+<div id="performance_report">
+    <!-- Example content (replace with server-side generated content) -->
+    <!-- <p>Performance details...</p> -->
+</div>
+
+</body>
+</html>

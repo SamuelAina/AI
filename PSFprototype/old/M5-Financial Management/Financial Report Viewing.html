@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>View Financial Reports</title>
+</head>
+<body>
+
+<h2>Financial Reports</h2>
+<form action="/view_reports" method="post">
+    <label for="report_period">Select Report Period:</label><br>
+    <select id="report_period" name="report_period" required>
+        <option value="">Select Period</option>
+        <option value="monthly">Monthly</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="annually">Annually</option>
+    </select><br>
+
+    <input type="submit" value="View Report">
+</form>
+
+<!-- Placeholder for dynamically generated financial report content -->
+<div id="financial_reports">
+    <!-- Example content (replace with server-side generated content) -->
+    <!-- <p>Report details...</p> -->
+</div>
+
+</body>
+</html>

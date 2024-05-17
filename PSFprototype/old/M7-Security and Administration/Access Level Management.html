@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Access Level Management</title>
+</head>
+<body>
+
+<h2>Access Level Management</h2>
+<form action="/manage_access_levels" method="post">
+    <label for="access_user_select">Select User:</label><br>
+    <select id="access_user_select" name="user_id" required>
+        <option value="">Select a User</option>
+        <!-- Populate with users -->
+    </select><br>
+
+    <label for="access_level">Access Level:</label><br>
+    <select id="access_level" name="access_level" required>
+        <option value="full">Full Access</option>
+        <option value="limited">Limited Access</option>
+        <option value="view_only">View Only</option>
+    </select><br>
+
+    <input type="submit" value="Update Access">
+</form>
+
+</body>
+</html>

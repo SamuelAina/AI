@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>User Administration</title>
+</head>
+<body>
+
+<h2>User Administration</h2>
+<form action="/update_user_roles" method="post">
+    <label for="user_select">Select User:</label><br>
+    <select id="user_select" name="user_id" required>
+        <option value="">Select a User</option>
+        <!-- Populate with users -->
+    </select><br>
+
+    <label for="user_role">Assign Role:</label><br>
+    <select id="user_role" name="user_role" required>
+        <option value="admin">Admin</option>
+        <option value="manager">Manager</option>
+        <option value="user">User</option>
+        <!-- Add other roles as needed -->
+    </select><br>
+
+    <input type="submit" value="Update Role">
+</form>
+
+</body>
+</html>

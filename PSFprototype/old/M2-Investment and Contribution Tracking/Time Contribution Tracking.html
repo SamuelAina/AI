@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Time Contribution Tracking</title>
+</head>
+<body>
+
+<h2>Time Contribution Tracking</h2>
+<form action="/submit_time_contribution" method="post">
+    <label for="activity_date">Date:</label><br>
+    <input type="date" id="activity_date" name="activity_date" required><br>
+
+    <label for="activity">Activity:</label><br>
+    <select id="activity" name="activity" required>
+        <option value="">Select Activity</option>
+        <!-- Populate with activities -->
+    </select><br>
+
+    <label for="hours">Hours Spent:</label><br>
+    <input type="number" id="hours" name="hours" min="0" step="0.1" required><br>
+
+    <input type="submit" value="Record Time">
+</form>
+
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Profile - Profit Sharing Formula App</title>
+    <link rel="stylesheet" href="../main.css">
+
+    <style>
+        .container {
+            display: flex;
+        }
+        .div1, .div2 {
+            flex: 1; /* This makes each div take up equal space side by side */
+            padding: 20px; /* Adds some spacing inside each div */
+        }
+        .div1 {
+            background-color: lightblue;
+        }
+        .div2 {
+            background-color: lightcoral;
+        }
+    </style>    
+</head>
+<body>
+
+<div class="profile-container">
+    <h2>User Profile</h2>
+    <form action="/update_profile" method="post">
+        <div class="form-group">
+            <label for="full_name">Full Name:</label><br>
+            <input type="text" id="full_name" name="full_name" value="John Doe" required><br>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="johndoe@example.com" required><br>
+        </div>
+        <div class="form-group">
+            <label for="mobile_phone">Mobile Phone:</label><br>
+            <input type="tel" id="mobile_phone" name="mobile_phone" value="+1234567890" required><br>
+        </div>
+        <div class="form-group">
+            <label for="stakeholder_position">Stakeholder Position:</label><br>
+            <select id="stakeholder_position" name="stakeholder_position" required>
+                <option value="investor">Investor</option>
+                <option value="project_manager" selected>Project Manager</option>
+                <option value="freelancer">Freelancer</option>
+                <!-- Add other positions as needed -->
+            </select><br>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update Profile">
+        </div>
+    </form>
+    <div class="password-update">
+        <a href="/change_password.html">Change Password</a>
+    </div>
+    <nav>
+        <div class="container">
+            <div><b>Investment and Contribution Tracking</b>
+                <ul>
+                    <li><a href="../M2-Investment and Contribution Tracking/Investment Tracking.html">Investment Tracking</a></li>
+                    <li><a href="../M2-Investment and Contribution Tracking/Skills and Effort Recording.html">Skills and Effort Recording</a></li>
+                    <li><a href="../M2-Investment and Contribution Tracking/Time Contribution Tracking.html">Time Contribution Tracking</a></li>           
+                </ul>
+            </div> 
+            <div><b>Investment and Contribution Tracking</b>
+                <ul>
+                    <li><a href="../M3-Workstream Management/Add New Workstream.html">Add New Workstream</a></li>
+                    <li><a href="../M3-Workstream Management/Update Workstream.html">Update Workstream</a></li>
+                    <li><a href="../M3-Workstream Management/Workstream Budget Tracking.html">Workstream Budget Tracking</a></li>           
+                </ul>     
+            </div> 
+            <div><b>Profit Sharing Calculation</b>
+                <ul>
+                    <li><a href="../M4-Profit Sharing Calculation/Profit Details Entry.html">Profit Details Entry</a></li>
+                    <li><a href="../M4-Profit Sharing Calculation/Profit Share Calculation.html">Profit Share Calculation</a></li>
+                    <li><a href="../M4-Profit Sharing Calculation/Profit Share Results Display.html">Profit Share Results Display</a></li>           
+                </ul>     
+            </div>             
+        </div>       
+
+  
+    </nav>   
+    <div class="logout">
+        <a href="../index.html">Log Out</a>
+    </div>
+</div>
+
+</body>
+</html>

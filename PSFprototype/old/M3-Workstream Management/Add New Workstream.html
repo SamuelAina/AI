@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Add New Workstream</title>
+</head>
+<body>
+
+<h2>Add New Workstream</h2>
+<form action="/add_workstream" method="post">
+    <label for="workstream_name">Workstream Name:</label><br>
+    <input type="text" id="workstream_name" name="workstream_name" required><br>
+
+    <label for="budget">Budget (£):</label><br>
+    <input type="number" id="budget" name="budget" step="0.01" required><br>
+
+    <input type="submit" value="Add Workstream">
+</form>
+
+</body>
+</html>

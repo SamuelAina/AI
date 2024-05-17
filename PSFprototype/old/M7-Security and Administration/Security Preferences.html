@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <title>Security Preferences</title>
+</head>
+<body>
+
+<h2>Security Preferences</h2>
+<form action="/update_security_preferences" method="post">
+    <label for="password_policy">Password Policy:</label><br>
+    <select id="password_policy" name="password_policy" required>
+        <option value="standard">Standard</option>
+        <option value="strong">Strong</option>
+    </select><br>
+
+    <label for="two_factor_auth">Two-factor Authentication:</label><br>
+    <input type="checkbox" id="two_factor_auth" name="two_factor_auth"><br>
+
+    <label for="data_encryption">Data Encryption:</label><br>
+    <input type="checkbox" id="data_encryption" name="data_encryption"><br>
+
+    <input type="submit" value="Save Preferences">
+</form>
+
+</body>
+</html>

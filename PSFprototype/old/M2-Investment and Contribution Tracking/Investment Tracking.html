@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Investment Tracking</title>
+    <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+
+<h2>Investment Tracking</h2>
+<form action="/submit_investment" method="post">
+    <label for="date">Date:</label><br>
+    <input type="date" id="date" name="date" required><br>
+
+    <label for="amount">Amount (£):</label><br>
+    <input type="number" id="amount" name="amount" step="0.01" required><br>
+
+    <label for="currency">Currency:</label><br>
+    <select id="currency" name="currency" required>
+        <option value="GBP">GBP</option>
+        <!-- Add other currencies as needed -->
+    </select><br>
+
+    <input type="submit" value="Record Investment">
+</form>
+
+</body>
+</html>
