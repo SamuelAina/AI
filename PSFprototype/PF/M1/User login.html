@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Profit Sharing Formula App</title>
+    <link rel="stylesheet" href="../main.css">
+	  <script src="../common.js"></script>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login to Your Account</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">User Name (Your email):</label><br>
+            <input type="email" id="username" name="username" required><br>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+    <p>Don't have an account? <a href="Account Creation Page.html">Register here</a>.</p>
+	<p>Forgotten your password? <a href="#" onclick="resetPassword()">Reset it here</a>.</p>
+</div>
+
+</body>
+<script>
+app_session.LOGED_IN=false;
+saveToLocalStorage("app_session", app_session);
+document.getElementById('loginForm').onsubmit = function(event) {
+ 
+ 
+  
+  app_session=loadFromLocalStorage('APP_SESSION');
+
+
+  //Validate username and password
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+
+  
+  if (!app_session.USERNAME){
+     alert("user credentials not found - please register");
+     return
+  }
+
+  if (!app_session.PASSWORD){
+     alert("user credentials not found - please register");
+     return
+  }
+
+  if(app_session.USERNAME !==username ){
+    alert("Invalid user credentials");
+    return
+  }
+	
+
+  if(app_session.PASSWORD !==password ){
+      alert("Invalid user credentials");
+      return
+  }
+		
+  app_session.LOGED_IN=true;
+  saveToLocalStorage("app_session", app_session);
+
+  mainPage()
+  event.preventDefault();
+};
+
+
+function resetPassword(){
+  //app_session.LOGED_IN=false;
+  //saveToLocalStorage("app_session", app_session);
+  //clearLocalStorage('REGSTEP2FORM');
+  //alert("credentials cleared. Now you need to set up a new password");
+  window.location.href = "Reset Password Page.html";
+}
+</script>
+</html>
