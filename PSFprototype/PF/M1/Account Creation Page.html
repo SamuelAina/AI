@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration - Step 1</title>
+
+<link rel="stylesheet" href="../main.css">
+<script src="../common.js"></script>
+</head>
+<body>
+<h1>Register Your Account</h1>
+<form id="registerForm" method="POST">
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="password2">Password (again):</label>
+    <input type="password" id="password2" name="password2" required>
+
+    <div>
+    <label class="sidebySideElem" for="terms">Accept Terms and Conditions:</label>
+    <input class="sidebySideElem" type="checkbox" id="terms" name="terms" required>
+    </div>
+
+    
+    <button type="submit" onclick="doRegister()" >Register</button>
+
+    <p>
+        Please note that further informations will be required in order to access fuller features of this App.<br/>
+        You will be set up by the Admin with the neccesary user profile. 
+    </p>
+</form>
+</body>
+
+<script>
+repopulateFormDataFromLoc("registerForm");
+
+
+function doRegister(){ 
+    var fullname = document.getElementById('fullname').value;
+    var username = document.getElementById('username').value;    
+    var password = document.getElementById('password').value;    
+    var password2 = document.getElementById('password2').value;    
+    var terms = document.getElementById('terms').checked;    
+
+    if(!terms){
+        alert("Terms and conditions must be confirmed");
+        return
+    }
+
+    if(password != password2){
+        alert("Both passwords must match");
+        return
+    }
+
+    app_session.LOGED_IN=false;
+    app_session.USERNAME=username;
+    app_session.PASSWORD=password;
+    saveToLocalStorage("app_session", app_session);
+    extractFormDataToLoc("registerForm")
+
+    window.location.href = "User login.html";
+    event.preventDefault();  
+}
+</script>
+</html>
