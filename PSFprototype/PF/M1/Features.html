@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Profit Sharing Formula App</title>
+    <link rel="stylesheet" href="../main.css">
+	<script src="../common.js"></script>
+</head>
+<body>
+    <div>
+        <h1>W E L L C O M E</h1>
+    </div>
+    <form id="frmLoggedIn">   
+        <ul>
+            <li>Module 1 - User Registration and Profile Management 
+                <ul>
+                    <li><a href="User Info.html">Manage User Info</a></li>
+                    <li><a href="Roles and Permissions Management.html">Manage User Permissions</a></li>
+                    <li><a href="User login.html">Log out</a></li>
+                </ul>               
+            </li>
+            <li>Module 2 - Investment and Contribution Tracking</li>
+            <li>Module 3 - Workstream Management and Incentivization</li>
+            <li>Module 4 - Profit Sharing Calculation</li>
+            <li>Module 5 - Financial Management</li>
+            <li>Module 6 - Communication, Collaboration, and Marketing</li>
+            <li>Module 7 - Educational Resources and Support</li>
+            <li>Module 8 - Subscription and Packages Management</li>
+            <li>Module 9 - Legal, Tax, and Affiliate Management</li>
+            <li>Module 10 - Analytics, R&D, and Document Management</li>
+        </ul>          
+
+    </form>  
+    <form id="frmNotLoggedIn">
+        <ul>
+            <li><a href="User login.html">Log In</a></ol>
+            <li><a href="Account Creation Page.html">Create an account</a></ol>               
+        </ul>
+    </form>      
+</body>
+<script>
+    checkLoggedIn();
+    document.addEventListener('DOMContentLoaded',
+    function(){
+        var frmLoggedIn = document.getElementById('frmLoggedIn');
+        var frmNotLoggedIn = document.getElementById('frmNotLoggedIn');
+        frmLoggedIn.style.display = 'none'; 
+        frmNotLoggedIn.style.display = 'none'; 
+        if(app_session.LOGED_IN){
+            frmLoggedIn.style.display = 'block';        
+        }else{
+            frmNotLoggedIn.style.display = 'block';
+        }
+    }
+);
+</script>
+</html>
