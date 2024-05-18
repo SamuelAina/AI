@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration - Step 2</title>
+<link rel="stylesheet" href="../main.css">
+<script src="../common.js"></script>
+</head>
+<body>
+<h1>Account Info for UserName: [userName]</h1>
+<form id="registerForm">
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="occupation">Occupation:</label>
+    <input type="text" id="occupation" name="occupation" required>
+
+    <label for="bank">Bank Account Details:</label>
+    <input type="text" id="bank" name="bank" required>
+
+    <label for="currency">Preferred Currency:</label>
+    <select id="currency" name="currency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <!-- Add other currencies as needed -->
+    </select>
+
+    <label for="role">Role in App:</label>
+    <select id="role" name="role">
+        <option value="investor">Investor</option>
+        <option value="project_manager">Project Manager</option>
+        <option value="freelancer">Freelancer</option>
+        <option value="superuser">Superuser</option>
+    </select>        
+
+    <button type="Back" onclick="doBack()" >Back</button>    
+    <button type="submit" onclick="doUpdate()" >Update</button>
+
+</form>
+</body>
+<script>
+repopulateFormDataFromLoc("registerForm");
+function doUpdate(){ 
+   window.location.href = "Features.html";
+   event.preventDefault();  
+}
+
+function doBack(){
+   window.location.href = "Features.html";
+   event.preventDefault();      
+}
+</script>
+</html>
