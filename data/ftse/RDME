@@ -1,766 +1,270 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Editable Table</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<h2>Editable Table</h2>
-<table id="editableTable">
-    <thead>
-        <tr>
-            <th>User Role</th>
-            <th>Button</th>
-            <th>Status</th>
-            <th>Visibility</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Rows will be added dynamically here -->
-    </tbody>
-</table>
-<button onclick="addRow()">Add New Row</button>
-<script src="script.js"></script>
-</body>
-</html>
-
-
-
-==========================
-
-window.onload = function() {
-    addRow(); // Start with an empty row for user input
-}
-
-function addRow(userRole = '', button = '', status = '', visibility = false) {
-    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow(table.rows.length);
+CREATE PROC [dbo].[usp_process_workbench_xlx_byfile]  
+   @FileName    varchar(255)  
+  ,@deal_id     VARCHAR(MAX) OUTPUT  
+  ,@ExecResult  VARCHAR(MAX) OUTPUT  
+AS  
+/*  
+  DECLARE  @deal_id VARCHAR(MAX), @ExecResult VARCHAR(MAX)  
+  EXEC [dbo].[usp_process_workbench_xlx_byfile] '\\sgwpaupcd04\Dat$\DATA\temp\19DEC2023-TUE\Fee-Booking-Form-DEAL-CF-2022-06-1857393FB1_18_Dec_2023.xlsx', @deal_id OUT, @ExecResult OUT  
+  SELECT  @deal_id, @ExecResult  
+  
+  EXEC [dbo].[usp_process_workbench_xlx_byfile] '\\sgwpaupcd04\Dat$\DATA\temp\19DEC2023-TUE\Fee-Booking-Form-DEAL-CF-2022-06-1857393FB2_18_Dec_2023.xlsx'  
+*/  
+BEGIN  
+ SET NOCOUNT ON  
+ SELECT @ExecResult='OK'  
+  
+ exec master.[dbo].[usp_tryconvert_UNC_to_drive] @FileName,@FileName out  
+  
+ DECLARE @dbname varchar(255)=db_name()  
+ DECLARE @Error  varchar(255)  
+  
+  
+ DECLARE @uniqueID varchar(100)= convert(varchar(100), NEWID())  
+ DECLARE @temp_feebooking_cf    varchar(255)= 'tmptbl_'+@uniqueID+'_Feebooking CF'  
+     ,@temp_fee_recognition_and_sharing    varchar(255)= 'tmptbl_'+@uniqueID+'_Fee Recognition & Sharing'       
+     ,@tmp_bugs  varchar(255)= 'tmptbl_'+@uniqueID+'_tmp_bug'  --One row table  
+  
+ --First worksheet...  
+ EXEC master.[dbo].[usp_get_data_from_xls_using_tempdb]    
+   @FileName   = @FileName  
+  ,@Worksheet  = 'Feebooking CF'  
+  ,@RangeDef   = 'A1:E2000'   
+  ,@TableName  = @temp_feebooking_cf  
+  ,@TargetDb   = @dbname  
+  ,@no_toprow_reformat  = 1  
+  ,@Error      = @Error OUTPUT   
+  
+ --Second worksheet...  
+ EXEC master.[dbo].[usp_get_data_from_xls_using_tempdb]    
+  @FileName   = @FileName  
+  ,@Worksheet  = 'Fee Recognition & Sharing'  
+  ,@RangeDef   = 'A1:L2000'   
+  ,@TableName  = @temp_fee_recognition_and_sharing  
+  ,@TargetDb   = @dbname  
+  ,@no_toprow_reformat  = 1  
+  ,@Error      = @Error OUTPUT  
+  
+  
+ DECLARE @field_list_t TABLE (field_name VARCHAR(255))  
+ INSERT  @field_list_t  
+ SELECT DISTINCT field_name FROM _settings_workbench_mapping WHERE field_name IN (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='bugs')--WHERE  refWorksheet='Feebooking CF'  
+  
+ DECLARE @l VARCHAR(MAX)=''  
+ SELECT  @l = @l +',['+ field_name+'] = CONVERT(VARCHAR(MAX), NULL)'  
+ FROM    @field_list_t  
+  
+ SELECT  @l=SUBSTRING(@l,2,DATALENGTH(@l)-1)  
+ DECLARE @sqlcr VARCHAR(MAX) ='SELECT ' + @l + ' INTO ['+@tmp_bugs+']'  
+ EXEC   (@sqlcr)  
+  
+ WHILE (SELECT COUNT(*) FROM @field_list_t) >0  
+ BEGIN  
+   DECLARE @field_name VARCHAR(255)  
+  
+   SELECT  @field_name = field_name  FROM @field_list_t  
+  
+   DECLARE  @sql_updates VARCHAR(MAX)  
+   SELECT   @sql_updates ='DECLARE @result VARCHAR(255);   
+         EXEC usp_get_value_from_workbench_file_by_field '''+@temp_feebooking_cf+''','''+[refvalue1]+''', @result  OUT;  
+         UPDATE  ['+@tmp_bugs+'] SET ['+@field_name+']=@result  
+        '  
+   FROM     _settings_workbench_mapping WHERE field_name=@field_name  
+  
+  
+   EXEC  (@sql_updates)  
+  
+  
+   DELETE @field_list_t WHERE field_name=@field_name  
+ END  
+  
+  --If the deal no has been used before then quit because  
+ --we don't want to have any duplicates   
+   
+ DECLARE @sql_check_deal_no   NVARCHAR(MAX) = 'SELECT @val=[deal ID] FROM ['+@tmp_bugs+']'  
+    EXECUTE sp_executesql @sql_check_deal_no, N'@val VARCHAR(255) OUTPUT', @val = @deal_id OUTPUT   
+  
+    IF(@deal_id IS NULL)  
+    BEGIN  
+        SELECT @ExecResult ='Invalid Deal No in file'  
+        GOTO finished  
+    END  
+  
+    IF EXISTS(SELECT 1 FROM bugs WHERE [deal id] = @deal_id)  
+    BEGIN  
+        SELECT @ExecResult ='Deal already in the database'  
+  PRINT '*****>Deal already in the database<*****'  
+        GOTO  finished  
+    END   
+  
+  
+ DECLARE @sql_overide VARCHAR(MAX)='UPDATE ['+@tmp_bugs+']   
+                                    SET [FBF Submitted for review in Workbench]=getdate()  
+                                       ,[Date of receipt of Final Documents]=getdate()  
+            ,[Deal submitted for review in ODT]=getdate()  
+            ,[Recognition Month]=UPPER([Recognition Month])  
+            '  
+  
+ EXEC (@sql_overide)  
+  
+  
+  
+ DECLARE @_s VARCHAR(MAX)=  
+ '  
+  SELECT   
+    [Accounting Treatment]         =COL_1  
+   ,[DEAL ID]      ='''+@deal_id+'''           
+   ,[Total Fee]                    =COL_7  
+   ,[Amortisation End Date]        =COL_9  
+   ,[Amortisation Start Date]      =COL_8  
+   ,[Management Booking Location]  =COL_5  
+   ,[GL Unit for ACBS]             =COL_2   
+  INTO  #temp_fee_recognition_and_sharing  
+  FROM ['+@temp_fee_recognition_and_sharing+']  
+  WHERE COL_1 <> ''ACCOUNTING TREATMENT''  
+   
+  UPDATE B  
+  SET [Department Booking ID] =X.[Department Booking ID]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Department Booking ID]=[GL Unit for ACBS]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Upfront''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]   
+  
+  
+  UPDATE B  
+  SET [Management Booking Location for Fee] =X.[Management Booking Location for Fee]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Management Booking Location for Fee]=[Management Booking Location]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Upfront''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]   
+  
+  
+  UPDATE B  
+  SET [Department Booking ID for Amortisation] =X.[Department Booking ID for Amortisation]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Department Booking ID for Amortisation]=[GL Unit for ACBS]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Amortise''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]  
+  
+  
+  UPDATE B  
+  SET [Management Booking Location for Amortisation] =X.[Management Booking Location for Amortisation]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Management Booking Location for Amortisation]=[Management Booking Location]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Amortise''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]  
+  
+  
+  UPDATE B  
+  SET [Amortisation Start Date] =X.[Amortisation Start Date]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Amortisation Start Date]=[Amortisation Start Date]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Amortise''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]  
+  
+  UPDATE B  
+  SET [Amortisation End Date] =X.[Amortisation End Date]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Amortisation End Date]=[Amortisation End Date]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Amortise''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]  
+  
+  UPDATE B  
+  SET [Submitted by deal team Final Day1 (USD equivalent)] =X.[Total Fee]  
+  FROM  
+  (  
+  select TOP 1 [DEAL ID],[Total Fee]=[Total Fee]   
+  from   #temp_fee_recognition_and_sharing  
+  where  [Accounting Treatment]=''Upfront''  
+  ) X  
+  INNER JOIN ['+@tmp_bugs+'] B on B.[Deal ID]=X.[DEAL ID]  
+ '  
+ EXEC (@_s)  
+  
+  
+ --Apply mappings...  
+ declare @update_mappings varchar(max)='  
+ update B set [Deal Local (LCCY 1)]=[Currency per ODT]  
+ from   ['+@tmp_bugs+'] B  
+ inner join workbench_currency_mapping MC  
+ on     B.[Deal Local (LCCY 1)]=MC.[Currency per Workbench]  
+ where  [deal id]='''+@deal_id+'''  
+  
+  
+ update B set [Primary Loan Booking Location]=ML.[Location per ODT]  
+ from   ['+@tmp_bugs+'] B  
+ inner join workbench_location_mapping ML  
+ on     B.[Primary Loan Booking Location]=ML.[Location per Workbench]  
+ where  [deal id]='''+@deal_id+'''  
+  
+ update B set [Fee Receipt Location]=ML.[Location per ODT]  
+ from   ['+@tmp_bugs+'] B  
+ inner join workbench_location_mapping ML  
+ on     B.[Fee Receipt Location]=ML.[Location per Workbench]  
+ where  [deal id]='''+@deal_id+'''  
+  
+  
+ update B set [Management Booking Location for Fee]=ML.[Location per ODT]  
+ from   ['+@tmp_bugs+'] B  
+ inner join workbench_location_mapping ML  
+ on     B.[Management Booking Location for Fee]=ML.[Location per Workbench]  
+ where  [deal id]='''+@deal_id+'''  
+  
+ update B set [Management Booking Location for Amortisation]=ML.[Location per ODT]  
+ from   ['+@tmp_bugs+'] B  
+ inner join workbench_location_mapping ML  
+ on     B.[Management Booking Location for Amortisation]=ML.[Location per Workbench]  
+ where  [deal id]='''+@deal_id+'''  
+ '  
+ EXEC (@update_mappings)   
+  
+  
+  
+ DECLARE @sql_update_Customer_Class_number VARCHAR(MAX)='  
+ UPDATE  b  
+ SET    [Customer Class number]=M.[PSGL Customer Class]  
+ FROM   ['+@tmp_bugs+'] b  
+ inner join _settings_CUST_CLASS_MAPPING M   
+ on b.[Client Segment] = M.[Customer Class Description]  
+ '  
+ PRINT(@sql_update_Customer_Class_number)  
+  
+ DECLARE @field_list VARCHAR(MAX)=''  
+ SELECT  @field_list = @field_list + ',['+column_name+']'  
+ FROM    INFORMATION_SCHEMA.COLUMNS  
+ WHERE   table_name=@tmp_bugs  
+  
+ --DECLARE @sql_sel VARCHAR(MAX)='SELECT bg_short_desc=''New Project'',bg_reported_user=1,bg_reported_date=getdate(),bg_status=1,bg_priority=3,bg_org=0,bg_category=0,bg_project=66'+@field_list+' FROM ['+@tmp_bugs+']'  
+ --EXEC (@sql_sel)  
+  
+ DECLARE @sql_ins_bugs VARCHAR(MAX)=  
+ 'INSERT bugs (bg_short_desc,bg_reported_user,bg_reported_date,bg_status,bg_priority,bg_org,bg_category,bg_project'+@field_list+')   
+  SELECT  bg_short_desc=''New Project'',bg_reported_user=1,bg_reported_date=getdate(),bg_status=1,bg_priority=3,bg_org=0,bg_category=0,bg_project=66'+@field_list+'   
+  FROM ['+@tmp_bugs+']'  
+ EXEC (@sql_ins_bugs)  
     
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
-
-    // User Role Dropdown
-    let userRoleSelect = document.createElement('select');
-    [
-        {"og_id":65, "og_name":"ACFO/Delegate"},
-        {"og_id":64, "og_name":"Admin (GFS Recipient)"},
-        {"og_id":1, "og_name":"Admin (Superuser)"},
-        {"og_id":66, "og_name":"Country User"}
-    ].forEach(role => {
-        let option = new Option(role.og_name, role.og_id);
-        userRoleSelect.options.add(option);
-    });
-    userRoleSelect.value = userRole;
-    cell1.appendChild(userRoleSelect);
-
-    // Button Dropdown
-    let buttonSelect = document.createElement('select');
-    ["Update", "Approve", "Reject", "Refer Back"].forEach(bt => {
-        let option = new Option(bt, bt);
-        buttonSelect.options.add(option);
-    });
-    buttonSelect.value = button;
-    cell2.appendChild(buttonSelect);
-
-    // Status Dropdown
-    let statusSelect = document.createElement('select');
-    [
-        {"st_id":26, "st_name":"Approved by ACFO"},
-        {"st_id":1, "st_name":"New Request"},
-        {"st_id":17, "st_name":"Pending ACFO Approval"},
-        {"st_id":29, "st_name":"Referred back"},
-        {"st_id":27, "st_name":"Rejected by ACFO"}
-    ].forEach(st => {
-        let option = new Option(st.st_name, st.st_id);
-        statusSelect.options.add(option);
-    });
-    statusSelect.value = status;
-    cell3.appendChild(statusSelect);
-
-    // Visibility Checkbox
-    let visibilityCheckbox = document.createElement('input');
-    visibilityCheckbox.type = 'checkbox';
-    visibilityCheckbox.checked = visibility;
-    cell4.appendChild(visibilityCheckbox);
-}
-
-// Additional functions like save to server can be added here
-
-
-========================================================
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-button {
-    margin-top: 10px;
-}
-============================================================
-
-
-[{"id":1,"og_id":65,"st_id":1,"button":"Approve","visible":true},{"id":2,"og_id":65,"st_id":1,"button":"Reject","visible":true},{"id":3,"og_id":65,"st_id":26,"button":"Reffer back","visible":true},{"id":4,"og_id":66,"st_id":0,"button":"Update","visible":true},{"id":5,"og_id":66,"st_id":29,"button":"Reffer back","visible":true},{"id":6,"og_id":64,"st_id":-99,"button":"Update","visible":true},{"id":7,"og_id":64,"st_id":-99,"button":"Reffer back","visible":true},{"id":8,"og_id":64,"st_id":-99,"button":"Approve","visible":true},{"id":9,"og_id":64,"st_id":-99,"button":"Reject","visible":true},{"id":10,"og_id":1,"st_id":-99,"button":"Update","visible":true},{"id":11,"og_id":1,"st_id":-99,"button":"Reffer back","visible":true},{"id":12,"og_id":1,"st_id":-99,"button":"Approve","visible":true},{"id":13,"og_id":1,"st_id":-99,"button":"Reject","visible":true}]
-
-
-
-===
-window.onload = function() {
-    const initialData = [
-        {"id":1, "og_id":65, "st_id":1, "button":"Approve", "visible":true},
-        {"id":2, "og_id":65, "st_id":1, "button":"Reject", "visible":true},
-        {"id":3, "og_id":65, "st_id":26, "button":"Refer back", "visible":true},
-        {"id":4, "og_id":66, "st_id":0, "button":"Update", "visible":true},
-        {"id":5, "og_id":66, "st_id":29, "button":"Refer back", "visible":true},
-        {"id":6, "og_id":64, "st_id":-99, "button":"Update", "visible":true},
-        {"id":7, "og_id":64, "st_id":-99, "button":"Refer back", "visible":true},
-        {"id":8, "og_id":64, "st_id":-99, "button":"Approve", "visible":true},
-        {"id":9, "og_id":64, "st_id":-99, "button":"Reject", "visible":true},
-        {"id":10, "og_id":1, "st_id":-99, "button":"Update", "visible":true},
-        {"id":11, "og_id":1, "st_id":-99, "button":"Refer back", "visible":true},
-        {"id":12, "og_id":1, "st_id":-99, "button":"Approve", "visible":true},
-        {"id":13, "og_id":1, "st_id":-99, "button":"Reject", "visible":true}
-    ];
-    populateTable(initialData);
-}
-
-function populateTable(data) {
-    data.forEach(item => {
-        addRow(item.og_id, item.button, item.st_id, item.visible);
-    });
-}
-
-function addRow(userRole = '', button = '', status = '', visibility = false) {
-    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow(table.rows.length);
-    
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
-    let cell5 = newRow.insertCell(4); // Cell for the delete button
-
-    // User Role Dropdown
-    let userRoleSelect = document.createElement('select');
-    // [...roles...] - User roles setup here as before
-    cell1.appendChild(userRoleSelect);
-
-    // Button Dropdown
-    let buttonSelect = document.createElement('select');
-    // [...buttons...] - Buttons setup here as before
-    cell2.appendChild(buttonSelect);
-
-    // Status Dropdown
-    let statusSelect = document.createElement('select');
-    // [...statuses...] - Statuses setup here as before
-    cell3.appendChild(statusSelect);
-
-    // Visibility Checkbox
-    let visibilityCheckbox = document.createElement('input');
-    visibilityCheckbox.type = 'checkbox';
-    visibilityCheckbox.checked = visibility;
-    cell4.appendChild(visibilityCheckbox);
-
-    // Delete button
-    let deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.onclick = function() { deleteRow(this); };
-    cell5.appendChild(deleteBtn);
-}
-
-function deleteRow(btn) {
-    let row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-}
-
-====================================
-PREVIOUS
-
-window.onload = function() {
-    const initialData = [
-        {"id":1, "og_id":65, "st_id":1, "button":"Approve", "visible":true},
-        {"id":2, "og_id":65, "st_id":1, "button":"Reject", "visible":true},
-        {"id":3, "og_id":65, "st_id":26, "button":"Reffer back", "visible":true},
-        {"id":4, "og_id":66, "st_id":0, "button":"Update", "visible":true},
-        {"id":5, "og_id":66, "st_id":29, "button":"Reffer back", "visible":true},
-        {"id":6, "og_id":64, "st_id":-99, "button":"Update", "visible":true},
-        {"id":7, "og_id":64, "st_id":-99, "button":"Reffer back", "visible":true},
-        {"id":8, "og_id":64, "st_id":-99, "button":"Approve", "visible":true},
-        {"id":9, "og_id":64, "st_id":-99, "button":"Reject", "visible":true},
-        {"id":10, "og_id":1, "st_id":-99, "button":"Update", "visible":true},
-        {"id":11, "og_id":1, "st_id":-99, "button":"Reffer back", "visible":true},
-        {"id":12, "og_id":1, "st_id":-99, "button":"Approve", "visible":true},
-        {"id":13, "og_id":1, "st_id":-99, "button":"Reject", "visible":true}
-    ];
-    populateTable(initialData);
-}
-
-function populateTable(data) {
-    data.forEach(item => {
-        addRow(item.og_id, item.button, item.st_id, item.visible);
-    });
-}
-
-function addRow(userRole = '', button = '', status = '', visibility = false) {
-    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow(table.rows.length);
-    
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
-
-    // User Role Dropdown
-    let userRoleSelect = document.createElement('select');
-    [
-        {"og_id":65, "og_name":"ACFO/Delegate"},
-        {"og_id":64, "og_name":"Admin (GFS Recipient)"},
-        {"og_id":1, "og_name":"Admin (Superuser)"},
-        {"og_id":66, "og_name":"Country User"}
-    ].forEach(role => {
-        let option = new Option(role.og_name, role.og_id);
-        userRoleSelect.options.add(option);
-    });
-    userRoleSelect.value = userRole;
-    cell1.appendChild(userRoleSelect);
-
-    // Button Dropdown
-    let buttonSelect = document.createElement('select');
-    ["Update", "Approve", "Reject", "Refer Back"].forEach(bt => {
-        let option = new Option(bt, bt);
-        buttonSelect.options.add(option);
-    });
-    buttonSelect.value = button;
-    cell2.appendChild(buttonSelect);
-
-    // Status Dropdown
-    let statusSelect = document.createElement('select');
-    [
-        {"st_id":26, "st_name":"Approved by ACFO"},
-        {"st_id":1, "st_name":"New Request"},
-        {"st_id":17, "st_name":"Pending ACFO Approval"},
-        {"st_id":29, "st_name":"Referred back"},
-        {"st_id":27, "st_name":"Rejected by ACFO"},
-        {"st_id":0, "st_name":"None"},
-        {"st_id":-99, "st_name":"Unavailable"}
-    ].forEach(st => {
-        let option = new Option(st.st_name, st.st_id);
-        statusSelect.options.add(option);
-    });
-    statusSelect.value = status;
-    cell3.appendChild(statusSelect);
-
-    // Visibility Checkbox
-    let visibilityCheckbox = document.createElement('input');
-    visibilityCheckbox.type = 'checkbox';
-    visibilityCheckbox.checked = visibility;
-    cell4.appendChild(visibilityCheckbox);
-}
-
-
-
-===========================
-
-
-
-function deleteAllRows() {
-    const tableBody = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-    while (tableBody.rows.length > 0) {
-        tableBody.deleteRow(0);
-    }
-}
-
-
-==================================================================
-function highlightRow(rowNumber) {
-    // Get the table body
-    const tableBody = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-
-    // Check if the row number is valid
-    if(rowNumber >= 0 && rowNumber < tableBody.rows.length) {
-        // Remove highlight from all rows
-        for (let i = 0; i < tableBody.rows.length; i++) {
-            tableBody.rows[i].style.border = 'none';  // Reset the border of all rows
-        }
-        
-        // Apply a red border to the specified row
-        tableBody.rows[rowNumber].style.border = '2px solid red';
-    } else {
-        console.error("Invalid row number");
-    }
-}
-
-
-==========================================
-function toggleHighlightRow(btn) {
-    // Get the row containing the clicked button
-    let row = btn.parentNode.parentNode;
-
-    // Check the current border style to determine whether to highlight or remove highlight
-    if (row.style.border === '2px solid red') {
-        // If already highlighted, remove the highlight
-        row.style.border = 'none';
-    } else {
-        // If not highlighted, apply the red border
-        row.style.border = '2px solid red';
-    }
-}
-
-function deleteRow(btn) {
-    toggleHighlightRow(btn);  // Toggle the highlight on click
-
-    // Optional: Remove the row if needed
-    // let row = btn.parentNode.parentNode;
-    // row.parentNode.removeChild(row);
-}
-
-
-=================================================================
-
-function addRow(userRole = '', button = '', status = '', visibility = false) {
-    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow(table.rows.length);
-
-    // Each cell setup
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
-
-    // User Role Dropdown
-    let userRoleSelect = document.createElement('select');
-    userRoleSelect.dataset.original = userRole;  // Store original value for comparison
-    [
-        {"og_id":65, "og_name":"ACFO/Delegate"},
-        {"og_id":64, "og_name":"Admin (GFS Recipient)"},
-        {"og_id":1, "og_name":"Admin (Superuser)"},
-        {"og_id":66, "og_name":"Country User"}
-    ].forEach(role => {
-        let option = new Option(role.og_name, role.og_id);
-        userRoleSelect.options.add(option);
-    });
-    userRoleSelect.value = userRole;
-    cell1.appendChild(userRoleSelect);
-    addChangeListener(userRoleSelect);
-
-    // Status Dropdown
-    let statusSelect = document.createElement('select');
-    statusSelect.dataset.original = status;
-    [
-        {"st_id":26, "st_name":"Approved by ACFO"},
-        {"st_id":1, "st_name":"New Request"},
-        {"st_id":17, "st_name":"Pending ACFO Approval"},
-        {"st_id":29, "st_name":"Referred back"},
-        {"st_id":27, "st_name":"Rejected by ACFO"}
-    ].forEach(st => {
-        let option = new Option(st.st_name, st.st_id);
-        statusSelect.options.add(option);
-    });
-    statusSelect.value = status;
-    cell3.appendChild(statusSelect);
-    addChangeListener(statusSelect);
-
-    // Visibility Checkbox
-    let visibilityCheckbox = document.createElement('input');
-    visibilityCheckbox.type = 'checkbox';
-    visibilityCheckbox.checked = visibility;
-    visibilityCheckbox.dataset.original = visibility;
-    cell4.appendChild(visibilityCheckbox);
-    addChangeListener(visibilityCheckbox);
-}
-
-function addChangeListener(element) {
-    element.addEventListener('change', function() {
-        if (this.type === 'checkbox') {
-            this.style.backgroundColor = (this.checked.toString() === this.dataset.original) ? '' : 'yellow';
-        } else {
-            this.style.backgroundColor = (this.value === this.dataset.original) ? '' : 'yellow';
-        }
-    });
-}
-
-[{"og_id":65,"button":"update","st_id":26,"visibility":1},{"og_id":65,"button":"update","st_id":26,"visibility":1}...]
-
-
-
-function extractTableData() {
-    const table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
-    const rows = table.rows;
-    const jsonData = [];
-
-    for (let i = 0; i < rows.length; i++) {
-        const row = rows[i];
-        const userRoleSelect = row.cells[0].getElementsByTagName('select')[0];
-        const buttonSelect = row.cells[1].getElementsByTagName('select')[0];
-        const statusSelect = row.cells[2].getElementsByTagName('select')[0];
-        const visibilityCheckbox = row.cells[3].getElementsByTagName('input')[0];
-
-        const dataObject = {
-            og_id: parseInt(userRoleSelect.value),
-            button: buttonSelect.value,
-            st_id: parseInt(statusSelect.value),
-            visibility: visibilityCheckbox.checked ? 1 : 0
-        };
-
-        jsonData.push(dataObject);
-    }
-
-    return JSON.stringify(jsonData);
-}
-==================================
-
-
-{"_f":"usp_update_org_status_buttons","_p":"Tracker_TestDb01_ONCD04","JsonData":"{\"formData\":\"[{\\\"og_id\\\":65,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":27,\\\"visibility\\\":1}]\"}"}
-
-++++++++
-
-
-DECLARE @json NVARCHAR(MAX) = '{"_f":"usp_update_org_status_buttons","_p":"Tracker_TestDb01_ONCD04","JsonData":"{\"formData\":\"[{\\\"og_id\\\":65,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":65,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":66,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":64,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":17,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":1,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Update\\\",\\\"st_id\\\":29,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Approve\\\",\\\"st_id\\\":26,\\\"visibility\\\":1},{\\\"og_id\\\":1,\\\"button\\\":\\\"Reject\\\",\\\"st_id\\\":27,\\\"visibility\\\":1}]\"}"}'
-
--- Extracting the formData JSON string
-DECLARE @formData NVARCHAR(MAX)
-
-SET @formData = (SELECT JSON_VALUE(@json, '$.JsonData'))
-SET @formData = (SELECT JSON_VALUE(@formData, '$.formData'))
-
--- Parsing the formData JSON array
-SELECT 
-    JSON_VALUE(f.value, '$.og_id') AS og_id,
-    JSON_VALUE(f.value, '$.button') AS button,
-    JSON_VALUE(f.value, '$.st_id') AS st_id
-FROM 
-    OPENJSON(@formData) WITH (value NVARCHAR(MAX) '$') f
-=====================================================================
-
-[{"og_id":65,"button":"Approve","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":26,"visibility":1},{"og_id":66,"button":"Update","st_id":26,"visibility":1},{"og_id":66,"button":"Approve","st_id":29,"visibility":1},{"og_id":64,"button":"Update","st_id":1,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":64,"button":"Approve","st_id":17,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":1,"button":"Update","st_id":1,"visibility":1},{"og_id":1,"button":"Update","st_id":29,"visibility":1},{"og_id":1,"button":"Approve","st_id":26,"visibility":1},{"og_id":1,"button":"Reject","st_id":27,"visibility":1}]
-
-++++++
-
-
-DECLARE @json NVARCHAR(MAX) = '[{"og_id":65,"button":"Approve","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":26,"visibility":1},{"og_id":66,"button":"Update","st_id":26,"visibility":1},{"og_id":66,"button":"Approve","st_id":29,"visibility":1},{"og_id":64,"button":"Update","st_id":1,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":64,"button":"Approve","st_id":17,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":1,"button":"Update","st_id":1,"visibility":1},{"og_id":1,"button":"Update","st_id":29,"visibility":1},{"og_id":1,"button":"Approve","st_id":26,"visibility":1},{"og_id":1,"button":"Reject","st_id":27,"visibility":1}]';
-
--- Remove the outer square brackets
-SET @json = SUBSTRING(@json, 2, LEN(@json) - 2);
-
--- Replace the JSON object delimiters with a delimiter that STRING_SPLIT can handle
-SET @json = REPLACE(@json, '},{', '}|{');
-
--- Add a leading and trailing delimiter for easy parsing
-SET @json = '|' + @json + '|';
-
-WITH JsonObjects AS (
-    SELECT 
-        value = SUBSTRING(@json, start_pos, CHARINDEX('|', @json, start_pos) - start_pos)
-    FROM (
-        SELECT 
-            start_pos = number + 1
-        FROM master.dbo.spt_values
-        WHERE type = 'P' AND number <= LEN(@json)
-            AND SUBSTRING(@json, number, 1) = '|'
-    ) AS Positions
-),
-ParsedJson AS (
-    SELECT 
-        SUBSTRING(value, CHARINDEX('"og_id":', value) + 8, CHARINDEX(',', value, CHARINDEX('"og_id":', value)) - CHARINDEX('"og_id":', value) - 8) AS og_id,
-        SUBSTRING(value, CHARINDEX('"button":', value) + 10, CHARINDEX('"', value, CHARINDEX('"button":', value) + 10) - CHARINDEX('"button":', value) - 10) AS button,
-        SUBSTRING(value, CHARINDEX('"st_id":', value) + 8, CHARINDEX(',', value, CHARINDEX('"st_id":', value)) - CHARINDEX('"st_id":', value) - 8) AS st_id
-    FROM JsonObjects
-)
-
-SELECT 
-    CAST(og_id AS INT) AS og_id,
-    button,
-    CAST(st_id AS INT) AS st_id
-FROM ParsedJson;
-
-
-Invalid length parameter passed to the LEFT or SUBSTRING function.
-
-
-+++++++
-
-DECLARE @json NVARCHAR(MAX) = '[{"og_id":65,"button":"Approve","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":1,"visibility":1},{"og_id":65,"button":"Reject","st_id":26,"visibility":1},{"og_id":66,"button":"Update","st_id":26,"visibility":1},{"og_id":66,"button":"Approve","st_id":29,"visibility":1},{"og_id":64,"button":"Update","st_id":1,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":64,"button":"Approve","st_id":17,"visibility":1},{"og_id":64,"button":"Reject","st_id":17,"visibility":1},{"og_id":1,"button":"Update","st_id":1,"visibility":1},{"og_id":1,"button":"Update","st_id":29,"visibility":1},{"og_id":1,"button":"Approve","st_id":26,"visibility":1},{"og_id":1,"button":"Reject","st_id":27,"visibility":1}]';
-
--- Remove the outer square brackets
-SET @json = SUBSTRING(@json, 2, LEN(@json) - 2);
-
--- Replace the JSON object delimiters with a delimiter that STRING_SPLIT can handle
-SET @json = REPLACE(@json, '},{', '}|{');
-
--- Add a leading and trailing delimiter for easy parsing
-SET @json = '|' + @json + '|';
-
-WITH JsonObjects AS (
-    SELECT 
-        value = SUBSTRING(@json, start_pos, CHARINDEX('|', @json, start_pos) - start_pos)
-    FROM (
-        SELECT 
-            start_pos = number + 1
-        FROM master.dbo.spt_values
-        WHERE type = 'P' AND number <= LEN(@json)
-            AND SUBSTRING(@json, number, 1) = '|'
-    ) AS Positions
-),
-ParsedJson AS (
-    SELECT 
-        -- Extract og_id
-        og_id = CASE 
-                   WHEN CHARINDEX('"og_id":', value) > 0 
-                        AND CHARINDEX(',', value, CHARINDEX('"og_id":', value)) > CHARINDEX('"og_id":', value) 
-                   THEN SUBSTRING(
-                            value, 
-                            CHARINDEX('"og_id":', value) + 8, 
-                            CHARINDEX(',', value, CHARINDEX('"og_id":', value)) - CHARINDEX('"og_id":', value) - 8
-                        )
-                   ELSE NULL
-               END,
-        -- Extract button
-        button = CASE 
-                    WHEN CHARINDEX('"button":', value) > 0 
-                         AND CHARINDEX('"', value, CHARINDEX('"button":', value) + 10) > CHARINDEX('"button":', value) + 10 
-                    THEN SUBSTRING(
-                             value, 
-                             CHARINDEX('"button":', value) + 10, 
-                             CHARINDEX('"', value, CHARINDEX('"button":', value) + 10) - CHARINDEX('"button":', value) - 10
-                         )
-                    ELSE NULL
-                END,
-        -- Extract st_id
-        st_id = CASE 
-                   WHEN CHARINDEX('"st_id":', value) > 0 
-                        AND CHARINDEX(',', value, CHARINDEX('"st_id":', value)) > CHARINDEX('"st_id":', value) 
-                   THEN SUBSTRING(
-                            value, 
-                            CHARINDEX('"st_id":', value) + 8, 
-                            CHARINDEX(',', value, CHARINDEX('"st_id":', value)) - CHARINDEX('"st_id":', value) - 8
-                        )
-                   ELSE NULL
-               END
-    FROM JsonObjects
-)
-
-SELECT 
-    CAST(og_id AS INT) AS og_id,
-    button,
-    CAST(st_id AS INT) AS st_id
-FROM ParsedJson
-WHERE og_id IS NOT NULL AND button IS NOT NULL AND st_id IS NOT NULL;
-
-===================================
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Icons and Usernames</title>
-    <style>
-        .user-box {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 250px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .user-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 10px;
-        }
-        .username {
-            font-size: 16px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="user-box">
-        <div class="user-icon">U</div>
-        <div class="username">xx@xx.com</div>
-    </div>
-    <div class="user-box">
-        <div class="user-icon">U</div>
-        <div class="username">yy@yy.com</div>
-    </div>
-    <div class="user-box">
-        <div class="user-icon">U</div>
-        <div class="username">zz@zz.com</div>
-    </div>
-    <div class="user-box">
-        <div class="user-icon">U</div>
-        <div class="username">aa@aa.com</div>
-    </div>
-    <div class="user-box">
-        <div class="user-icon">U</div>
-        <div class="username">bb@bb.com</div>
-    </div>
-</body>
-</html>
-======================================================================
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Icons and Usernames</title>
-    <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .user-box {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 250px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .user-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 10px;
-        }
-        .username {
-            font-size: 16px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="user-box">
-            <div class="user-icon">U</div>
-            <div class="username">xx@xx.com</div>
-        </div>
-        <div class="user-box">
-            <div class="user-icon">U</div>
-            <div class="username">yy@yy.com</div>
-        </div>
-        <div class="user-box">
-            <div class="user-icon">U</div>
-            <div class="username">zz@zz.com</div>
-        </div>
-        <div class="user-box">
-            <div class="user-icon">U</div>
-            <div class="username">aa@aa.com</div>
-        </div>
-        <div class="user-box">
-            <div class="user-icon">U</div>
-            <div class="username">bb@bb.com</div>
-        </div>
-    </div>
-</body>
-</html>
-=============================================================================
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Icons and Usernames</title>
-    <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .user-box {
-            display: flex;
-            align-items: center;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 250px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .user-box:hover {
-            background-color: #f0f0f0;
-        }
-        .user-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 10px;
-        }
-        .username {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .highlighted {
-            background-color: #cce5ff;
-            border-color: #007bff;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="user-box" onclick="highlightBox(this)">
-            <div class="user-icon">U</div>
-            <div class="username">xx@xx.com</div>
-        </div>
-        <div class="user-box" onclick="highlightBox(this)">
-            <div class="user-icon">U</div>
-            <div class="username">yy@yy.com</div>
-        </div>
-        <div class="user-box" onclick="highlightBox(this)">
-            <div class="user-icon">U</div>
-            <div class="username">zz@zz.com</div>
-        </div>
-        <div class="user-box" onclick="highlightBox(this)">
-            <div class="user-icon">U</div>
-            <div class="username">aa@aa.com</div>
-        </div>
-        <div class="user-box" onclick="highlightBox(this)">
-            <div class="user-icon">U</div>
-            <div class="username">bb@bb.com</div>
-        </div>
-    </div>
-
-    <script>
-        function highlightBox(element) {
-            // Remove highlight from all user boxes
-            var userBoxes = document.querySelectorAll('.user-box');
-            userBoxes.forEach(function(box) {
-                box.classList.remove('highlighted');
-            });
-
-            // Add highlight to the clicked user box
-            element.classList.add('highlighted');
-        }
-    </script>
-</body>
-</html>
-
-
+ --We now need to append @tmp_bugs to  bugs...  
+ --SELECT * INTO bugs_testing_20DEC2023 FROM bugs  
+  
+    --Now tidy up temp tables  
+    Finished:   
+    EXEC dbo.usp_deleteTempTables_byUniqeID @uniqueID    
+END  
