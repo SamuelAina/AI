@@ -201,3 +201,6 @@
 </body>
 </html>
 
+Let the input for role be a dropdown with the following options: Investor,Project Manager,Freelancer and Superuser
+
+Let the input for Preferred Currency be a dropdown with the following options: USD, EUR and GBP
