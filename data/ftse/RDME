@@ -64,15 +64,17 @@
             justify-content: space-between;
             margin-top: 10px;
         }
-        button {
+        button, a {
             padding: 8px 12px;
             cursor: pointer;
             border: none;
             background-color: #007BFF;
             color: #fff;
             border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
         }
-        button:hover {
+        button:hover, a:hover {
             background-color: #0056b3;
         }
         input {
@@ -137,11 +139,15 @@
             const actions = document.createElement('div');
             actions.className = 'card-actions';
 
-            const toggleButton = document.createElement('button');
-            toggleButton.textContent = 'Show More';
-            toggleButton.onclick = () => toggleContent(card, toggleButton);
+            const toggleLink = document.createElement('a');
+            toggleLink.textContent = 'Show More';
+            toggleLink.href = '#';
+            toggleLink.onclick = (e) => {
+                e.preventDefault();
+                toggleContent(card, toggleLink);
+            };
 
-            actions.appendChild(toggleButton);
+            actions.appendChild(toggleLink);
 
             card.appendChild(header);
             card.appendChild(content);
@@ -151,14 +157,14 @@
             return card;
         };
 
-        const toggleContent = (card, button) => {
+        const toggleContent = (card, link) => {
             const content = card.querySelector('.card-content');
             const updateButton = card.querySelector('.card-content .card-actions');
             const editIcon = card.querySelector('.edit-icon');
             content.classList.toggle('show');
             updateButton.style.display = content.classList.contains('show') ? 'flex' : 'none';
             editIcon.style.display = content.classList.contains('show') ? 'block' : 'none';
-            button.textContent = content.classList.contains('show') ? 'Show Less' : 'Show More';
+            link.textContent = content.classList.contains('show') ? 'Show Less' : 'Show More';
         };
 
         const toggleEdit = (card) => {
