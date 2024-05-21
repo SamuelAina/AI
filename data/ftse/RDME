@@ -1,11 +1,3 @@
-[
-	{"fullname":"Joe Bloggs","email":"xx@xx.com","phone":"111","dob":"1970-01-01","occupation":"Teacher","bank":"aaaa","currency":"USD","role":"investor"}
-   ,{"fullname":"Fred Flop","email":"zz@zz.com","phone":"222","dob":"1970-02-02","occupation":"Student","bank":"bbbb","currency":"GBP","role":"investor"}
-   ,{"fullname":"Lucy Canon","email":"yy@yy.com","phone":"333","dob":"1970-03-03","occupation":"Student","bank":"cccc","currency":"USD","role":"investor"}
-   ,{"fullname":"Handy Mann","email":"aa@aa.com","phone":"444","dob":"1960-04-04","occupation":"Teacher","bank":"dddd","currency":"USD","role":"investor"}
-   ,{"fullname":"Sue Ben","email":"bb@bb.com","phone":"555","dob":"1960-05-05","occupation":"Programmer","bank":"eeee","currency":"GBP","role":"investor"}
-   ]
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +48,7 @@
         .card-content.show ~ .edit-icon {
             display: block;
         }
-        .edit-mode input {
+        .edit-mode input, .edit-mode select {
             border: 1px solid #000;
         }
         .card-actions {
@@ -75,14 +67,14 @@
         button:hover {
             background-color: #0056b3;
         }
-        input {
+        input, select {
             width: calc(100% - 20px);
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
         }
-        input[disabled] {
+        input[disabled], select[disabled] {
             background-color: #f1f1f1;
         }
         a {
@@ -135,8 +127,21 @@
                 <div>DOB: <input type="text" value="${person.dob}" disabled></div>
                 <div>Occupation: <input type="text" value="${person.occupation}" disabled></div>
                 <div>Bank: <input type="text" value="${person.bank}" disabled></div>
-                <div>Currency: <input type="text" value="${person.currency}" disabled></div>
-                <div>Role: <input type="text" value="${person.role}" disabled></div>
+                <div>Preferred Currency: 
+                    <select disabled>
+                        <option value="USD" ${person.currency === 'USD' ? 'selected' : ''}>USD</option>
+                        <option value="EUR" ${person.currency === 'EUR' ? 'selected' : ''}>EUR</option>
+                        <option value="GBP" ${person.currency === 'GBP' ? 'selected' : ''}>GBP</option>
+                    </select>
+                </div>
+                <div>Role: 
+                    <select disabled>
+                        <option value="investor" ${person.role === 'investor' ? 'selected' : ''}>Investor</option>
+                        <option value="project_manager" ${person.role === 'project_manager' ? 'selected' : ''}>Project Manager</option>
+                        <option value="freelancer" ${person.role === 'freelancer' ? 'selected' : ''}>Freelancer</option>
+                        <option value="superuser" ${person.role === 'superuser' ? 'selected' : ''}>Superuser</option>
+                    </select>
+                </div>
                 <div class="card-actions">
                     <button onclick="updateCard(this)">Update</button>
                 </div>
@@ -174,7 +179,7 @@
         };
 
         const toggleEdit = (card) => {
-            const inputs = card.querySelectorAll('input');
+            const inputs = card.querySelectorAll('input, select');
             inputs.forEach(input => {
                 input.disabled = !input.disabled;
                 input.classList.toggle('edit-mode');
@@ -183,7 +188,7 @@
 
         const updateCard = (button) => {
             const card = button.closest('.card');
-            const inputs = card.querySelectorAll('input');
+            const inputs = card.querySelectorAll('input, select');
             inputs.forEach(input => {
                 if (input.classList.contains('edit-mode')) {
                     input.disabled = true;
@@ -200,7 +205,3 @@
     </script>
 </body>
 </html>
-
-Let the input for role be a dropdown with the following options: Investor,Project Manager,Freelancer and Superuser
-
-Let the input for Preferred Currency be a dropdown with the following options: USD, EUR and GBP
