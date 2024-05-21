@@ -39,6 +39,15 @@
         .edit-mode input {
             border: 1px solid #000;
         }
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -69,10 +78,6 @@
             editIcon.textContent = '✏️';
             editIcon.onclick = () => toggleEdit(card);
 
-            const toggleButton = document.createElement('button');
-            toggleButton.textContent = 'Show More';
-            toggleButton.onclick = () => toggleContent(card, toggleButton);
-
             header.appendChild(name);
             header.appendChild(editIcon);
 
@@ -88,11 +93,25 @@
                 <div>Bank: <input type="text" value="${person.bank}" disabled></div>
                 <div>Currency: <input type="text" value="${person.currency}" disabled></div>
                 <div>Role: <input type="text" value="${person.role}" disabled></div>
-                <button onclick="updateCard(this)">Update</button>
             `;
+
+            const actions = document.createElement('div');
+            actions.className = 'card-actions';
+
+            const updateButton = document.createElement('button');
+            updateButton.textContent = 'Update';
+            updateButton.onclick = () => updateCard(card);
+
+            const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Show More';
+            toggleButton.onclick = () => toggleContent(card, toggleButton);
+
+            actions.appendChild(updateButton);
+            actions.appendChild(toggleButton);
 
             card.appendChild(header);
             card.appendChild(content);
+            card.appendChild(actions);
 
             return card;
         };
@@ -111,8 +130,7 @@
             });
         };
 
-        const updateCard = (button) => {
-            const card = button.closest('.card');
+        const updateCard = (card) => {
             const inputs = card.querySelectorAll('input');
             inputs.forEach(input => {
                 if (input.classList.contains('edit-mode')) {
@@ -130,3 +148,4 @@
     </script>
 </body>
 </html>
+
