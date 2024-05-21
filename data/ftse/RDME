@@ -6,8 +6,6 @@
    ,{"fullname":"Sue Ben","email":"bb@bb.com","phone":"555","dob":"1960-05-05","occupation":"Programmer","bank":"eeee","currency":"GBP","role":"investor"}
    ]
 
-
-==========================
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,17 +13,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editable Cards</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
         .card {
             border: 1px solid #ccc;
-            padding: 10px;
+            background-color: #fff;
+            padding: 20px;
             margin: 10px;
-            border-radius: 5px;
-            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 320px;
+            position: relative;
         }
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 10px;
         }
         .card-content {
             display: none;
@@ -33,8 +43,18 @@
         .card-content.show {
             display: block;
         }
+        .card-content div {
+            margin-bottom: 10px;
+        }
         .edit-icon {
             cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none;
+        }
+        .card-content.show ~ .edit-icon {
+            display: block;
         }
         .edit-mode input {
             border: 1px solid #000;
@@ -45,8 +65,25 @@
             margin-top: 10px;
         }
         button {
-            padding: 5px 10px;
+            padding: 8px 12px;
             cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[disabled] {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -79,7 +116,6 @@
             editIcon.onclick = () => toggleEdit(card);
 
             header.appendChild(name);
-            header.appendChild(editIcon);
 
             const content = document.createElement('div');
             content.className = 'card-content';
@@ -93,32 +129,35 @@
                 <div>Bank: <input type="text" value="${person.bank}" disabled></div>
                 <div>Currency: <input type="text" value="${person.currency}" disabled></div>
                 <div>Role: <input type="text" value="${person.role}" disabled></div>
+                <div class="card-actions">
+                    <button onclick="updateCard(this)">Update</button>
+                </div>
             `;
 
             const actions = document.createElement('div');
             actions.className = 'card-actions';
 
-            const updateButton = document.createElement('button');
-            updateButton.textContent = 'Update';
-            updateButton.onclick = () => updateCard(card);
-
             const toggleButton = document.createElement('button');
             toggleButton.textContent = 'Show More';
             toggleButton.onclick = () => toggleContent(card, toggleButton);
 
-            actions.appendChild(updateButton);
             actions.appendChild(toggleButton);
 
             card.appendChild(header);
             card.appendChild(content);
             card.appendChild(actions);
+            card.appendChild(editIcon);
 
             return card;
         };
 
         const toggleContent = (card, button) => {
             const content = card.querySelector('.card-content');
+            const updateButton = card.querySelector('.card-content .card-actions');
+            const editIcon = card.querySelector('.edit-icon');
             content.classList.toggle('show');
+            updateButton.style.display = content.classList.contains('show') ? 'flex' : 'none';
+            editIcon.style.display = content.classList.contains('show') ? 'block' : 'none';
             button.textContent = content.classList.contains('show') ? 'Show Less' : 'Show More';
         };
 
@@ -130,7 +169,8 @@
             });
         };
 
-        const updateCard = (card) => {
+        const updateCard = (button) => {
+            const card = button.closest('.card');
             const inputs = card.querySelectorAll('input');
             inputs.forEach(input => {
                 if (input.classList.contains('edit-mode')) {
@@ -148,4 +188,3 @@
     </script>
 </body>
 </html>
-
