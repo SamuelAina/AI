@@ -64,17 +64,15 @@
             justify-content: space-between;
             margin-top: 10px;
         }
-        button, a {
+        button {
             padding: 8px 12px;
             cursor: pointer;
             border: none;
             background-color: #007BFF;
             color: #fff;
             border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
         }
-        button:hover, a:hover {
+        button:hover {
             background-color: #0056b3;
         }
         input {
@@ -86,6 +84,14 @@
         }
         input[disabled] {
             background-color: #f1f1f1;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -194,3 +200,4 @@
     </script>
 </body>
 </html>
+
