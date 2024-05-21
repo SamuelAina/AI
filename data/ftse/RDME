@@ -193,10 +193,25 @@
             const content = card.querySelector('.card-content');
             const editIcon = card.querySelector('.edit-icon');
             const deleteIcon = card.querySelector('.delete-icon');
+            const updateButton = card.querySelector('.update-button');
+            const inputs = card.querySelectorAll('input, select');
+            
             content.classList.toggle('show');
-            editIcon.style.display = content.classList.contains('show') ? 'block' : 'none';
-            deleteIcon.style.display = content.classList.contains('show') ? 'block' : 'none';
-            link.textContent = content.classList.contains('show') ? 'Show Less' : 'Show More';
+            const isExpanded = content.classList.contains('show');
+
+            editIcon.style.display = isExpanded ? 'block' : 'none';
+            deleteIcon.style.display = isExpanded ? 'block' : 'none';
+            link.textContent = isExpanded ? 'Show Less' : 'Show More';
+
+            if (!isExpanded) {
+                inputs.forEach(input => {
+                    if (!input.disabled) {
+                        input.disabled = true;
+                        input.classList.remove('edit-mode');
+                    }
+                });
+                updateButton.style.display = 'none';
+            }
         };
 
         const toggleEdit = (card) => {
