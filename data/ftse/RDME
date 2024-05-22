@@ -12,6 +12,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding: 20px;
         }
         .card {
             border: 1px solid #ccc;
@@ -38,14 +39,20 @@
         .card-content div {
             margin-bottom: 10px;
         }
-        .edit-icon {
+        .edit-icon, .delete-icon {
             cursor: pointer;
             position: absolute;
             top: 10px;
-            right: 10px;
             display: none;
         }
-        .card-content.show ~ .edit-icon {
+        .edit-icon {
+            right: 10px;
+        }
+        .delete-icon {
+            right: 40px;
+            color: red;
+        }
+        .card-content.show ~ .edit-icon, .card-content.show ~ .delete-icon {
             display: block;
         }
         .edit-mode input, .edit-mode select {
@@ -69,6 +76,7 @@
             background-color: #007BFF;
             color: #fff;
             border-radius: 5px;
+            margin-bottom: 20px;
         }
         button:hover {
             background-color: #0056b3;
@@ -94,6 +102,7 @@
     </style>
 </head>
 <body>
+    <button id="add-user-button">Add User</button>
     <div id="cards-container">
     </div>
 
@@ -105,6 +114,8 @@
             {"fullname":"Handy Mann","email":"aa@aa.com","phone":"444","dob":"1960-04-04","occupation":"Teacher","bank":"dddd","currency":"USD","role":"investor"},
             {"fullname":"Sue Ben","email":"bb@bb.com","phone":"555","dob":"1960-05-05","occupation":"Programmer","bank":"eeee","currency":"GBP","role":"investor"}
         ];
+
+        let newCardPending = false;
 
         const createCard = (person, index) => {
             const card = document.createElement('div');
@@ -120,6 +131,11 @@
             editIcon.className = 'edit-icon';
             editIcon.textContent = '✏️';
             editIcon.onclick = () => toggleEdit(card);
+
+            const deleteIcon = document.createElement('span');
+            deleteIcon.className = 'delete-icon';
+            deleteIcon.textContent = '🗑️';
+            deleteIcon.onclick = () => deleteCard(card, index);
 
             header.appendChild(name);
 
@@ -164,7 +180,10 @@
             const updateButton = document.createElement('button');
             updateButton.className = 'update-button';
             updateButton.textContent = 'Update';
-            updateButton.onclick = () => updateCard(updateButton, index);
+            updateButton.onclick = () => {
+                updateCard(updateButton, index);
+                newCardPending = false;
+            };
 
             actions.appendChild(toggleLink);
             actions.appendChild(updateButton);
@@ -173,6 +192,7 @@
             card.appendChild(content);
             card.appendChild(actions);
             card.appendChild(editIcon);
+            card.appendChild(deleteIcon);
 
             return card;
         };
@@ -180,9 +200,26 @@
         const toggleContent = (card, link) => {
             const content = card.querySelector('.card-content');
             const editIcon = card.querySelector('.edit-icon');
+            const deleteIcon = card.querySelector('.delete-icon');
+            const updateButton = card.querySelector('.update-button');
+            const inputs = card.querySelectorAll('input, select');
+            
             content.classList.toggle('show');
-            editIcon.style.display = content.classList.contains('show') ? 'block' : 'none';
-            link.textContent = content.classList.contains('show') ? 'Show Less' : 'Show More';
+            const isExpanded = content.classList.contains('show');
+
+            editIcon.style.display = isExpanded ? 'block' : 'none';
+            deleteIcon.style.display = isExpanded ? 'block' : 'none';
+            link.textContent = isExpanded ? 'Show Less' : 'Show More';
+
+            if (!isExpanded) {
+                inputs.forEach(input => {
+                    if (!input.disabled) {
+                        input.disabled = true;
+                        input.classList.remove('edit-mode');
+                    }
+                });
+                updateButton.style.display = 'none';
+            }
         };
 
         const toggleEdit = (card) => {
@@ -219,10 +256,44 @@
             console.log(data);
         };
 
-        const container = document.getElementById('cards-container');
-        data.forEach((person, index) => {
-            container.appendChild(createCard(person, index));
+        const deleteCard = (card, index) => {
+            card.remove();
+            data.splice(index, 1);
+            newCardPending = false;
+            alert('Card deleted!');
+            console.log(data);
+            renderCards();  // Re-render cards to update the indices
+        };
+
+        const renderCards = () => {
+            const container = document.getElementById('cards-container');
+            container.innerHTML = '';
+            data.forEach((person, index) => {
+                container.appendChild(createCard(person, index));
+            });
+        };
+
+        document.getElementById('add-user-button').addEventListener('click', () => {
+            if (newCardPending) {
+                alert('Please update the existing new card before adding another.');
+                return;
+            }
+            const newUser = {
+                fullname: 'New User',
+                email: '',
+                phone: '',
+                dob: '',
+                occupation: '',
+                bank: '',
+                currency: 'USD',
+                role: 'investor'
+            };
+            data.unshift(newUser);
+            newCardPending = true;
+            renderCards();
         });
+
+        renderCards();
     </script>
 </body>
 </html>
