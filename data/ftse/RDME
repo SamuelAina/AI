@@ -28,3 +28,103 @@ Features
 <li>Module 8 - Subscription and Packages Management</li>
 <li>Module 9 - Legal, Tax, and Affiliate Management</li>
 <li>Module 10 - Analytics, R&D, and Document Management</li>
+
+
+=========================================
+{
+  "modules": [
+    {
+      "moduleID": "M1",
+      "moduleTitle": "User Registration and Profile Management",
+      "sortPosition": 1
+    },
+    {
+      "moduleID": "M2",
+      "moduleTitle": "Investment and Contribution Tracking",
+      "sortPosition": 2
+    },
+    {
+      "moduleID": "M3",
+      "moduleTitle": "Workstream Management and Incentivization",
+      "sortPosition": 3
+    },
+    {
+      "moduleID": "M4",
+      "moduleTitle": "Profit Sharing Calculation",
+      "sortPosition": 4
+    },
+    {
+      "moduleID": "M5",
+      "moduleTitle": "Financial Management",
+      "sortPosition": 5
+    },
+    {
+      "moduleID": "M6",
+      "moduleTitle": "Communication, Collaboration, and Marketing",
+      "sortPosition": 6
+    },
+    {
+      "moduleID": "M7",
+      "moduleTitle": "Educational Resources and Support",
+      "sortPosition": 7
+    },
+    {
+      "moduleID": "M8",
+      "moduleTitle": "Subscription and Packages Management",
+      "sortPosition": 8
+    },
+    {
+      "moduleID": "M9",
+      "moduleTitle": "Legal, Tax, and Affiliate Management",
+      "sortPosition": 9
+    },
+    {
+      "moduleID": "M10",
+      "moduleTitle": "Analytics, R&D, and Document Management",
+      "sortPosition": 10
+    }
+  ]
+}
+
+=======================================================
+{
+  "features": [
+    {
+      "moduleID": "M1",
+      "featureID": "F1",
+      "featureTitle": "Manage User Info",
+      "sortPosition": 1,
+      "href": "User Info.html"
+    },
+    {
+      "moduleID": "M1",
+      "featureID": "F2",
+      "featureTitle": "Manage User Permissions",
+      "sortPosition": 2,
+      "href": "Roles and Permissions Management.html"
+    },
+    {
+      "moduleID": "M1",
+      "featureID": "F3",
+      "featureTitle": "Log out",
+      "sortPosition": 3,
+      "href": "User login.html"
+    },
+    {
+      "moduleID": "M1",
+      "featureID": "F4",
+      "featureTitle": "Account Creation",
+      "sortPosition": 4,
+      "href": "#"
+    },
+    {
+      "moduleID": "M1",
+      "featureID": "F5",
+      "featureTitle": "Reset Password",
+      "sortPosition": 5,
+      "href": "Reset Password Page.html"
+    }
+  ]
+}
+
+
