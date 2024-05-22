@@ -12,7 +12,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding: 20px;
         }
         .card {
             border: 1px solid #ccc;
@@ -39,20 +38,14 @@
         .card-content div {
             margin-bottom: 10px;
         }
-        .edit-icon, .delete-icon {
+        .edit-icon {
             cursor: pointer;
             position: absolute;
             top: 10px;
+            right: 10px;
             display: none;
         }
-        .edit-icon {
-            right: 10px;
-        }
-        .delete-icon {
-            right: 40px;
-            color: red;
-        }
-        .card-content.show ~ .edit-icon, .card-content.show ~ .delete-icon {
+        .card-content.show ~ .edit-icon {
             display: block;
         }
         .edit-mode input, .edit-mode select {
@@ -76,7 +69,6 @@
             background-color: #007BFF;
             color: #fff;
             border-radius: 5px;
-            margin-bottom: 20px;
         }
         button:hover {
             background-color: #0056b3;
@@ -102,7 +94,6 @@
     </style>
 </head>
 <body>
-    <button id="add-user-button">Add User</button>
     <div id="cards-container">
     </div>
 
@@ -129,11 +120,6 @@
             editIcon.className = 'edit-icon';
             editIcon.textContent = '✏️';
             editIcon.onclick = () => toggleEdit(card);
-
-            const deleteIcon = document.createElement('span');
-            deleteIcon.className = 'delete-icon';
-            deleteIcon.textContent = '🗑️';
-            deleteIcon.onclick = () => deleteCard(card, index);
 
             header.appendChild(name);
 
@@ -187,7 +173,6 @@
             card.appendChild(content);
             card.appendChild(actions);
             card.appendChild(editIcon);
-            card.appendChild(deleteIcon);
 
             return card;
         };
@@ -195,26 +180,9 @@
         const toggleContent = (card, link) => {
             const content = card.querySelector('.card-content');
             const editIcon = card.querySelector('.edit-icon');
-            const deleteIcon = card.querySelector('.delete-icon');
-            const updateButton = card.querySelector('.update-button');
-            const inputs = card.querySelectorAll('input, select');
-            
             content.classList.toggle('show');
-            const isExpanded = content.classList.contains('show');
-
-            editIcon.style.display = isExpanded ? 'block' : 'none';
-            deleteIcon.style.display = isExpanded ? 'block' : 'none';
-            link.textContent = isExpanded ? 'Show Less' : 'Show More';
-
-            if (!isExpanded) {
-                inputs.forEach(input => {
-                    if (!input.disabled) {
-                        input.disabled = true;
-                        input.classList.remove('edit-mode');
-                    }
-                });
-                updateButton.style.display = 'none';
-            }
+            editIcon.style.display = content.classList.contains('show') ? 'block' : 'none';
+            link.textContent = content.classList.contains('show') ? 'Show Less' : 'Show More';
         };
 
         const toggleEdit = (card) => {
@@ -251,38 +219,10 @@
             console.log(data);
         };
 
-        const deleteCard = (card, index) => {
-            card.remove();
-            data.splice(index, 1);
-            alert('Card deleted!');
-            console.log(data);
-            renderCards();  // Re-render cards to update the indices
-        };
-
-        const renderCards = () => {
-            const container = document.getElementById('cards-container');
-            container.innerHTML = '';
-            data.forEach((person, index) => {
-                container.appendChild(createCard(person, index));
-            });
-        };
-
-        document.getElementById('add-user-button').addEventListener('click', () => {
-            const newUser = {
-                fullname: 'New User',
-                email: '',
-                phone: '',
-                dob: '',
-                occupation: '',
-                bank: '',
-                currency: 'USD',
-                role: 'investor'
-            };
-            data.push(newUser);
-            renderCards();
+        const container = document.getElementById('cards-container');
+        data.forEach((person, index) => {
+            container.appendChild(createCard(person, index));
         });
-
-        renderCards();
     </script>
 </body>
 </html>
