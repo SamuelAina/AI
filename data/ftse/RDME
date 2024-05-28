@@ -9,3 +9,6 @@ in web.config
 
 
 <sessionState mode="StateServer" stateConnectionString="tcpip=127.0.0.1:42424" />
+
+
+reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\aspnet_state\Parameters" /v AllowRemoteConnection
