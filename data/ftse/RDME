@@ -12,3 +12,8 @@ in web.config
 
 
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\aspnet_state\Parameters" /v AllowRemoteConnection
+
+
+:: Set the value of AllowRemoteConnection to 1 under HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\aspnet_state\Parameters
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\aspnet_state\Parameters" /v AllowRemoteConnection /t REG_DWORD /d 1 /f
+
