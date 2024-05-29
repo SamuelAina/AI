@@ -1,4 +1,12 @@
 https://zzzzz.zone1.scb.net:2020/api/v1/Cascade?_p=G3dashboard&_f=CURRENT_USER
 
 
-SSLError: ("bad handshake: Error([('SSL routines', 'ssl3_get_server_certificate', 'certificate verify failed')],)",)
+HTTP Error 401.2 - Unauthorized
+You are not authorized to view this page due to invalid authentication headers.
+No authentication protocol (including anonymous) is selected in IIS.
+Only integrated authentication is enabled, and a client browser was used that does not support integrated authentication.
+Integrated authentication is enabled and the request was sent through a proxy that changed the authentication headers before they reach the Web server.
+The Web server is not configured for anonymous access and a required authorization header was not received.
+The "configuration/system.webServer/authorization" configuration section may be explicitly denying the user access.
+
+
