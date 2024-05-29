@@ -1,8 +1,4 @@
-This configuration section cannot be used at this path. 
-This happens when the section is locked at a parent level. 
-Locking is either by default (overrideModeDefault="Deny"), or 
-set explicitly by a location tag with overrideMode="Deny" 
-or the legacy allowOverride="false
+An ASP.NET setting has been detected that does not apply in Integrated managed pipeline mode.
 
-
- <windowsAuthentication enabled="true" /> 
+Most likely causes:
+system.web/identity@impersonate is set to true.
