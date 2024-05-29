@@ -1,38 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-  <system.web>
-    <customErrors mode="Off" />
-    <compilation debug="true" targetFramework="4.5" />
-    <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID" />
-    <authentication mode="Windows" />
-    <!-- <identity impersonate="true"/> -->
-    <authorization>
-      <allow users="*" />
-    </authorization>
-  </system.web>
-
-  <system.webServer>
-    <httpErrors errorMode="Detailed" />
-    <asp scriptErrorSentToBrowser="true" />
-    <handlers>
-      <add name="CascadeApiHandler" path="api/v1/Cascade" verb="*" type="CascadeApiHandler" preCondition="integratedMode" />
-      <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
-      <remove name="OPTIONSVerbHandler" />
-      <remove name="TRACEVerbHandler" />
-      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
-    </handlers>
-    <httpProtocol>
-      <customHeaders>
-        <add name="Access-Control-Allow-Origin" value="*" />
-        <add name="Access-Control-Allow-Methods" value="GET" />
-        <add name="Access-Control-Allow-Headers" value="Content-Type" />
-      </customHeaders>
-    </httpProtocol>
-    <security>
-      <authentication>
-        <windowsAuthentication enabled="true" />
-        <anonymousAuthentication enabled="false" />
-      </authentication>
-    </security>
-  </system.webServer>
-</configuration>
+SELECT 
+    S.session_id AS 'SessionID',
+    S.login_name AS 'LoginName',
+    S.host_name AS 'HostName',
+    S.program_name AS 'ApplicationName',
+    S.client_interface_name AS 'ClientInterfaceName',
+    S.login_time AS 'LoginTime',
+    S.is_user_process AS 'IsUserProcess',
+    S.original_login_name AS 'OriginalLoginName',
+    C.client_net_address AS 'ClientIPAddress',
+    C.local_net_address AS 'ServerIPAddress',
+    C.connect_time AS 'ConnectionTime',
+    SUSER_NAME() AS 'SUSER_NAME',
+    USER_NAME() AS 'DatabaseUserName',
+    SYSTEM_USER AS 'SystemUserName',
+    SESSION_USER AS 'SessionUserName',
+    APP_NAME() AS 'AppName',
+    HOST_NAME() AS 'HostNameFunction'
+FROM 
+    sys.dm_exec_sessions S
+JOIN 
+    sys.dm_exec_connections C
+ON 
+    S.session_id = C.session_id
+WHERE 
+    S.session_id = @@SPID;
