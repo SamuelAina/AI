@@ -1,1 +1,4 @@
 https://zzzzz.zone1.scb.net:2020/api/v1/Cascade?_p=G3dashboard&_f=CURRENT_USER
+
+
+SSLError: ("bad handshake: Error([('SSL routines', 'ssl3_get_server_certificate', 'certificate verify failed')],)",)
