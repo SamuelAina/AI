@@ -1,1 +1,6 @@
 This error occurs when the WWW-Authenticate header sent to the Web server is not supported by the server configuration. Check the authentication method for the resource, and verify which authentication method the client used. The error occurs when the authentication methods are different. To determine which type of authentication the client is using, check the authentication settings for the client.
+
+
+appcmd set config "Default Web Site" /section:system.webServer/security/authentication/basicAuthentication /enabled:true
+
+
