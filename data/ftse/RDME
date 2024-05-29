@@ -1,4 +1,57 @@
-An ASP.NET setting has been detected that does not apply in Integrated managed pipeline mode.
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
 
-Most likely causes:
-system.web/identity@impersonate is set to true.
+   
+  <!--
+    For a description of web.config changes see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+	<customErrors mode="Off" />
+    <compilation debug="true" />
+	  <!--<compilation debug="true" targetFramework="4.5"/>
+    <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID"/>
+	-->
+        <authentication mode="Windows" />
+	    <!-- <identity impersonate="true"/> -->
+        <authorization>
+            <allow users="?" />
+        </authorization>
+	
+  </system.web>
+  
+	
+  <system.webServer>
+
+        <httpErrors errorMode="Detailed" />
+        <asp scriptErrorSentToBrowser="true" />
+    
+	<handlers>
+      <add name="CascadeApiHandler" path="api/v1/Cascade" verb="*" type="CascadeApiHandler" preCondition="integratedMode" />
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+      <remove name="OPTIONSVerbHandler" />
+      <remove name="TRACEVerbHandler" />
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+    </handlers>
+
+<httpProtocol>
+    <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*" />
+		<add name="Access-Control-Allow-Methods" value="Get" />
+		<add name="Access-Control-Allow-Headers" value="Content-Type" />
+    </customHeaders>
+</httpProtocol>
+
+        <security>
+            <authentication   >
+			    <windowsAuthentication enabled="true" /> 
+                <anonymousAuthentication enabled="false" />
+            </authentication>
+        </security>	
+<!---->
+  </system.webServer>
+</configuration>
