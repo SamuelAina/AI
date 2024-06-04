@@ -1,19 +1,18 @@
-import base64
+import requests
+from requests_ntlm import HttpNtlmAuth
 
-with open('C:\\temp\\06AUG2023-SUN\\sh\\p.pdf', 'rb') as binary_file:
-    binary_data = binary_file.read()
-    base64_encoded = base64.b64encode(binary_data)
+# Replace these with your actual details
+username = 'YOUR_DOMAIN\\YOUR_USERNAME'
+password = 'YOUR_PASSWORD'
+url = 'https://your-server/api/endpoint'
 
-with open('C:\\temp\\06AUG2023-SUN\\sh\\p.txt', 'wb') as encoded_file:
-    encoded_file.write(base64_encoded)
+# Make the API call with NTLM authentication
+response = requests.get(url, auth=HttpNtlmAuth(username, password))
 
-====
-import base64
-
-with open('C:\\temp\\06AUG2023-SUN\\sh\\sh.txt', 'rb') as encoded_file:
-    base64_encoded = encoded_file.read()
-    binary_data = base64.b64decode(base64_encoded)
-
-with open('C:\\temp\\06AUG2023-SUN\\sh\\sh2.dll', 'wb') as binary_file:
-    binary_file.write(binary_data)
-
+# Check the response
+if response.status_code == 200:
+    print("Success!")
+    print(response.json())  # or response.text for non-JSON responses
+else:
+    print(f"Failed with status code: {response.status_code}")
+    print(response.text)
