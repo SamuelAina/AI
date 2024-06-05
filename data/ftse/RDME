@@ -91,3 +91,9 @@ curl --ntlm -u username:password --cookie "sessionid=abc123" -H "Authorization: 
 This command performs an NTLM-authenticated GET request, sends a session cookie, includes a bearer token, and sets the `Content-Type` header to `application/json`.
 
 By using the appropriate options with `curl`, you can handle various types of integrated authentication for your API requests.
+
+
+=========================
+
+curl --negotiate -u : "https://sgwpaupcd04.zone1.scb.net:2020/api/v1/Cascade?_p=G3dashboard&_f=CURRENT_USER"
+
