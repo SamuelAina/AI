@@ -97,3 +97,22 @@ By using the appropriate options with `curl`, you can handle various types of in
 
 curl --negotiate -u : "https://sgwpaupcd04.zone1.scb.net:2020/api/v1/Cascade?_p=G3dashboard&_f=CURRENT_USER"
 
+#########
+
+import requests
+from requests_kerberos import HTTPKerberosAuth
+
+url = "https://sgwpaupcd04.zone1.scb.net:2020/api/v1/Cascade?_p=G3dashboard&_f=CURRENT_USER"
+
+# Set up Kerberos authentication
+auth = HTTPKerberosAuth()
+
+# Make the GET request
+response = requests.get(url, auth=auth)
+
+# Check the response
+if response.status_code == 200:
+    print("Success:")
+    print(response.json())
+else:
+    print(f"Failed with status code: {response.status_code}")
