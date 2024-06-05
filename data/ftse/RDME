@@ -35,3 +35,59 @@ fetch('https://api.example.com/data', {
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
+
+
+#####£££#####££££
+To perform a GET request with integrated authentication using `curl`, you need to specify the appropriate options based on the type of authentication required. Here's how you can do it for some common authentication methods:
+
+### Basic Authentication
+```sh
+curl -u username:password https://api.example.com/data
+```
+- `-u username:password`: This option specifies the username and password for basic authentication.
+
+### Bearer Token Authentication
+```sh
+curl -H "Authorization: Bearer your_token_here" https://api.example.com/data
+```
+- `-H "Authorization: Bearer your_token_here"`: This option sets the `Authorization` header with a bearer token.
+
+### NTLM Authentication
+```sh
+curl --ntlm -u username:password https://api.example.com/data
+```
+- `--ntlm`: This option enables NTLM authentication.
+- `-u username:password`: Specifies the username and password for NTLM authentication.
+
+### Kerberos (Negotiate) Authentication
+```sh
+curl --negotiate -u : https://api.example.com/data
+```
+- `--negotiate`: This option enables GSS-Negotiate authentication.
+- `-u :`: With `--negotiate`, the `-u` option requires a colon but the username and password are handled by the Kerberos ticket.
+
+### Using Cookies for Authentication
+If you need to send cookies for authentication, you can use the `--cookie` option:
+```sh
+curl --cookie "name=value" https://api.example.com/data
+```
+- `--cookie "name=value"`: Sends a cookie with the request.
+
+### Including All Options Together
+If your API requires multiple headers and options, you can combine them:
+```sh
+curl -u username:password --cookie "name=value" -H "Authorization: Bearer your_token_here" https://api.example.com/data
+```
+This command will:
+- Use basic authentication with `-u username:password`
+- Send a cookie with `--cookie "name=value"`
+- Include a bearer token with `-H "Authorization: Bearer your_token_here"`
+
+### Example of a Complex Request
+Here's an example of a more complex request with multiple headers and integrated authentication:
+```sh
+curl --ntlm -u username:password --cookie "sessionid=abc123" -H "Authorization: Bearer your_token_here" -H "Content-Type: application/json" https://api.example.com/data
+```
+This command performs an NTLM-authenticated GET request, sends a session cookie, includes a bearer token, and sets the `Content-Type` header to `application/json`.
+
+By using the appropriate options with `curl`, you can handle various types of integrated authentication for your API requests.
