@@ -12,3 +12,26 @@ fetch('https://api.example.com/data')
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
+#########
+
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  credentials: 'include', // Can be 'omit', 'same-origin', or 'include'
+  headers: {
+    'Content-Type': 'application/json',
+    // Include any additional headers you need here, such as Authorization headers
+    'Authorization': 'Bearer your_token_here' // Example for Bearer token, modify as needed
+  }
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.json(); // Parses JSON response into native JavaScript objects
+  })
+  .then(data => {
+    console.log(data); // Handle the data from the API
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
