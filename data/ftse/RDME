@@ -1,94 +1,14 @@
-import requests
-from requests_ntlm import HttpNtlmAuth
-
-# Replace these with your actual details
-username = 'YOUR_DOMAIN\\YOUR_USERNAME'
-password = 'YOUR_PASSWORD'
-url = 'https://your-server/api/endpoint'
-
-# Make the API call with NTLM authentication
-response = requests.get(url, auth=HttpNtlmAuth(username, password))
-
-# Check the response
-if response.status_code == 200:
-    print("Success!")
-    print(response.json())  # or response.text for non-JSON responses
-else:
-    print(f"Failed with status code: {response.status_code}")
-    print(response.text)
-===========================
-Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x000002AE998C2E50>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /simple/requests/
-==============π=°°
-
-This error message typically indicates a network connectivity issue when trying to use `pip` to install a package. Here’s a breakdown of the error components and potential solutions:
-
-1. **Error Explanation:**
-   - `Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None))`: This part indicates that there are no retries left for the connection attempt. The `total=0` means it won't retry anymore.
-   - `connection broken by 'NewConnectionError'`: This suggests that a new connection could not be established.
-   - `Failed to establish a new connection: [Errno 11001] getaddrinfo failed'`: This indicates a DNS error, meaning the system could not resolve the hostname for the URL provided.
-
-2. **Potential Causes:**
-   - **Internet Connectivity:** Your internet connection might be down or unstable.
-   - **DNS Issues:** There might be a problem with your DNS server, preventing hostname resolution.
-   - **Firewall or Proxy Settings:** A firewall or proxy might be blocking the connection.
-   - **Incorrect URL or Configuration:** There might be a typo or misconfiguration in your pip settings or the URL you are trying to access.
-
-3. **Solutions:**
-   - **Check Internet Connection:** Ensure your device is connected to the internet and that other websites are accessible.
-   - **Verify DNS Settings:** Try changing your DNS settings to use a public DNS server like Google’s (8.8.8.8) or Cloudflare’s (1.1.1.1).
-   - **Adjust Firewall/Proxy Settings:** Check if your firewall or proxy settings are blocking pip. You might need to adjust these settings or use the `--proxy` option with pip if behind a proxy.
-   - **Update pip Configuration:** Ensure that the pip configuration is correct. You can reset or update pip to the latest version using:
-     ```sh
-     python -m pip install --upgrade pip
-     ```
-   - **Use a Different Source:** Try using a different package index or mirror by adding the `--index-url` option:
-     ```sh
-     pip install <package_name> --index-url https://pypi.org/simple
-     ```
-
-If you continue to experience issues, providing more details about your environment (e.g., operating system, pip version, network setup) might help in diagnosing the problem further.
-
-
-+++++++++++++
-
-To install a Python package from a downloaded file, you can use `pip` with the path to the downloaded package file. Here are the steps you can follow:
-
-1. **Download the Package:**
-   - Download the package file (typically a `.whl` file or a `.tar.gz` archive) from a trusted source like the Python Package Index (PyPI).
-
-2. **Open a Command Prompt or Terminal:**
-   - Navigate to the directory where you downloaded the package file.
-
-3. **Install the Package:**
-   - Use `pip` to install the package. Replace `<package_file>` with the name of the downloaded file.
-
-For a `.whl` (wheel) file:
-```sh
-pip install <package_file>.whl
-```
-
-For a `.tar.gz` (source distribution) file:
-```sh
-pip install <package_file>.tar.gz
-```
-
-### Example
-If you downloaded a package file named `example_package-1.0.0-py3-none-any.whl`, you would run:
-```sh
-pip install example_package-1.0.0-py3-none-any.whl
-```
-
-If you downloaded a package file named `example_package-1.0.0.tar.gz`, you would run:
-```sh
-pip install example_package-1.0.0.tar.gz
-```
-
-### Additional Tips
-- **Ensure pip is up to date:**
-  ```sh
-  python -m pip install --upgrade pip
-  ```
-- **Install dependencies manually if needed:** Sometimes, the downloaded package might have dependencies that also need to be installed. You can manually download and install these dependencies in a similar manner.
-
-By following these steps, you should be able to install a package from a downloaded file without needing an internet connection.
-
+// Making a GET request using Fetch API
+fetch('https://api.example.com/data')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.json(); // parses JSON response into native JavaScript objects
+  })
+  .then(data => {
+    console.log(data); // handle the data from the API
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
