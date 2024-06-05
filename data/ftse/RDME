@@ -116,3 +116,7 @@ if response.status_code == 200:
     print(response.json())
 else:
     print(f"Failed with status code: {response.status_code}")
+===================
+
+Given the following sequence of numbers, how likely is the next term goint to increase by 5% over the starting term? Give me the likely percentage increase.
+1,2,3,4,5, 7, 8, 9, 10. 
