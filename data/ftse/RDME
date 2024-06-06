@@ -120,3 +120,23 @@ else:
 
 Given the following sequence of numbers, how likely is the next term goint to increase by 5% over the starting term? Give me the likely percentage increase.
 1,2,3,4,5, 7, 8, 9, 10. 
+**********
+def likelihood_increase_by_5_percent(sequence):
+    # Determine the starting term
+    starting_term = sequence[0]
+    
+    # Calculate the threshold for 5% increase
+    threshold = starting_term * 1.05
+    
+    # Count the number of terms greater than or equal to the threshold
+    count = sum(1 for term in sequence if term >= threshold)
+    
+    # Calculate the likelihood percentage
+    likelihood_percentage = (count / len(sequence)) * 100
+    
+    return likelihood_percentage
+
+# Example usage
+sequence = [8, 8, 7, 5, 4, 3, 4, 4, 3, 3]
+result = likelihood_increase_by_5_percent(sequence)
+print(f"The likelihood that the next term will increase by 5% or more over the starting term is {result:.2f}%")
