@@ -1,10 +1,38 @@
-Give me Javascript that produces HTML to set checkboxes for the following data:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LockData Checkboxes</title>
+</head>
+<body>
+    <div id="checkbox-container"></div>
 
-LockData=[
- {"period":"HY 2022","locked":0}
-,{"period":"FY 2022","locked":0}
-,{"period":"HY 2023","locked":0}
-,{"period":"FY 2023","locked":0}
-,{"period":"HY 2024","locked":0}
-,{"period":"FY 2024","locked":0}
-]
+    <script>
+        const LockData = [
+            {"period":"HY 2022","locked":0},
+            {"period":"FY 2022","locked":0},
+            {"period":"HY 2023","locked":0},
+            {"period":"FY 2023","locked":0},
+            {"period":"HY 2024","locked":0},
+            {"period":"FY 2024","locked":0}
+        ];
+
+        const container = document.getElementById('checkbox-container');
+
+        LockData.forEach(data => {
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = data.locked === 1;
+            checkbox.id = data.period;
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(data.period));
+
+            container.appendChild(label);
+            container.appendChild(document.createElement('br'));
+        });
+    </script>
+</body>
+</html>
