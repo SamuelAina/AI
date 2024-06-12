@@ -62,3 +62,13 @@
     </script>
 </body>
 </html>
+
+
+SELECT  
+DISTINCT 
+bg_reported_date,
+   CASE 
+        WHEN bg_reported_date BETWEEN CONVERT (DATETIME,'1 Jan '+ CONVERT(VARCHAR(10),YEAR(bg_reported_date))) AND CONVERT (DATETIME,'30 Jun '+ CONVERT(VARCHAR(10),YEAR(bg_reported_date))) THEN 'HY '+CONVERT(VARCHAR(10),YEAR(bg_reported_date))
+        WHEN bg_reported_date BETWEEN CONVERT (DATETIME,'1 Jul '+ CONVERT(VARCHAR(10),YEAR(bg_reported_date))) AND CONVERT (DATETIME,'31 Dec '+ CONVERT(VARCHAR(10),YEAR(bg_reported_date))) THEN 'FY '+CONVERT(VARCHAR(10),YEAR(bg_reported_date))
+   END
+FROM bugs
