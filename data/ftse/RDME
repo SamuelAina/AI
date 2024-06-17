@@ -90,3 +90,38 @@ GROUP BY
         WHEN bg_reported_date BETWEEN DATEFROMPARTS(YEAR(bg_reported_date), 1, 1) AND DATEFROMPARTS(YEAR(bg_reported_date), 6, 30) THEN 'HY ' + CONVERT(VARCHAR(10), YEAR(bg_reported_date))
         WHEN bg_reported_date BETWEEN DATEFROMPARTS(YEAR(bg_reported_date), 7, 1) AND DATEFROMPARTS(YEAR(bg_reported_date), 12, 31) THEN 'FY ' + CONVERT(VARCHAR(10), YEAR(bg_reported_date))
     END;
+
+
+++++++++++++++++++++++++++++++++++++++++++
+
+using System;
+using System.Collections.Specialized;
+using System.Web;
+
+public class QueryStringExtractor
+{
+    public static string ExtractParametersFromQueryString(Uri requestUri)
+    {
+        if (requestUri == null)
+            throw new ArgumentNullException(nameof(requestUri));
+
+        NameValueCollection queryParameters = HttpUtility.ParseQueryString(requestUri.Query);
+        var formattedParameters = new System.Text.StringBuilder();
+
+        foreach (string key in queryParameters.AllKeys)
+        {
+            if (!string.Equals(key, "storeProc", StringComparison.OrdinalIgnoreCase))
+            {
+                string value = queryParameters[key];
+                if (formattedParameters.Length > 0)
+                {
+                    formattedParameters.Append(", ");
+                }
+                formattedParameters.Append($"@{key}='{value}'");
+            }
+        }
+
+        return formattedParameters.ToString();
+    }
+}
+
