@@ -3,3 +3,30 @@
 <tr><td>Margin (%):</td><td>1.30000</td></tr>
 <tr><td>Price/Yield Basis:</td><td>Price</td></tr>
 <tr><td>Price (%):</td><td>92.45000</td></tr>
+
+
+
+
+Sure, here is the T-SQL code to extract the value of "Margin (%)" from the given HTML string:
+
+```sql
+DECLARE @html NVARCHAR(MAX) = 
+'<tr><td>Notional (LCCY):</td><td>27,500,000</td></tr>
+<tr><td>Base Rate:</td><td>LIBOR RATE</td></tr>
+<tr><td>Margin (%):</td><td>1.30000</td></tr>
+<tr><td>Price/Yield Basis:</td><td>Price</td></tr>
+<tr><td>Price (%):</td><td>92.45000</td></tr>'
+
+DECLARE @start INT, @end INT, @margin NVARCHAR(50)
+
+-- Find the starting position of the 'Margin (%)' value
+SET @start = CHARINDEX('<td>Margin (%):</td><td>', @html) + LEN('<td>Margin (%):</td><td>')
+-- Find the ending position of the 'Margin (%)' value
+SET @end = CHARINDEX('</td>', @html, @start)
+-- Extract the 'Margin (%)' value
+SET @margin = SUBSTRING(@html, @start, @end - @start)
+
+SELECT @margin AS [Margin %]
+```
+
+This script sets the HTML content into a variable, finds the starting and ending positions of the value for "Margin (%)", and extracts the value into another variable, which is then selected for display.
