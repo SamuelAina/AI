@@ -1,79 +1,13 @@
-DECLARE @text NVARCHAR(MAX);
-SET @text = N'SELECT * FROM YourTable WHERE YourColumn = @YourValue'; -- Your query goes here
+DECLARE @text NVARCHAR(100) = '12246ABC'
+DECLARE @result NVARCHAR(100) = ''
 
--- Create a table to store the execution plan
-IF OBJECT_ID('tempdb..#execution_plan') IS NOT NULL
-    DROP TABLE #execution_plan;
+WHILE LEN(@text) > 0
+BEGIN
+    IF PATINDEX('%[0-9]%', @text) = 1
+    BEGIN
+        SET @result = @result + SUBSTRING(@text, 1, 1)
+    END
+    SET @text = SUBSTRING(@text, 2, LEN(@text) - 1)
+END
 
-CREATE TABLE #execution_plan (
-    query_plan XML
-);
-
--- Insert the execution plan of the given query into the table
-INSERT INTO #execution_plan (query_plan)
-SELECT 
-    query_plan
-FROM 
-    sys.dm_exec_query_stats AS qs
-CROSS APPLY 
-    sys.dm_exec_sql_text(qs.sql_handle) AS st
-CROSS APPLY 
-    sys.dm_exec_query_plan(qs.plan_handle)
-WHERE 
-    st.text = @text;
-
--- Analyze the execution plan for missing indexes
-SELECT 
-    migs.avg_total_user_cost,
-    migs.avg_user_impact,
-    mid.equality_columns,
-    mid.inequality_columns,
-    mid.included_columns,
-    'CREATE INDEX IX_' + OBJECT_NAME(mid.object_id) + '_'
-    + REPLACE(REPLACE(REPLACE(ISNULL(mid.equality_columns, ''), ',', '_'), '[', ''), ']', '')
-    + CASE
-        WHEN mid.inequality_columns IS NOT NULL THEN '_' + REPLACE(REPLACE(REPLACE(ISNULL(mid.inequality_columns, ''), ',', '_'), '[', ''), ']', '')
-        ELSE ''
-      END
-    + ' ON ' + OBJECT_NAME(mid.object_id) + '(' + ISNULL(mid.equality_columns, '')
-    + CASE
-        WHEN mid.inequality_columns IS NOT NULL AND mid.equality_columns IS NOT NULL THEN ',' + ISNULL(mid.inequality_columns, '')
-        ELSE ISNULL(mid.inequality_columns, '')
-      END + ')'
-    + CASE 
-        WHEN mid.included_columns IS NOT NULL THEN ' INCLUDE (' + mid.included_columns + ')'
-        ELSE ''
-      END AS create_index_statement
-FROM 
-    sys.dm_db_missing_index_groups AS mig
-INNER JOIN 
-    sys.dm_db_missing_index_group_stats AS migs ON migs.group_handle = mig.index_group_handle
-INNER JOIN 
-    sys.dm_db_missing_index_details AS mid ON mig.index_handle = mid.index_handle
-WHERE 
-    OBJECT_NAME(mid.object_id) IN (SELECT OBJECT_NAME(id) FROM sys.dm_exec_query_plan_stats WHERE query_hash = (SELECT query_plan.value('(//@QueryHash)[1]', 'nvarchar(64)') FROM #execution_plan));
-
--- Identify expensive operations in the execution plan
-SELECT 
-    n.value('(@PhysicalOp)[1]', 'nvarchar(128)') AS PhysicalOp,
-    n.value('(@LogicalOp)[1]', 'nvarchar(128)') AS LogicalOp,
-    n.value('(@EstimateRows)[1]', 'float') AS EstimateRows,
-    n.value('(@EstimateIO)[1]', 'float') AS EstimateIO,
-    n.value('(@EstimateCPU)[1]', 'float') AS EstimateCPU,
-    n.value('(@AvgRowSize)[1]', 'float') AS AvgRowSize,
-    n.value('(@TotalSubtreeCost)[1]', 'float') AS TotalSubtreeCost,
-    n.query('.') AS CompleteNode
-FROM 
-    #execution_plan
-CROSS APPLY 
-    query_plan.nodes('//RelOp') AS qn(n)
-ORDER BY 
-    TotalSubtreeCost DESC;
-
--- Provide general recommendations
-PRINT 'General Recommendations:';
-PRINT '1. Ensure proper indexing on columns used in JOIN, WHERE, ORDER BY, and GROUP BY clauses.';
-PRINT '2. Avoid SELECT *; specify only the columns you need.';
-PRINT '3. Consider splitting complex queries into simpler steps or using temporary tables.';
-PRINT '4. Review the execution plan for table scans, index scans, and other costly operations.';
-PRINT '5. Update statistics regularly to ensure the query optimizer has up-to-date information.';
+SELECT @result AS NumericCharacters
