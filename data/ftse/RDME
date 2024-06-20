@@ -11,3 +11,10 @@ BEGIN
 END
 
 SELECT @result AS NumericCharacters
+
+
+====================================
+items ([id], [name] (eg "John","James"), [period] (e.g. "HY 2024", "FY 2024" ))
+locks ([period] (e.g. "HY 2024", "FY 2024" )) , [locked] (0 or 1)
+items and locks are joined by [period]
+Give me T-SQL that lists that are not locked
