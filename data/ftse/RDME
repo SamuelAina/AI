@@ -25,3 +25,19 @@ FROM items i
 LEFT JOIN locks l ON i.period = l.period
 WHERE l.locked IS NULL OR l.locked = 0;
 
+======================
+We have seen this thing that appears to be a letter on behalf of xxx.
+Although it is unsigned we belive that it has been written by somebody affiliated with xxx
+We want to respond to it because it is related to recent preparation and fencing of the grounds of the building which is the home of Late Pa S J Aina opposite the big Methodist church.
+The process involved the removal of ilegal structure that had been errected in the same ground.
+
+It may be that that the so called bus stop was errected with good intention, but when the implmentation and execution of good intention is not done thoughtfully and properly the result is inevitably negative.
+
+In future please let us try to do things with proper consultation and collaboration before embarking on such projects.
+
+The letter states that the structure was errected in hour of xxxx. But what a disrepect to the name of the person errecting the structure without due process. What an insult to Late Pa S J Aina and his family for errecting the structure in his compound without consulting ant of his living descendants.
+
+The letter insults all the xxx noble people listed in it as stakeholders by involving them in the xxx without consulting with them and it insults the xxxx as a whole.
+
+We advise whoever is behind it to stop piling foly upon folly and error upon error, and drop this matter at once in order for it not to escalate it into something else. 
+=========================
