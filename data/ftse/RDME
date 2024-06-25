@@ -1,40 +1,9 @@
-Compressing SQL Server `.ldf` (log) and `.mdf` (data) files can be essential for managing disk space, especially in environments with large databases. However, it's important to approach this with caution to avoid impacting database performance or integrity. Here are some best practices and techniques for effectively managing and potentially compressing these files:
-
-1. **Shrink Database Files**: This is a direct method to reduce the size of `.mdf` and `.ldf` files, but it should be used sparingly as it can lead to fragmentation and degrade performance. It’s more appropriate for one-time operations following large deletions or when you’ve moved a significant amount of data.
-
-    - **Shrinking the log file (`ldf`)**:
-      ```sql
-      DBCC SHRINKFILE (NameOfLogFile, TargetSize);
-      ```
-      This command reduces the size of the log file to the specified target size (in MB).
-
-    - **Shrinking the data file (`mdf`)**:
-      ```sql
-      DBCC SHRINKFILE (NameOfDataFile, TargetSize);
-      ```
-      This command reduces the size of the data file.
-
-2. **Use SQL Server Data Compression**: Starting with SQL Server 2008, you can use data compression for tables and indexes which helps reduce the size of the database and can indirectly lead to smaller `.mdf` file sizes. There are two types of compression available:
-   - **Row Compression**
-   - **Page Compression**
-   
-   To implement compression:
-   ```sql
-   ALTER TABLE TableName
-   REBUILD PARTITION = ALL
-   WITH (DATA_COMPRESSION = PAGE);
-   ```
-
-3. **Backup and Restore**: Sometimes, performing a backup and then restoring from that backup can result in a more compact database file. This method can help in defragmenting the database file and potentially reclaiming unused space.
-
-4. **Transaction Log Management**: Proper management of the transaction log can help control the size of `.ldf` files. Make sure that your database is using an appropriate recovery model:
-   - **Simple Recovery Model**: This model automatically reclaims log space to keep space requirements small, essentially removing the need to manage the transaction log space.
-   - **Full Recovery Model**: Requires regular transaction log backups to free up log space.
-
-5. **Archive Old Data**: If your database files are growing due to a large volume of data, consider archiving old data to another database or storage medium. This will help keep the size of your primary database files more manageable.
-
-6. **Monitor and Optimize File Growth Settings**: Ensure that the growth settings for your database files are optimized. Uncontrolled growth can lead to fragmented files which are inefficient. Set a fixed growth increment that balances performance with management.
-
-7. **Regular Maintenance**: Implement a routine maintenance plan that includes index rebuilding and updating statistics. This helps in keeping the database optimized and can indirectly affect file size by maintaining data density.
-
-Using these methods will help manage the size of your `.mdf` and `.ldf` files effectively. It’s essential to test any compression or shrinking activities on a development server before applying them to a production database to avoid unexpected issues.
+document.addEventListener('DOMContentLoaded', (event) => {
+    var selectElement = document.getElementById('Ddddd');
+    
+    selectElement.addEventListener('change', function() {
+        if (selectElement.value === 'yes') {
+            alert('please ensure....');
+        }
+    });
+});
