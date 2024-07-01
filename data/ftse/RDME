@@ -1,89 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Style for the custom alert box */
-        .custom-alert {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            border: 2px solid black;
-            padding: 20px;
-            z-index: 1000;
-            text-align: center;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .custom-alert p {
-            color: red;
-            margin: 0;
-        }
+CREATE FUNCTION dbo.CleanString (@input NVARCHAR(MAX))
+RETURNS NVARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @output NVARCHAR(MAX);
 
-        .custom-alert button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+    -- Replace line breaks (both CR and LF) with empty string
+    SET @output = REPLACE(@input, CHAR(13), ''); -- CR (Carriage Return)
+    SET @output = REPLACE(@output, CHAR(10), ''); -- LF (Line Feed)
 
-        .custom-alert button:hover {
-            background-color: #0056b3;
-        }
+    -- Replace commas with empty string
+    SET @output = REPLACE(@output, ',', '');
 
-        /* Style for overlay */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-    </style>
-</head>
-<body>
+    -- Replace tabs with spaces
+    SET @output = REPLACE(@output, CHAR(9), ' ');
 
-    <select id="Ddddd">
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-    </select>
-
-    <div class="overlay" id="overlay"></div>
-    <div class="custom-alert" id="customAlert">
-        <p>please ensure....</p>
-        <button onclick="closeAlert()">OK</button>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            var selectElement = document.getElementById('Ddddd');
-            
-            selectElement.addEventListener('change', function() {
-                if (selectElement.value === 'yes') {
-                    showAlert();
-                }
-            });
-        });
-
-        function showAlert() {
-            document.getElementById('customAlert').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closeAlert() {
-            document.getElementById('customAlert').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-    </script>
-
-</body>
-</html>
+    RETURN @output;
+END;
+GO
