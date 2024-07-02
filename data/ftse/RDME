@@ -2,3 +2,38 @@ name|fileid|filename
 BugTracker|1|j:\DATA\Tracker_CFDealTracker.mdf
 BugTracker_log|2|j:\DATA\Tracker_CFDealTracker.ldf
 BugTracker2|3|H:\DATA\Tracker_CFDealTracker2.mdf
+
+
+To relocate the database file BugTracker2 from the H drive to the J drive in SQL Server, you need to follow these steps:
+
+1. **Set the database to offline.**
+2. **Physically move the database file to the new location.**
+3. **Update the database file location in SQL Server.**
+4. **Set the database back to online.**
+
+Here's how you can do this:
+
+1. **Set the database to offline:**
+
+   ```sql
+   ALTER DATABASE BugTracker2 SET OFFLINE;
+   ```
+
+2. **Physically move the file:**
+
+   Manually move the file `H:\DATA\Tracker_CFDealTracker2.mdf` to the new location `J:\DATA\Tracker_CFDealTracker2.mdf`.
+
+3. **Update the file location in SQL Server:**
+
+   ```sql
+   ALTER DATABASE BugTracker2
+   MODIFY FILE (NAME = 'BugTracker2', FILENAME = 'J:\DATA\Tracker_CFDealTracker2.mdf');
+   ```
+
+4. **Set the database back to online:**
+
+   ```sql
+   ALTER DATABASE BugTracker2 SET ONLINE;
+   ```
+
+These steps will ensure that your database file `BugTracker2` is relocated from the H drive to the J drive in SQL Server. Make sure you have appropriate backups before performing these operations to prevent any data loss.
