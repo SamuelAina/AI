@@ -1,19 +1,4 @@
-CREATE FUNCTION dbo.CleanString (@input NVARCHAR(MAX))
-RETURNS NVARCHAR(MAX)
-AS
-BEGIN
-    DECLARE @output NVARCHAR(MAX);
-
-    -- Replace line breaks (both CR and LF) with empty string
-    SET @output = REPLACE(@input, CHAR(13), ''); -- CR (Carriage Return)
-    SET @output = REPLACE(@output, CHAR(10), ''); -- LF (Line Feed)
-
-    -- Replace commas with empty string
-    SET @output = REPLACE(@output, ',', '');
-
-    -- Replace tabs with spaces
-    SET @output = REPLACE(@output, CHAR(9), ' ');
-
-    RETURN @output;
-END;
-GO
+name|fileid|filename
+BugTracker|1|j:\DATA\Tracker_CFDealTracker.mdf
+BugTracker_log|2|j:\DATA\Tracker_CFDealTracker.ldf
+BugTracker2|3|H:\DATA\Tracker_CFDealTracker2.mdf
