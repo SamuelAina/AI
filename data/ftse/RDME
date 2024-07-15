@@ -56,3 +56,19 @@ I have checked the database scripts and cannot ascribe a definite reason to the 
 
 Please note that these are just speculations of what may have caused the anomalies, as I don’t know for definite 
 .
+++++++++++
+I have checked the database scripts and cannot determine a definite reason for the two types of anomalies you pointed out regarding the most recent login field. However, I found some possibilities:
+
+1. **Why some users appear to have logged in before 2021:**
+
+   1.1 The database for the Secondary Loan Sales Tracker was created by cloning an existing older database that already had some users. It could be that the affected users were retained from the old database.
+
+   1.2 There is a script for cloning user permissions, which unfortunately includes the most recent login information, inherited by the user.
+
+2. **Why a user believed to be on maternity leave appears to have logged in on 11 Jul 2024:**
+
+   2.1 It could be that the user logged into the tracker recently even though on maternity leave.
+
+   2.2 It could be that the user shared her username and password with someone else while she was away.
+
+Please note that these are just speculations about what may have caused the anomalies, as I do not have definite answers.
