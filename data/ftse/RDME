@@ -1,74 +1,9 @@
-name|fileid|filename
-BugTracker|1|j:\DATA\Tracker_CFDealTracker.mdf
-BugTracker_log|2|j:\DATA\Tracker_CFDealTracker.ldf
-BugTracker2|3|H:\DATA\Tracker_CFDealTracker2.mdf
-
-
-To relocate the database file BugTracker2 from the H drive to the J drive in SQL Server, you need to follow these steps:
-
-1. **Set the database to offline.**
-2. **Physically move the database file to the new location.**
-3. **Update the database file location in SQL Server.**
-4. **Set the database back to online.**
-
-Here's how you can do this:
-
-1. **Set the database to offline:**
-
-   ```sql
-   ALTER DATABASE BugTracker2 SET OFFLINE;
-   ```
-
-2. **Physically move the file:**
-
-   Manually move the file `H:\DATA\Tracker_CFDealTracker2.mdf` to the new location `J:\DATA\Tracker_CFDealTracker2.mdf`.
-
-3. **Update the file location in SQL Server:**
-
-   ```sql
-   ALTER DATABASE BugTracker2
-   MODIFY FILE (NAME = 'BugTracker2', FILENAME = 'J:\DATA\Tracker_CFDealTracker2.mdf');
-   ```
-
-4. **Set the database back to online:**
-
-   ```sql
-   ALTER DATABASE BugTracker2 SET ONLINE;
-   ```
-
-These steps will ensure that your database file `BugTracker2` is relocated from the H drive to the J drive in SQL Server. Make sure you have appropriate backups before performing these operations to prevent any data loss.
-
-
-======
-I have checked the database scripts and cannot ascribe a definite reason to the two types of anomalies you have pointed out relating to the most recent login field, but I found some possibilities:
-
-1, Why some users appear to have logged in before 2021.
-
-1,1 The database for the Secondary Loan Sales Tracker was created by cloning an existing older database which already had some users. It could be that the affected users were retained from the old database. 
-
-1,2 There is a script for cloning user permissions. Unfortunately, this script also includes the most recent login information which is inherited by the user.
-
-2, Why a user believed to be on maternity appears to the logged in on 11 Jul 2024
-
-2,1 It could be that the user logged into the tracker recently even though on maternity.
-2,2 It could be that the user availed her username and password to someone else while she was away.
-
-
-Please note that these are just speculations of what may have caused the anomalies, as I don’t know for definite 
-.
-++++++++++
-I have checked the database scripts and cannot determine a definite reason for the two types of anomalies you pointed out regarding the most recent login field. However, I found some possibilities:
-
-1. **Why some users appear to have logged in before 2021:**
-
-   1.1 The database for the Secondary Loan Sales Tracker was created by cloning an existing older database that already had some users. It could be that the affected users were retained from the old database.
-
-   1.2 There is a script for cloning user permissions, which unfortunately includes the most recent login information, inherited by the user.
-
-2. **Why a user believed to be on maternity leave appears to have logged in on 11 Jul 2024:**
-
-   2.1 It could be that the user logged into the tracker recently even though on maternity leave.
-
-   2.2 It could be that the user shared her username and password with someone else while she was away.
-
-Please note that these are just speculations about what may have caused the anomalies, as I do not have definite answers.
+document.addEventListener('DOMContentLoaded', (event) => {
+    const button = document.getElementById('myButton');
+    button.style.display = 'block'; // Make the button visible
+    button.style.margin = '0 auto'; // Center the button horizontally
+    button.style.position = 'absolute'; // Centering vertically needs absolute positioning
+    button.style.top = '50%'; 
+    button.style.left = '50%'; 
+    button.style.transform = 'translate(-50%, -50%)'; // Adjust the position to truly center
+});
