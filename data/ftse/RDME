@@ -1,1 +1,13 @@
 When the value changes, if the select object document.getElementById("Themes") is "Others" then unhide the object document.getElementById("Themesothersdescription_row") otherwise hide it.
+
+
+document.getElementById("Themes").addEventListener("change", function() {
+    var themes = document.getElementById("Themes");
+    var themesOthersDescriptionRow = document.getElementById("Themesothersdescription_row");
+    
+    if (themes.value === "Others") {
+        themesOthersDescriptionRow.style.display = "block"; // Unhide the element
+    } else {
+        themesOthersDescriptionRow.style.display = "none"; // Hide the element
+    }
+});
