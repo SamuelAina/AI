@@ -190,3 +190,4 @@ function setAllRadios(permission) {
         }
     });
 }
+Give me HTML for an App with a DIV into which an image can be pasted, and a text area that will contain the base64 encoded text for the pasted image. include buttons for clearing the div, pasting clipboard image content and uploading image from file or camera. Include buttons for the text area for clearing and for pasting text. When image is pasted into the div it should trigger update of the text area, wheb text is paseted into the text area, it should trigger update of the image in the div. 
