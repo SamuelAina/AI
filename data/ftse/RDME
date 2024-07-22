@@ -163,3 +163,30 @@ Use these buttons to set all users to the same permission:
 			</td>
 	</tr>
 </tbody></table>
+
+
+
+function setAllRadios(permission) {
+    // Define a mapping between permission types and their values
+    const permissionValues = {
+        'none': '0',
+        'readonly': '1',
+        'reporter': '3',
+        'edit': '2'
+    };
+
+    // Get the value corresponding to the specified permission
+    const permissionValue = permissionValues[permission];
+
+    // Get all radio buttons in the data grid
+    const radios = document.querySelectorAll('#MyDataGrid input[type="radio"]');
+
+    // Loop through all radio buttons
+    radios.forEach(radio => {
+        // Check if the radio button's value matches the specified permission value
+        if (radio.value === permissionValue) {
+            // Set the radio button as checked
+            radio.checked = true;
+        }
+    });
+}
