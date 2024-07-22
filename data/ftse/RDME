@@ -113,3 +113,53 @@ To test the efficiency and performance of a SQL Server database, you can use a c
 - **Resource Governor**: Use Resource Governor to manage SQL Server workload and system resource consumption.
 
 By employing these tools and techniques, you can effectively test and improve the performance and efficiency of your SQL Server database.
+
+=======================================================================
+
+<br>
+Use these buttons to set all users to the same permission:
+<br>
+<input id="SetAll_none" type="radio" name="SetAll" onclick="setAllRadios('none')"><label for="SetAll_none">none</label>
+<input id="SetAll_readonly" type="radio" name="SetAll" onclick="setAllRadios('readonly')"><label for="SetAll_readonly">view only</label>
+<input id="SetAll_reporter" type="radio" name="SetAll" onclick="setAllRadios('reporter')"><label for="SetAll_reporter">report (add and comment only)</label>
+<input id="SetAll_edit" type="radio" name="SetAll" onclick="setAllRadios('edit')"><label for="SetAll_edit">all (add and edit)</label>
+
+<table class="datat" cellspacing="0" cellpadding="3" rules="all" border="1" id="MyDataGrid" style="border-color:Black;border-collapse:collapse;">
+	<tbody><tr class="datah">
+		<td>Project</td><td>Permissions</td>
+	</tr><tr class="datad">
+		<td>(none)</td><td>
+				<input id="MyDataGrid_none_0" type="radio" name="MyDataGrid$ctl02$permissions" value="0"><label for="MyDataGrid_none_0">none</label>
+
+				<input id="MyDataGrid_readonly_0" type="radio" name="MyDataGrid$ctl02$permissions" value="1"><label for="MyDataGrid_readonly_0">view only</label>
+
+				<input id="MyDataGrid_reporter_0" type="radio" name="MyDataGrid$ctl02$permissions" value="3"><label for="MyDataGrid_reporter_0">report (add and comment only)</label>
+
+				<input id="MyDataGrid_edit_0" type="radio" name="MyDataGrid$ctl02$permissions" value="2" checked="checked"><label for="MyDataGrid_edit_0">all (add and edit)</label>
+
+			</td>
+	</tr><tr class="datad">
+		<td>000|CountryCFOApprover</td><td>
+				<input id="MyDataGrid_none_1" type="radio" name="MyDataGrid$ctl03$permissions" value="0"><label for="MyDataGrid_none_1">none</label>
+
+				<input id="MyDataGrid_readonly_1" type="radio" name="MyDataGrid$ctl03$permissions" value="1"><label for="MyDataGrid_readonly_1">view only</label>
+
+				<input id="MyDataGrid_reporter_1" type="radio" name="MyDataGrid$ctl03$permissions" value="3"><label for="MyDataGrid_reporter_1">report (add and comment only)</label>
+
+				<input id="MyDataGrid_edit_1" type="radio" name="MyDataGrid$ctl03$permissions" value="2" checked="checked"><label for="MyDataGrid_edit_1">all (add and edit)</label>
+
+			</td>
+	</tr>
+    <tr class="datad">
+		<td>Zimbabwe|RegionalCFOApprover</td><td>
+				<input id="MyDataGrid_none_3227" type="radio" name="MyDataGrid$ctl3229$permissions" value="0" checked="checked"><label for="MyDataGrid_none_3227">none</label>
+
+				<input id="MyDataGrid_readonly_3227" type="radio" name="MyDataGrid$ctl3229$permissions" value="1"><label for="MyDataGrid_readonly_3227">view only</label>
+
+				<input id="MyDataGrid_reporter_3227" type="radio" name="MyDataGrid$ctl3229$permissions" value="3"><label for="MyDataGrid_reporter_3227">report (add and comment only)</label>
+
+				<input id="MyDataGrid_edit_3227" type="radio" name="MyDataGrid$ctl3229$permissions" value="2"><label for="MyDataGrid_edit_3227">all (add and edit)</label>
+
+			</td>
+	</tr>
+</tbody></table>
