@@ -1,4 +1,73 @@
-Give me HTML and javascript for an APP to be called "Bin2" that takes a file selected by the user and converts the content to Base 64 encoding. There should be a textarea box in which the encoded text should be displayed. There should be the following other buttons:
-[Paste] - to paste text into the textarea.
-[Copy] - to copy the content of the textarea.
-[Save] - to convert the content of the textarea into binary and save it to a file name to be provided by user  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bin2</h1>
+    <input type="file" id="fileInput">
+    <textarea id="textArea"></textarea>
+    <br>
+    <button onclick="pasteText()">Paste</button>
+    <button onclick="copyText()">Copy</button>
+    <button onclick="saveToFile()">Save</button>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Content = btoa(e.target.result);
+                    document.getElementById('textArea').value = base64Content;
+                };
+                reader.readAsBinaryString(file);
+            }
+        });
+
+        function pasteText() {
+            navigator.clipboard.readText().then(text => {
+                document.getElementById('textArea').value = text;
+            }).catch(err => {
+                console.error('Failed to read clipboard contents: ', err);
+            });
+        }
+
+        function copyText() {
+            const textArea = document.getElementById('textArea');
+            textArea.select();
+            document.execCommand('copy');
+        }
+
+        function saveToFile() {
+            const textAreaContent = document.getElementById('textArea').value;
+            const binaryContent = atob(textAreaContent);
+            const blob = new Blob([binaryContent], {type: 'application/octet-stream'});
+            const fileName = prompt('Enter file name:');
+            if (fileName) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    </script>
+</body>
+</html>
