@@ -26,6 +26,7 @@
     <button onclick="pasteText()">Paste</button>
     <button onclick="copyText()">Copy</button>
     <button onclick="saveToFile()">Save</button>
+    <button onclick="clearText()">Clear</button>
 
     <script>
         document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -33,12 +34,34 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const base64Content = btoa(e.target.result);
+                    const arrayBuffer = e.target.result;
+                    const uint8Array = new Uint8Array(arrayBuffer);
+                    const base64Content = arrayBufferToBase64(uint8Array);
                     document.getElementById('textArea').value = base64Content;
                 };
-                reader.readAsBinaryString(file);
+                reader.readAsArrayBuffer(file);
             }
         });
+
+        function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary);
+        }
+
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
 
         function pasteText() {
             navigator.clipboard.readText().then(text => {
@@ -56,8 +79,8 @@
 
         function saveToFile() {
             const textAreaContent = document.getElementById('textArea').value;
-            const binaryContent = atob(textAreaContent);
-            const blob = new Blob([binaryContent], {type: 'application/octet-stream'});
+            const arrayBuffer = base64ToArrayBuffer(textAreaContent);
+            const blob = new Blob([arrayBuffer], {type: 'application/octet-stream'});
             const fileName = prompt('Enter file name:');
             if (fileName) {
                 const link = document.createElement('a');
@@ -67,6 +90,10 @@
                 link.click();
                 document.body.removeChild(link);
             }
+        }
+
+        function clearText() {
+            document.getElementById('textArea').value = '';
         }
     </script>
 </body>
