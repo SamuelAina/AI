@@ -1,77 +1,44 @@
-ALTER function  [dbo].[Calculate_Commission_LCCY_V2024]  
-(  
-  @Transaction_Type   VARCHAR(255)  
-  ,@Commission_Scheme  VARCHAR(255)  
-  ,@Notional_LCCY      money   
-  ,@Price_pcnt         money  
-  ,@Credit_Grade    VARCHAR(10)  
-  ,@Commission_Non_Standard_pcnt MONEY  
-  ,@Distribution_Type  VARCHAR(255)  
-)  
-RETURNS    DECIMAL(38,2)  
-AS  
-BEGIN  
-DECLARE @Commission_LCCY    MONEY  
-DECLARE @Commission_pcnt    MONEY   
-    select  @Commission_pcnt = [Commission %] from [Commission Grid Table] WHERE [Credit Grade (CG)]=@Credit_Grade  
-/*  
---variables  
-@Transaction_Type     
-@Commission_Scheme   
-@Notional_LCCY         
-@Price_pcnt           
-@Credit_Grade   
-@Commission_Non_Standard_pcnt  
-@Distribution_Type       
-*/  
- 
-/*
-Existing Dropdown			New Dropdown
-F*RISK Asset Book Sale		Hold Book Sale
-C*PM Sale					Hold Book Sale
-P*M							Hold Book Sale
-S*YNDICATIONS				Primary Bookbuild Sale 
-G*SAM						SAR Sale 
-*/
-SELECT  @Commission_LCCY= NULL --this means manual  
-IF @Commission_Scheme ='STANDARD'  
-BEGIN  
-  IF @Transaction_Type='BUY'   
-  BEGIN  
-    IF @Distribution_Type IN ('SAR Sale','Hold Book Sale','PEF Warehouse Sale','Primary Bookbuild Sale - TURKISH FI')   
-    BEGIN   
-      IF @Notional_LCCY * @Price_pcnt/100 * 0.25/100 > 25000  
-      BEGIN  
-         SELECT  @Commission_LCCY= @Notional_LCCY * @Price_pcnt/100 * 0.25/100  
-      END  
-      ELSE  
-      BEGIN  
-        SELECT  @Commission_LCCY= 25000  
-      END   
-    END  
-  END  
---SELECT DISTINCT [Transaction Type],[Distribution Type] FROM [Tracker_SecondaryLoansSales_starting_from_2024].dbo.bugs
-  IF @Transaction_Type='SELL'   
-  BEGIN  
-    IF @Distribution_Type ='SAR Sale'   
-    BEGIN  
-       SELECT @Commission_LCCY=@Notional_LCCY * @Price_pcnt/100 * @Commission_pcnt/100  
-    END   
-    IF @Distribution_Type IN ('Hold Book Sale','Primary Bookbuild Sale - TURKISH FI')   
-    BEGIN  
-       SELECT @Commission_LCCY=@Notional_LCCY * @Price_pcnt/100 * @Commission_pcnt/100  
-    END   
-  END  
-END  
-ELSE   
-BEGIN  
-  IF @Transaction_Type IN ('BUY','SELL')   
-  BEGIN  
-    IF @Distribution_Type IN ('SAR Sale','Hold Book Sale','Primary Bookbuild Sale - TURKISH FI')   
-    BEGIN   
-      SELECT @Commission_LCCY=@Notional_LCCY * @Price_pcnt/100 * @Commission_Non_Standard_pcnt/100  
-    END  
-  END  
-END  
-RETURN  @Commission_LCCY  
-END  
+Function: Calculate_Commission_LCCY_V2024
+Input Parameters:
+  - Transaction_Type: String
+  - Commission_Scheme: String
+  - Notional_LCCY: Decimal
+  - Price_pcnt: Decimal
+  - Credit_Grade: String
+  - Commission_Non_Standard_pcnt: Decimal
+  - Distribution_Type: String
+
+Output:
+  - Returns a Decimal value representing the Commission in LCCY
+
+BEGIN
+  1. Declare Variables:
+     - Commission_LCCY: Decimal
+     - Commission_pcnt: Decimal
+
+  2. Fetch Commission Percentage from 'Commission Grid Table' based on Credit_Grade
+     - Set Commission_pcnt to the fetched value
+
+  3. Initialize Commission_LCCY to NULL (manual entry scenario)
+
+  4. IF Commission_Scheme is 'STANDARD':
+     - IF Transaction_Type is 'BUY':
+       - IF Distribution_Type is one of ('SAR Sale', 'Hold Book Sale', 'PEF Warehouse Sale', 'Primary Bookbuild Sale - TURKISH FI'):
+         - Calculate Commission: Notional_LCCY * Price_pcnt * 0.25 / 10000
+         - IF calculated Commission > 25000, set Commission_LCCY to calculated value
+         - ELSE, set Commission_LCCY to 25000
+
+     - IF Transaction_Type is 'SELL':
+       - IF Distribution_Type is 'SAR Sale' OR one of ('Hold Book Sale', 'Primary Bookbuild Sale - TURKISH FI'):
+         - Calculate Commission: Notional_LCCY * Price_pcnt * Commission_pcnt / 10000
+         - Set Commission_LCCY to calculated value
+
+  5. ELSE (for non-standard Commission Scheme):
+     - IF Transaction_Type is either 'BUY' or 'SELL':
+       - IF Distribution_Type is one of ('SAR Sale', 'Hold Book Sale', 'Primary Bookbuild Sale - TURKISH FI'):
+         - Calculate Commission: Notional_LCCY * Price_pcnt * Commission_Non_Standard_pcnt / 10000
+         - Set Commission_LCCY to calculated value
+
+  6. Return the final value of Commission_LCCY
+
+END
