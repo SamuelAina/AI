@@ -1,44 +1,68 @@
-Function: Calculate_Commission_LCCY_V2024
-Input Parameters:
-  - Transaction_Type: String
-  - Commission_Scheme: String
-  - Notional_LCCY: Decimal
-  - Price_pcnt: Decimal
-  - Credit_Grade: String
-  - Commission_Non_Standard_pcnt: Decimal
-  - Distribution_Type: String
+Yes, there are a few alternative methods to "lock" a `<select>` control without using the `disabled` attribute:
 
-Output:
-  - Returns a Decimal value representing the Commission in LCCY
+### 1. **Using the `readOnly` attribute with CSS:**
+While `<select>` elements don't natively support the `readonly` attribute like input fields, you can simulate this behavior with CSS and JavaScript.
 
-BEGIN
-  1. Declare Variables:
-     - Commission_LCCY: Decimal
-     - Commission_pcnt: Decimal
+```html
+<select id="mySelect" readonly>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+```
 
-  2. Fetch Commission Percentage from 'Commission Grid Table' based on Credit_Grade
-     - Set Commission_pcnt to the fetched value
+```css
+/* Apply styling to make the select appear as read-only */
+select[readonly] {
+  pointer-events: none;
+  background-color: #e9ecef; /* Light gray background */
+  color: #6c757d; /* Gray text */
+}
+```
 
-  3. Initialize Commission_LCCY to NULL (manual entry scenario)
+This method simulates a read-only state by preventing pointer events, which stops the user from interacting with the dropdown while still allowing the form to submit the selected value.
 
-  4. IF Commission_Scheme is 'STANDARD':
-     - IF Transaction_Type is 'BUY':
-       - IF Distribution_Type is one of ('SAR Sale', 'Hold Book Sale', 'PEF Warehouse Sale', 'Primary Bookbuild Sale - TURKISH FI'):
-         - Calculate Commission: Notional_LCCY * Price_pcnt * 0.25 / 10000
-         - IF calculated Commission > 25000, set Commission_LCCY to calculated value
-         - ELSE, set Commission_LCCY to 25000
+### 2. **Using JavaScript to Prevent Interaction:**
+You can add an event listener to prevent the default behavior of opening the dropdown.
 
-     - IF Transaction_Type is 'SELL':
-       - IF Distribution_Type is 'SAR Sale' OR one of ('Hold Book Sale', 'Primary Bookbuild Sale - TURKISH FI'):
-         - Calculate Commission: Notional_LCCY * Price_pcnt * Commission_pcnt / 10000
-         - Set Commission_LCCY to calculated value
+```javascript
+var selectElement = document.getElementById("mySelect");
 
-  5. ELSE (for non-standard Commission Scheme):
-     - IF Transaction_Type is either 'BUY' or 'SELL':
-       - IF Distribution_Type is one of ('SAR Sale', 'Hold Book Sale', 'Primary Bookbuild Sale - TURKISH FI'):
-         - Calculate Commission: Notional_LCCY * Price_pcnt * Commission_Non_Standard_pcnt / 10000
-         - Set Commission_LCCY to calculated value
+selectElement.addEventListener("mousedown", function (event) {
+  event.preventDefault();
+});
+```
 
-  6. Return the final value of Commission_LCCY
+This method stops the dropdown from opening when clicked, effectively locking the select control without changing its appearance.
 
-END
+### 3. **Overlaying a Transparent Element:**
+You can place a transparent div over the `<select>` element to block user interaction.
+
+```html
+<div style="position: relative;">
+  <select id="mySelect">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <div id="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent;"></div>
+</div>
+```
+
+This method prevents users from interacting with the select dropdown by blocking all mouse events with the transparent `div` overlay.
+
+### 4. **Use a Hidden Input Field:**
+Another approach is to use a hidden input field to store the value of the select element and then hide the select dropdown entirely or make it look like a non-interactive element.
+
+```html
+<input type="hidden" id="hiddenSelectValue" name="selectValue" value="1">
+<select id="mySelect" style="pointer-events: none;">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+```
+
+With this method, the select element is visually present but non-interactive, while the hidden input field holds the actual value that will be submitted.
+
+These alternatives can give you different ways to "lock" a select control depending on your specific requirements and the desired user experience.
