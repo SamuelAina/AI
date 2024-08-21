@@ -1,1 +1,10 @@
 <select id="DistributionType" name="Distribution Type" style="background-color: lightgray; width: 400px;" class="edit_bug_option" readonly=""><option></option><option selected="">Hold Book Sale</option><option>Primary Bookbuild Sale</option><option>PEF Warehouse Sale</option><option>UW Book Sale</option><option>SAR Sale</option><option>OTHERS</option></select>
+
+
+document.getElementById('DistributionType').addEventListener('mousedown', function(event) {
+    event.preventDefault(); // Prevents the user from opening the dropdown
+});
+
+document.getElementById('DistributionType').addEventListener('keydown', function(event) {
+    event.preventDefault(); // Prevents the user from using the keyboard to change the selection
+});
