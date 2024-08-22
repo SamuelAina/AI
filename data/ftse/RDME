@@ -1,10 +1,23 @@
-<select id="DistributionType" name="Distribution Type" style="background-color: lightgray; width: 400px;" class="edit_bug_option" readonly=""><option></option><option selected="">Hold Book Sale</option><option>Primary Bookbuild Sale</option><option>PEF Warehouse Sale</option><option>UW Book Sale</option><option>SAR Sale</option><option>OTHERS</option></select>
+CREATE FUNCTION dbo.ExtractBeforeFirstSpace (@inputString NVARCHAR(MAX))
+RETURNS NVARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @spacePosition INT;
+    DECLARE @result NVARCHAR(MAX);
 
+    -- Find the position of the first space character
+    SET @spacePosition = CHARINDEX(' ', @inputString);
 
-document.getElementById('DistributionType').addEventListener('mousedown', function(event) {
-    event.preventDefault(); // Prevents the user from opening the dropdown
-});
+    -- If there's no space, return the original string
+    IF @spacePosition = 0
+    BEGIN
+        SET @result = @inputString;
+    END
+    ELSE
+    BEGIN
+        -- Extract substring before the first space
+        SET @result = SUBSTRING(@inputString, 1, @spacePosition - 1);
+    END
 
-document.getElementById('DistributionType').addEventListener('keydown', function(event) {
-    event.preventDefault(); // Prevents the user from using the keyboard to change the selection
-});
+    RETURN @result;
+END;
