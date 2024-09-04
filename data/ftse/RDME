@@ -1,1 +1,1084 @@
-ffffff
+<html><head>
+<title id="titl">Break ID 10406 Preiod -  Jul 2021</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 10406
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+
+	el = get_el("sub");
+	el.disabled = true;
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="TB_AvF_Tracker">
+
+
+
+<script type="text/javascript">
+/*
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+        current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+    }
+};
+*/
+</script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="160" valign="middle"><img width="86" src="custom/logo.jpg"><br><div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;">TB-AvF-Tracker</div><b><font id="xcurrent_db_environment" color="green">(PRODUCTION)</font></b></td>
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Breaks</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (System Admin)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Break</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;</span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=10406" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=10406 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"><a href="delete_deal.aspx?id=10406" title="Delete this item"><img src="delete.png" border="0" align="top">&nbsp;delete</a></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(10406)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=10406 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',10406,600,300)" title="Attach an image, document, or other file to this item">add attachment (Max 11MB)</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form name="ctl00" method="post" action="./edit_deal.aspx?id=10406" id="ctl00" class="frm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTAxOTE4NDEzMg8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFiJmDxYCHglpbm5lcmh0bWwFIUJyZWFrIElEIDEwNDA2IFByZWlvZCAtICBKdWwgMjAyMWQCAw8WAh8BBZ0BPGEgdGFyZ2V0PV9ibGFuayBocmVmPXByaW50X2RlYWwuYXNweD9pZD0xMDQwNiB0aXRsZT0nRGlzcGxheSB0aGlzIGl0ZW0gaW4gYSBwcmludGVyLWZyaWVuZGx5IGZvcm1hdCc+PGltZyBzcmM9cHJpbnRlci5wbmcgYm9yZGVyPTAgYWxpZ249dG9wPiZuYnNwO3ByaW50PC9hPmQCBA8WAh8BBZMBPGEgaHJlZj1tZXJnZV9kZWFsLmFzcHg/aWQ9MTA0MDYgdGl0bGU9J01lcmdlIHRoaXMgaXRlbSBhbmQgYW5vdGhlciBpdGVtIHRvZ2V0aGVyJz48aW1nIHNyYz1kYXRhYmFzZV9yZWZyZXNoLnBuZyBib3JkZXI9MCBhbGlnbj10b3A+Jm5ic3A7bWVyZ2U8L2E+ZAIFDxYCHwEFcjxhIGhyZWY9ZGVsZXRlX2RlYWwuYXNweD9pZD0xMDQwNiB0aXRsZT0nRGVsZXRlIHRoaXMgaXRlbSc+PGltZyBzcmM9ZGVsZXRlLnBuZyBib3JkZXI9MCBhbGlnbj10b3A+Jm5ic3A7ZGVsZXRlPC9hPmQCBg8WAh4HVmlzaWJsZWhkAgcPFgIfAmhkAggPFgIfAmhkAgkPFgQfAQXFATxhIHRhcmdldD1fYmxhbmsgaHJlZj12aWV3X3N1YnNjcmliZXJzLmFzcHg/aWQ9MTA0MDYgdGl0bGU9J1ZpZXcgdXNlcnMgd2hvIGhhdmUgc3Vic2NyaWJlZCB0byBlbWFpbCBub3RpZmljYXRpb25zIGZvciB0aGlzIGl0ZW0nPjxpbWcgc3JjPXRlbGVwaG9uZV9lZGl0LnBuZyBib3JkZXI9MCBhbGlnbj10b3A+Jm5ic3A7c3Vic2NyaWJlcnM8L2E+HwJoZAIKDxYCHwEF/gE8YSBpZD0nbm90aWZpY2F0aW9ucycgdGl0bGU9J0dldCBvciBzdG9wIGdldHRpbmcgZW1haWwgbm90aWZpY2F0aW9ucyBhYm91dCBjaGFuZ2VzIHRvIHRoaXMgaXRlbS4nIGhyZWY9J2phdmFzY3JpcHQ6dG9nZ2xlX25vdGlmaWNhdGlvbnMoMTA0MDYpJz48aW1nIHNyYz10ZWxlcGhvbmUucG5nIGJvcmRlcj0wIGFsaWduPXRvcD4mbmJzcDs8c3BhbiBpZD0nZ2V0X3N0b3Bfbm90aWZpY2F0aW9ucyc+Z2V0IG5vdGlmaWNhdGlvbnM8L3NwYW4+PC9hPmQCCw8WAh8CaGQCDA8WAh8BBcsBPGEgdGFyZ2V0PV9ibGFuayBocmVmPXRhc2tzX2ZyYW1lLmFzcHg/YnVnaWQ9MTA0MDYgdGl0bGU9J1ZpZXcgc3ViLXRhc2tzL3RpbWUtdHJhY2tpbmcgZW50cmllcyByZWxhdGVkIHRvIHRoaXMgaXRlbSc+PGltZyBzcmM9Y2xvY2sucG5nIGJvcmRlcj0wIGFsaWduPXRvcD4mbmJzcDt0YXNrcy90aW1lKDxzcGFuIGlkPXRhc2tfY250PjA8L3NwYW4+KTwvYT5kAg0PFgQfAQWMATxhIGhyZWY9J2phdmFzY3JpcHQ6c2VuZF9lbWFpbCgxMDQwNiknIHRpdGxlPSdTZW5kIGFuIGVtYWlsIGFib3V0IHRoaXMgaXRlbSc+PGltZyBzcmM9ZW1haWxfZWRpdC5wbmcgYm9yZGVyPTAgYWxpZ249dG9wPiZuYnNwO3NlbmQgZW1haWw8L2E+HwJoZAIODxYCHwEF3QE8aW1nIHNyYz1hdHRhY2guZ2lmIGFsaWduPXRvcD4mbmJzcDs8YSBocmVmPSJqYXZhc2NyaXB0Om9wZW5fcG9wdXBfd2luZG93KCdhZGRfYXR0YWNobWVudC5hc3B4JywnYWRkIGF0dGFjaG1lbnQgJywxMDQwNiw2MDAsMzAwKSIgdGl0bGU9J0F0dGFjaCBhbiBpbWFnZSwgZG9jdW1lbnQsIG9yIG90aGVyIGZpbGUgdG8gdGhpcyBpdGVtJz5hZGQgYXR0YWNobWVudCAoTWF4IDExTUIpPC9hPmQCDw8WAh8CaGQCEA9kFjgCAg8WAh8BZWQCAw8WAh8BZWQCBQ8WAh8BBQ9CcmVhayBJRDombmJzcDtkAgYPFgIfAQUFMTA0MDZkAggPFgIeBXZhbHVlBRJQcmVpb2QgLSAgSnVsIDIwMjFkAgoPFgIfAQWrAUNyZWF0ZWQgYnkgPGEgaHJlZj1odHRwOi8vU0dXUEFQUENEMDEuWk9ORTEuU0NCLk5FVC9QZW1icm9rZUxlYXNlVHJhY2tlci9zZW5kX2VtYWlsLmFzcHg/YmdfaWQ9MTA0MDYmdG89U3JpdmF0c2FuLktAc2MuY29tPjE1MjExOTE8L2E+IG9uIDIwMjEtMDktMDYgOTo1NCBQTSwgMTA5MyBkYXlzIGFnb2QCCw8WAh8CaGQCDA8WAh8CaGQCDQ8WBB8DZB8CaGQCDg8WAh8CaGQCEA8WAh8CaGQCEQ8QDxYGHg1EYXRhVGV4dEZpZWxkBQdwal9uYW1lHg5EYXRhVmFsdWVGaWVsZAUFcGpfaWQeC18hRGF0YUJvdW5kZ2QQFUYGKG5vbmUpEkFNRSB8IEFmcmljYSAtIElucBJBTUUgfCBBZnJpY2EgT3RoZXIMQU1FIHwgQW5nb2xhDUFNRSB8IEJhaHJhaW4OQU1FIHwgQm90c3dhbmEOQU1FIHwgQ2FtZXJvb24SQU1FIHwgQ290ZSBESXZvaXJlG0FNRSB8IER1YmFpIEludCBGaW4gQ2VudHJlXwxBTUUgfCBHYW1iaWELQU1FIHwgR2hhbmEQQU1FIHwgSXJhbiBLaXNoXwpBTUUgfCBJcmFxDEFNRSB8IEpvcmRhbgtBTUUgfCBLZW55YQ1BTUUgfCBMZWJhbm9uD0FNRSB8IE1hdXJpdGl1cxFBTUUgfCBNRU5BUCAtIElucBBBTUUgfCBNRVNBIE90aGVyDUFNRSB8IE5pZ2VyaWEKQU1FIHwgT21hbg5BTUUgfCBQYWtpc3RhbgtBTUUgfCBRYXRhchJBTUUgfCBTYXVkaSBBcmFiaWESQU1FIHwgU2llcnJhIExlb25lEkFNRSB8IFNvdXRoIEFmcmljYQ5BTUUgfCBUYW56YW5pYQlBTUUgfCBVQUUMQU1FIHwgVWdhbmRhDEFNRSB8IFphbWJpYQ5BTUUgfCBaaW1iYWJ3ZRNBbWVyaWNhcyB8IEFtZXJpY2FzGUFtZXJpY2FzIHwgQW1lcmljYXMgLSBJbnARQW1lcmljYXMgfCBCcmF6aWwRQW1lcmljYXMgfCBDYW5hZGEYQW1lcmljYXMgfCBVbml0ZWQgU3RhdGVzEUFTQSB8IEFmZ2hhbmlzdGFuEUFTQSB8IEFTRUFOIC0gSW5wD0FTQSB8IEF1c3RyYWxpYRBB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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AE0CF7D5">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAIIBSTTZ1j1OFsWNNKHwAjFN1t2DzQMco6N1GrTSHuXfHDVdvZ2mIfJdykSBPBCwIRGYNX0zJYWyg31YNkIA7pwzbCAIF5XIadPivD5na5doQqTBVr/6Uklm5CwO0tbD9y1pT07+v/ZCekRjygbekMe4tH2k8rYBc9V4Hkc15YJM9VLUGA/wo8WSTnpXKc7QQSI2leW1hmUWiGQiwTNTIIZjxz+Nd8mjOqOzXYVLmz6p7erS8lij9r5aHATF+YbJkLXqRfoEeZyJy19MBKrKsxq1yDw1gFKLGfurorDhYQnqtFKWjLf0R8bw7RzFMYECZKiLi5W7OOaoJDawwNyZtDxmgPJ414hJwvJv76UJLY3DJjQ6zlsiiL27ANEnDuAkO/BCSCc22NQL1srAPe/4dKoGof5SI+MJF2NsuVZAbj1j3A3u1iWbYJPyjUlnma8XS3dHPpYKzRJvO5IXD7jJvn/3xOAps9O3ftGLgjZkWrVUAuAWX9Hy6o5C+DMMrsZPz+op5xuFD/n1cYnhgIuEKhVDSnPasreu6e+XmrP2gefEBAwfScpiKNlq+lyClLl/oyAD8E4gpElbQ27QzQt6gdRD2cz5JTCX3kY6StHcWQ7U9i18Z4XBsBIwCr44EOGSiTPrevaD/nwNSbgk9uWkEm4UK/FZXOlBv5wzf9rHICcIhHJWorKc2CVKWXAzgDiz6pWGPPgVamxHQai/ZKSdzMnjXcG5jsFeVeU7wk2EhIUWH2w1PqtSlTIeMqjNCXjEVHSETTnfz4c09C/BxhttMDkogkc4Ql7aQqtE3bU+iuVArW3B1SIBH/uhqyL5zQW1Z7xIrMhYGNhkIRmSkfSEzVJrF1wJJNmj9pqId7EVUKfJDFwr5npJM9RqHU52oXKehLkARgjYNswFPqt8YIL1mgN80lyEN47Vfodbxl00SdLkhygyhd3g7OLQFWsDPe+EhBRHdsDtUteRBrdVc/bX0iEZ56ErhPce0bw8MX9vrmmBry3rpxoytn7cAEtQCFOxaHsZ/Sdlc7Rqdr057SlUC1aamYq+H3VnGnwkpd6LgQsou7qskg7mSI8XdQA7qCQdq7Yb4sQBqbD8FkrP3VGqnnc8LU1SWMgaUmY9uWc/s57qkMtvDCaMOvu0OoY2r3CGmMkXMIXs5WfYb0IVLbE0S4aNC11BG/2oOwfkB1bjy+479Xykzujigi5QzkScBlKuT/3oY/dT+4h3+CLEfgAxT6DZPOk+cMM/Y4NPasKjKw7wRe0JbQEOxqhxpVXKmz3lDGdB91iAOk4mrhDSrB7WciEXoR3K0x6HqULvezm0+GmjimnDz3SpeZ5DgRGcH3PxibIfA3PXaO8eiLdKFn5dr04Z0/B9TyCW0hHr5E9xHH1JSYKhpKrVMwQEGgRAmRohTHZ+3ARGbf9g32OuUoWbAR8qv9NKR+ESVH3XY5mybUshUB7AE1pdIpHbqHt9zGDTFYvoRKd9vW4HtvTOg7Ad+HGvIWvIrwVzxJ7BA9MokYZPwdeq/olMMlnrOt8OOeszftgx6ZK5qqzPMpjWPYliGOdZ8XAWurfRRI4OXzypCSNeEyr9e1Pz3pg6Nn38CKh4iRAfsvyU8khjBgQUjSACnM1w0poq5Wxfvpky7SuoGmu+dECHqvezy2Dq1KQ0NoT/zNlpyrZ4aHunW77YvAOn1KFf8TErphoXL2tXkRgsiJRTqjiX3Ww4nFosMH5t4uW0E/AifrtjPK319cyD+1kD/Hq7izfGK/L7evyi7Gc0Q39mLjj70T1UBeVrZWvQR+nTnwulX4IlwR9msV9s4EitIl70IhHs/aF386GXfV02tvG9KPgVQsZKAVRezVsxy82jV4Q8CA6Yd4LvLOK/8JOyZxIS8/3RFpj+Bxt4myfDJnM3+nyAgZu2j1IRYZ1bTnZQJitoHyuH8Wq/0+4ECnRBWDGdYnb3tqrOIRa+3601ZRts22hNtgojQHy2CSxChgxLvUhkmGrc4v+QluVKJ9RJsJnHVbxsvzWyd9+AoBR8ZhUyApsEOfrgD2iDY7PBkMvNvao51ftyJGXWOoWx/tjU/ho5l00pJenS1nI35bNbZ0YbHwLfR5QuCGIgwdXoL+bwENa/5M4RdzcbMENBgmctTo9kUUoKdW5yjYb2ywc1+zg6lPtyq+He4aYkyww3GtGQ/y3xDBux4oSzqv811Z8CWgwQ60oiR8N/RSvlGWiNbE0wGR2DJrd0bc5OHjALFyvA9BkvgtU3XVG0Zkq/NDkx6oD6VI2xba73ZGh8FCFs0sS6lzavQA6DcOM8pWboGlltBF2oPSJ4HwgH1L9ZTz7gMhY8zxrm+Pu/EVs2Sm82ppQeIN2athRrZvyVnGRhyuOu6qOn3yQ8SxVo53jD+9kCpgekdNeUjiVs3aiG6ygbt9o1yfH+krQXjKB+j9TdPCLYmYr8zqHg/o6ubehfZsltOrQCRz27oHK2bbblqpEArgeHW2V91idIps1UbDbjnIga8vMHwuEhL4Aa+yLGTDugPWEqn5caH4M2zqPC7SDp2wrqUNWAr8il9O5ALyPPyelkN/FPmG5pUPAdk4JV44YrjPQvU0679gMZXx52e8dfmZffhF9FXjhWBYGGmn1xtbqXZSbzWhoigY6o+0aJxzeBE29+XGy431FN96e1HJnkw3uLEnBSeHMg7boaJ6d0dN12rU6n+U/TihemPZPM3jZZGPOhIXISEAAV1/BDkni9lxtuhOx0OqdD+3ySVExFThZI/WrmRVqIVyxDpeF4st03VvM7FWnCS0FP2X3fdoZ1db8dbw/lka05G7MarXiPoyY8SOmz">
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+	
+		<div>
+				<span id="custom_field_msg2" class="err"></span>
+				<span id="msg2" class="err"></span>
+		</div>
+		 <div style="text-align: center;"> 
+			<input name="sub2" type="submit" id="sub2" class="btn" onclick="disable_me()" value="Update">
+		</div>			
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Break ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">10406</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="http://SGWPAPPCD01.ZONE1.SCB.NET/PembrokeLeaseTracker/send_email.aspx?bg_id=10406&amp;to=Srivatsan.K@sc.com">1521191</a> on 2021-09-06 9:54 PM, 1093 days ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option value="1">(none)</option>
+	<option value="3288">AME | Africa - Inp</option>
+	<option value="3289">AME | Africa Other</option>
+	<option value="3290">AME | Angola</option>
+	<option value="3291">AME | Bahrain</option>
+	<option value="3292">AME | Botswana</option>
+	<option value="3293">AME | Cameroon</option>
+	<option value="3294">AME | Cote DIvoire</option>
+	<option value="3295">AME | Dubai Int Fin Centre_</option>
+	<option value="3296">AME | Gambia</option>
+	<option value="3297">AME | Ghana</option>
+	<option value="3298">AME | Iran Kish_</option>
+	<option value="3299">AME | Iraq</option>
+	<option value="3300">AME | Jordan</option>
+	<option value="3301">AME | Kenya</option>
+	<option value="3302">AME | Lebanon</option>
+	<option value="3303">AME | Mauritius</option>
+	<option value="3304">AME | MENAP - Inp</option>
+	<option value="3305">AME | MESA Other</option>
+	<option value="3306">AME | Nigeria</option>
+	<option value="3307">AME | Oman</option>
+	<option value="3308">AME | Pakistan</option>
+	<option value="3309">AME | Qatar</option>
+	<option value="3310">AME | Saudi Arabia</option>
+	<option value="3311">AME | Sierra Leone</option>
+	<option value="3312">AME | South Africa</option>
+	<option value="3313">AME | Tanzania</option>
+	<option value="3314">AME | UAE</option>
+	<option value="3315">AME | Uganda</option>
+	<option value="3316">AME | Zambia</option>
+	<option value="3317">AME | Zimbabwe</option>
+	<option value="3318">Americas | Americas</option>
+	<option value="3319">Americas | Americas - Inp</option>
+	<option value="3320">Americas | Brazil</option>
+	<option value="3321">Americas | Canada</option>
+	<option value="3322">Americas | United States</option>
+	<option value="3323">ASA | Afghanistan</option>
+	<option value="3324">ASA | ASEAN - Inp</option>
+	<option value="3325">ASA | Australia</option>
+	<option value="3326">ASA | Bangladesh</option>
+	<option value="3327">ASA | Brunei</option>
+	<option value="3328">ASA | Cambodia</option>
+	<option value="3329">ASA | India</option>
+	<option value="3330">ASA | Indonesia</option>
+	<option value="3331">ASA | Laos</option>
+	<option value="3332">ASA | Malaysia</option>
+	<option value="3333">ASA | Myanmar</option>
+	<option value="3334">ASA | Nepal</option>
+	<option value="3335">ASA | Philippines</option>
+	<option value="3336">ASA | Singapore</option>
+	<option value="3337">ASA | South Asia - Inp</option>
+	<option value="3338">ASA | Sri Lanka</option>
+	<option value="3339">ASA | Thailand</option>
+	<option value="3340">ASA | Vietnam</option>
+	<option value="3341">Europe | Europe</option>
+	<option value="3342">Europe | France</option>
+	<option value="3343">Europe | Germany</option>
+	<option value="3344">Europe | Jersey</option>
+	<option value="3345">Europe | Luxembourg</option>
+	<option value="3346">Europe | Turkey</option>
+	<option value="3347">Europe | UK</option>
+	<option value="3348">GCNA | China</option>
+	<option value="3349">GCNA | Greater China - Inp</option>
+	<option value="3350">GCNA | Hong Kong</option>
+	<option value="3351">GCNA | Japan</option>
+	<option value="3352">GCNA | Korea</option>
+	<option value="3353">GCNA | Mongolia</option>
+	<option value="3354">GCNA | North East Asia - Inp</option>
+	<option value="3355">GCNA | Taiwan</option>
+	<option selected="selected" value="3356">SC Group Other | SC Group Other</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			<span id="org_label" class="lbl">Organisation:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="org" id="org">
+	<option selected="selected" value="0">[no organization]</option>
+	<option value="59">Business Finance</option>
+	<option value="58">Product Control</option>
+	<option value="1">System Admin</option>
+
+</select>
+
+	<tr id="row3">
+		<td nowrap>
+			<span id="category_label" class="lbl">Category:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="category" id="category">
+	<option selected="selected" value="0">[no category]</option>
+
+</select>
+
+	<tr id="row4">
+		<td nowrap>
+			<span id="priority_label" class="lbl">Priority:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="priority" id="priority">
+	<option selected="selected" value="0">[no priority]</option>
+	<option value="1">high</option>
+	<option value="2">med</option>
+	<option value="3">low</option>
+
+</select>
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			<span id="status_label" class="lbl">Status:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat">[no status]</span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			<span id="assigned_to_label" class="lbl">Assigned to:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			<select name="assigned_to" id="assigned_to" class="edit_bug_option_none" style="width: 197px;">
+	<option selected="selected" value="0">[not assigned]</option>
+	<option value="2049">Agarwal, Gunjan - 1233288</option>
+	<option value="109">Aina, Samuel - 1303787</option>
+	<option value="2042">Biesbroek, Nic - 1622427</option>
+	<option value="2046">Cheng, Andy Chi Kin - 1144043</option>
+	<option value="2047">Doherty, Simon - 1445448</option>
+	<option value="2057">Enefer, Steve - 1320195</option>
+	<option value="2044">Gnanaraj, Rajashree - 1299844</option>
+	<option value="2048">Honey, Kimberley - 1579325</option>
+	<option value="2052">Kogan, Maria - 1504045</option>
+	<option value="2043">Lee, Jenny Hyunyoung - 1403878</option>
+	<option value="2053">Millan, Selma - 1006400</option>
+	<option value="2058">Mony, Rajesh - 1343276</option>
+	<option value="2041">Ravindran, Rahul - 1506738</option>
+	<option value="2059">Romanis, Michelle - 1519682</option>
+	<option value="2054">Sew, Simon J - 1461082</option>
+	<option value="2050">Tan, Amanda BL - 1575700</option>
+	<option value="2051">Toh, Toak Cheng - 1154655</option>
+	<option value="2045">Williams, Silvia - 1327863</option>
+	<option value="2062">Woodfine, David - 1319965</option>
+	<option value="2063">K, Srivatsan - 1521191</option>
+	<option value="2056">S1, Sreshta - 1420258</option>
+	<option value="2064">Viswanathan, Raghavan - 1162154</option>
+
+</select>
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="Period_row"><td nowrap=""><span id="Period_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Required inputs               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">Period:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Period" id="Period" value="2021-07-31" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('Period');">[select]</a>
+</td></tr><tr id="PCMid-monthflashApproval_row"><td nowrap=""><span id="PCMid-monthflashApproval_label">PC Mid-month flash Approval:</span></td><td align="left"><select id="PCMid-monthflashApproval" name="PC Mid-month flash Approval" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Open</option><option>Approved</option><option>Reject</option></select>
+</td></tr><tr id="BFMRCApproval_row"><td nowrap=""><span id="BFMRCApproval_label">BF MRC Approval:</span></td><td align="left"><select id="BFMRCApproval" name="BF MRC Approval" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Open</option><option>Approved</option><option>Reject</option></select>
+</td></tr><tr id="Business_row"><td nowrap=""><span id="Business_label">Business:</span></td><td align="left"><select id="Business" name="Business" class="edit_bug_option" style="width: 400px;"><option></option><option>Cash</option><option selected="">Trade</option></select>
+</td></tr><tr id="Segment_row"><td nowrap=""><span id="Segment_label">Segment:</span></td><td align="left"><select id="Segment" name="Segment" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">CCIB</option><option>PvBRetail</option></select>
+</td></tr><tr id="P&amp;L/BalanceSheet_row"><td nowrap=""><span id="P&amp;L/BalanceSheet_label">P&amp;L/Balance Sheet:</span></td><td align="left"><select id="P&amp;L/BalanceSheet" name="P&amp;L/Balance Sheet" class="edit_bug_option" style="width: 400px;"><option></option><option>Assets P/E</option><option>Contingents P/E</option><option>Liabilities P/E</option><option>NII</option><option>NFI</option><option selected="">Total Income</option></select>
+</td></tr><tr id="Region_row"><td nowrap=""><span id="Region_label">Region:</span></td><td align="left"><select id="Region" name="Region" class="edit_bug_option" style="width: 400px;"><option></option><option>Americas</option><option>AME</option><option>ASA</option><option>Europe</option><option>GCNA</option><option selected="">SC Group Other</option></select>
+</td></tr><tr id="GSAM_row"><td nowrap=""><span id="GSAM_label">GSAM:</span></td><td align="left"><select id="GSAM" name="GSAM" class="edit_bug_option" style="width: 400px;"><option></option><option>GSAM</option><option selected="">Ex-GSAM</option><option>Balance Sheet</option></select>
+</td></tr><tr id="ActualMRC_row"><td nowrap=""><span id="ActualMRC_label">Actual MRC:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Actual MRC" id="ActualMRC" value="-2036.54" class="txt">
+</td></tr><tr id="CentralMid-monthFlash_row"><td nowrap=""><span id="CentralMid-monthFlash_label">Central Mid-month Flash:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Central Mid-month Flash" id="CentralMid-monthFlash" value="0.00" class="txt">
+</td></tr><tr id="AvF_row"><td nowrap=""><span id="AvF_label">AvF:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="AvF" id="AvF" value="-2036.54" class="txt">
+</td></tr><tr id="Material?_row"><td nowrap=""><span id="Material?_label">Material?:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="10" maxlength="10" name="Material?" id="Material?" value="NO" class="txt">
+</td></tr><tr id="MRCAdjustmentAmount_row"><td nowrap=""><span id="MRCAdjustmentAmount_label">MRC Adjustment Amount:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="MRC Adjustment Amount" id="MRCAdjustmentAmount" value="" class="txt">
+</td></tr><tr id="MRCAdjustmentComment_row"><td nowrap=""><span id="MRCAdjustmentComment_label">MRC Adjustment Comment:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('MRCAdjustmentComment',2500)" wrap="hard" onkeyup="return count_chars('MRCAdjustmentComment',2500)" cols="120" rows="2" name="MRC Adjustment Comment" id="MRCAdjustmentComment"></textarea><div class="grippie" style="margin-right: 79px;"></div></span></div><div class="smallnote" id="MRCAdjustmentComment_cnt">&nbsp;</div>
+</td></tr><tr id="Mid-monthflashAdjustmentAmount_row"><td nowrap=""><span id="Mid-monthflashAdjustmentAmount_label">Mid-month flash Adjustment Amount:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Mid-month flash Adjustment Amount" id="Mid-monthflashAdjustmentAmount" value="" class="txt">
+</td></tr><tr id="Mid-monthflashAdjustmentComment_row"><td nowrap=""><span id="Mid-monthflashAdjustmentComment_label">Mid-month flash Adjustment Comment:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Mid-monthflashAdjustmentComment',2500)" wrap="hard" onkeyup="return count_chars('Mid-monthflashAdjustmentComment',2500)" cols="120" rows="2" name="Mid-month flash Adjustment Comment" id="Mid-monthflashAdjustmentComment"></textarea><div class="grippie" style="margin-right: 79px;"></div></span></div><div class="smallnote" id="Mid-monthflashAdjustmentComment_cnt">&nbsp;</div>
+</td></tr><tr id="ActualMRCRestated_row"><td nowrap=""><span id="ActualMRCRestated_label">Actual MRC Restated:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Actual MRC Restated" id="ActualMRCRestated" value="-2036.54" class="txt">
+</td></tr><tr id="CentralMid-monthFlashRestated_row"><td nowrap=""><span id="CentralMid-monthFlashRestated_label">Central Mid-month Flash Restated:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Central Mid-month Flash Restated" id="CentralMid-monthFlashRestated" value="0.00" class="txt">
+</td></tr><tr id="FXimpact_row"><td nowrap=""><span id="FXimpact_label">FX impact:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="FX impact" id="FXimpact" value="" class="txt">
+</td></tr><tr id="UnderinvestigationAmount_row"><td nowrap=""><span id="UnderinvestigationAmount_label">Under investigation Amount:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Under investigation Amount" id="UnderinvestigationAmount" value="" class="txt">
+</td></tr><tr id="RemainingUnexplained_row"><td nowrap=""><span id="RemainingUnexplained_label">Remaining Unexplained:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Remaining Unexplained" id="RemainingUnexplained" value="-2036.54" class="txt">
+</td></tr><tr id="RemainingUnexplainedMaterial?_row"><td nowrap=""><span id="RemainingUnexplainedMaterial?_label">Remaining Unexplained Material?:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Remaining Unexplained Material?" id="RemainingUnexplainedMaterial?" value="NO" class="txt">
+</td></tr><tr id="BFUnderinvestigationComment_row"><td nowrap=""><span id="BFUnderinvestigationComment_label">BF Under investigation Comment:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('BFUnderinvestigationComment',2500)" wrap="hard" onkeyup="return count_chars('BFUnderinvestigationComment',2500)" cols="120" rows="2" name="BF Under investigation Comment" id="BFUnderinvestigationComment"></textarea><div class="grippie" style="margin-right: 79px;"></div></span></div><div class="smallnote" id="BFUnderinvestigationComment_cnt">&nbsp;</div>
+</td></tr><tr id="PCUnderinvestigationComment_row"><td nowrap=""><span id="PCUnderinvestigationComment_label">PC Under investigation Comment:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('PCUnderinvestigationComment',2500)" wrap="hard" onkeyup="return count_chars('PCUnderinvestigationComment',2500)" cols="120" rows="2" name="PC Under investigation Comment" id="PCUnderinvestigationComment"></textarea><div class="grippie" style="margin-right: 79px;"></div></span></div><div class="smallnote" id="PCUnderinvestigationComment_cnt">&nbsp;</div>
+</td></tr><tr id="UnderInvestigationAgeing(months)_row"><td nowrap=""><span id="UnderInvestigationAgeing(months)_label">Under Investigation Ageing (months):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Under Investigation Ageing (months)" id="UnderInvestigationAgeing(months)" value="" class="txt">
+</td></tr><tr id="UnexplainedAgeing(months)_row"><td nowrap=""><span id="UnexplainedAgeing(months)_label">Unexplained Ageing (months):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Unexplained Ageing (months)" id="UnexplainedAgeing(months)" value="" class="txt">
+</td></tr><tr id="lastupdatedon_row"><td nowrap=""><span id="lastupdatedon_label">last updated on:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="last updated on" id="lastupdatedon" value="2021-09-06 9:54 PM" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('lastupdatedon');">[select]</a></td></tr><tr><td colspan="20"><img src="attach.gif" align="top/">
+ &nbsp;
+ <a href="javascript:open_popup_window_with_section('add_attachment.aspx','add attachment ','10406','Requiredinputs',600,300)" title="Attach an image, document, or other file to this item">add attachment <font color="green">(Max 11 MB)</font></a></td></tr>
+         <tr><td colspan="20">
+<div id="posts">
+<u><b>Required inputs Attachments</b></u>
+<table id="section_container_Requiredinputs"></table>
+</div>
+</td></tr>
+         </tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "breakid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="Preiod -  Jul 2021">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="3356">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="SC Group Other | SC Group Other">
+	<input name="prev_org" type="hidden" id="prev_org" value="0">
+	<input name="prev_org_name" type="hidden" id="prev_org_name">
+	<input name="prev_category" type="hidden" id="prev_category" value="0">
+	<input name="prev_priority" type="hidden" id="prev_priority" value="0">
+	<input name="prev_assigned_to" type="hidden" id="prev_assigned_to" value="0">
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	<input name="prev_status" type="hidden" id="prev_status" value="1">
+	<input name="prev_udf" type="hidden" id="prev_udf" value="0">
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20240904 20:04:34:653">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="System Admin">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="TB_AvF_Tracker">
+	<input type="hidden" id="usp_Requestor_locked_fields_when_cfo_approved_json" value="Invalid column name 'CFO Approval'.">
+
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_Actual MRC" value="-2036.54">
+<input type="hidden" name="prev_Actual MRC Restated" value="-2036.54">
+<input type="hidden" name="prev_AvF" value="-2036.54">
+<input type="hidden" name="prev_BF MRC Approval" value="">
+<input type="hidden" name="prev_BF Under investigation Comment" value="">
+<input type="hidden" name="prev_Business" value="Trade">
+<input type="hidden" name="prev_Central Mid-month Flash" value="0.00">
+<input type="hidden" name="prev_Central Mid-month Flash Restated" value="0.00">
+<input type="hidden" name="prev_FX impact" value="">
+<input type="hidden" name="prev_GSAM" value="Ex-GSAM">
+<input type="hidden" name="prev_last updated on" value="2021-09-06 9:54 PM">
+<input type="hidden" name="prev_Material?" value="NO">
+<input type="hidden" name="prev_Mid-month flash Adjustment Amount" value="">
+<input type="hidden" name="prev_Mid-month flash Adjustment Comment" value="">
+<input type="hidden" name="prev_MRC Adjustment Amount" value="">
+<input type="hidden" name="prev_MRC Adjustment Comment" value="">
+<input type="hidden" name="prev_P&amp;L/Balance Sheet" value="Total Income">
+<input type="hidden" name="prev_PC Mid-month flash Approval" value="">
+<input type="hidden" name="prev_PC Under investigation Comment" value="">
+<input type="hidden" name="prev_Period" value="2021-07-31">
+<input type="hidden" name="prev_Region" value="SC Group Other">
+<input type="hidden" name="prev_Remaining Unexplained" value="-2036.54">
+<input type="hidden" name="prev_Remaining Unexplained Material?" value="NO">
+<input type="hidden" name="prev_Segment" value="CCIB">
+<input type="hidden" name="prev_Under Investigation Ageing (months)" value="">
+<input type="hidden" name="prev_Under investigation Amount" value="">
+<input type="hidden" name="prev_Unexplained Ageing (months)" value="">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(10406)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(10406)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+</table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">TB-AvF-Tracker - 2021 Standard Chartered Bank</td>
+   <td width="1%" align="right" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    } else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org “PC Line Controller” only 
+    //i.e. disable the radio button “+” for this field only for PC Line Controller Org
+    myOrg = "System Admin";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+    //Apply Comment Collapse to array of fields from the database
+    $.each(
+        $("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) { applyCommentCollapseBehaviour(value); }
+        );
+
+		
+</script>
+
+<script type="text/javascript">
+  //Populate upper error message span
+	$("#msg2")[0].innerText=  $("#msg")[0].innerText;
+  
+  //CApproval, GFDFRApproval, FR/MR locking rules
+    var  CCApproval, GFDFRApproval, FR_MR;
+	if ($("#CCApproval").length) {
+		CCApproval = $($("#CCApproval:options")[0]).children("option:selected").val()
+	}
+	if ($("#CCApproval_static").length) {
+		CCApproval = $("#CCApproval_static").text()
+	}
+
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	if ($("#GFDFRApproval_static").length) {
+		GFDFRApproval = $("#GFDFRApproval_static").text();
+	} 
+	 
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	
+	if ($("select[id*=FR/MR]").length) {
+		FR_MR = $($('select[id*=FR/MR]:options')[0]).children("option:selected").val()
+	}
+	if ($("[id*=FR/MR_static]").length) {
+		FR_MR = $("[id*=FR/MR_static]").text();
+	}	
+	
+    //Lock fields based on CCM Approval/Rejection -- Affected fields: GFD MR Approval, GFD FR Approval
+	$("#GFDFRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDFRApproval").attr('disabled', true)
+		$("#GFDFRApproval").after("<font id=GFDFRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDFRApproval").attr('disabled', false)
+	}
+
+	$("#GFDMRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDMRApproval").attr('disabled', true)
+		$("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+
+    //Lock fields based on GFD FR Approval Approval/Rejection -- affected fields: GFD MR Approval 
+	//Include FR/MR exception
+	//If “MR” is selected from “FR/MR” field, tracker should skip Group FR approval and should only go for Group MR approval
+	$("#GFDMRApprovallockedtilFR").empty();
+	if (!(["Approved", "Rejected"].includes(GFDFRApproval))) {
+		if(!(FR_MR=="MR")){
+		     $("#GFDMRApproval").attr('disabled', true)
+		     $("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilFR  color=purple>.locked until FR Approval/Rejection</font>")
+         }		
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+</script>
+<script type="text/javascript">
+    //Conditional locking of fields for Requestor if CFO Approval="Approved")
+	$( document ).ready(function() {
+		JSON.parse($("#usp_Requestor_locked_fields_when_cfo_approved_json").val().replace(/``/g, '"'))
+		.forEach(function (i) {
+			$("[name=" + i.field_name + "]").attr("disabled", i.locked);
+		})
+	});	
+
+</script>
+
+
+<script type="text/javascript">
+    //Rename fields...
+$("#CCNotification_label").text("Notify to (PSID only):");
+$("#PSGLJournalPoster_label").text("PSGL Journal Poster (PSID only):");
+$("#PSGLID_label").text("PSGL Journal ID:");
+$("#IFRSJAWPreparer_label").text("IFRS JAW Preparer (PSID only):");
+</script>
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>
