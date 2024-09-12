@@ -1,46 +1,7 @@
-The code you provided outlines a web-based application primarily designed for tracking and managing financial or business-related breaks or issues within an organization. Based on the HTML and JavaScript provided, here's a breakdown of the purpose and functionality of this app:
+I just wanted to check with you regarding the Trackers in my "Book of work".
 
-### Purpose:
-The app appears to be a **break management and tracking system**, specifically titled "TB-AvF-Tracker." It is likely used by **financial teams** within an organization, such as **Standard Chartered Bank**, to track, manage, and resolve discrepancies or "breaks" in financial reporting, transactions, or internal processes. The breaks could be linked to various aspects of financial reporting, such as **mid-month flash reports**, **actual MRC (Materiality Risk Control)**, or other financial metrics.
+As you may be aware, these are web based user interface applications developed and maintained by our team, used by various people for tracking and workflow scenarios.
 
-### Key Features and Functionality:
+In Steve Enefers's absense I would propose that I include you (as I did with Steve) in some of the requests from users for maintenance and support so that you are aware and can intervene if any of the requests does not comply with your idea or expectation of what the team should be doing.
 
-1. **Break Tracking:**
-   - Each break is identified by a unique **Break ID** (e.g., `10406` in this case) and includes details like **Period (July 2021)**, **Creation Date**, and **Created By**. This allows users to track when and by whom the issue was reported.
-
-2. **Editable Fields:**
-   - The app provides multiple input fields and dropdowns related to the financial reporting process, such as **PC Mid-month flash Approval**, **BF MRC Approval**, **Business**, **Segment**, **Actual MRC**, **Mid-month flash Adjustment Amount**, etc. These inputs capture detailed information about the break, including any adjustments made or comments on the investigation.
-   
-3. **Date-Picker Functionality:**
-   - Certain fields (e.g., **Period**, **Last Updated On**) use a **datepicker** feature, allowing users to select dates easily for reporting periods and updates.
-
-4. **Approval Workflow:**
-   - The app includes approval stages for different financial processes, such as **PC Mid-month flash Approval** and **BF MRC Approval**. Dropdown menus allow users to set these approvals to states like "Open," "Approved," or "Rejected," enabling workflow management.
-   - Comments related to these approvals are stored, and certain fields may be locked or disabled until specific approval steps are completed.
-
-5. **Attachments:**
-   - Users can add attachments (up to 11 MB), such as supporting documents or reports, to each break for further clarification. This feature ensures that users can associate necessary evidence or documents with the break.
-
-6. **User Interaction and Role-Based Permissions:**
-   - The app seems to handle user roles and permissions, indicated by the `System Admin` and other user roles. Certain features, such as editable fields and access to specific functions, might be enabled or disabled based on the user's role (e.g., **System Admin**, **PC Line Controller**, etc.).
-   
-7. **Collapsible Sections:**
-   - The app features collapsible tables (e.g., `tbl1`, `tbl2`, etc.) that help in organizing sections of information. These collapsible sections are useful for hiding or displaying detailed inputs for cleaner interface navigation.
-
-8. **Search and Navigation:**
-   - Users can search breaks using keywords and navigate directly to a break by entering its ID number. This streamlines the ability to find relevant information quickly.
-
-9. **Status and Assignment:**
-   - The **Status** and **Assigned To** fields are used to manage the workflow and accountability for each break. The system allows assigning a break to specific individuals for resolution.
-
-10. **History and Inline Images:**
-    - There are options to toggle **change history** and **show inline images** related to each break. This provides traceability for any updates made over time, ensuring transparency in the resolution process.
-
-11. **Validation and Error Handling:**
-    - There are validation scripts that check if inputs are empty or incorrect before submission. Error messages and custom validation rules are embedded to guide users in providing correct information.
-
-12. **Environment Detection:**
-    - The app checks whether it is running in a **Production** or **UAT (User Acceptance Testing)** environment, likely to help users understand the context in which they are working.
-
-### Conclusion:
-In summary, the **TB-AvF-Tracker** is a robust tool used by financial professionals to manage and resolve breaks in financial reporting or operations. It streamlines the process by offering features such as workflow approvals, document attachments, user assignment, and status tracking, ensuring efficient management of financial discrepancies within an organization.
+Please le me know if this is okay with you.
