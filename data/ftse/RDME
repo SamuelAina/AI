@@ -1,8 +1,1 @@
-
-I believe the reason I didn’t make much progress with this request was that I wasn’t entirely clear on what you were asking for. Additionally, I don’t have Visual Studio 2012 or 2015 available.
-
-Regarding **gspc_tbl**, I don’t think we should modify it, as it’s already being used in other parts of the code. Perhaps you could create a new version, **gspc_tbl_jsn**, that outputs JSON instead of text, and use that for your download page.
-
-As for the **PCWorkspace** in the virtual folder, the C# source has already been compiled into a DLL. Could you share a copy of the actual C# code? That would help me gain better insight.
-
----
+We need to incorporate the new status into existing workflow rules…. Please look at the existing rules in this rules table and amend the table to suit the new status you are proposing, and then send me the new rules table.
