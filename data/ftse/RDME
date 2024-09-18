@@ -1,7 +1,8 @@
-	I think the reason I didn’t get far with is request was that I wasn’t sure what you wanted.
-	
-	Plus, I don’t have  Visual Studio 2012 or 2015 either.
-	
-	I don’t think we should change gspc_tbl because it is already being used in other parts of the code. Perhaps you can write a version gspc_tbl_jsn that emits JSON instead of text, and use that for your download page.
-	
-Currently, that C# source of the PCWorkspace in the virtual folder is already complied into dll, can you share a copy of the actual c# code, so I can get some more insight.
+
+I believe the reason I didn’t make much progress with this request was that I wasn’t entirely clear on what you were asking for. Additionally, I don’t have Visual Studio 2012 or 2015 available.
+
+Regarding **gspc_tbl**, I don’t think we should modify it, as it’s already being used in other parts of the code. Perhaps you could create a new version, **gspc_tbl_jsn**, that outputs JSON instead of text, and use that for your download page.
+
+As for the **PCWorkspace** in the virtual folder, the C# source has already been compiled into a DLL. Could you share a copy of the actual C# code? That would help me gain better insight.
+
+---
