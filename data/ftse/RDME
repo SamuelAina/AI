@@ -1,11 +1,8 @@
 function getServiceDataJSON(actionUrl, params, errorhandler) {
-    console.log("...start getServiceDataJSON" + actionUrl + "; params=" + JSON.stringify(params));
-    if (params != null)
-        console.info("calling " + actionUrl + " with params=" + JSON.stringify(params));
-    else
-        console.info("calling " + actionUrl + " without params");
+    console.log(`...start getServiceDataJSON ${actionUrl}; params=${JSON.stringify(params)}`);
+    console.info(`calling ${actionUrl} with ${params ? `params=${JSON.stringify(params)}` : 'no params'}`);
 
-    var result;
+    let result;
     $.ajax({
         type: "GET",
         async: false,
@@ -13,32 +10,23 @@ function getServiceDataJSON(actionUrl, params, errorhandler) {
         dataType: "json",
         url: actionUrl,
         data: params,
-        success: function (data) {
-             console.log(data);
-            if ((typeof data) == "string") {
-               
-                result = JSON.parse(data);
-            } else {
-                result = data;
-            }
+        success(data) {
+            console.log(data);
+            result = (typeof data === "string") ? JSON.parse(data) : data;
         },
-        error: function (e) {
-            var fault = JSON.parse(e.responseText);
-            if (fault != null) {
-                var htmlMsg = "Url: " + actionUrl + "<br/>Location: " + fault.Location + "<br/>Message: " + fault.Message;
-                var msg = "Url: " + actionUrl + "; Location: " + fault.Location + "; Message: " + fault.Message;
-                showMessage("error", "getServiceDataJSON", htmlMsg);
-                console.error("[getServiceDataJSON] " + msg);
-            }
-            else {
-                var htmlMsg = "Url: " + actionUrl + "<br/>Message: Unknown Internal Error";
-                var msg = "Url: " + actionUrl + "; Message: Unknown Internal Error";
-                showMessage("error", "getServiceDataJSON", htmlMsg);
-                console.error("[getServiceDataJSON] " + msg);
-            }
-            if (errorhandler != null)
-                errorhandler(e);
+        error(e) {
+            const fault = JSON.parse(e.responseText) || {};
+            const location = fault.Location || "Unknown";
+            const message = fault.Message || "Unknown Internal Error";
+            const htmlMsg = `Url: ${actionUrl}<br/>Location: ${location}<br/>Message: ${message}`;
+            const logMsg = `Url: ${actionUrl}; Location: ${location}; Message: ${message}`;
+            
+            showMessage("error", "getServiceDataJSON", htmlMsg);
+            console.error(`[getServiceDataJSON] ${logMsg}`);
+
+            if (errorhandler) errorhandler(e);
         }
     });
+    
     return result;
 }
