@@ -1,25 +1,10 @@
-// Define the URL endpoint
-const actionUrl = 'https://api.example.com/data';
-
-// Define the parameters you want to pass (can be null if no parameters are needed)
-const params = {
-    key1: 'value1',
-    key2: 'value2'
-};
-
-// Define an error handler function (optional)
-function handleError(error) {
-    console.error('An error occurred:', error);
-}
-
-// Call the getServiceDataJSON function and handle the result
-getServiceDataJSON(actionUrl, params, handleError)
-    .then(data => {
-        // Process the data returned from the server
-        console.log('Data received:', data);
-        // You can add more logic here to work with the received data
-    })
-    .catch(error => {
-        // Handle any unexpected errors that occur during the fetch process
-        console.error('Unexpected error:', error);
-    });
+	Dear Team,
+	
+	I recently changed my password. As there  are some scripts used for auromatic file downloads requiring user authentication I have had to activate changes for the script using the procedure in the attached email.
+	
+	I am sending this email to you all so that other members of the team can activate the scripts with their own credentials if I am not available to carry out the process.
+	
+	Please, Note that Ratan File downloads require for the person who activates the script to have access to each of the report files on the report platform UUUURRRLLL
+	
+	
+	
