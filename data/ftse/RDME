@@ -1,41 +1,25 @@
-async function getServiceDataJSON(actionUrl, params, errorhandler) {
-    console.log(`...start getServiceDataJSON ${actionUrl}; params=${JSON.stringify(params)}`);
-    console.info(`calling ${actionUrl} with ${params ? `params=${JSON.stringify(params)}` : 'no params'}`);
+// Define the URL endpoint
+const actionUrl = 'https://api.example.com/data';
 
-    try {
-        const queryParams = params ? new URLSearchParams(params).toString() : '';
-        const response = await fetch(`${actionUrl}?${queryParams}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            }
-        });
+// Define the parameters you want to pass (can be null if no parameters are needed)
+const params = {
+    key1: 'value1',
+    key2: 'value2'
+};
 
-        if (!response.ok) {
-            throw response;
-        }
-
-        const data = await response.json();
-        console.log(data);
-        return data;
-    } catch (e) {
-        try {
-            const fault = await e.json();
-            const location = fault.Location || "Unknown";
-            const message = fault.Message || "Unknown Internal Error";
-            const htmlMsg = `Url: ${actionUrl}<br/>Location: ${location}<br/>Message: ${message}`;
-            const logMsg = `Url: ${actionUrl}; Location: ${location}; Message: ${message}`;
-
-            showMessage("error", "getServiceDataJSON", htmlMsg);
-            console.error(`[getServiceDataJSON] ${logMsg}`);
-        } catch {
-            const htmlMsg = `Url: ${actionUrl}<br/>Message: Unknown Internal Error`;
-            const logMsg = `Url: ${actionUrl}; Message: Unknown Internal Error`;
-
-            showMessage("error", "getServiceDataJSON", htmlMsg);
-            console.error(`[getServiceDataJSON] ${logMsg}`);
-        }
-
-        if (errorhandler) errorhandler(e);
-    }
+// Define an error handler function (optional)
+function handleError(error) {
+    console.error('An error occurred:', error);
 }
+
+// Call the getServiceDataJSON function and handle the result
+getServiceDataJSON(actionUrl, params, handleError)
+    .then(data => {
+        // Process the data returned from the server
+        console.log('Data received:', data);
+        // You can add more logic here to work with the received data
+    })
+    .catch(error => {
+        // Handle any unexpected errors that occur during the fetch process
+        console.error('Unexpected error:', error);
+    });
