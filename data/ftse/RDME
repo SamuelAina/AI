@@ -1,32 +1,41 @@
-function getServiceDataJSON(actionUrl, params, errorhandler) {
+async function getServiceDataJSON(actionUrl, params, errorhandler) {
     console.log(`...start getServiceDataJSON ${actionUrl}; params=${JSON.stringify(params)}`);
     console.info(`calling ${actionUrl} with ${params ? `params=${JSON.stringify(params)}` : 'no params'}`);
 
-    let result;
-    $.ajax({
-        type: "GET",
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        url: actionUrl,
-        data: params,
-        success(data) {
-            console.log(data);
-            result = (typeof data === "string") ? JSON.parse(data) : data;
-        },
-        error(e) {
-            const fault = JSON.parse(e.responseText) || {};
+    try {
+        const queryParams = params ? new URLSearchParams(params).toString() : '';
+        const response = await fetch(`${actionUrl}?${queryParams}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        });
+
+        if (!response.ok) {
+            throw response;
+        }
+
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (e) {
+        try {
+            const fault = await e.json();
             const location = fault.Location || "Unknown";
             const message = fault.Message || "Unknown Internal Error";
             const htmlMsg = `Url: ${actionUrl}<br/>Location: ${location}<br/>Message: ${message}`;
             const logMsg = `Url: ${actionUrl}; Location: ${location}; Message: ${message}`;
-            
+
             showMessage("error", "getServiceDataJSON", htmlMsg);
             console.error(`[getServiceDataJSON] ${logMsg}`);
+        } catch {
+            const htmlMsg = `Url: ${actionUrl}<br/>Message: Unknown Internal Error`;
+            const logMsg = `Url: ${actionUrl}; Message: Unknown Internal Error`;
 
-            if (errorhandler) errorhandler(e);
+            showMessage("error", "getServiceDataJSON", htmlMsg);
+            console.error(`[getServiceDataJSON] ${logMsg}`);
         }
-    });
-    
-    return result;
+
+        if (errorhandler) errorhandler(e);
+    }
 }
