@@ -1,0 +1,1155 @@
+<html><head>
+<title id="titl">Service ID 10060 [No Description]</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 10060
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="Tracker_Cost_on_Restructuring">
+
+
+
+<script type="text/javascript">
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+		if(current_db_environment_elem){
+				current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+		}    
+	}
+};
+
+
+</script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="86" valign="middle"><img width="86" src="custom/logo.jpg"><br><div nowrap="" class="logo" style="width:160px;border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;">Cost on Restructuring Tracker</div><b><font id="xxcurrent_db_environment" color="green">(PRODUCTION)</font></b></td>
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Services</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (Admin (GFS Recipient))</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Service</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray_link">prev</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="warn" href="edit_deal.aspx?id=10059">next<img src="arrow_down.png" border="0" align="top"></a>&nbsp;&nbsp;&nbsp;<span class="smallnote">1 of 43</span></span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=10060" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=10060 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"><a href="delete_deal.aspx?id=10060" title="Delete this item"><img src="delete.png" border="0" align="top">&nbsp;delete</a></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!-- <li id="subscribers" style="display: inline"><a target=_blank href=view_subscribers.aspx?id=10060 title='View users who have subscribed to email notifications for this item'><img src=telephone_edit.png border=0 align=top>&nbsp;subscribers</a></li> -->
+			<li id="subscriptions" style="display: inline"><a id="notifications" title="Get or stop getting email notifications about changes to this item." href="javascript:toggle_notifications(10060)"><img src="telephone.png" border="0" align="top">&nbsp;<span id="get_stop_notifications">get notifications</span></a></li>
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=10060 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			<li id="send_email" style="display: inline"><a href="javascript:send_email(10060)" title="Send an email about this item"><img src="email_edit.png" border="0" align="top">&nbsp;send email</a></li>
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',10060,600,300)" title="Attach an image, document, or other file to this item">add attachment</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form name="ctl00" method="post" action="./edit_deal.aspx?id=10060" id="ctl00" class="frm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A93636E5">
+	
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Service ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">10060</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by 1671364 on 2024-10-07 8:24 PM, 4 days ago</span>
+
+	</td></tr><tr><td><span id="checkTemplate" style="display: none;"><font color="red"><b>BE SURE TO ATTACH THE TEMPLATE <br> Once you have added the attachment, you may need to refresh the page for this message to dissapear</b></font></span></td></tr>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option selected="selected" value="1">None</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_org" class="stat"></span>
+			
+
+	<tr id="row3">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_category" class="stat"></span>
+			
+
+	<tr id="row4">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_priority" class="stat"></span>
+			
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			<span id="status_label" class="lbl">Status:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat">Approved by ACFO</span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="MTApprovedInitiativeName_row"><td nowrap=""><span id="MTApprovedInitiativeName_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Header               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">MT Approved Initiative Name:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="70" maxlength="70" name="MT Approved Initiative Name" id="MTApprovedInitiativeName" value="GCFO - Rubik Restructuring Reversal Sept 2024" class="txt">
+</td></tr><tr id="InitiativeDescription_row"><td nowrap=""><span id="InitiativeDescription_label">Initiative Description:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('InitiativeDescription',1000)" wrap="hard" onkeyup="return count_chars('InitiativeDescription',1000)" cols="120" rows="8" name="Initiative Description" id="InitiativeDescription">Hi Sara,
+
+As a part of fourth cut of restructuring we are reversing additional 13.7Mn USD from the restructuring layer under the Rubik 
+node and Central Costs SG Entity.
+
+Requesting approval for the same.
+
+Please find attached the template.
+
+Regards,
+Harsh</textarea><div class="grippie" style="margin-right: 53px;"></div></span></div><div class="smallnote" id="InitiativeDescription_cnt">&nbsp;</div>
+</td></tr><tr id="Function_row"><td nowrap=""><span id="Function_label">Function:</span></td><td align="left"><select id="Function" name="Function"><option></option><option>Segment &amp; Product (SPC)</option><option>Tech, Transform and Ops</option><option>Business Support (BSC)</option><option selected="">Global Support Functions</option><option>Global Business Services</option><option>Corporate Items</option></select>
+</td></tr><tr id="Sub-Function_row"><td nowrap=""><span id="Sub-Function_label">Sub-Function:</span></td><td align="left"><select id="Sub-Function" name="Sub-Function"><option></option><option>SPC Personal &amp; Business Banking Managed</option><option>SPC CPBB Mgt &amp; Others</option><option>SPC Affluent Managed</option><option>SPC Wealth Solutions</option><option>SPC CCIB Client Coverage</option><option>SPC CCIB Transaction Banking</option><option>SPC CCIB Financial Markets</option><option>SPC CCIB Principal Finance</option><option>SPC CCIB Digital Channels &amp; Data Analytics</option><option>SPC CCIB Mgmt &amp; Governance</option><option>SPC CCIB Mgt Credit &amp; Portfolio Mgt</option><option>SPC CCIB Sustainability</option><option>SPC Segments Direct/Other</option><option>SPC Ventures</option><option>SCV Funds &amp; Investments</option><option>Ventures Core</option><option>TTO Group CISO Management</option><option>TTO-CIO-CCIB Total</option><option>TTO-CIO-Functions Total</option><option>TTO-CIO-CPBB Total</option><option>TTO GBS Management</option><option>TTO QPR Projects</option><option>TTO Chief Data Office</option><option>TTO Group Transformation Office</option><option>TTO Regions CTOO</option><option>TTO Group Management</option><option>TTO COO</option><option>TTO CIO ET Total</option><option>TTO CIO Tech Strategy &amp; Architecture Total</option><option>OPS FCSO</option><option>OPS CPBB</option><option>OPS CCIB</option><option>IT-TPS-CT</option><option>IT-TPS-ET</option><option>IT-TPS-CCIB</option><option>IT-TPS-Functions</option><option>IT-TPS-CPBB</option><option>IT-TPS-Centre</option><option>IT-TPS-TSA Architecture &amp; Governance</option><option>IT-TPS-Information Cyber Security</option><option>IT-TPS-Recharges</option><option>TTO COO Resilience Projects Recov</option><option>Ops FCSO Projects Recov</option><option>Ops GTO Projects</option><option>Ops CPBB - Projects Recov</option><option>Ops CCIB Projects</option><option>IT-Projects-CCIB</option><option>IT-Projects-CT</option><option>IT-Projects-Functions</option><option>IT-Projects-TTO COO</option><option>IT-Projects-CPBB</option><option>IT-Projects-ET</option><option>IT-Projects-GBS T+C</option><option>IT-Centre- Projects</option><option>IT-Projects-Tech Strategy &amp; Architecture</option><option>TTO Investments - Host</option><option>IT-Projects Chief Data Office</option><option>IT-Projects ICS Portfolio</option><option>IT-Projects-IC-CCIB</option><option>IT-Projects-IC-CT</option><option>IT-Projects-IC-Functions</option><option>IT-Projects-IC-TTO COO</option><option>IT-Projects-IC-CPBB</option><option>IT-Projects-IC-ET</option><option>IT-Projects-IC-GBS T+C</option><option>IT-Centre- Projects-IC</option><option>IT-Projects-IC-Tech Strategy &amp; Architecture</option><option>TTO Investments - Host-IC</option><option>IT-Projects-IC Chief Data Office</option><option>IT-Projects-IC ICS</option><option>IT-TPS Service Charges Country</option><option>IT-TPS Service Charges Group</option><option>IT-ICS Service Charges Group</option><option>IT-ICS Service Charges Country</option><option>BSC CEO Business</option><option>BSC CEO Retail</option><option>BSC CEO Input</option><option>BSC Oth Central Info Mgt</option><option>BSC Oth CDD BAU Retail</option><option>BSC Oth CDD Remediation Retail</option><option>BSC Oth Service Delivery &amp; SQR</option><option>BSC Oth Others</option><option>BSC Oth Global Business Recharge</option><option>BSC Oth Global Project Recharge</option><option>BSC Grp Proj Finance C&amp;I</option><option>BSC Grp Proj Product Control C&amp;I</option><option>BSC Grp Proj HR &amp; L&amp;TD C&amp;I</option><option>BSC Grp Proj Credit Risk Mgt C&amp;I</option><option>BSC Grp Proj Legal &amp; Comp C&amp;I</option><option>BSC Grp Proj Market Risk C&amp;I</option><option>BSC Grp Proj Re-Engineering C&amp;I</option><option>BSC Grp Proj Info Mgt C&amp;I</option><option>BSC Grp Proj Mandatory C&amp;I</option><option>BSC Grp Proj Other C&amp;I</option><option>BSC Grp Proj Retail</option><option>BSC Grp Proj Retail Mandatory</option><option>BSC Enhance Proj Finance</option><option>BSC Enhance Proj Product Control</option><option>BSC Enhance Proj HR &amp; L&amp;TD</option><option>BSC Enhance Proj Credit Risk Mgt</option><option>BSC Enhance Proj Legal &amp; Comp</option><option>BSC Enhance Proj Market Risk</option><option>BSC Enhance Proj Re-Engineering</option><option>BSC Enhance Proj Info Mgt</option><option>BSC Enhance Proj Mandatory</option><option>BSC Enhance Proj Other</option><option>BSC Grp &amp; Enhance Projects - Inp</option><option>Business Support (BSC) - Inp</option><option selected="">GSF Group CFO</option><option>GSF Risk CPBB Clients</option><option>GSF Risk CCIB Clients</option><option>GSF Risk Reporting &amp; MI</option><option>GSF Risk CISRO</option><option>GSF Risk COO Change</option><option>GSF Risk Projects</option><option>GSF Risk Country Ops Risk</option><option>GSF Risk Regional Chief Risk Officer</option><option>GSF Risk Enterprise Risk Management</option><option>GSF Risk Reputational Risk</option><option>GSF Risk Risk Appetite</option><option>GSF Risk Climate Risk</option><option>GSF Risk Country &amp; Insurable Risks</option><option>GSF Risk Effectiveness Review</option><option>GSF Risk Chief Risk Officer</option><option>GSF Risk Grp OR &amp; Functions</option><option>GSF Risk COO</option><option>GSF Risk Enterprise RA</option><option>GSF Risk Model Risk Management</option><option>GSF Risk GOR - GBS</option><option>GSF Risk Credit Risk Review</option><option>GSF Risk CRO Treasury Risk</option><option>GSF Risk CISRO - GBS</option><option>GSF Risk Projects - GBS</option><option>GSF Risk Control Testing Hub - GBS</option><option>GSF Risk ERM - GBS</option><option>GSF Risk ERM Models - GBS</option><option>GSF Risk - Inp</option><option>GSF Risk - GBS (Obsolete)</option><option>GSF Risk COO Data HUB - GBS</option><option>GSF Risk COO CPBB CTRY Reporting - GBS</option><option>GSF Risk COO - GBS</option><option>GSF Strategy</option><option>GSF Fin Supply Chain Management</option><option>GSF Property Group</option><option>GSF Property excl Group</option><option>GSF Human Resources</option><option>GSF Corporate Affairs, Brand &amp; Marketing (CABM)</option><option>GSF IA Grp Audit CPBB</option><option>GSF IA Grp Audit CCIB</option><option>GSF IA Grp Audit Comp Conduct &amp; FCC</option><option>GSF IA Grp Audit Quality Assurance</option><option>GSF IA Grp Audit Regions</option><option>GSF IA Grp Audit Risk</option><option>GSF GIA Grp Audit SC Ventures</option><option>GSF GIA Grp Audit GCFO</option><option>GSF IA Grp Audit Support Functions</option><option>GSF IA Grp Audit Info Tech &amp; Ops</option><option>GSF IA Grp Audit Operations</option><option>GSF IA Grp &amp; Country Audit</option><option>GSF IA Grp Audit - GBS</option><option>GSF IA Input</option><option>GSF Legal CCIB</option><option>GSF Legal COO</option><option>GSF Legal Projects</option><option>GSF Corporate Secretariat</option><option>GSF Group General Counsel</option><option>GSF Legal DGIL</option><option>GSF Legal Employment Law</option><option>GSF Enterprise Legal</option><option>GSF Legal Regions</option><option>GSF Legal CPBB</option><option>GSF Shared Investigative Services</option><option>GSF Legal - Inp</option><option>GSF Legal - GBS</option><option>GSF Compliance Regions EA</option><option>GSF Compliance Functions</option><option>GSF Compliance CPBB</option><option>GSF Compliance Regions AME</option><option>GSF Compliance COO &amp; Governance</option><option>GSF Compliance Regulatory &amp; Public Affairs</option><option>GSF Compliance Assurance_</option><option>GSF Compliance Regions Asia</option><option>GSF Compliance CCIB</option><option>GSF Compliance Projects</option><option>GSF Compliance FCC, Conduct &amp; Frameworks</option><option>GSF Compliance Input</option><option>GSF CEO</option><option>GSF CEO Other Costs</option><option>GSF CEO Input</option><option>GSF Directorate</option><option>GSF CCC Grp Approved Projects</option><option>GSF CCC Grp Approved One-Offs</option><option>GSF CCC Grp Approved Others</option><option>GSF CCC Other Costs Input</option><option>GSF PRA Other (Obsolete)</option><option>GSF CCC Transfers In/Out</option><option>GSF CSO Projects</option><option>GSF CSO</option><option>GSF - Inp</option><option>GBS Support Services (Obsolete)</option><option>GBS Professional Services</option><option>GBS Central Operations</option><option>GBS Enablement Services Support</option><option>GBS Enablement Services</option><option>GBS - Inp - obsolete</option><option>COI Grp Reg Fin Transformation</option><option>COI Grp Reg Fin Sys Utility</option><option>COI Grp Approved Projects</option><option>COI Grp Approved One-Offs</option><option>COI Grp Approved Others</option><option>COI Grp Banking Service Division</option><option>COI ALM Country</option><option>COI ALM Group</option><option>COI ALM Regional Heads</option><option>COI ALM Head</option><option>COI Corporate Treasury</option><option>COI Bank Levy</option></select>
+</td></tr><tr id="TotalAmounttobetransferredtoRestructuringLayer($m)_row"><td nowrap=""><span id="TotalAmounttobetransferredtoRestructuringLayer($m)_label">Total Amount to be transferred to Restructuring Layer($m):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Total Amount to be transferred to Restructuring Layer($m)" id="TotalAmounttobetransferredtoRestructuringLayer($m)" value="-13.70" class="txt">
+</td></tr><tr id="NumberofHCaffected_row"><td nowrap=""><span id="NumberofHCaffected_label">Number of HC affected:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Number of HC affected" id="NumberofHCaffected" value="0.00" class="txt">
+</td></tr><tr id="AccountableCFO/Delegate_row"><td nowrap=""><span id="AccountableCFO/Delegate_label">Accountable CFO/Delegate:</span></td><td align="left"><select id="AccountableCFO/Delegate" name="Accountable CFO/Delegate"><option></option><option>1159937-Srini,Santhanam</option><option>1180703-Hassan,Nawaz</option><option>1189517-Su Lian,Ho</option><option>1198320-Noor Hasan,Faruquee</option><option>1200024-Sanjay,Bodani</option><option>1202038-Mandip,Rana</option><option>1210374-Vidya,Kumar</option><option>1303787-Samuel,Aina</option><option>1304698-Madan,TN</option><option>1320195-Steve,Enefer</option><option>1356235-Manan,Jain</option><option>1382102-Myung Jong,Kim</option><option>1391692-Mark William,Dymock</option><option>1404029-Ayyalusamy,S</option><option>1445448-Simon,Doherty</option><option>1447442-Saurabh,Chadha</option><option>1513657-Bhavik,Savla</option><option>1551667-Stuart,Hill</option><option>1553165-Anna,Kyte</option><option>1559060-Sanjay,Rao</option><option>1576659-Siew Fun,Lee</option><option>1615150-Ivon,Dennis</option><option>1623888-Winnie,Law</option><option>2019257-Thomasscrine, Alex</option><option selected="">1159824-Sara Balakrishnan</option><option>2009476-Munir, Asim</option><option>1567092-Padhi, Rashmi Ranjan</option><option>1246925-Shanmugam, Senthil</option><option>1338832-Bagga, Gaurav</option><option>1257951-Mahmood1, Kashif</option><option>1412364-Monica Gupta</option><option>2019257-Thomasscrine, Alex</option></select>
+</td></tr><tr id="Created_row"><td nowrap=""><span id="Created_label">Created:</span></td><td align="left"><span class="stat" id="Created_static">2024-10-07 8:24 PM</span>
+</td></tr><tr id="CreatedBy_row"><td nowrap=""><span id="CreatedBy_label">Created By:</span></td><td align="left"><span class="stat" id="CreatedBy_static">Ashokumar Harsh Punmiya (1671364)</span>
+</td></tr><tr id="Approvedon_row"><td nowrap=""><span id="Approvedon_label">Approved on:</span></td><td align="left"><span class="stat" id="Approvedon_static">2024-10-07 8:25 PM</span>
+</td></tr><tr id="AprpovedbyCFO_row"><td nowrap=""><span id="AprpovedbyCFO_label">Aprpoved by CFO:</span></td><td align="left"><span class="stat" id="AprpovedbyCFO_static">2024-10-07 8:25 PM</span>
+</td></tr><tr id="ApprovedbyGFS_row"><td nowrap=""><span id="ApprovedbyGFS_label">Approved by GFS:</span></td><td align="left"><span class="stat" id="ApprovedbyGFS_static"></span>
+</td></tr><tr id="Remark_row"><td nowrap=""><span id="Remark_label">Remark:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Remark',1000)" wrap="hard" onkeyup="return count_chars('Remark',1000)" cols="120" rows="8" name="Remark" id="Remark"></textarea><div class="grippie" style="margin-right: 53px;"></div></span></div><div class="smallnote" id="Remark_cnt">&nbsp;</div></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "serviceid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update" style="display: none;"><input type="button" value="Refer back" class="btn" style="margin-left: 5px; background-color: brown; display: none;"><input type="button" value="Approve" class="btn" style="margin-left: 5px; background-color: blue; display: inline;"><input type="button" value="Reject" class="btn" style="margin-left: 5px; background-color: red; display: inline;"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="[No Description]">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="1">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="None">
+	
+	<input name="prev_org_name" type="hidden" id="prev_org_name" value="Country User">
+	
+	
+	
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	<input name="prev_status" type="hidden" id="prev_status" value="26">
+	
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 02:01:45:437">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="Admin (GFS Recipient)">
+    <input name="hdn_org_id" type="hidden" id="hdn_org_id" value="64">
+    <input name="hdn_us_id" type="hidden" id="hdn_us_id" value="109">	
+	<input name="hdn_status_id" type="hidden" id="hdn_status_id">
+	<input type="hidden" id="hdn_bg_id" value="10060">
+
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="Tracker_Cost_on_Restructuring">
+	
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_Accountable CFO/Delegate" value="1159824-Sara Balakrishnan">
+<input type="hidden" name="prev_Approved by GFS" value="">
+<input type="hidden" name="prev_Approved on" value="2024-10-07 8:25 PM">
+<input type="hidden" name="prev_Aprpoved by CFO" value="2024-10-07 8:25 PM">
+<input type="hidden" name="prev_Created" value="2024-10-07 8:24 PM">
+<input type="hidden" name="prev_Created By" value="Ashokumar Harsh Punmiya (1671364)">
+<input type="hidden" name="prev_Function" value="Global Support Functions">
+<input type="hidden" name="prev_Initiative Description" value="Hi Sara,
+
+As a part of fourth cut of restructuring we are reversing additional 13.7Mn USD from the restructuring layer under the Rubik 
+node and Central Costs SG Entity.
+
+Requesting approval for the same.
+
+Please find attached the template.
+
+Regards,
+Harsh">
+<input type="hidden" name="prev_MT Approved Initiative Name" value="GCFO - Rubik Restructuring Reversal Sept 2024">
+<input type="hidden" name="prev_Number of HC affected" value="0.00">
+<input type="hidden" name="prev_Remark" value="">
+<input type="hidden" name="prev_Sub-Function" value="GSF Group CFO">
+<input type="hidden" name="prev_Total Amount to be transferred to Restructuring Layer($m)" value="-13.70">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(10060)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(10060)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+
+<tbody><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by Balakrishnan, Sara - 1159824 on 2024-10-07 8:25 PM, 4 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Status from "Pending ACFO Approval" to "Approved by ACFO"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr id="section_"><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><span id="section_''" class="pst">file <a name="185"></a>185 attached by Harsh Punmiya, Ashokumar - 1671364 on 2024-10-07 8:24 PM, 4 days ago</span></td><td align="right">&nbsp;&nbsp;&nbsp;&nbsp;<a class="warn" style="font-size: 8pt;" href="edit_attachment.aspx?id=185&amp;bug_id=10060">edit</a>&nbsp;&nbsp;&nbsp;<a class="warn" style="font-size: 8pt;" href="delete_attachment.aspx?id=185&amp;bug_id=10060">delete</a>
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">GCFO Restructuring Template Sept 2024 Fourth Cut</span><p><span id="section_" class="pst"><img src="attach.gif">attachment:&nbsp;</span><span class="cmt_text">GCFO Restructuring Template Sept 2024 Fourth Cut.xlsb</span>&nbsp;&nbsp;&nbsp;<a target="_blank" style="font-size: 8pt;" href="view_attachment.aspx?download=0&amp;id=185&amp;bug_id=10060">view</a>&nbsp;&nbsp;&nbsp;<a target="_blank" style="font-size: 8pt;" href="view_attachment.aspx?download=1&amp;id=185&amp;bug_id=10060">save</a></p><p><span class="pst">size: 1096380&nbsp;&nbsp;&nbsp;content-type: application/vnd.ms-excel.sheet.binary.macroEnabled.12</span>
+</p></td></tr></tbody></table>
+</td></tr></tbody></table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">Cost on Restructuring Tracker - 2024 Standard Chartered Bank</td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    }
+
+	else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+	
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org ï¿½PC Line Controllerï¿½ only 
+    //i.e. disable the radio button ï¿½+ï¿½ for this field only for PC Line Controller Org
+    myOrg = "Admin (GFS Recipient)";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+	/*
+    //Apply Comment Collapse to array of fields from the database
+    $.each(
+        $("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) { applyCommentCollapseBehaviour(value); }
+        );
+   */
+		
+</script>
+<script>
+
+showHideRow("Tranche2Query(Y/N)", "Tranche2Query_row");
+showHideRow("Tranche2Response(Y/N)", "Tranche2Response_row");
+showHideRow("Tranche3Query(Y/N)", "Tranche3Query_row");
+showHideRow("Tranche3Response(Y/N)", "Tranche3Response_row");
+showHideRow("FurtherQuery1(Y/N)", "FurtherQuery1_row");
+showHideRow("FurtherResponse1(Y/N)", "FurtherResponse1_row");
+showHideRow("FurtherQuery2(Y/N)", "FurtherQuery2_row");
+showHideRow("FurtherResponse2(Y/N)", "FurtherResponse2_row");
+showHideRow("FurtherQuery3(Y/N)", "FurtherQuery3_row");
+showHideRow("FurtherResponse3(Y/N)", "FurtherResponse3_row");
+showHideRow("FurtherQuery4(Y/N)", "FurtherQuery4_row");
+showHideRow("FurtherResponse4(Y/N)", "FurtherResponse4_row");
+showHideRow("FurtherQuery5(Y/N)", "FurtherQuery5_row");
+showHideRow("FurtherResponse5(Y/N)", "FurtherResponse5_row");
+showHideRow("FurtherQuery6(Y/N)", "FurtherQuery6_row");
+showHideRow("FurtherResponse6(Y/N)", "FurtherResponse6_row");
+showHideRow("FurtherQuery7(Y/N)", "FurtherQuery7_row");
+showHideRow("FurtherResponse7(Y/N)", "FurtherResponse7_row");
+
+/**/
+
+function showHideRow(source, target)
+{
+	if($("[id="+source + "] option:selected").text()=="Yes"){
+	   $("#"+target).show()
+	}else{
+	   $("#"+target).hide()
+	}
+} 
+
+
+$("[id=Tranche2Query(Y/N)]").change(function(){showHideRow("Tranche2Query(Y/N)", "Tranche2Query_row");});
+$("[id=Tranche2Response(Y/N)]").change(function(){showHideRow("Tranche2Response(Y/N)", "Tranche2Response_row");});
+$("[id=Tranche3Query(Y/N)]").change(function(){showHideRow("Tranche3Query(Y/N)", "Tranche3Query_row");});
+$("[id=Tranche3Response(Y/N)]").change(function(){showHideRow("Tranche3Response(Y/N)", "Tranche3Response_row");});
+$("[id=FurtherQuery1(Y/N)]").change(function(){showHideRow("FurtherQuery1(Y/N)", "FurtherQuery1_row");});
+$("[id=FurtherResponse1(Y/N)]").change(function(){showHideRow("FurtherResponse1(Y/N)", "FurtherResponse1_row");});
+$("[id=FurtherQuery2(Y/N)]").change(function(){showHideRow("FurtherQuery2(Y/N)", "FurtherQuery2_row");});
+$("[id=FurtherResponse2(Y/N)]").change(function(){showHideRow("FurtherResponse2(Y/N)", "FurtherResponse2_row");});
+$("[id=FurtherQuery3(Y/N)]").change(function(){showHideRow("FurtherQuery3(Y/N)", "FurtherQuery3_row");});
+$("[id=FurtherResponse3(Y/N)]").change(function(){showHideRow("FurtherResponse3(Y/N)", "FurtherResponse3_row");});
+$("[id=FurtherQuery4(Y/N)]").change(function(){showHideRow("FurtherQuery4(Y/N)", "FurtherQuery4_row");});
+$("[id=FurtherResponse4(Y/N)]").change(function(){showHideRow("FurtherResponse4(Y/N)", "FurtherResponse4_row");});
+$("[id=FurtherQuery5(Y/N)]").change(function(){showHideRow("FurtherQuery5(Y/N)", "FurtherQuery5_row");});
+$("[id=FurtherResponse5(Y/N)]").change(function(){showHideRow("FurtherResponse5(Y/N)", "FurtherResponse5_row");});
+$("[id=FurtherQuery6(Y/N)]").change(function(){showHideRow("FurtherQuery6(Y/N)", "FurtherQuery6_row");});
+$("[id=FurtherResponse6(Y/N)]").change(function(){showHideRow("FurtherResponse6(Y/N)", "FurtherResponse6_row");});
+$("[id=FurtherQuery7(Y/N)]").change(function(){showHideRow("FurtherQuery7(Y/N)", "FurtherQuery7_row");});
+$("[id=FurtherResponse7(Y/N)]").change(function(){showHideRow("FurtherResponse7(Y/N)", "FurtherResponse7_row");});
+
+
+
+
+</script>
+<script src="rp.js"></script>
+<script>
+/*
+applyAttachmentToField("If yes - Attach the email request");
+applyAttachmentToField("Review and Analysis Attachment.");
+applyAttachmentToField("Regulatory Reporting Attachment.");
+applyAttachmentToField("IRRBB Attachment.");
+applyAttachmentToField("Engagement with Change Attachment.");
+applyAttachmentToField("PIR required Attachment.");
+*/
+function applyAttachmentToField(fld){
+    var _fld = fld.replace(/\s/g, '') ;
+    console.log(_fld);
+
+    flnd=document.getElementById(_fld);
+
+    //innettext = document.getElementById(_fld).innerText;
+    innerhtml=`
+    <a href="javascript:
+    open_popup_window_with_field('add_attachment.aspx','add attachment ','${this_bugid}','${fld}',600,300)" 
+    title="Attach an image, document, or other file to this item">
+    <img src="attach.gif" align="top">
+    </a>
+    `
+    flnd.parentNode.insertBefore(createElementFromHTML(innerhtml), flnd);
+	
+	
+	//flnd.style.display = 'none'; //or
+	//flnd.style.visibility = 'hidden';	
+	flnd.setAttribute("disabled","disabled");
+  }
+  
+function createElementFromHTML(htmlString) {
+  var div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+
+  // Change this to div.childNodes to support multiple top-level nodes.
+  return div.firstChild;
+} 
+
+/*
+resizeLargeDropdown("LCRReportTemplatesection.");
+resizeLargeDropdown("CFMRReportTemplatesection.");
+resizeLargeDropdown("NSFRReportTemplatesection.");
+*/
+function resizeLargeDropdown(dd_id){
+  dropdown = document.getElementById(dd_id);
+  dropdown.style = "width: 600px; overflow-x: auto;";
+} 
+</script>
+
+<script>
+  // Function to add buttons
+  function addButtons() {
+    // Locate the parent TD element by the existing button's ID
+    var parent = document.getElementById('sub').parentNode;
+    
+    // Create [Refer back] button
+    var referBackButton = document.createElement('input');
+    referBackButton.type = 'button';
+    referBackButton.value = 'Refer back';
+    referBackButton.className = 'btn';
+	referBackButton.style.marginLeft='5px';
+	referBackButton.style.backgroundColor='brown';
+    referBackButton.onclick = function() { 
+		rpg2("usp_reffer_back_button_action",
+		{bg_id:document.getElementById('hdn_bg_id').value,us_id:document.getElementById('hdn_us_id').value}
+		)
+		.then(function(rpval){
+			console.log(rpval);
+			btndata=JSON.parse(rpval);	
+			window.location.reload();
+		});		
+	};
+
+    // Create [Approve] button
+    var approveButton = document.createElement('input');
+    approveButton.type = 'button';
+    approveButton.value = 'Approve';
+    approveButton.className = 'btn';
+    approveButton.style.marginLeft='5px';
+	approveButton.style.backgroundColor='blue';
+    approveButton.onclick = function() {
+		rpg2("usp_approve_button_action",
+		{bg_id:document.getElementById('hdn_bg_id').value,us_id:document.getElementById('hdn_us_id').value}
+		)
+		.then(function(rpval){
+			console.log(rpval);
+			btndata=JSON.parse(rpval);	
+			window.location.reload();
+		});		
+	};
+
+    // Create [Reject] button
+    var rejectButton = document.createElement('input');
+    rejectButton.type = 'button';
+    rejectButton.value = 'Reject';
+    rejectButton.className = 'btn';
+	rejectButton.style.marginLeft='5px';
+	rejectButton.style.backgroundColor='red';
+    rejectButton.onclick = function() {
+		rpg2("usp_reject_button_action",
+		{bg_id:document.getElementById('hdn_bg_id').value,us_id:document.getElementById('hdn_us_id').value}
+		)
+		.then(function(rpval){
+			console.log(rpval);
+			btndata=JSON.parse(rpval);	
+			window.location.reload();
+		});			
+	};
+
+
+    // Append new buttons to the parent TD
+    parent.appendChild(referBackButton);
+    parent.appendChild(approveButton);
+    parent.appendChild(rejectButton);
+  }
+
+  // Call the function to add buttons when the page is ready
+  //window.onload = addButtons;
+
+
+
+function hideInputSubmitByValue(value) {
+  var inputs = document.getElementsByTagName("input");
+  for (var i = 0; i < inputs.length; i++) {
+    if ((inputs[i].type === "submit" || inputs[i].type === "button") && inputs[i].value === value) {
+      inputs[i].style.display = "none";
+    }
+  }
+}
+
+
+function showInputSubmitByValue(value) {
+  var inputs = document.getElementsByTagName("input");
+  for (var i = 0; i < inputs.length; i++) {
+    if ((inputs[i].type === "submit" || inputs[i].type === "button") && inputs[i].value === value) {
+      inputs[i].style.display = "inline";
+    }
+  }
+}
+
+function hideAllButtons(){
+	hideInputSubmitByValue("Update");
+	hideInputSubmitByValue("Refer back");
+	hideInputSubmitByValue("Approve");
+	hideInputSubmitByValue("Reject");
+}
+
+
+function showHideButtonByOrg(){
+		_og_id =document.getElementById("hdn_org_id").value;
+		_st_name = null;
+		if(document.getElementById("static_status")){
+			_st_name=document.getElementById("static_status").innerText;
+		}
+	
+		if(!_st_name){
+			_st_name = document.getElementById("status").options[document.getElementById("status").selectedIndex].text;		
+		}
+
+		console.log("og_id:",_og_id, "st_name:",_st_name );
+
+		btndata=[]
+		rpg2("usp_get_userRoles_button",
+		{og_id:_og_id, st_name:_st_name }
+		)
+		.then(function(rpval){
+			console.log(rpval);
+			btndata=JSON.parse(rpval);
+
+			console.log(btndata);
+			hideAllButtons();
+			btndata.forEach(function(i){
+			if(i.og_id==_og_id && i.st_name==_st_name && i.visible==true){
+				console.log(i.button);
+				showInputSubmitByValue(i.button);
+			};
+			});	
+		});	
+	}
+
+
+
+
+window.onload = function() {
+	$("#checkTemplate").hide();
+	rpg2("usp_check_template_attachment",
+	{bg_id:document.getElementById('hdn_bg_id').value}
+	)
+	.then(function(rpval){
+		rpval=JSON.parse(rpval);
+		if(rpval[0].result==="true"){
+			$("#checkTemplate").hide();
+		}else{
+			$("#checkTemplate").show();
+		}
+	});	
+
+	addButtons();
+	showHideButtonByOrg();
+}
+</script>
+
+
+
+
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>

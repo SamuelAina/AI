@@ -1,0 +1,1109 @@
+<html><head>
+<title id="titl">Project ID 13000 [No Description]</title>
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 13000
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'd M, yy'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+
+	el = get_el("sub");
+	el.disabled = true;
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="160" valign="middle"><img width="80" src="custom/logo.jpg"><br><div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;"><b>Secondary Loan Sales Tracker</b> (starting from 2024)</div><b><font color="blue">(PRODUCTION)</font></b></td>
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Projects</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">queries</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (System Admin)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td valign="middle" align="left'"></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<a class="warn" href="edit_deal.aspx?id=0"><img src="add.png" border="0" align="top">&nbsp;add new Project</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="prev_next">&nbsp;</span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"><a class="warn" href="javascript:clone()" title="Create a copy of this item"><img src="paste_plain.png" border="0" align="top">&nbsp;create copy</a></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=13000" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=13000 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"><a href="delete_deal.aspx?id=13000" title="Delete this item"><img src="delete.png" border="0" align="top">&nbsp;delete</a></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!-- <li id="subscribers" style="display: inline"><a target=_blank href=view_subscribers.aspx?id=13000 title='View users who have subscribed to email notifications for this item'><img src=telephone_edit.png border=0 align=top>&nbsp;subscribers</a></li> -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(13000)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=13000 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			<li id="send_email" style="display: inline"><a href="javascript:send_email(13000)" title="Send an email about this item"><img src="email_edit.png" border="0" align="top">&nbsp;send email</a></li>
+			<!-- <li id="attachment" style="display: inline"><img src=attach.gif align=top>&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',13000,600,300)" title='Attach an image, document, or other file to this item'>add attachment</a></li> -->
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form name="ctl00" method="post" action="./edit_deal.aspx?id=13000" id="ctl00" class="frm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CABD9041">
+
+   
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+	
+		<div>
+				<span id="custom_field_msg2" class="err"></span>
+				<span id="msg2" class="err"></span>
+		</div>
+		 <div style="text-align: center;"> 
+			<input name="sub2" type="submit" id="sub2" class="btn" onclick="disable_me()" value="Update" style="display: none;">
+		</div>			
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Project ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">13000</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="" onclick="return false;">1518082 - Behrens,Beate</a> on 2024-10-10 4:33 PM, 1 day and 8 hours ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			<span id="static_project" class="stat"></span>
+
+			</td></tr>
+<!---->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			<span id="org_label" class="lbl">Organisation:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="org" id="org">
+	<option selected="selected" value="0">[no organization]</option>
+	<option value="58">CPM Edit</option>
+	<option value="57">CPM View</option>
+	<option value="51">CSDG Administrator</option>
+	<option value="50">CSDG Approver</option>
+	<option value="49">CSDG Input</option>
+	<option value="52">CSDG View</option>
+	<option value="56">Finance Edit</option>
+	<option value="55">Finance View</option>
+	<option value="63">FM SalesPerson</option>
+	<option value="59">Full Control</option>
+	<option value="62">GSDG Secondary Approvers</option>
+	<option value="64">LSD SalesPerson</option>
+	<option value="65">PC-VC View</option>
+	<option value="60">SalesPerson</option>
+	<option value="54">Settlements Edit</option>
+	<option value="53">Settlements View</option>
+	<option value="1">System Admin</option>
+	<option value="17">Test</option>
+	<option value="61">Test2</option>
+
+</select>
+
+	<tr id="row3">
+		<td nowrap>
+			<span id="category_label" class="lbl">Category:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="category" id="category">
+	<option selected="selected" value="0">[no category]</option>
+
+</select>
+
+	<tr id="row4">
+		<td nowrap>
+			<span id="priority_label" class="lbl">Priority:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="priority" id="priority">
+	<option selected="selected" value="0">[no priority]</option>
+	<option value="1">high</option>
+	<option value="2">med</option>
+	<option value="3">low</option>
+
+</select>
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat"></span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			<span id="assigned_to_label" class="lbl">Initiated By:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat">Behrens, Beate - 1518082</span>
+			
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="DealTicketNo_row"><td nowrap=""><span id="DealTicketNo_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Header               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">Deal Ticket No:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Deal Ticket No" id="DealTicketNo" value="HKP846" class="txt">
+</td></tr><tr id="DistributionType_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="DistributionType_label">Distribution Type:</span></td><td align="left"><select id="DistributionType" name="Distribution Type" class="edit_bug_option" style="width: 400px;"><option></option><option>Hold Book Sale</option><option>Primary Bookbuild Sale</option><option>PEF Warehouse Sale</option><option>UW Book Sale</option><option>SAR Sale</option><option selected="">OTHERS</option></select>
+</td></tr><tr id="TransactionType_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="TransactionType_label">Transaction Type:</span></td><td align="left"><select id="TransactionType" name="Transaction Type" class="edit_bug_option" style="width: 400px;"><option></option><option>Buy</option><option selected="">Sell</option></select>
+</td></tr><tr id="TradeDate_row"><td nowrap=""><span id="TradeDate_label">Trade Date:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Trade Date" id="TradeDate" value="10 Oct, 2024" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('TradeDate');">[select]</a>
+</td></tr><tr id="TargetSettlementDate_row"><td nowrap=""><span id="TargetSettlementDate_label">Target Settlement Date:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Target Settlement Date" id="TargetSettlementDate" value="16 Oct, 2024" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('TargetSettlementDate');">[select]</a>
+</td></tr><tr id="Salesperson_row"><td nowrap=""><span id="Salesperson_label">Salesperson:</span></td><td align="left"><select id="Salesperson" name="Salesperson" class="edit_bug_option" style="width: 400px;"><option></option><option>Aggarwal, Aakanksha - 2000594</option><option>Ali, Ghorbani - 1609883</option><option selected="">Beate, Behrens - 1518082</option><option>Blake, Michael - 1663539</option><option>Bouchat, Samuel - 1663056</option><option>Chaitanya Sampat - 1189630</option><option>Chan,Dawn - 1515799</option><option>Chen Ke - 2001934</option><option>Cheng, Yanjiao - 1616046</option><option>Cherinchen, Doran - 2015936</option><option>Chris Speller - 1391622</option><option>Dhir,Virendra - 1180996</option><option>Dhyanand Keshveer - 1518511</option><option>Divye, Sachdev - 1622679</option><option>Deependra Kumar - 1610959</option><option>Ensari,Gurkan - 1244646</option><option>Fatima Siddiqi - 1293666</option><option>Frame, Patrick - 2007994</option><option>Fung,Marilyn - 1606587</option><option>Gajendragadkar,Shubham - 1623376</option><option>Gallagher,Conor - 1585784</option><option>Georges,Alexandre - 1601503</option><option>Gosling Jeremy - 1651451</option><option>Irene Njuguna - 1410654</option><option>James Beck - 1609885</option><option>Jay Sheth - 1411787</option><option>Jones Paul - 1665546</option><option>Jung Hwan Oh - 1639718</option><option>Kawamura,Yuzo - 1565219</option><option>Kim, Chunghwan - 2008722</option><option>Kumar Deependra - 1610959</option><option>Kumar,Sonell - 1478807</option><option>Lau,Cindy Ching Yee - 1228187</option><option>Lee,Arthur - 1310742</option><option>Leow Yi En - 1661189</option><option>Lily Liu - 1572342</option><option>Liu, Mengdi - 1643730</option><option>Mohammad Shafiulla -1525416</option><option>Moore, Matthew - 2022432</option><option>Olaniyan Solape - 1610742</option><option>Park, Hong Ju - 1371533</option><option>Pau,Shiv - 1356539</option><option>Ryan Phua - 1565277</option><option>Ryan Shearman - 1573227</option><option>Sambrook,Kenny - 1195048</option><option>Sanaa Tabani - 1333017</option><option>Sawhney, Aryan - 1658969</option><option>Scior,Miriam - 1613618</option><option>Shah Nischal - 2005549</option><option>Shata, Layali - 2011804</option><option>Singh Zoya - 1594202</option><option>Srisuma, Sorapong - 1579698</option><option>Chawla, Shubham - 2005007</option><option>Tang,Ellen YL - 1599984</option><option>Vikram, Maria - 1274502</option><option>Wan,Tracy - 1399150</option><option>Wei Jie Chen - 1625730</option><option>Yeo Enk Loui - 1624492</option><option>Yung Johnny -1659722</option><option>Zhiren Tey - 1434161</option><option>Zibara,Adonis - 1548744</option></select>
+</td></tr><tr id="TransferMethod_row"><td nowrap=""><span id="TransferMethod_label">Transfer Method:</span></td><td align="left"><select id="TransferMethod" name="Transfer Method" class="edit_bug_option" style="width: 400px;"><option selected="">Outright</option><option>Risk Participation - Funded</option><option>Risk Participation - Unfunded</option><option>Internal - Funded</option><option>Internal - Unfunded</option></select></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="BorrowerSCILEID_row"><td nowrap=""><span id="BorrowerSCILEID_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk2" type="button" value="[-]" onclick="toggle_visibility('tbl2', 'lnk2');"><strong>Borrower               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl2" style="display: table;"><tbody><tr><td style="width:300px">Borrower SCI LE ID:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Borrower SCI LE ID" id="BorrowerSCILEID" value="1008214767" class="txt">
+</td></tr><tr id="BorrowerName_row"><td nowrap=""><span id="BorrowerName_label">Borrower Name:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('BorrowerName',150)" wrap="soft" onkeyup="return count_chars('BorrowerName',150)" cols="120" rows="1" name="Borrower Name" id="BorrowerName">Houting B.V.</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="BorrowerName_cnt">&nbsp;</div>
+</td></tr><tr id="BorrowerConsentRequired_row"><td nowrap=""><span id="BorrowerConsentRequired_label">Borrower Consent Required:</span></td><td align="left"><select id="BorrowerConsentRequired" name="Borrower Consent Required" class="edit_bug_option" style="width: 400px;"><option></option><option>Y</option><option selected="">N</option><option>No because acceptable lender</option><option>No because existing lender</option></select>
+</td></tr><tr id="SCILimitID_row"><td nowrap=""><span id="SCILimitID_label">SCI Limit ID:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="SCI Limit ID" id="SCILimitID" value="" class="txt">
+</td></tr><tr id="CreditGrade(CG)_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="CreditGrade(CG)_label">Credit Grade (CG):</span></td><td align="left"><select id="CreditGrade(CG)" name="Credit Grade (CG)" class="edit_bug_option" style="width: 400px;"><option></option><option>1A</option><option>1B</option><option>2A</option><option>2B</option><option>3A</option><option>3B</option><option>4A</option><option>4B</option><option>5A</option><option>5B</option><option selected="">6A</option><option>6B</option><option>7A</option><option>7B</option><option>8A</option><option>8B</option><option>9A</option><option>9B</option><option>10A</option><option>10B</option><option>11A</option><option>11B</option><option>11C</option><option>12A</option><option>12B</option><option>12C</option><option>13</option><option>14</option></select></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="Product_row"><td nowrap=""><span id="Product_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk3" type="button" value="[-]" onclick="toggle_visibility('tbl3', 'lnk3');"><strong>Product &amp; Transaction               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl3" style="display: table;"><tbody><tr><td style="width:300px">Product:</td><td align="left"><select id="Product" name="Product" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Leveraged and Acquisition Finance</option><option>Project and Export Finance</option><option>Transportation Finance</option><option>Financing Solution - Lending</option><option>Commercial Real Estate</option><option>Subscription Finance</option><option>OTHERS</option></select>
+</td></tr><tr id="PSGLDepartment_row"><td nowrap=""><span id="PSGLDepartment_label">PSGL Department:</span></td><td align="left"><span class="stat" id="PSGLDepartment_static"></span>
+</td></tr><tr id="FacilityDescription_row"><td nowrap=""><span id="FacilityDescription_label">Facility Description:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('FacilityDescription',5000)" wrap="soft" onkeyup="return count_chars('FacilityDescription',5000)" cols="120" rows="8" name="Facility Description" id="FacilityDescription">USD1,143,000,000 Facilities Agreement originally dated 2 July 2024, as amended by an amendment agreement dated 29 July 2024</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="FacilityDescription_cnt">&nbsp;</div>
+</td></tr><tr id="Tranche(s)Description_row"><td nowrap=""><span id="Tranche(s)Description_label">Tranche(s) Description:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Tranche(s)Description',5000)" wrap="soft" onkeyup="return count_chars('Tranche(s)Description',5000)" cols="120" rows="8" name="Tranche(s) Description" id="Tranche(s)Description">TL: USD918 million
+RCF: USD225 million</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Tranche(s)Description_cnt">&nbsp;</div>
+</td></tr><tr id="OriginalLoan-BookingEntity_row"><td nowrap=""><span id="OriginalLoan-BookingEntity_label">Original Loan - Booking Entity:</span></td><td align="left"><select id="OriginalLoan-BookingEntity" name="Original Loan - Booking Entity" class="edit_bug_option" style="width: 400px;"><option></option><option>SCB UAE Branch</option><option>SCB Philippines</option><option>SCB Bangladesh</option><option>SCB Saudi offshore</option><option>SCB Botswana</option><option>SC First Bank</option><option>SC Vietnam</option><option>SCB Tanzania</option><option>SCB Singapore</option><option selected="">SCB UK</option><option>SCB Ghana</option><option>SCB Hong Kong Ltd</option><option>SCB Labuan</option><option>SCB India</option><option>SCB Vietnam Hanoi Branch</option><option>SCB Taiwan</option><option>SCB Kenya</option><option>SCB Bahrain</option><option>SCB China</option><option>SCB Cameroon</option><option>SCB Mauritius</option><option>SC Bank (Thai)</option><option>SCB South Africa</option><option>SCB Nigeria</option><option>SCB Sri Lanka</option><option>SCB Pakistan</option><option>SNPC - MENA Others</option><option>SCB Nepal</option><option>SCB Qatar Branch</option><option>SCB Singapore DBU</option><option>SCB Uganda</option><option>SCB Dubai International Financial Center</option><option>SCB Australia</option><option>SCB Japan Branch</option><option>SCB Taiwan Branch</option><option>SCB USA Branches</option><option>SCB Malaysia Berhad</option><option>SCB Indonesia</option><option>SCB Oman Branch</option><option>SCB AG</option><option>GERMANY</option><option>KOREA REPUBLIC OF</option></select>
+</td></tr><tr id="OriginalLoan-ManagementLocation_row"><td nowrap=""><span id="OriginalLoan-ManagementLocation_label">Original Loan - Management Location:</span></td><td align="left"><select id="OriginalLoan-ManagementLocation" name="Original Loan - Management Location" class="edit_bug_option" style="width: 400px;"><option></option><option>SCB UAE Branch</option><option>SCB Philippines</option><option>SCB Bangladesh</option><option>SCB Saudi offshore</option><option>SCB Botswana</option><option>SC First Bank</option><option>SC Vietnam</option><option>SCB Tanzania</option><option>SCB Singapore</option><option>SCB UK</option><option>SCB Ghana</option><option selected="">SCB Hong Kong Ltd</option><option>SCB Labuan</option><option>SCB India</option><option>SCB Vietnam Hanoi Branch</option><option>SCB Taiwan</option><option>SCB Kenya</option><option>SCB Bahrain</option><option>SCB China</option><option>SCB Cameroon</option><option>SCB Mauritius</option><option>SC Bank (Thai)</option><option>SCB South Africa</option><option>SCB Nigeria</option><option>SCB Sri Lanka</option><option>SCB Pakistan</option><option>SNPC - MENA Others</option><option>SCB Nepal</option><option>SCB Qatar Branch</option><option>SCB Singapore DBU</option><option>SCB Uganda</option><option>SCB Dubai International Financial Center</option><option>SCB Australia</option><option>SCB Japan Branch</option><option>SCB Taiwan Branch</option><option>SCB USA Branches</option><option>SCB Malaysia Berhad</option><option>SCB Indonesia</option><option>SCB Oman Branch</option><option>SCB AG</option><option>GERMANY</option><option>KOREA REPUBLIC OF</option></select>
+</td></tr><tr id="SigningDate_row"><td nowrap=""><span id="SigningDate_label">Signing Date:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Signing Date" id="SigningDate" value="2 Jul, 2024" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('SigningDate');">[select]</a>
+</td></tr><tr id="MaturityDate_row"><td nowrap=""><span id="MaturityDate_label">Maturity Date:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Maturity Date" id="MaturityDate" value="29 Oct, 2029" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('MaturityDate');">[select]</a>
+</td></tr><tr id="LoanCCY(LCCY)_row"><td nowrap=""><span id="LoanCCY(LCCY)_label">Loan CCY (LCCY):</span></td><td align="left"><select id="LoanCCY(LCCY)" name="Loan CCY (LCCY)" class="edit_bug_option" style="width: 400px;"><option></option><option>AFN</option><option>AOA</option><option>AUD</option><option>BHD</option><option>BDT</option><option>BBD</option><option>BMD</option><option>BWP</option><option>BRL</option><option>BND</option><option>CAD</option><option>XAF</option><option>XOF</option><option>CNY</option><option>COP</option><option>CZK</option><option>DKK</option><option>XCD</option><option>EGP</option><option>ETB</option><option>EUR</option><option>FKP</option><option>FJD</option><option>GMD</option><option>GHS</option><option>HKD</option><option>HUF</option><option>INR</option><option>IDR</option><option>IRR</option><option>IQD</option><option>ILS</option><option>JPY</option><option>JOD</option><option>KES</option><option>KWD</option><option>LBP</option><option>LSL</option><option>MOP</option><option>MWK</option><option>MYR</option><option>MUR</option><option>MXN</option><option>MAD</option><option>MZN</option><option>NPR</option><option>NZD</option><option>NGN</option><option>NOK</option><option>OMR</option><option>PKR</option><option>PEN</option><option>PHP</option><option>PLN</option><option>GBP</option><option>QAR</option><option>RUB</option><option>SAR</option><option>SCR</option><option>SLL</option><option>SGD</option><option>ZAR</option><option>KRW</option><option>LKR</option><option>SZL</option><option>SEK</option><option>CHF</option><option>TWD</option><option>TZS</option><option>THB</option><option>TND</option><option>TRY</option><option>AED</option><option>UGX</option><option selected="">USD</option><option>VND</option><option>ZMW</option></select>
+</td></tr><tr id="Notional(LCCY)_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="Notional(LCCY)_label">Notional (LCCY):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Notional (LCCY)" id="Notional(LCCY)" value="3750000.0000" class="txt">
+</td></tr><tr id="BaseRate_row"><td nowrap=""><span id="BaseRate_label">Base Rate:</span></td><td align="left"><select id="BaseRate" name="Base Rate" class="edit_bug_option" style="width: 400px;"><option></option><option>AEIBOR RATE FLOAT</option><option>AUD BBSY FLOATING</option><option>BASE RATE</option><option>BHIBOR RATE FLOAT</option><option>BIBOR RATE</option><option>CALL RATE</option><option>CBR RATE FIXED</option><option>CDD RATE</option><option>COST OF FUND RATE</option><option>EURIBOR RATE</option><option>EURIBIOR</option><option>EURO-RATE</option><option>FIXED BASE RATE</option><option>FIXED RATE LOAN</option><option>FIXED (IRS)</option><option>GHANA REFERENCE RATE</option><option>HIBOR RATE</option><option>INR FIXED</option><option>INR FLOATING</option><option>ISLAMIC FINANCE</option><option>JIBAR</option><option>KIBOR RATE</option><option>KLIBOR RATE</option><option>LIBOR RATE</option><option>MCLR RATE</option><option>MCLR RATE FIXED</option><option>MIBOR RATE</option><option>NIBOR RATE FLOAT</option><option>NZD BKBM FLOATING</option><option>PBOC CHINA</option><option>PRIME RATE</option><option>QCB RATE</option><option>SIBOR RATE</option><option>SOFR RATE</option><option>SONIA RATE</option><option>SORA RATE</option><option>SWAP OFFER RATE</option><option>SWAP RATE</option><option>T BILL RATE</option><option>TH AVG BANK MLR FIX</option><option>TH SCB MLR FLOATING</option><option>THBFIX</option><option>VARIABLE BASE RATE</option><option>RFR RATE</option><option selected="">TERM RFR</option></select>
+</td></tr><tr id="Margin(%)_row"><td nowrap=""><span id="Margin(%)_label">Margin (%):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Margin (%)" id="Margin(%)" value="4.00000" class="txt">
+</td></tr><tr id="Price/YieldBasis_row"><td nowrap=""><span id="Price/YieldBasis_label">Price/Yield Basis:</span></td><td align="left"><select id="Price/YieldBasis" name="Price/Yield Basis" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Price</option><option>Yield</option></select>
+</td></tr><tr id="Price(%)_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="Price(%)_label">Price (%):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Price (%)" id="Price(%)" value="100.00000" class="txt">
+</td></tr><tr id="Yield(%)_row"><td nowrap=""><span id="Yield(%)_label">Yield (%):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Yield (%)" id="Yield(%)" value="" class="txt"></td></tr><tr><td colspan="20"><img src="attach.gif" align="top/">
+ &nbsp;
+ <a href="javascript:open_popup_window_with_section('add_attachment.aspx','add attachment ','13000','Product&amp;Transaction',600,300)" title="Attach an image, document, or other file to this item">add attachment</a></td></tr>
+         <tr><td colspan="20">
+<div id="posts">
+<u><b>Product &amp; Transaction Attachments</b></u>
+<table id="section_container_Product&amp;Transaction"></table>
+</div>
+</td></tr>
+         </tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="CounterpartyLEID_row"><td nowrap=""><span id="CounterpartyLEID_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk4" type="button" value="[-]" onclick="toggle_visibility('tbl4', 'lnk4');"><strong>Investor               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl4" style="display: table;"><tbody><tr><td style="width:300px">Counterparty LEID:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Counterparty LEID" id="CounterpartyLEID" value="11018456" class="txt">
+</td></tr><tr id="CounterpartyName_row"><td nowrap=""><span id="CounterpartyName_label">Counterparty Name:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Counterparty Name" id="CounterpartyName" value="HUA NAN COMMERCIAL BANK, LTD." class="txt">
+</td></tr><tr id="InvestorType_row"><td nowrap=""><span id="InvestorType_label">Investor Type:</span></td><td align="left"><select id="InvestorType" name="Investor Type" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Bank</option><option>Non-Bank</option></select>
+</td></tr><tr id="Country-HQ_row"><td nowrap=""><span id="Country-HQ_label">Country - HQ:</span></td><td align="left"><select id="Country-HQ" name="Country - HQ" class="edit_bug_option" style="width: 400px;"><option></option><option>AE</option><option>AF</option><option>BF</option><option>BM</option><option>BY</option><option>CC</option><option>DM</option><option>FJ</option><option>GR</option><option>KG</option><option>KI</option><option>KZ</option><option>MA</option><option>MU</option><option>RE</option><option>SH</option><option>SN</option><option>VU</option><option>BZ</option><option>CU</option><option>CV</option><option>DE</option><option>HK</option><option>IM</option><option>JP</option><option>LN</option><option>MW</option><option>PL</option><option>SA</option><option>SC</option><option>SI</option><option>SZ</option><option>TJ</option><option>US</option><option>AGO</option><option>AM</option><option>AO</option><option>CA</option><option>CF</option><option>CX</option><option>ET</option><option>FR</option><option>GL</option><option>GN</option><option>GU</option><option>HU</option><option>IO</option><option>IQ</option><option>KM</option><option>LA</option><option>LB</option><option>MK</option><option>MP</option><option>MS</option><option>NR</option><option>PF</option><option>SD</option><option>SG</option><option>SR</option><option>TC</option><option>TD</option><option>AW</option><option>CY</option><option>ES</option><option>GE</option><option>GT</option><option>HN</option><option>HT</option><option>ID</option><option>IL</option><option>KN</option><option>KY</option><option>ML</option><option>MQ</option><option>NA</option><option>PG</option><option>QA</option><option>RW</option><option>SE</option><option>SO</option><option>SV</option><option>TW</option><option>VC</option><option>VE</option><option>AR</option><option>AZ</option><option>BJ</option><option>BT</option><option>BV</option><option>CR</option><option>ER</option><option>GG</option><option>IR</option><option>KP</option><option>LC</option><option>LS</option><option>ME</option><option>MR</option><option>MY</option><option>MZ</option><option>NL</option><option>NZ</option><option>PH</option><option>PS</option><option>PY</option><option>SX</option><option>TZ</option><option>UG</option><option>UM</option><option>AI</option><option>BE</option><option>BO</option><option>BQ</option><option>BR</option><option>CD</option><option>CL</option><option>CM</option><option>DZ</option><option>EH</option><option>GA</option><option>GB</option><option>IS</option><option>IT</option><option>JE</option><option>LT</option><option>LV</option><option>MF</option><option>MH</option><option>NE</option><option>NU</option><option>PK</option><option>PW</option><option>TL</option><option>TT</option><option>VI</option><option selected="">VN</option><option>XL</option><option>ZZ</option><option>AD</option><option>AL</option><option>AS</option><option>BA</option><option>BD</option><option>BG</option><option>BS</option><option>GI</option><option>HM</option><option>JM</option><option>JO</option><option>KH</option><option>LU</option><option>MG</option><option>MN</option><option>MV</option><option>NG</option><option>NI</option><option>OM</option><option>PT</option><option>RS</option><option>SS</option><option>ST</option><option>VA</option><option>VG</option><option>ZM</option><option>AT</option><option>BL</option><option>BN</option><option>CK</option><option>DO</option><option>EC</option><option>FI</option><option>FK</option><option>GH</option><option>GP</option><option>GQ</option><option>GY</option><option>IE</option><option>IN</option><option>KR</option><option>MO</option><option>MT</option><option>PA</option><option>SB</option><option>SK</option><option>SL</option><option>SM</option><option>TG</option><option>TH</option><option>TM</option><option>TR</option><option>UY</option><option>WS</option><option>YE</option><option>ZW</option><option>AG</option><option>AU</option><option>BI</option><option>CG</option><option>CN</option><option>CO</option><option>CW</option><option>DK</option><option>FM</option><option>GD</option><option>KW</option><option>LI</option><option>LY</option><option>MM</option><option>MX</option><option>NF</option><option>NP</option><option>RU</option><option>TN</option><option>TO</option><option>BB</option><option>BH</option><option>BW</option><option>CH</option><option>CI</option><option>CZ</option><option>DJ</option><option>EE</option><option>EG</option><option>GM</option><option>GW</option><option>HR</option><option>KE</option><option>LK</option><option>LR</option><option>MC</option><option>MD</option><option>NC</option><option>NO</option><option>PE</option><option>PN</option><option>PR</option><option>RO</option><option>SY</option><option>UA</option><option>UZ</option><option>ZA</option></select>
+</td></tr><tr id="Country-Branch_row"><td nowrap=""><span id="Country-Branch_label">Country - Branch:</span></td><td align="left"><select id="Country-Branch" name="Country - Branch" class="edit_bug_option" style="width: 400px;"><option></option><option>AFGHANISTAN</option><option>ALBANIA</option><option>ALGERIA</option><option>AMERICAN SAMOA</option><option>ANGOLA</option><option>ANGUILLA</option><option>ANTIGUA AND BARBUDA</option><option>ARGENTINA</option><option>ARMENIA</option><option>ARUBA</option><option>AUSTRALIA</option><option>AUSTRIA</option><option>AZERBAIJAN</option><option>BAHAMAS</option><option>BAHRAIN</option><option>BANGLADESH</option><option>BARBADOS</option><option>BELARUS</option><option>BELGIUM</option><option>BELIZE</option><option>BENIN</option><option>BERMUDA</option><option>BHUTAN</option><option>PLURINATIONAL STATE OF BOLIVIA</option><option>BONAIRE, SINT EUSTATIUS AND SABA</option><option>BOSNIA AND HERZEGOVINA</option><option>BOTSWANA</option><option>BOUVET ISLAND</option><option>BRAZIL</option><option>BRUNEI DARUSSALAM</option><option>BULGARIA</option><option>BURKINA FASO</option><option>CAMBODIA</option><option>CAMEROON</option><option>CANADA</option><option>CAYMAN ISLANDS</option><option>CHAD</option><option>CHILE</option><option>CHINA</option><option>CHRISTMAS ISLAND</option><option>COCOS (KEELING) ISLANDS</option><option>COLOMBIA</option><option>THE DEMOCRATIC REPUBLIC OF CONGO</option><option>COOK ISLANDS</option><option>COSTA RICA</option><option>COTE DIVOIRE</option><option>CROATIA</option><option>CURACAO</option><option>CYPRUS</option><option>CZECH REPUBLIC</option><option>DEFAULT_Z9</option><option>DENMARK</option><option>DJIBOUTI</option><option>DOMINICA</option><option>DOMINICAN REPUBLIC</option><option>ECUADOR</option><option>EGYPT</option><option>EL SALVADOR</option><option>EQUATORIAL GUINEA</option><option>ERITREA</option><option>ESTONIA</option><option>ETHIOPIA</option><option>FALKLAND ISLANDS (MALVINAS)</option><option>FIJI</option><option>FINLAND</option><option>FRANCE</option><option>FRENCH POLYNESIA</option><option>GABON</option><option>GAMBIA</option><option>GEORGIA</option><option>GERMANY</option><option>GHANA</option><option>GIBRALTAR</option><option>GREECE</option><option>GRENADA</option><option>GUATEMALA</option><option>GUERNSEY</option><option>GUINEA</option><option>GUYANA</option><option>HONDURAS</option><option selected="">HONG KONG</option><option>HUNGARY</option><option>ICELAND</option><option>INDIA</option><option>INDONESIA</option><option>IRAN, ISLAMIC REPUBLIC OF</option><option>IRAQ</option><option>IRELAND</option><option>ISLE OF MAN</option><option>ISRAEL</option><option>ITALY</option><option>JAMAICA</option><option>JAPAN</option><option>JERSEY</option><option>JORDAN</option><option>KAZAKHSTAN</option><option>KENYA</option><option>KIRIBATI</option><option>KOREA, REPUBLIC OF</option><option>KUWAIT</option><option>KYRGYZSTAN</option><option>LABUAN</option><option>LAO PEOPLES DEMOCRATIC REPUBLIC</option><option>LATVIA</option><option>LEBANON</option><option>LESOTHO</option><option>LIBERIA</option><option>LIBYA</option><option>LIECHTENSTEIN</option><option>LITHUANIA</option><option>LUXEMBOURG</option><option>MACAO</option><option>MACEDONIA, THE FORMER YUGOSLAV R</option><option>MALAWI</option><option>MALAYSIA</option><option>MALDIVES</option><option>MALI</option><option>MALTA</option><option>MARSHALL ISLANDS</option><option>MAURITANIA</option><option>MAURITIUS</option><option>MEXICO</option><option>MONACO</option><option>MONGOLIA</option><option>MONTENEGRO</option><option>MOROCCO</option><option>MOZAMBIQUE</option><option>MYANMAR</option><option>NAMIBIA</option><option>NAURU</option><option>NEPAL</option><option>NETHERLANDS</option><option>NEW CALEDONIA</option><option>NEW ZEALAND</option><option>NICARAGUA</option><option>NIGER</option><option>NIGERIA</option><option>NORWAY</option><option>OMAN</option><option>PAKISTAN</option><option>PALESTINE, STATE OF</option><option>PANAMA</option><option>PAPUA NEW GUINEA</option><option>PARAGUAY</option><option>PERU</option><option>PHILIPPINES</option><option>POLAND</option><option>PORTUGAL</option><option>PUERTO RICO</option><option>QATAR</option><option>ROMANIA</option><option>RUSSIAN FEDERATION</option><option>SAINT KITTS AND NEVIS</option><option>SAINT LUCIA</option><option>SAINT VINCENT AND THE GRENADINES</option><option>SAMOA</option><option>SAN MARINO</option><option>SAUDI ARABIA</option><option>SENEGAL</option><option>SERBIA</option><option>SEYCHELLES</option><option>SIERRA LEONE</option><option>SINGAPORE</option><option>SINT MAARTEN (DUTCH PART)</option><option>SLOVAKIA</option><option>SLOVENIA</option><option>SOMALIA</option><option>SOUTH AFRICA</option><option>SPAIN</option><option>SRI LANKA</option><option>SWAZILAND</option><option>SWEDEN</option><option>SWITZERLAND</option><option>SYRIAN ARAB REPUBLIC</option><option>TAIWAN</option><option>TANZANIA, UNITED REPUBLIC OF</option><option>THAILAND</option><option>TIMOR-LESTE</option><option>TOGO</option><option>TRINIDAD AND TOBAGO</option><option>TUNISIA</option><option>TURKEY</option><option>TURKMENISTAN</option><option>TURKS AND CAICOS ISLANDS</option><option>UGANDA</option><option>UKRAINE</option><option>UNITED ARAB EMIRATES</option><option>UNITED KINGDOM</option><option>UNITED STATES</option><option>URUGUAY</option><option>VANUATU</option><option>VENEZUELA, BOLIVARIAN REPUBLIC O</option><option>VIETNAM</option><option>VIRGIN ISLANDS, BRITISH</option><option>VIRGIN ISLANDS, U.S.</option><option>ZAMBIA</option><option>ZIMBABWE</option></select>
+</td></tr><tr id="KYC-Investor_row"><td nowrap=""><span id="KYC-Investor_label">KYC - Investor:</span></td><td align="left"><select id="KYC-Investor" name="KYC - Investor" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Y</option><option>N</option></select>
+</td></tr><tr id="ContactPerson_row"><td nowrap=""><span id="ContactPerson_label">Contact Person:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="-1" maxlength="-1" name="Contact Person" id="ContactPerson" value="Sam Huang / Cindy Chen" class="txt">
+</td></tr><tr id="ContactEmail_row"><td nowrap=""><span id="ContactEmail_label">Contact Email:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('ContactEmail',1000)" wrap="soft" onkeyup="return count_chars('ContactEmail',1000)" cols="120" rows="8" name="Contact Email" id="ContactEmail">hk.synloan@hncb.com / hk.synloan2@hncb.com</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="ContactEmail_cnt">&nbsp;</div>
+</td></tr><tr id="CounterpartyTelephonenumber_row"><td nowrap=""><span id="CounterpartyTelephonenumber_label">Counterparty Telephone number:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="80" maxlength="80" name="Counterparty Telephone number" id="CounterpartyTelephonenumber" value="+852-2824-0288 Extn.898" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="TransferFeeCCY_row"><td nowrap=""><span id="TransferFeeCCY_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk5" type="button" value="[-]" onclick="toggle_visibility('tbl5', 'lnk5');"><strong>Transfer               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl5" style="display: table;"><tbody><tr><td style="width:300px">Transfer Fee CCY:</td><td align="left"><select id="TransferFeeCCY" name="Transfer Fee CCY" class="edit_bug_option" style="width: 400px;"><option></option><option>AFN</option><option>AOA</option><option>AUD</option><option>BHD</option><option>BDT</option><option>BBD</option><option>BMD</option><option>BWP</option><option>BRL</option><option>BND</option><option>CAD</option><option>XAF</option><option>XOF</option><option>CNY</option><option>COP</option><option>CZK</option><option>DKK</option><option>XCD</option><option>EGP</option><option>ETB</option><option>EUR</option><option>FKP</option><option>FJD</option><option>GMD</option><option>GHS</option><option>HKD</option><option>HUF</option><option>INR</option><option>IDR</option><option>IRR</option><option>IQD</option><option>ILS</option><option>JPY</option><option>JOD</option><option>KES</option><option>KWD</option><option>LBP</option><option>LSL</option><option>MOP</option><option>MWK</option><option>MYR</option><option>MUR</option><option>MXN</option><option>MAD</option><option>MZN</option><option>NPR</option><option>NZD</option><option>NGN</option><option>NOK</option><option>OMR</option><option>PKR</option><option>PEN</option><option>PHP</option><option>PLN</option><option>GBP</option><option>QAR</option><option>RUB</option><option>SAR</option><option>SCR</option><option>SLL</option><option>SGD</option><option>ZAR</option><option>KRW</option><option>LKR</option><option>SZL</option><option>SEK</option><option>CHF</option><option>TWD</option><option>TZS</option><option>THB</option><option>TND</option><option>TRY</option><option>AED</option><option>UGX</option><option selected="">USD</option><option>VND</option><option>ZMW</option></select>
+</td></tr><tr id="TransferFeeAmount_row"><td nowrap=""><span id="TransferFeeAmount_label">Transfer Fee Amount:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Transfer Fee Amount" id="TransferFeeAmount" value="5000.00" class="txt">
+</td></tr><tr id="TransferFee-SCBPortion(%)_row"><td nowrap=""><span id="TransferFee-SCBPortion(%)_label">Transfer Fee - SCB Portion (%):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Transfer Fee - SCB Portion (%)" id="TransferFee-SCBPortion(%)" value="100.00" class="txt">
+</td></tr><tr id="BreakfundingTerm_row"><td nowrap=""><span id="BreakfundingTerm_label">Breakfunding Term:</span></td><td align="left"><select id="BreakfundingTerm" name="Breakfunding Term" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">LMA</option><option>LSTA</option><option>APLMA</option><option>NA</option><option>WAIVED</option><option>Y - Others</option></select>
+</td></tr><tr id="DocstobeProvided_row"><td nowrap=""><span id="DocstobeProvided_label">Docs to be Provided:</span></td><td align="left"><select id="DocstobeProvided" name="Docs to be Provided" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Y</option><option>N</option></select>
+</td></tr><tr id="SubjecttoDocs_row"><td nowrap=""><span id="SubjecttoDocs_label">Subject to Docs:</span></td><td align="left"><select id="SubjecttoDocs" name="Subject to Docs" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Y</option><option>N</option></select>
+</td></tr><tr id="TradeConfSCB_row"><td nowrap=""><span id="TradeConfSCB_label">Trade Conf SCB:</span></td><td align="left"><select id="TradeConfSCB" name="Trade Conf SCB" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Y</option><option>N</option></select>
+</td></tr><tr id="SubjecttoTerms_row"><td nowrap=""><span id="SubjecttoTerms_label">Subject to Terms:</span></td><td align="left"><select id="SubjecttoTerms" name="Subject to Terms" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">LMA</option><option>LSTA</option><option>APLMA</option><option>OTHER</option></select>
+</td></tr><tr id="IfOTHER,SCBApprovalifNotLMA/LSTA/APLMA?_row"><td nowrap=""><span id="IfOTHER,SCBApprovalifNotLMA/LSTA/APLMA?_label">If OTHER, SCB Approval if Not LMA/ LSTA/ APLMA ?:</span></td><td align="left"><select id="IfOTHER,SCBApprovalifNotLMA/LSTA/APLMA?" name="If OTHER, SCB Approval if Not LMA/ LSTA/ APLMA ?" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Y</option><option>N</option><option>NA</option></select>
+</td></tr><tr id="DelayedCompensation_row"><td nowrap=""><span id="DelayedCompensation_label">Delayed Compensation:</span></td><td align="left"><select id="DelayedCompensation" name="Delayed Compensation" class="edit_bug_option" style="width: 400px;"><option></option><option>Y</option><option selected="">N</option></select>
+</td></tr><tr id="CompensationDate_row"><td nowrap=""><span id="CompensationDate_label">Compensation Date:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Compensation Date" id="CompensationDate" value="" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('CompensationDate');">[select]</a>
+</td></tr><tr id="FATCA-Compliance(forFRPonly)_row"><td nowrap=""><span id="FATCA-Compliance(forFRPonly)_label">FATCA - Compliance (for FRP only):</span></td><td align="left"><select id="FATCA-Compliance(forFRPonly)" name="FATCA - Compliance (for FRP only)" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Compliant</option><option>NA</option></select>
+</td></tr><tr id="OtherConditions_row"><td nowrap=""><span id="OtherConditions_label">Other Conditions:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('OtherConditions',5000)" wrap="soft" onkeyup="return count_chars('OtherConditions',5000)" cols="120" rows="8" name="Other Conditions" id="OtherConditions">Drawdown is expected to take place on 29 October 2024.
+
+Buyer: Hua Nan Commercial Bank, Ltd. (incorporated in Taiwan with limited liability) Hong Kong Branch</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="OtherConditions_cnt">&nbsp;</div>
+</td></tr><tr id="OtherConsentRequired_row"><td nowrap=""><span id="OtherConsentRequired_label">Other Consent Required:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Other Consent Required" id="OtherConsentRequired" value="" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="CommissionScheme_row"><td nowrap=""><span id="CommissionScheme_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk6" type="button" value="[-]" onclick="toggle_visibility('tbl6', 'lnk6');"><strong>Commission               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl6" style="display: table;"><tbody><tr><td style="width: 300px; background-color: rgb(240, 240, 240);">Commission Scheme:</td><td align="left"><select id="CommissionScheme" name="Commission Scheme" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Standard</option><option>Non-Standard</option></select>
+</td></tr><tr id="CommissionNon-Standard(%)_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="CommissionNon-Standard(%)_label">Commission Non-Standard (%):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Commission Non-Standard (%)" id="CommissionNon-Standard(%)" value="" class="txt">
+</td></tr><tr id="CommissionLCCY_row"><td nowrap="" style="background-color: rgb(240, 240, 240);"><span id="CommissionLCCY_label">Commission LCCY:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Commission LCCY" id="CommissionLCCY" value="0.00" class="txt">
+</td></tr><tr id="Commission–OriginationCentre_row"><td nowrap=""><span id="Commission–OriginationCentre_label">Commission – Origination Centre:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Commission – Origination Centre" id="Commission–OriginationCentre" value="0.00" class="txt">
+</td></tr><tr id="Commission–SaleCentre_row"><td nowrap=""><span id="Commission–SaleCentre_label">Commission – Sale Centre:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Commission – Sale Centre" id="Commission–SaleCentre" value="0.00" class="txt">
+</td></tr><tr id="OriginationCentre_row"><td nowrap=""><span id="OriginationCentre_label">Origination Centre:</span></td><td align="left"><select id="OriginationCentre" name="Origination Centre" class="edit_bug_option" style="width: 400px;"><option></option><option>DUBAI</option><option selected="">HONG KONG</option><option>LONDON - EUROPE</option><option>LONDON - AFRICA</option><option>MUMBAI</option><option>NEW YORK</option><option>SINGAPORE</option><option>FM SALES</option></select>
+</td></tr><tr id="SaleCentre_row"><td nowrap=""><span id="SaleCentre_label">Sale Centre:</span></td><td align="left"><select id="SaleCentre" name="Sale Centre" class="edit_bug_option" style="width: 400px;"><option></option><option>DUBAI</option><option selected="">HONG KONG</option><option>LONDON - EUROPE</option><option>LONDON - AFRICA</option><option>MUMBAI</option><option>NEW YORK</option><option>SINGAPORE</option><option>FM SALES</option></select>
+</td></tr><tr id="FMSalesperson_row"><td nowrap=""><span id="FMSalesperson_label">FM Sales person:</span></td><td align="left"><select id="FMSalesperson" name="FM Sales person" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Not Applicable</option><option>Chen Ke - 2001934</option><option>Chen, Wei Jie - 1625730</option><option>Cheng, Yanjiao - 1616046</option><option>Cherinchen, Doran - 2015936</option><option>Dhyanand Keshveer - 1518511</option><option>Gallagher, Conor - 1585784</option><option>Ghorbani, Ali - 1609883</option><option>Gosling Jeremy - 1651451</option><option>Irene Njuguna - 1410654</option><option>Jones Paul - 1665546</option><option>Jung Hwan Oh - 1639718</option><option>Kawamura, Yuzo - 1565219</option><option>Kumar Deependra - 1610959</option><option>Lai Luke- 1658216</option><option>Maria, Vikram - 1274502</option><option>O Brien, Grainne - 1635956</option><option>Park, Hong Ju - 1371533</option><option>Ryan Shearman - 1573227</option><option>Sampat, Chaitanya - 1189630</option><option>Shah Nischal - 2005549</option><option>Singh Zoya - 1594202</option><option>Srisuma, Sorapong - 1579698</option><option>Yeo Enk Loui - 1624492</option></select></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="Commission(USD)_row"><td nowrap=""><span id="Commission(USD)_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk7" type="button" value="[-]" onclick="toggle_visibility('tbl7', 'lnk7');"><strong>FX Conversion               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl7" style="display: table;"><tbody><tr><td style="width:300px">Commission (USD):</td><td align="left"><span class="stat" id="Commission(USD)_static">0.0000</span>
+</td></tr><tr id="FXRate_row"><td nowrap=""><span id="FXRate_label">FX Rate:</span></td><td align="left"><span class="stat" id="FXRate_static">1.0000</span>
+</td></tr><tr id="Commission-OriginationCentre(USD)_row"><td nowrap=""><span id="Commission-OriginationCentre(USD)_label">Commission - Origination Centre (USD):</span></td><td align="left"><span class="stat" id="Commission-OriginationCentre(USD)_static">0.0000</span>
+</td></tr><tr id="Commission-SalesCentre(USD)_row"><td nowrap=""><span id="Commission-SalesCentre(USD)_label">Commission - Sales Centre (USD):</span></td><td align="left"><span class="stat" id="Commission-SalesCentre(USD)_static">0.0000</span></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="Themes_row"><td nowrap=""><span id="Themes_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk8" type="button" value="[-]" onclick="toggle_visibility('tbl8', 'lnk8');"><strong>Other               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl8" style="display: table;"><tbody><tr><td style="width:300px">Themes:</td><td align="left"><select id="Themes" name="Themes" class="edit_bug_option" style="width: 400px;"><option></option><option>Limit Management</option><option>Optimisation</option><option>Risk Management</option><option>Primary</option><option selected="">Others</option></select>
+</td></tr><tr id="Themesothersdescription_row"><td nowrap=""><span id="Themesothersdescription_label">Themes others description:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Themesothersdescription',500)" wrap="soft" onkeyup="return count_chars('Themesothersdescription',500)" cols="120" rows="4" name="Themes others description" id="Themesothersdescription">PTC trade</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Themesothersdescription_cnt">&nbsp;</div></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="Exposurestatus_row"><td nowrap=""><span id="Exposurestatus_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk9" type="button" value="[-]" onclick="toggle_visibility('tbl9', 'lnk9');"><strong>Settlement               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl9" style="display: table;"><tbody><tr><td style="width:300px">Exposure status:</td><td align="left"><select id="Exposurestatus" name="Exposure status" class="edit_bug_option" style="width: 400px;"><option></option><option>Fully Drawn</option><option>Partially Drawn</option><option selected="">UnDrawn</option></select></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="Assignedto(forBusinessApproval)_row"><td nowrap=""><span id="Assignedto(forBusinessApproval)_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk10" type="button" value="[-]" onclick="toggle_visibility('tbl10', 'lnk10');"><strong>Review and Approval               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl10" style="display: table;"><tbody><tr><td><span style="color:green;text-decoration: underline;font-weight: bold;">Business Approval</span></td><td>.</td></tr><tr><td style="width:300px">Assigned to (for Business Approval):</td><td align="left"><select id="Assignedto(forBusinessApproval)" name="Assigned to (for Business Approval)" class="edit_bug_option" style="width: 400px;"><option></option><option>Bhaskar Gopalan - 1344699</option><option>Samuel Bouchot - 1663056</option><option>Constable, Ben - 1163127</option><option>Dhir, Virendra - 1180996</option><option>Ensari, Gurkan - 1244646</option><option>Fung, Marilyn - 1606587</option><option>Kumar,Sonell - 1478807</option><option selected="">Lakhwani, Amit - 1455944</option><option>Lee, Arthur - 1310742</option><option>Lotze Ulrich - 1336492</option><option>Pau, Shiv - 1356539</option><option>Sambrook,Kenny - 1195048</option><option>Siddiqi, Fatima - 1293666</option><option>Speller Chris - 1391622</option><option>Tabani, Sanaa - 1333017</option><option>Tang,Ellen YL - 1599984</option></select>
+</td></tr><tr id="BusinessApprovalStatus_row"><td nowrap=""><span id="BusinessApprovalStatus_label">Business Approval Status:</span></td><td align="left"><select id="BusinessApprovalStatus" name="Business Approval Status" class="edit_bug_option" style="width: 400px;"><option>Pending</option><option selected="">Approved</option><option>Referred back</option><option>Rejected</option></select>
+</td></tr><tr id="BusinessApproverComments_row"><td nowrap=""><span id="BusinessApproverComments_label">Business Approver Comments:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('BusinessApproverComments',1000)" wrap="soft" onkeyup="return count_chars('BusinessApproverComments',1000)" cols="120" rows="8" name="Business Approver Comments" id="BusinessApproverComments"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="BusinessApproverComments_cnt">&nbsp;</div>
+</td></tr><tr><td><span style="color:green;text-decoration: underline;font-weight: bold;">Loan Settlements</span></td><td>.</td></tr><tr id="SettlementStatus_row"><td nowrap=""><span id="SettlementStatus_label">Settlement Status:</span></td><td align="left"><select id="SettlementStatus" name="Settlement Status" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Pending Signed TC</option><option>Settlement Date Agreed</option><option>Settled</option><option>Cancelled</option></select>
+</td></tr><tr id="ActualSettlementDate_row"><td nowrap=""><span id="ActualSettlementDate_label">Actual Settlement Date:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Actual Settlement Date" id="ActualSettlementDate" value="" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('ActualSettlementDate');">[select]</a>
+</td></tr><tr id="SettlementTeamcomments_row"><td nowrap=""><span id="SettlementTeamcomments_label">Settlement Team comments:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('SettlementTeamcomments',1000)" wrap="soft" onkeyup="return count_chars('SettlementTeamcomments',1000)" cols="120" rows="8" name="Settlement Team comments" id="SettlementTeamcomments"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="SettlementTeamcomments_cnt">&nbsp;</div>
+</td></tr><tr><td><span style="color:green;text-decoration: underline;font-weight: bold;">CPM</span></td><td>.</td></tr><tr id="CPMReview_row"><td nowrap=""><span id="CPMReview_label">CPM Review:</span></td><td align="left"><select id="CPMReview" name="CPM Review" class="edit_bug_option" style="width: 400px;"><option>(none)</option><option>Completed</option></select>
+</td></tr><tr id="CPMSCILIMITID_row"><td nowrap=""><span id="CPMSCILIMITID_label">CPM SCI LIMIT ID:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="50" maxlength="50" name="CPM SCI LIMIT ID" id="CPMSCILIMITID" value="" class="txt">
+</td></tr><tr id="FinalProduct_row"><td nowrap=""><span id="FinalProduct_label">Final Product:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Final Product" id="FinalProduct" value="" class="txt">
+</td></tr><tr id="Level4MgmtProdDescription_row"><td nowrap=""><span id="Level4MgmtProdDescription_label">Level 4 Mgmt Prod Description:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Level 4 Mgmt Prod Description" id="Level4MgmtProdDescription" value="" class="txt">
+</td></tr><tr id="Category._row"><td nowrap=""><span id="Category._label">Category.:</span></td><td align="left"><select id="Category." name="Category." class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>CPM Sales</option><option>GCM Sales</option></select>
+</td></tr><tr id="CPMComments_row"><td nowrap=""><span id="CPMComments_label">CPM Comments:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('CPMComments',1000)" wrap="soft" onkeyup="return count_chars('CPMComments',1000)" cols="120" rows="8" name="CPM Comments" id="CPMComments"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="CPMComments_cnt">&nbsp;</div>
+</td></tr><tr><td><span style="color:green;text-decoration: underline;font-weight: bold;">Admin</span></td><td>.</td></tr><tr id="RecognitionMonth_row"><td nowrap=""><span id="RecognitionMonth_label">Recognition Month:</span></td><td align="left"><select id="RecognitionMonth" name="Recognition Month" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Jan 2021</option><option>Feb 2021</option><option>Mar 2021</option><option>Apr 2021</option><option>May 2021</option><option>Jun 2021</option><option>Jul 2021</option><option>Aug 2021</option><option>Sep 2021</option><option>Oct 2021</option><option>Nov 2021</option><option>Dec 2021</option><option>Jan 2022</option><option>Feb 2022</option><option>Mar 2022</option><option>Apr 2022</option><option>May 2022</option><option>June 2022</option><option>July 2022</option><option>Aug 2022</option><option>Sep 2022</option><option>Oct 2022</option><option>Nov 2022</option><option>Dec 2022</option><option>Jan 2023</option><option>Feb 2023</option><option>Mar 2023</option><option>Apr 2023</option><option>May 2023</option><option>Jun 2023</option><option>Jul 2023</option><option>Aug 2023</option><option>Sep 2023</option><option>Oct 2023</option><option>Nov 2023</option><option>Dec 2023</option><option>Jan 2024</option><option>Feb 2024</option><option>Mar 2024</option><option>Apr 2024</option><option>May 2024</option><option>Jun 2024</option><option>Jul 2024</option><option>Aug 2024</option><option>Sep 2024</option><option>Oct 2024</option><option>Nov 2024</option><option>Dec 2024</option></select>
+</td></tr><tr id="AdminStatus_row"><td nowrap=""><span id="AdminStatus_label">Admin Status:</span></td><td align="left"><select id="AdminStatus" name="Admin Status" class="edit_bug_option" style="width: 400px;"><option selected=""></option><option>Recognised</option><option>Closed</option></select>
+</td></tr><tr id="AdminComments_row"><td nowrap=""><span id="AdminComments_label">Admin Comments:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('AdminComments',1000)" wrap="soft" onkeyup="return count_chars('AdminComments',1000)" cols="120" rows="8" name="Admin Comments" id="AdminComments"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="AdminComments_cnt">&nbsp;</div>
+</td></tr><tr id="Ticketlocked_row"><td nowrap=""><span id="Ticketlocked_label">Ticket locked:</span></td><td align="left"><select id="Ticketlocked" name="Ticket locked" class="edit_bug_option" style="width: 400px;"><option>Yes</option><option selected="">No</option></select>
+</td></tr><tr id="ActualTicketCreator_row"><td nowrap=""><span id="ActualTicketCreator_label">Actual Ticket Creator:</span></td><td align="left"><span class="stat" id="ActualTicketCreator_static">1518082 - Behrens,Beate</span></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "projectid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="[No Description]">
+	
+	
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="Africa Other|Nigeria">
+	<input name="prev_org" type="hidden" id="prev_org" value="0">
+	<input name="prev_org_name" type="hidden" id="prev_org_name">
+	<input name="prev_category" type="hidden" id="prev_category" value="0">
+	<input name="prev_priority" type="hidden" id="prev_priority" value="0">
+	<input name="prev_assigned_to" type="hidden" id="prev_assigned_to" value="395">
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="1518082">
+	
+	<input name="prev_udf" type="hidden" id="prev_udf" value="0">
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 00:53:43:127">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1|tbl2,lnk2|tbl3,lnk3|tbl4,lnk4|tbl5,lnk5|tbl6,lnk6|tbl7,lnk7|tbl8,lnk8|tbl9,lnk9|tbl10,lnk10">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="System Admin">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input name="hdn_usp_get_commission_grid_json" type="hidden" id="hdn_usp_get_commission_grid_json" value="[{&quot;CreditGradeCG&quot;:&quot;10A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;10B&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;11A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;11B&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;11C&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;12A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;12B&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;12C&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;13&quot;,&quot;Commission&quot;:&quot;4.00&quot;},{&quot;CreditGradeCG&quot;:&quot;14&quot;,&quot;Commission&quot;:&quot;4.00&quot;},{&quot;CreditGradeCG&quot;:&quot;1A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;1B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;2A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;2B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;3A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;3B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;4A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;4B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;5A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;5B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;6A&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;6B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;7A&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;7B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;8A&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;8B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;9A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;9B&quot;,&quot;Commission&quot;:&quot;1.25&quot;}]">
+
+    <input name="hdn_userID" type="hidden" id="hdn_userID" value="109">
+    
+<input type="hidden" name="prev_Actual Settlement Date" value="">
+<input type="hidden" name="prev_Actual Ticket Creator" value="1518082 - Behrens,Beate">
+<input type="hidden" name="prev_Admin Comments" value="">
+<input type="hidden" name="prev_Admin Status" value="">
+<input type="hidden" name="prev_Assigned to (for Business Approval)" value="Lakhwani, Amit - 1455944">
+<input type="hidden" name="prev_Base Rate" value="TERM RFR">
+<input type="hidden" name="prev_Borrower Consent Required" value="N">
+<input type="hidden" name="prev_Borrower Name" value="Houting B.V.">
+<input type="hidden" name="prev_Borrower SCI LE ID" value="1008214767">
+<input type="hidden" name="prev_Breakfunding Term" value="LMA">
+<input type="hidden" name="prev_Business Approval Status" value="Approved">
+<input type="hidden" name="prev_Business Approver Comments" value="">
+<input type="hidden" name="prev_Category." value="">
+<input type="hidden" name="prev_Commission – Origination Centre" value="0.00">
+<input type="hidden" name="prev_Commission - Origination Centre (USD)" value="0.0000">
+<input type="hidden" name="prev_Commission – Sale Centre" value="0.00">
+<input type="hidden" name="prev_Commission - Sales Centre (USD)" value="0.0000">
+<input type="hidden" name="prev_Commission (USD)" value="0.0000">
+<input type="hidden" name="prev_Commission LCCY" value="0.00">
+<input type="hidden" name="prev_Commission Non-Standard (%)" value="">
+<input type="hidden" name="prev_Commission Scheme" value="Standard">
+<input type="hidden" name="prev_Compensation Date" value="">
+<input type="hidden" name="prev_Contact Email" value="hk.synloan@hncb.com / hk.synloan2@hncb.com">
+<input type="hidden" name="prev_Contact Person" value="Sam Huang / Cindy Chen">
+<input type="hidden" name="prev_Counterparty LEID" value="11018456">
+<input type="hidden" name="prev_Counterparty Name" value="HUA NAN COMMERCIAL BANK, LTD.">
+<input type="hidden" name="prev_Counterparty Telephone number" value="+852-2824-0288 Extn.898">
+<input type="hidden" name="prev_Country - Branch" value="HONG KONG">
+<input type="hidden" name="prev_Country - HQ" value="VN">
+<input type="hidden" name="prev_CPM Comments" value="">
+<input type="hidden" name="prev_CPM Review" value="">
+<input type="hidden" name="prev_CPM SCI LIMIT ID" value="">
+<input type="hidden" name="prev_Credit Grade (CG)" value="6A">
+<input type="hidden" name="prev_Deal Ticket No" value="HKP846">
+<input type="hidden" name="prev_Delayed Compensation" value="N">
+<input type="hidden" name="prev_Distribution Type" value="OTHERS">
+<input type="hidden" name="prev_Docs to be Provided" value="Y">
+<input type="hidden" name="prev_Exposure status" value="UnDrawn">
+<input type="hidden" name="prev_Facility Description" value="USD1,143,000,000 Facilities Agreement originally dated 2 July 2024, as amended by an amendment agreement dated 29 July 2024">
+<input type="hidden" name="prev_FATCA - Compliance (for FRP only)" value="">
+<input type="hidden" name="prev_Final Product" value="">
+<input type="hidden" name="prev_FM Sales person" value="">
+<input type="hidden" name="prev_FX Rate" value="1.0000">
+<input type="hidden" name="prev_If OTHER, SCB Approval if Not LMA/ LSTA/ APLMA ?" value="">
+<input type="hidden" name="prev_Investor Type" value="Bank">
+<input type="hidden" name="prev_KYC - Investor" value="Y">
+<input type="hidden" name="prev_Level 4 Mgmt Prod Description" value="">
+<input type="hidden" name="prev_Loan CCY (LCCY)" value="USD">
+<input type="hidden" name="prev_Margin (%)" value="4.00000">
+<input type="hidden" name="prev_Maturity Date" value="29 Oct, 2029">
+<input type="hidden" name="prev_Notional (LCCY)" value="3750000.0000">
+<input type="hidden" name="prev_Original Loan - Booking Entity" value="SCB UK">
+<input type="hidden" name="prev_Original Loan - Management Location" value="SCB Hong Kong Ltd">
+<input type="hidden" name="prev_Origination Centre" value="HONG KONG">
+<input type="hidden" name="prev_Other Conditions" value="Drawdown is expected to take place on 29 October 2024.
+
+Buyer: Hua Nan Commercial Bank, Ltd. (incorporated in Taiwan with limited liability) Hong Kong Branch">
+<input type="hidden" name="prev_Other Consent Required" value="">
+<input type="hidden" name="prev_Price (%)" value="100.00000">
+<input type="hidden" name="prev_Price/Yield Basis" value="Price">
+<input type="hidden" name="prev_Product" value="Leveraged and Acquisition Finance">
+<input type="hidden" name="prev_PSGL Department" value="">
+<input type="hidden" name="prev_Recognition Month" value="">
+<input type="hidden" name="prev_Sale Centre" value="HONG KONG">
+<input type="hidden" name="prev_Salesperson" value="Beate, Behrens - 1518082">
+<input type="hidden" name="prev_SCI Limit ID" value="">
+<input type="hidden" name="prev_Settlement Status" value="">
+<input type="hidden" name="prev_Settlement Team comments" value="">
+<input type="hidden" name="prev_Signing Date" value="2 Jul, 2024">
+<input type="hidden" name="prev_Subject to Docs" value="Y">
+<input type="hidden" name="prev_Subject to Terms" value="LMA">
+<input type="hidden" name="prev_Target Settlement Date" value="16 Oct, 2024">
+<input type="hidden" name="prev_Themes" value="Others">
+<input type="hidden" name="prev_Themes others description" value="PTC trade">
+<input type="hidden" name="prev_Ticket locked" value="No">
+<input type="hidden" name="prev_Trade Conf SCB" value="Y">
+<input type="hidden" name="prev_Trade Date" value="10 Oct, 2024">
+<input type="hidden" name="prev_Tranche(s) Description" value="TL: USD918 million
+RCF: USD225 million">
+<input type="hidden" name="prev_Transaction Type" value="Sell">
+<input type="hidden" name="prev_Transfer Fee - SCB Portion (%)" value="100.00">
+<input type="hidden" name="prev_Transfer Fee Amount" value="5000.00">
+<input type="hidden" name="prev_Transfer Fee CCY" value="USD">
+<input type="hidden" name="prev_Transfer Method" value="Outright">
+<input type="hidden" name="prev_Yield (%)" value="">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<br>
+<span id="toggle_images"><hr><a href="javascript:toggle_images2(13000)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(13000)"><span id="hideshow_history">show change history</span></a></span>
+<br><br>
+
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+</table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="100%" class="footer-bg"> Secondary Loan Sales Tracker (Starting from 2024) - 2024 Standard Chartered Bank </td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    /*Force all textareas to retain breaks when data is submited to the database*/
+    $("textarea").attr("wrap", "soft");
+</script>
+
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+		//Adjust the height of static textareas
+		var tah = document.getElementsByClassName("textarea_auto_hieght");
+		for (var i = 0; i < tah.length; i++) {
+		  tah[i].style.height=tah[i].scrollHeight
+		}
+		
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            //txe.setAttribute("disabled", "disabled");
+            lockControl(txe)
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+
+function lockControl(elem){
+elem.addEventListener('mousedown', function(event) {
+    event.preventDefault(); // Prevents the user from opening the dropdown
+});
+
+elem.addEventListener('keydown', function(event) {
+    event.preventDefault(); // Prevents the user from using the keyboard to change the selection
+});
+}    
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org ï¿½PC Line Controllerï¿½ only 
+    //i.e. disable the radio button ï¿½+ï¿½ for this field only for PC Line Controller Org
+    myOrg = "System Admin";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+
+<script type="text/jscript">
+ 
+    document.getElementsByName("Transaction Type")[0].addEventListener("change", amountsChanges);
+    //document.getElementsByName("Transfer Fee Amount")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Notional (LCCY)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Price (%)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Credit Grade (CG)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Commission Scheme")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Commission Non-Standard (%)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Distribution Type")[0].addEventListener("change", amountsChanges);
+
+    function amountsChanges() {
+        transactionType    = $("select[name='Transaction Type']").find(" option:selected").text();
+        CommissionScheme   = $("select[name='Commission Scheme']").find(" option:selected").text();
+        //TransferFee        = $("input[name='Transfer Fee Amount']").val();
+        NotionalLCCY       = $("input[name='Notional (LCCY)']").val();
+        Price              = $("input[name='Price (%)']").val();
+        CreditGradeCG      = $("select[name='Credit Grade (CG)']").find(" option:selected").text();
+        CommissionNonStd   = $("input[name='Commission Non-Standard (%)']").val();
+        DistributionType = $("select[name='Distribution Type']").find(" option:selected").text();
+        paramswithvals = {
+                transaction_type:  transactionType
+               ,Commission_Scheme: CommissionScheme
+               ,Notional_LCCY: ((NotionalLCCY == "") ? '0.0' : NotionalLCCY)
+               ,Price_pcnt: ((Price == "") ? '0.0' : Price)
+               ,Credit_Grade: CreditGradeCG     
+               ,Commission_Non_Standard_pcnt: ((CommissionNonStd == "") ? '0.0' : CommissionNonStd)
+               ,Distribution_Type: DistributionType
+        };
+        CommissionLCCY = IB_runProc_with_paramvals2("usp_Calculate_Commission_LCCY", paramswithvals);
+        console.log(CommissionLCCY);
+
+        if (CommissionLCCY[0].Commission_LCCY == null) {
+            $("#CommissionLCCY").val(0.00);
+            document.getElementById("CommissionLCCY").setAttribute("value",0.00)
+            $("#CommissionLCCY").attr("disabled", false);
+        } else {
+		    //$("#CommissionLCCY").val(CommissionLCCY[0].Commission_LCCY);
+            $("#CommissionLCCY").attr("disabled", true);
+        }
+    }
+
+
+    //Apply calc as page loads   
+    //setTimeout(function () {
+    //    amountsChanges();
+    //}, 1000);
+    
+    function highlightLabel(labeltext) {
+        $($("td:contains('" + labeltext + "')")[3]).css("background-color", "#F0F0F0");
+    }
+
+    setTimeout(function () {
+        highlightLabel("Transaction Type:");
+        highlightLabel("Notional (LCCY):");
+        highlightLabel("Price (%):");
+        highlightLabel("Credit Grade (CG):");
+        highlightLabel("Commission Scheme:");
+        highlightLabel("Commission Non-Standard (%):");
+        highlightLabel("Distribution Type:");
+        highlightLabel("Commission LCCY:");
+		
+		//amountsChanges();
+    }, 1000);
+</script>
+
+
+<script type="text/javascript" src="pcwebapp/js/pcwebapp.js"></script>
+<script type="text/jscript">
+    //attach events to the sections
+    $("input[onclick*='toggle_visibility']").each(function (index, item) {
+        item.addEventListener("click", setSectionStates);
+    });
+
+    var us_id = $("#hdn_userID").val();
+    //as page loads, apply the state in hdn_sectionstate
+    /*
+    sectionstate0 = IB_runProc_with_paramvals2("usp_get_usersectionstate", { us_id: us_id });
+    if (sectionstate0[0].sectionstate != "") {
+        sectionstate0 = JSON.parse(sectionstate0[0].sectionstate.replaceAll("\\\"", "\""));
+        sectionstate0.forEach(function (item, index) {
+            if (item.value == "[-]") {
+                $("input[id=" + item.id + "]")[0].click();
+            }
+        });
+    }
+    */
+    function setSectionStates() {
+        var sectionstate = [];
+        $("input[onclick*='toggle_visibility']").each(function (index, item) { sectionstate.push({ id: item.id, value: item.value }) });
+        r = IB_runProc_with_paramvals2("usp_set_usersectionstate", { us_id: us_id, sectionstate: JSON.stringify(sectionstate).replace(/\"/g, "\\\"") })
+    }
+
+
+    //Section sublabels
+    function addSubsectionTitleAboveLabel(lblname, titleTxt) {
+        $("<tr><td><span style='color:green;text-decoration: underline;font-weight: bold;'>" + titleTxt + "</span></td><td>.</td></tr>").insertBefore($($("[name='" + lblname + "']")[0]).parent().parent());
+    }
+
+    setTimeout(function () {
+        addSubsectionTitleAboveLabel("Assigned to (for Business Approval)", "Business Approval");
+        addSubsectionTitleAboveLabel("Settlement Status", "Loan Settlements");
+        addSubsectionTitleAboveLabel("CPM Review", "CPM");
+        addSubsectionTitleAboveLabel("Recognition Month", "Admin");
+    }, 1000);
+	
+
+</script>
+<script>$("#sub2").hide()</script>
+
+<script>
+bg_id=$("#bugid")[0].innerText;
+actual_ticket_creator=IB_runProc_with_paramvals2("usp_get_actual_ticket_creator", { bg_id: bg_id} )[0].ActualTicketCreator
+$("#reported_by > a")[0].setAttribute("href","")
+$("#reported_by > a")[0].setAttribute("onclick","return false;")
+$("#reported_by > a")[0].innerText=actual_ticket_creator
+</script>
+
+
+<script>
+showHideThemesOthers();
+function showHideThemesOthers() {
+    var themes = document.getElementById("Themes");
+    
+    if (themes.value === "Others") {
+        $($("#Themesothersdescription_label")[0].parentNode.parentNode).show();
+    } else {
+        $($("#Themesothersdescription_label")[0].parentNode.parentNode).hide(); 
+    }
+
+}
+document.getElementById("Themes").addEventListener("change", showHideThemesOthers);
+
+
+</script>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>

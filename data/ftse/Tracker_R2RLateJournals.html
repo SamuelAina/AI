@@ -1,0 +1,1630 @@
+<html><head>
+<title id="titl">Query ID 21443 [No Description]</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 21443
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+
+	el = get_el("sub");
+	el.disabled = true;
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="Tracker_R2RLateJournals">
+
+
+
+<script type="text/javascript">
+/*
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+        current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+    }
+};
+*/
+</script>
+<div><b style="color:red;font-size:6pt;background-color: yellow;">SGWPAUPCD04</b></div><table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="160" valign="middle"><img width="86" src="custom/logo.jpg"><br><div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;">R2R Late Journals Tracker</div><b><font id="current_db_environment" color="green"><font color="blue">(PRODUCTION)</font></font></b></td>
+
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Queries</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (Requestor)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Query</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;</span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=21443" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=21443 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(21443)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=21443 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',21443,600,300)" title="Attach an image, document, or other file to this item">add attachment (Max 11MB)</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form method="post" action="./edit_deal.aspx?id=21443" id="ctl00" class="frm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="44B208AC">
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+	
+		<div>
+				<span id="custom_field_msg2" class="err"></span>
+				<span id="msg2" class="err"></span>
+		</div>
+		 <div style="text-align: center;"> 
+			<input name="sub2" type="submit" id="sub2" class="btn" onclick="disable_me()" value="Update">
+		</div>			
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Query ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">21443</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=21443&amp;to=Sampatkumar.Somani@sc.com">2005796</a> on 2024-10-12 12:04 AM, 2 hours ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option value="2849">004-Total Central Items</option>
+	<option value="3091">006-Angola</option>
+	<option value="3079">008-Nigeria</option>
+	<option value="3075">011-Kenya</option>
+	<option value="3102">012-Cote DIvoire</option>
+	<option value="3093">019-Zimbabwe</option>
+	<option value="3276">020-Zimbabwe</option>
+	<option value="3086">022-Tanzania</option>
+	<option value="3076">023-Botswana</option>
+	<option value="3098">024-Gambia</option>
+	<option value="3103">025-Ghana</option>
+	<option value="3097">027-Sierra Leone</option>
+	<option value="3087">029-Uganda</option>
+	<option value="3094">030-Zambia</option>
+	<option value="3078">034-Cameroon</option>
+	<option value="3088">035-South Africa</option>
+	<option value="3092">036-Kenya</option>
+	<option value="2943">076-Hong Kong</option>
+	<option value="3038">077-China</option>
+	<option value="2840">078-Total Central Items</option>
+	<option value="2926">080-United States</option>
+	<option value="2985">083-Malaysia</option>
+	<option value="2973">085-Hong Kong</option>
+	<option value="3011">092-MESA Other</option>
+	<option value="2923">104-United States</option>
+	<option selected="selected" value="2841">110-UK</option>
+	<option value="3104">113-UK</option>
+	<option value="2873">114-Falklands</option>
+	<option value="2842">116-Total Central Items</option>
+	<option value="2843">117-Luxembourg</option>
+	<option value="2919">118-Geneva</option>
+	<option value="2839">123-Jersey</option>
+	<option value="3000">129-Vietnam</option>
+	<option value="3095">132-Africa Other</option>
+	<option value="3014">133-Sri Lanka</option>
+	<option value="3020">135-Bangladesh</option>
+	<option value="3009">138-Bahrain</option>
+	<option value="3006">140-Bahrain</option>
+	<option value="3016">141-Qatar</option>
+	<option value="3007">142-UAE</option>
+	<option value="3017">143-UAE</option>
+	<option value="3022">144-Oman</option>
+	<option value="3019">145-MESA Other</option>
+	<option value="3008">147-Iraq</option>
+	<option value="2823">148-Singapore</option>
+	<option value="2824">150-Singapore</option>
+	<option value="2810">151-Brunei</option>
+	<option value="2835">152-Indonesia</option>
+	<option value="2830">154-Philippines</option>
+	<option value="2831">155-Philippines</option>
+	<option value="3105">158-Korea</option>
+	<option value="2988">159-Japan</option>
+	<option value="2834">160-Australia</option>
+	<option value="2983">161-Taiwan</option>
+	<option value="2984">162-Taiwan</option>
+	<option value="3026">168-India</option>
+	<option value="3018">169-Saudi</option>
+	<option value="3013">174-Jordan</option>
+	<option value="3106">179-India</option>
+	<option value="3077">190-South Africa</option>
+	<option value="3107">192-United States</option>
+	<option value="2920">200-Total Central Items</option>
+	<option value="3108">210-Pakistan</option>
+	<option value="2944">220-Hong Kong</option>
+	<option value="2945">221-Hong Kong</option>
+	<option value="3109">223-Hong Kong</option>
+	<option value="3023">224-India</option>
+	<option value="3110">226-Korea</option>
+	<option value="3111">227-China</option>
+	<option value="3112">228-Korea</option>
+	<option value="3113">229-Korea</option>
+	<option value="3114">231-Hong Kong</option>
+	<option value="3115">232-Philippines</option>
+	<option value="2996">234-Japan</option>
+	<option value="3004">236-Nepal</option>
+	<option value="2974">237-Hong Kong</option>
+	<option value="2975">238-Hong Kong</option>
+	<option value="2976">239-Hong Kong</option>
+	<option value="2836">240-Indonesia</option>
+	<option value="3116">241-Pakistan</option>
+	<option value="3117">243-Taiwan</option>
+	<option value="2942">244-Taiwan</option>
+	<option value="3039">248-China</option>
+	<option value="3074">249-China</option>
+	<option value="3025">250-Mauritius</option>
+	<option value="2825">253-Singapore</option>
+	<option value="2866">255-Total Central Items</option>
+	<option value="3040">257-China</option>
+	<option value="3037">259-China</option>
+	<option value="3041">260-China</option>
+	<option value="2897">261-UK</option>
+	<option value="3001">265-Thailand</option>
+	<option value="2891">270-Total Central Items</option>
+	<option value="2850">284-Total Central Items</option>
+	<option value="2826">287-Singapore</option>
+	<option value="2827">288-Singapore</option>
+	<option value="3118">289-Philippines</option>
+	<option value="2851">294-Total Central Items</option>
+	<option value="2874">295-Turkey</option>
+	<option value="2852">300-Total Central Items</option>
+	<option value="2986">303-Malaysia</option>
+	<option value="2828">305-Singapore</option>
+	<option value="2922">306-Poland - GBS</option>
+	<option value="2989">307-Malaysia - GBS</option>
+	<option value="2990">308-Malaysia</option>
+	<option value="3036">309-China - GBS</option>
+	<option value="2898">310-Total Central Items</option>
+	<option value="2899">311-Total Central Items</option>
+	<option value="2853">313-Total Central Items</option>
+	<option value="2937">314-United States</option>
+	<option value="2927">315-United States</option>
+	<option value="2881">319-Total Central Items</option>
+	<option value="2854">320-Total Central Items</option>
+	<option value="2882">321-Total Central Items</option>
+	<option value="2883">322-Total Central Items</option>
+	<option value="3012">323-UAE</option>
+	<option value="2928">324-United States</option>
+	<option value="2884">325-Total Central Items</option>
+	<option value="3027">328-India</option>
+	<option value="2987">329-Malaysia</option>
+	<option value="2829">330-Singapore</option>
+	<option value="2947">333-Hong Kong</option>
+	<option value="3028">335-India</option>
+	<option value="3029">338-India</option>
+	<option value="3032">339-India - GBS</option>
+	<option value="2900">341-UK</option>
+	<option value="3024">342-India</option>
+	<option value="3031">343-India</option>
+	<option value="2867">344-Total Central Items</option>
+	<option value="3033">345-Korea</option>
+	<option value="2855">346-Total Central Items</option>
+	<option value="2901">347-UK</option>
+	<option value="2902">349-UK</option>
+	<option value="2868">350-Total Central Items</option>
+	<option value="2856">351-Total Central Items</option>
+	<option value="2929">353-United States</option>
+	<option value="2903">354-UK</option>
+	<option value="3119">356-Jersey</option>
+	<option value="2904">357-UK</option>
+	<option value="2857">358-Total Central Items</option>
+	<option value="2885">361-UK</option>
+	<option value="2905">362-UK</option>
+	<option value="2918">363-Total Central Items</option>
+	<option value="2930">366-United States</option>
+	<option value="2931">367-United States</option>
+	<option value="2832">368-Brunei</option>
+	<option value="2833">370-Australia</option>
+	<option value="2961">371-Hong Kong</option>
+	<option value="2811">372-Singapore</option>
+	<option value="2948">373-Hong Kong</option>
+	<option value="2949">374-UK</option>
+	<option value="2950">376-Hong Kong</option>
+	<option value="3120">377-Australia</option>
+	<option value="3121">378-Australia</option>
+	<option value="3002">379-Thailand</option>
+	<option value="2991">385-Malaysia</option>
+	<option value="3122">386-Brunei</option>
+	<option value="2951">387-Hong Kong</option>
+	<option value="2812">388-Singapore</option>
+	<option value="2869">389-UK</option>
+	<option value="2998">390-Malaysia</option>
+	<option value="3123">391-Singapore</option>
+	<option value="3124">393-Singapore</option>
+	<option value="3125">394-Singapore</option>
+	<option value="2952">396-Hong Kong</option>
+	<option value="2953">397-Hong Kong</option>
+	<option value="2858">398-Total Central Items</option>
+	<option value="2859">399-Total Central Items</option>
+	<option value="2932">400-United States</option>
+	<option value="2940">406-Brazil</option>
+	<option value="2936">407-United States</option>
+	<option value="3126">408-Australia</option>
+	<option value="2924">409-Canada</option>
+	<option value="2860">411-UK</option>
+	<option value="2875">412-Ireland</option>
+	<option value="2876">413-Ireland</option>
+	<option value="2877">414-Ireland</option>
+	<option value="2878">415-Ireland</option>
+	<option value="2879">416-Ireland</option>
+	<option value="2880">418-Ireland</option>
+	<option value="3127">422-Philippines</option>
+	<option value="3128">423-Singapore</option>
+	<option value="2837">424-Indonesia</option>
+	<option value="3129">425-Indonesia</option>
+	<option value="3130">426-Singapore</option>
+	<option value="3131">427-Singapore</option>
+	<option value="3132">428-Singapore</option>
+	<option value="2813">429-Singapore</option>
+	<option value="2814">430-Europe Other</option>
+	<option value="3035">431-Korea</option>
+	<option value="2815">433-Europe Other</option>
+	<option value="2906">434-Total Central Items</option>
+	<option value="2954">435-Hong Kong</option>
+	<option value="2999">436-Vietnam</option>
+	<option value="2977">437-Hong Kong</option>
+	<option value="3133">438-Korea</option>
+	<option value="2861">442-Total Central Items</option>
+	<option value="2816">451-Europe Other</option>
+	<option value="2822">452-Europe Other</option>
+	<option value="2889">455-Luxembourg</option>
+	<option value="2890">456-UK</option>
+	<option value="3134">457-Hong Kong</option>
+	<option value="2821">458-Singapore</option>
+	<option value="3135">459-Africa Enterprise Network</option>
+	<option value="3136">460-Hong Kong</option>
+	<option value="3137">462-india</option>
+	<option value="3138">464-UK</option>
+	<option value="3139">465-UK</option>
+	<option value="3280">466-Group Data Adj (Non-Solo)</option>
+	<option value="3010">471-Saudi</option>
+	<option value="2862">472-Total Central Items</option>
+	<option value="2921">501-Luxembourg</option>
+	<option value="2844">503-Austria</option>
+	<option value="3140">504-UK</option>
+	<option value="2933">517-United States</option>
+	<option value="2925">519-United States</option>
+	<option value="2845">522-Germany</option>
+	<option value="2846">523-Switzerland</option>
+	<option value="3141">524-United States</option>
+	<option value="2847">525-Sweden</option>
+	<option value="2872">529-Luxembourg</option>
+	<option value="2848">530-Italy</option>
+	<option value="3142">531-United States</option>
+	<option value="2838">534-Germany</option>
+	<option value="1">544-SC Ventures Investment Man</option>
+	<option value="3143">600-China</option>
+	<option value="2978">602-Hong Kong</option>
+	<option value="2863">611-UK</option>
+	<option value="3042">613-China</option>
+	<option value="3043">614-China</option>
+	<option value="3044">615-China</option>
+	<option value="3045">616-China</option>
+	<option value="3046">617-China</option>
+	<option value="3047">618-China</option>
+	<option value="3048">619-China</option>
+	<option value="3049">620-China</option>
+	<option value="3050">621-China</option>
+	<option value="3051">622-China</option>
+	<option value="3144">623-China</option>
+	<option value="3145">624-China</option>
+	<option value="3146">625-China</option>
+	<option value="3052">626-China</option>
+	<option value="3053">627-China</option>
+	<option value="3054">628-China</option>
+	<option value="3055">629-China</option>
+	<option value="3030">630-India</option>
+	<option value="2907">631-UK</option>
+	<option value="3147">632-Korea</option>
+	<option value="3148">633-Korea</option>
+	<option value="3149">634-Korea</option>
+	<option value="3150">635-Korea</option>
+	<option value="3151">636-Korea</option>
+	<option value="3034">637-Korea</option>
+	<option value="3015">638-Sri Lanka</option>
+	<option value="3021">639-Bangladesh</option>
+	<option value="2946">640-Hong Kong</option>
+	<option value="2886">641-UK</option>
+	<option value="3152">642-Korea</option>
+	<option value="3153">643-Korea</option>
+	<option value="3154">644-Korea</option>
+	<option value="3155">645-Taiwan</option>
+	<option value="3156">646-Taiwan</option>
+	<option value="2955">647-Taiwan</option>
+	<option value="2971">648-Taiwan</option>
+	<option value="2972">649-Taiwan</option>
+	<option value="3157">650-Taiwan</option>
+	<option value="3158">652-Taiwan</option>
+	<option value="3159">653-Taiwan</option>
+	<option value="3160">654-Thailand</option>
+	<option value="3161">655-Korea</option>
+	<option value="3162">656-Korea</option>
+	<option value="3163">657-Hong Kong</option>
+	<option value="3164">658-Hong Kong</option>
+	<option value="3165">659-Hong Kong</option>
+	<option value="2992">660-Malaysia</option>
+	<option value="3056">661-China</option>
+	<option value="2979">662-Europe Other</option>
+	<option value="3166">663-Korea</option>
+	<option value="3167">664-Korea</option>
+	<option value="3003">665-Bahrain</option>
+	<option value="3005">666-Bahrain</option>
+	<option value="3057">667-Europe Other</option>
+	<option value="3058">668-China</option>
+	<option value="3059">669-China</option>
+	<option value="3060">670-China</option>
+	<option value="3061">671-China</option>
+	<option value="3062">672-China</option>
+	<option value="3063">673-China</option>
+	<option value="3064">674-China</option>
+	<option value="3065">675-China</option>
+	<option value="3066">676-China</option>
+	<option value="3067">677-China</option>
+	<option value="3068">678-China</option>
+	<option value="3069">679-China</option>
+	<option value="3168">680-Korea</option>
+	<option value="2864">681-Jersey</option>
+	<option value="3169">684-Hong Kong</option>
+	<option value="2956">685-Hong Kong</option>
+	<option value="2957">686-Hong Kong</option>
+	<option value="2887">687-UK</option>
+	<option value="2894">688-UK</option>
+	<option value="2895">689-UK</option>
+	<option value="2941">690-United States</option>
+	<option value="2870">705-UK</option>
+	<option value="3170">706-UK</option>
+	<option value="3171">707-UK</option>
+	<option value="2934">712-United States</option>
+	<option value="2935">713-United States</option>
+	<option value="2938">714-United States</option>
+	<option value="2939">715-United States</option>
+	<option value="3081">721-Kenya</option>
+	<option value="3082">722-Kenya</option>
+	<option value="3083">723-Kenya</option>
+	<option value="2817">725-Singapore</option>
+	<option value="2818">726-Total Central Items</option>
+	<option value="3099">727-Botswana</option>
+	<option value="2908">728-UK</option>
+	<option value="3172">729-Hong Kong</option>
+	<option value="2997">730-Malaysia</option>
+	<option value="2962">731-Hong Kong</option>
+	<option value="2963">732-Hong Kong</option>
+	<option value="2964">733-Hong Kong</option>
+	<option value="2965">734-Hong Kong</option>
+	<option value="2966">735-Hong Kong</option>
+	<option value="2980">736-Hong Kong</option>
+	<option value="2967">737-Hong Kong</option>
+	<option value="3173">738-Hong Kong</option>
+	<option value="2968">739-Hong Kong</option>
+	<option value="2909">740-UK</option>
+	<option value="3174">741-UK</option>
+	<option value="2910">742-UK</option>
+	<option value="3175">743-UK</option>
+	<option value="2819">744-Singapore</option>
+	<option value="3085">745-Nigeria</option>
+	<option value="3176">746-Thailand</option>
+	<option value="3080">747-Nigeria</option>
+	<option value="2911">748-UK</option>
+	<option value="2888">749-UK</option>
+	<option value="2993">750-Malaysia</option>
+	<option value="2958">751-Hong Kong</option>
+	<option value="2959">752-Hong Kong</option>
+	<option value="2960">753-Hong Kong</option>
+	<option value="2994">754-Malaysia</option>
+	<option value="2995">755-Malaysia</option>
+	<option value="2912">756-UK</option>
+	<option value="3089">757-South Africa</option>
+	<option value="3090">758-Nigeria</option>
+	<option value="2865">759-UK</option>
+	<option value="2969">761-Hong Kong</option>
+	<option value="2970">762-Hong Kong</option>
+	<option value="2820">763-Singapore</option>
+	<option value="2896">764-UK</option>
+	<option value="2913">765-UK</option>
+	<option value="2914">766-UK</option>
+	<option value="3070">767-China</option>
+	<option value="3071">768-China</option>
+	<option value="3177">769-Pakistan</option>
+	<option value="2981">770-Hong Kong</option>
+	<option value="3072">771-China</option>
+	<option value="3073">772-China</option>
+	<option value="3084">774-Kenya</option>
+	<option value="2915">775-UK</option>
+	<option value="3101">776-Tanzania</option>
+	<option value="2982">777-Hong Kong</option>
+	<option value="2871">778-Total Central Items</option>
+	<option value="3100">779-Botswana</option>
+	<option value="3096">780-Botswana</option>
+	<option value="2916">781-Total Central Items</option>
+	<option value="2917">782-UK</option>
+	<option value="3178">783-UK</option>
+	<option value="2892">787-Ireland</option>
+	<option value="2893">788-Ireland</option>
+	<option value="3179">790-UK</option>
+	<option value="3180">791-Singapore</option>
+	<option value="3181">P01-Hong Kong</option>
+	<option value="3182">P02-Hong Kong</option>
+	<option value="3183">P03-Hong Kong</option>
+	<option value="3184">P04-Hong Kong</option>
+	<option value="3185">P05-Hong Kong</option>
+	<option value="3186">P06-Hong Kong</option>
+	<option value="3187">P07-Hong Kong</option>
+	<option value="3188">P08-Hong Kong</option>
+	<option value="3189">P09-Hong Kong</option>
+	<option value="3190">P10-Hong Kong</option>
+	<option value="3191">P11-Hong Kong</option>
+	<option value="3192">P12-Hong Kong</option>
+	<option value="3193">P13-Hong Kong</option>
+	<option value="3194">P14-Hong Kong</option>
+	<option value="3195">P15-Hong Kong</option>
+	<option value="3196">P16-Hong Kong</option>
+	<option value="3197">P17-Hong Kong</option>
+	<option value="3198">P18-Hong Kong</option>
+	<option value="3199">P19-Hong Kong</option>
+	<option value="3200">P20-Hong Kong</option>
+	<option value="3201">P21-Hong Kong</option>
+	<option value="3202">P22-Hong Kong</option>
+	<option value="3203">P23-Hong Kong</option>
+	<option value="3204">P24-Hong Kong</option>
+	<option value="3205">P25-Hong Kong</option>
+	<option value="3206">P26-Hong Kong</option>
+	<option value="3207">P27-Hong Kong</option>
+	<option value="3208">P28-Hong Kong</option>
+	<option value="3209">P29-Hong Kong</option>
+	<option value="3210">P30-Hong Kong</option>
+	<option value="3211">P31-Hong Kong</option>
+	<option value="3212">P32-Hong Kong</option>
+	<option value="3213">P33-Hong Kong</option>
+	<option value="3214">P34-Hong Kong</option>
+	<option value="3215">P35-Hong Kong</option>
+	<option value="3216">P36-Hong Kong</option>
+	<option value="3217">P37-Hong Kong</option>
+	<option value="3218">P38-Hong Kong</option>
+	<option value="3219">P39-Hong Kong</option>
+	<option value="3220">P40-Hong Kong</option>
+	<option value="3221">P41-Hong Kong</option>
+	<option value="3222">P42-Hong Kong</option>
+	<option value="3223">P43-Hong Kong</option>
+	<option value="3224">P44-Hong Kong</option>
+	<option value="3225">P45-Hong Kong</option>
+	<option value="3226">P46-Hong Kong</option>
+	<option value="3227">P47-Hong Kong</option>
+	<option value="3228">P48-Hong Kong</option>
+	<option value="3229">P49-Hong Kong</option>
+	<option value="3230">P50-Hong Kong</option>
+	<option value="3231">P51-Hong Kong</option>
+	<option value="3232">P52-Hong Kong</option>
+	<option value="3233">P53-Hong Kong</option>
+	<option value="3234">P54-Hong Kong</option>
+	<option value="3235">P55-Hong Kong</option>
+	<option value="3236">P71-Hong Kong</option>
+	<option value="3237">P72-Hong Kong</option>
+	<option value="3238">R01-Singapore</option>
+	<option value="3239">R02-Singapore</option>
+	<option value="3240">R03-Singapore</option>
+	<option value="3241">R04-Singapore</option>
+	<option value="3242">R05-Singapore</option>
+	<option value="3243">R06-Singapore</option>
+	<option value="3244">R07-Singapore</option>
+	<option value="3245">R08-Singapore</option>
+	<option value="3246">U01-Ireland</option>
+	<option value="3247">U02-Ireland</option>
+	<option value="3248">U03-Ireland</option>
+	<option value="3249">U04-Ireland</option>
+	<option value="3250">U05-Ireland</option>
+	<option value="3251">U06-Ireland</option>
+	<option value="3252">U07-Ireland</option>
+	<option value="3253">U08-Ireland</option>
+	<option value="3254">U09-Ireland</option>
+	<option value="3255">U10-Ireland</option>
+	<option value="3256">U11-Ireland</option>
+	<option value="3257">U12-Ireland</option>
+	<option value="3258">U13-Ireland</option>
+	<option value="3259">U14-Ireland</option>
+	<option value="3260">U15-Ireland</option>
+	<option value="3261">U16-Ireland</option>
+	<option value="3262">U17-Ireland</option>
+	<option value="3263">U18-Ireland</option>
+	<option value="3264">U19-Ireland</option>
+	<option value="3265">U20-Ireland</option>
+	<option value="3266">U21-Ireland</option>
+	<option value="3267">U22-Ireland</option>
+	<option value="3268">U23-Ireland</option>
+	<option value="3269">U24-Ireland</option>
+	<option value="3270">U25-Ireland</option>
+	<option value="3271">U26-Ireland</option>
+	<option value="3272">U27-Ireland</option>
+	<option value="3273">U28-Ireland</option>
+	<option value="3274">U29-Ireland</option>
+	<option value="3275">U30-Ireland</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_org" class="stat"></span>
+			
+
+	<tr id="row3">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_category" class="stat"></span>
+			
+
+	<tr id="row4">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_priority" class="stat"></span>
+			
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			<span id="status_label" class="lbl">Status:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat">Query Revised</span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="BusUnit_row"><td nowrap=""><span id="BusUnit_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Required inputs               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">Bus Unit:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Bus Unit" id="BusUnit" value="110" class="txt">
+</td></tr><tr id="Country_row"><td nowrap=""><span id="Country_label">Country:</span></td><td align="left"><span class="stat" id="Country_static">UK</span>
+</td></tr><tr id="RequestedBy_row"><td nowrap=""><span id="RequestedBy_label">Requested By:</span></td><td align="left"><span class="stat" id="RequestedBy_static">Somani, Sampatkumar - 2005796</span>
+</td></tr><tr id="Period_row"><td nowrap=""><span id="Period_label">Period:</span></td><td align="left"><select id="Period" name="Period" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">09 2024</option></select>
+</td></tr><tr id="Date_row"><td nowrap=""><span id="Date_label">Date:</span></td><td align="left"><span class="stat" id="Date_static">2024-10-12 12:04 AM</span>
+</td></tr><tr id="ReasonforT1journal_row"><td nowrap=""><span id="ReasonforT1journal_label">Reason for T1 journal:</span><font style="color:red;font-size: small;">
+<br>
+Why the requested T1 adjustment could not be made by M+4?<br>
+What is the adjustment about?<br>
+What controls are in place to avoid such instance in future?<br>
+</font></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('ReasonforT1journal',1000)" wrap="hard" onkeyup="return count_chars('ReasonforT1journal',1000)" cols="120" rows="8" name="Reason for T1 journal" id="ReasonforT1journal">Fair Value and Accrual breaks were observed for 5000+ trades due to a tech issue for September 27 COB causing a large PandL 
+impact. Hence batch re-run was performed on 30th Sep for 27th Sep COB. 
+ 
+For a lot of repo trades incorrect PandL account got tagged on batch re-run as re-run was done post value date of these trades. This 
+resulted material gross-up in PandL between the impacted GL account lines (mail attached with analysis of the tech issue)
+ 
+There is no net PandL impact. This is a reclass within NTI lines. The impact is on notes to accounts disclosures where one account is 
+classified under Trading Securities and other is Designated Fair Value.</textarea><div class="grippie" style="margin-right: 4px;"></div></span></div><div class="smallnote" id="ReasonforT1journal_cnt">&nbsp;</div>
+</td></tr><tr id="FR/MR_row"><td nowrap=""><span id="FR/MR_label">FR/MR:</span></td><td align="left"><select id="FR/MR" name="FR/MR" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">FR</option><option>MR</option><option>Both</option></select>
+</td></tr><tr id="BusinessImpacted_row"><td nowrap=""><span id="BusinessImpacted_label">Business Impacted:</span></td><td align="left"><select id="BusinessImpacted" name="Business Impacted" class="edit_bug_option" style="width: 400px;"><option></option><option>CCIB-TB</option><option>CCIB-Others</option><option selected="">FM CF PF Treasury Products</option><option>CPBB</option><option>Other Banking</option><option>Cost</option><option>Tax</option><option>Off BS</option></select>
+</td></tr><tr id="Theme_row"><td nowrap=""><span id="Theme_label">Theme:</span></td><td align="left"><select id="Theme" name="Theme" class="edit_bug_option" style="width: 400px;"><option></option><option>Posting Error</option><option>Input error</option><option selected="">TP Issue</option><option>Inter co break</option><option>F=M break</option><option>AvF break</option><option>Group adviced</option><option>Input delay</option><option>Input Delay/Error</option><option>Reclass</option></select>
+</td></tr><tr id="IstheentrytoaddressGroupFRquery_row"><td nowrap=""><span id="IstheentrytoaddressGroupFRquery_label">Is the entry to address Group FR query:</span></td><td align="left"><select id="IstheentrytoaddressGroupFRquery" name="Is the entry to address Group FR query" class="edit_bug_option" style="width: 400px;"><option></option><option>Yes</option><option selected="">No</option></select>
+</td></tr><tr id="DoesT1meetGroupthresholds_row"><td nowrap=""><span id="DoesT1meetGroupthresholds_label">Does T1 meet Group thresholds:</span><font style="color:red;font-size: small;"><br>
+       P&amp;L - $500k (ICS, F=M); $1m(Tax); $3m (Others)<br>
+       BS - $1m(ICS, F=M), $50m (Tax, Others)<p></p>
+    </font></td><td align="left"><select id="DoesT1meetGroupthresholds" name="Does T1 meet Group thresholds" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Yes</option><option>No</option></select>
+</td></tr><tr id="IstheT1withinGroupTimeline_row"><td nowrap=""><span id="IstheT1withinGroupTimeline_label">Is the T1 within Group Timeline:</span></td><td align="left"><select id="IstheT1withinGroupTimeline" name="Is the T1 within Group Timeline" class="edit_bug_option" style="width: 400px;"><option></option><option>Yes</option><option selected="">No</option></select>
+</td></tr><tr id="Cost(US$000)(Dr(+)/Cr(-))_row"><td nowrap=""><span id="Cost(US$000)(Dr(+)/Cr(-))_label">Cost (US$ 000)(Dr(+)/Cr(-)):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Cost (US$ 000)(Dr(+)/Cr(-))" id="Cost(US$000)(Dr(+)/Cr(-))" value="0.00000000" class="txt">
+</td></tr><tr id="Income(US$000)(Dr(+)/Cr(-))_row"><td nowrap=""><span id="Income(US$000)(Dr(+)/Cr(-))_label">Income (US$ 000)(Dr(+)/Cr(-)):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Income (US$ 000)(Dr(+)/Cr(-))" id="Income(US$000)(Dr(+)/Cr(-))" value="3928360.90000000" class="txt">
+</td></tr><tr id="Provisions(US$000)(Dr(+)/Cr(-))_row"><td nowrap=""><span id="Provisions(US$000)(Dr(+)/Cr(-))_label">Provisions (US$ 000)(Dr(+)/Cr(-)):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Provisions (US$ 000)(Dr(+)/Cr(-))" id="Provisions(US$000)(Dr(+)/Cr(-))" value="0.00000000" class="txt">
+</td></tr><tr id="BalanceSheet(US$000)(Dr(+)/Cr(-))_row"><td nowrap=""><span id="BalanceSheet(US$000)(Dr(+)/Cr(-))_label">Balance Sheet (US$ 000)(Dr(+)/Cr(-)):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Balance Sheet (US$ 000)(Dr(+)/Cr(-))" id="BalanceSheet(US$000)(Dr(+)/Cr(-))" value="0.00000000" class="txt">
+</td></tr><tr id="OffBS(US$000)(Dr(+)/Cr(-))_row"><td nowrap=""><span id="OffBS(US$000)(Dr(+)/Cr(-))_label">Off BS (US$ 000)(Dr(+)/Cr(-)):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Off BS (US$ 000)(Dr(+)/Cr(-))" id="OffBS(US$000)(Dr(+)/Cr(-))" value="0.00000000" class="txt">
+</td></tr><tr id="DoesthisIncludeTaxAdjustments?_row"><td nowrap=""><span id="DoesthisIncludeTaxAdjustments?_label">Does this Include Tax Adjustments?:</span><font style="color:red;font-size: small;">
+<br>
+Does this Late Adjustment has a Tax Impact?<br>
+(Liaise with your Tax Team to evaluate the tax <br>
+impact for this request.If it does, attach <br>
+the Tax journal in the tracker request)<br>
+</font></td><td align="left"><select id="DoesthisIncludeTaxAdjustments?" name="Does this Include Tax Adjustments?" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">No</option><option>Yes</option></select>
+</td></tr><tr id="CCNotification_row"><td nowrap=""><span id="CCNotification_label">Notify to (PSID only):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="40" maxlength="40" name="CC Notification" id="CCNotification" value="2005796" class="txt">
+</td></tr><tr id="CFOApproval_row"><td nowrap=""><span id="CFOApproval_label">CFO Approval:</span></td><td align="left"><span class="stat" id="CFOApproval_static"></span>
+</td></tr><tr id="ReasonforCFOApproval/Rejection/Pending_row"><td nowrap=""><span id="ReasonforCFOApproval/Rejection/Pending_label">Reason for CFO Approval/Rejection/Pending:</span></td><td align="left"><span class="stat" id="ReasonforCFOApproval/Rejection/Pending_static"></span>
+</td></tr><tr id="CCApproval_row"><td nowrap=""><span id="CCApproval_label">CC Approval:</span></td><td align="left"><span class="stat" id="CCApproval_static"></span>
+</td></tr><tr id="ReasonforCCApproval/Rejection/Pending_row"><td nowrap=""><span id="ReasonforCCApproval/Rejection/Pending_label">Reason for CC Approval/Rejection/Pending:</span></td><td align="left"><span class="stat" id="ReasonforCCApproval/Rejection/Pending_static"></span>
+</td></tr><tr id="GFDFRApproval_row"><td nowrap=""><span id="GFDFRApproval_label">GFD FR Approval:</span></td><td align="left"><span class="stat" id="GFDFRApproval_static"></span>
+</td></tr><tr id="ReasonforGFDFRApproval/Rejection/Pending_row"><td nowrap=""><span id="ReasonforGFDFRApproval/Rejection/Pending_label">Reason for GFD FR Approval/Rejection/Pending:</span></td><td align="left"><span class="stat" id="ReasonforGFDFRApproval/Rejection/Pending_static"></span>
+</td></tr><tr id="GFDMRApproval_row"><td nowrap=""><span id="GFDMRApproval_label">GFD MR Approval:</span></td><td align="left"><span class="stat" id="GFDMRApproval_static"></span>
+</td></tr><tr id="ReasonforGFDMRApproval/Rejection/Pending_row"><td nowrap=""><span id="ReasonforGFDMRApproval/Rejection/Pending_label">Reason for GFD MR Approval/Rejection/Pending:</span></td><td align="left"><span class="stat" id="ReasonforGFDMRApproval/Rejection/Pending_static"></span>
+</td></tr><tr id="PSGLJournalPoster_row"><td nowrap=""><span id="PSGLJournalPoster_label">PSGL Journal Poster (PSID only):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="40" maxlength="40" name="PSGL Journal Poster" id="PSGLJournalPoster" value="" class="txt">
+</td></tr><tr id="PSGLID_row"><td nowrap=""><span id="PSGLID_label">PSGL Journal ID:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="PSGL ID" id="PSGLID" value="" class="txt">
+</td></tr><tr id="GLentrystatus_row"><td nowrap=""><span id="GLentrystatus_label">GL entry status:</span></td><td align="left"><select id="GLentrystatus" name="GL entry status" class="edit_bug_option" style="width: 400px;"><option></option><option>Posted</option><option selected="">WIP</option><option>Awaiting Input</option><option>NA</option></select>
+</td></tr><tr id="IFRSPackLevel_row"><td nowrap=""><span id="IFRSPackLevel_label">IFRS Pack Level:</span><br><font style="color:red;font-size: small;background-color:yellow;">
+   For Primaries - attaching the Journal template<br> 
+   is mandatory, else request will be rejected
+</font></td><td align="left"><select id="IFRSPackLevel" name="IFRS Pack Level" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">Primary</option><option>Supplementary</option><option>Supplementary FINREP</option></select>
+</td></tr><tr id="MRJawstatus_row"><td nowrap=""><span id="MRJawstatus_label">MR Jaw status:</span></td><td align="left"><span class="stat" id="MRJawstatus_static"></span>
+</td></tr><tr id="notificationLastSentTime_row"><td nowrap=""><span id="notificationLastSentTime_label">notificationLastSentTime:</span></td><td align="left"><span class="stat" id="notificationLastSentTime_static">2024-10-12 12:09 AM</span>
+</td></tr><tr id="notificationPending_row"><td nowrap=""><span id="notificationPending_label">notificationPending:</span></td><td align="left"><span class="stat" id="notificationPending_static">True</span></td></tr><tr><td colspan="20"><img src="attach.gif" align="top/">
+ &nbsp;
+ <a href="javascript:open_popup_window_with_section('add_attachment.aspx','add attachment ','21443','Requiredinputs',600,300)" title="Attach an image, document, or other file to this item">add attachment <font color="green">(Max 11 MB)</font></a></td></tr>
+         <tr><td colspan="20">
+<div id="posts">
+<u><b>Required inputs Attachments</b></u>
+<table id="section_container_Requiredinputs"></table>
+</div>
+</td></tr>
+         </tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "queryid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="[No Description]">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="2841">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="110-UK">
+	
+	<input name="prev_org_name" type="hidden" id="prev_org_name" value="Requestor">
+	
+	
+	
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	<input name="prev_status" type="hidden" id="prev_status" value="44">
+	
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 02:25:11:850">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="Requestor">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="Tracker_R2RLateJournals">
+	<input type="hidden" id="usp_Requestor_locked_fields_when_cfo_approved_json" value="[]">
+
+<input type="hidden" id="udf_primary_bug_has_attachment" value="False">
+
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_Balance Sheet (US$ 000)(Dr(+)/Cr(-))" value="0.00000000">
+<input type="hidden" name="prev_Bus Unit" value="110">
+<input type="hidden" name="prev_Business Impacted" value="FM CF PF Treasury Products">
+<input type="hidden" name="prev_CC Approval" value="">
+<input type="hidden" name="prev_CC Notification" value="2005796">
+<input type="hidden" name="prev_CFO Approval" value="">
+<input type="hidden" name="prev_Cost (US$ 000)(Dr(+)/Cr(-))" value="0.00000000">
+<input type="hidden" name="prev_Country" value="UK">
+<input type="hidden" name="prev_Date" value="2024-10-12 12:04 AM">
+<input type="hidden" name="prev_Does T1 meet Group thresholds" value="Yes">
+<input type="hidden" name="prev_Does this Include Tax Adjustments?" value="No">
+<input type="hidden" name="prev_FR/MR" value="FR">
+<input type="hidden" name="prev_GFD FR Approval" value="">
+<input type="hidden" name="prev_GFD MR Approval" value="">
+<input type="hidden" name="prev_GL entry status" value="WIP">
+<input type="hidden" name="prev_IFRS Pack Level" value="Primary">
+<input type="hidden" name="prev_Income (US$ 000)(Dr(+)/Cr(-))" value="3928360.90000000">
+<input type="hidden" name="prev_Is the entry to address Group FR query" value="No">
+<input type="hidden" name="prev_Is the T1 within Group Timeline" value="No">
+<input type="hidden" name="prev_MR Jaw status" value="">
+<input type="hidden" name="prev_notificationLastSentTime" value="2024-10-12 12:09 AM">
+<input type="hidden" name="prev_notificationPending" value="True">
+<input type="hidden" name="prev_Off BS (US$ 000)(Dr(+)/Cr(-))" value="0.00000000">
+<input type="hidden" name="prev_Period" value="09 2024">
+<input type="hidden" name="prev_Provisions (US$ 000)(Dr(+)/Cr(-))" value="0.00000000">
+<input type="hidden" name="prev_PSGL ID" value="">
+<input type="hidden" name="prev_PSGL Journal Poster" value="">
+<input type="hidden" name="prev_Reason for CC Approval/Rejection/Pending" value="">
+<input type="hidden" name="prev_Reason for CFO Approval/Rejection/Pending" value="">
+<input type="hidden" name="prev_Reason for GFD FR Approval/Rejection/Pending" value="">
+<input type="hidden" name="prev_Reason for GFD MR Approval/Rejection/Pending" value="">
+<input type="hidden" name="prev_Reason for T1 journal" value="Fair Value and Accrual breaks were observed for 5000+ trades due to a tech issue for September 27 COB causing a large PandL 
+impact. Hence batch re-run was performed on 30th Sep for 27th Sep COB. 
+ 
+For a lot of repo trades incorrect PandL account got tagged on batch re-run as re-run was done post value date of these trades. This 
+resulted material gross-up in PandL between the impacted GL account lines (mail attached with analysis of the tech issue)
+ 
+There is no net PandL impact. This is a reclass within NTI lines. The impact is on notes to accounts disclosures where one account is 
+classified under Trading Securities and other is Designated Fair Value.">
+<input type="hidden" name="prev_Requested By" value="2481">
+<input type="hidden" name="prev_Theme" value="TP Issue">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(21443)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(21443)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+
+<tbody><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=21443&amp;to=Sampatkumar.Somani@sc.com">2005796</a> on 2024-10-12 12:09 AM, 2 hours ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Reason for T1 journal from "Fair Value and Accrual breaks were observed for 5000+ trades due to a tech issue for September 27 COB causing a large P&amp;amp;L 
+<br>impact. Hence batch re-run was performed on 30th Sep for 27th Sep COB. 
+<br> 
+<br>For a lot of repo trades incorrect P&amp;amp;L account got tagged on batch re-run as re-run was done post value date of these trades. This 
+<br>resulted material gross-up in P&amp;amp;L between the impacted GL account lines (mail attached with analysis of the tech issue)
+<br> 
+<br>There is no net P&amp;amp;L impact. This is a reclass within NTI lines. The impact is on notes to accounts disclosures where one account is 
+<br>classified under Trading Securities and other is Designated Fair Value." to "Fair Value and Accrual breaks were observed for 5000+ trades due to a tech issue for September 27 COB causing a large P&amp;L 
+<br>impact. Hence batch re-run was performed on 30th Sep for 27th Sep COB. 
+<br> 
+<br>For a lot of repo trades incorrect P&amp;L account got tagged on batch re-run as re-run was done post value date of these trades. This 
+<br>resulted material gross-up in P&amp;L between the impacted GL account lines (mail attached with analysis of the tech issue)
+<br> 
+<br>There is no net P&amp;L impact. This is a reclass within NTI lines. The impact is on notes to accounts disclosures where one account is 
+<br>classified under Trading Securities and other is Designated Fair Value."</span>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">R2R Late Journals Tracker - 2020 Standard Chartered Bank</td>
+   <td width="1%" align="right" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    } else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+
+		//in case it is a select...
+		$("[name='"+field_name+"']").find("option").css("display","none")
+
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            //txe.setAttribute("disabled", "disabled");
+            txe.readOnly = true;
+            txe.setAttribute("style", "background-color: lightgray")
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org ï¿½PC Line Controllerï¿½ only 
+    //i.e. disable the radio button ï¿½+ï¿½ for this field only for PC Line Controller Org
+    myOrg = "Requestor";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+    //Apply Comment Collapse to array of fields from the database
+    $.each(
+        $("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) { applyCommentCollapseBehaviour(value); }
+        );
+
+		
+</script>
+
+<script type="text/javascript">
+  //Populate upper error message span
+	$("#msg2")[0].innerText=  $("#msg")[0].innerText;
+  
+  //CApproval, GFDFRApproval, FR/MR locking rules
+    var  CCApproval, GFDFRApproval, FR_MR;
+	if ($("#CCApproval").length) {
+		CCApproval = $($("#CCApproval:options")[0]).children("option:selected").val()
+	}
+	if ($("#CCApproval_static").length) {
+		CCApproval = $("#CCApproval_static").text()
+	}
+
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	if ($("#GFDFRApproval_static").length) {
+		GFDFRApproval = $("#GFDFRApproval_static").text();
+	} 
+	 
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	
+	if ($("select[id*=FR/MR]").length) {
+		FR_MR = $($('select[id*=FR/MR]:options')[0]).children("option:selected").val()
+	}
+	if ($("[id*=FR/MR_static]").length) {
+		FR_MR = $("[id*=FR/MR_static]").text();
+	}	
+	
+    //Lock fields based on CCM Approval/Rejection -- Affected fields: GFD MR Approval, GFD FR Approval
+	$("#GFDFRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDFRApproval").attr('disabled', true)
+		$("#GFDFRApproval").after("<font id=GFDFRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDFRApproval").attr('disabled', false)
+	}
+
+	$("#GFDMRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDMRApproval").attr('disabled', true)
+		$("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+
+    //Lock fields based on GFD FR Approval Approval/Rejection -- affected fields: GFD MR Approval 
+	//Include FR/MR exception
+	//If ï¿½MRï¿½ is selected from ï¿½FR/MRï¿½ field, tracker should skip Group FR approval and should only go for Group MR approval
+	$("#GFDMRApprovallockedtilFR").empty();
+	if (!(["Approved", "Rejected"].includes(GFDFRApproval))) {
+		if(!(FR_MR=="MR")){
+		     $("#GFDMRApproval").attr('disabled', true)
+		     $("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilFR  color=purple>.locked until FR Approval/Rejection</font>")
+         }		
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+</script>
+<script type="text/javascript">
+    //Conditional locking of fields for Requestor if CFO Approval="Approved")
+	$( document ).ready(function() {
+		JSON.parse($("#usp_Requestor_locked_fields_when_cfo_approved_json").val().replace(/``/g, '"'))
+		.forEach(function (i) {
+			$("[name=" + i.field_name + "]").attr("disabled", i.locked);
+		})
+	});	
+
+</script>
+
+<script type="text/javascript">
+$( 
+    `<font style='color:red;font-size: small;'><br/>
+       P&L - $500k (ICS, F=M); $1m(Tax); $3m (Others)<br/>
+       BS - $1m(ICS, F=M), $50m (Tax, Others)</p>
+    </font>` 
+).insertAfter( "#DoesT1meetGroupthresholds_label"); 
+
+$( 
+`<font style='color:red;font-size: small;'>
+<br/>
+Why the requested T1 adjustment could not be made by M+4?<br/>
+What is the adjustment about?<br/>
+What controls are in place to avoid such instance in future?<br/>
+</font>` 
+).insertAfter( "#ReasonforT1journal_label"); 
+
+
+if($("#udf_primary_bug_has_attachment").val()!=="True"){
+$( 
+`<br\><font style='color:red;font-size: small;background-color:yellow;'>
+   For Primaries - attaching the Journal template<br/> 
+   is mandatory, else request will be rejected
+</font>` 
+).insertAfter( "#IFRSPackLevel_label"); 
+   }
+   
+$( 
+`<font style='color:red;font-size: small;'>
+<br/>
+Does this Late Adjustment has a Tax Impact?<br/>
+(Liaise with your Tax Team to evaluate the tax <br/>
+impact for this request.If it does, attach <br/>
+the Tax journal in the tracker request)<br/>
+</font>` 
+).insertAfter( "[id=DoesthisIncludeTaxAdjustments?_label]");    
+   
+</script>
+
+
+<script type="text/javascript">
+    //Rename fields...
+$("#CCNotification_label").text("Notify to (PSID only):");
+$("#PSGLJournalPoster_label").text("PSGL Journal Poster (PSID only):");
+$("#PSGLID_label").text("PSGL Journal ID:");
+$("#IFRSJAWPreparer_label").text("IFRS JAW Preparer (PSID only):");
+</script>
+
+<style>
+	/* Style for the custom alert box */
+	.custom-alert {
+		display: none;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: white;
+		border: 2px solid black;
+		padding: 20px;
+		z-index: 1000;
+		text-align: center;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	}
+	
+	.custom-alert p {
+		color: red;
+		margin: 0;
+	}
+
+	.custom-alert button {
+		margin-top: 20px;
+		padding: 10px 20px;
+		background-color: #007BFF;
+		color: white;
+		border: none;
+		cursor: pointer;
+	}
+
+	.custom-alert button:hover {
+		background-color: #0056b3;
+	}
+
+	/* Style for overlay */
+	.overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 999;
+	}
+</style>
+<div class="overlay" id="overlay"></div>
+<div class="custom-alert" id="customAlert">
+	<p>Please ensure Tax Adjustments are posted along with the Late Adjustments, if applicable</p>
+	<button onclick="closeAlert()">OK</button>
+</div>
+
+<script type="text/javascript">
+
+
+		document.addEventListener('DOMContentLoaded', (event) => {
+			var selectElement = document.getElementById('DoesthisIncludeTaxAdjustments?');
+			
+			selectElement.addEventListener('change', function() {
+				if (selectElement.value === 'Yes') {
+					//alert('Please ensure Tax Adjustments are also posted along with the Late Adjustments');
+					showAlert();
+				}
+			});
+		});
+
+        function showAlert() {
+            document.getElementById('customAlert').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+</script>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>

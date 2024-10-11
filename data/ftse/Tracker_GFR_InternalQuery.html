@@ -1,0 +1,1131 @@
+<html><head>
+<title id="titl">Query ID 25473 Proforma_2024-09-16</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 25473
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="Tracker_GFR_InternalQuery">
+
+
+
+<script type="text/javascript">
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+        current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+    }
+};
+
+
+</script>
+<div><b style="color:red;font-size:8pt;background-color: yellow;">PROD SGWPAUPCD04</b></div><table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="86" valign="middle"><img width="86" src="custom/logo.jpg">
+<br>
+<div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;">GFR Internal Query</div>
+<b><font id="current_db_environment" color="red"><font color="green" size="1pt">(PRODUCTION)</font></font>
+</b>
+</td>
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Queries</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (System Admin)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Query</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray_link">prev</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="warn" href="edit_deal.aspx?id=25472">next<img src="arrow_down.png" border="0" align="top"></a>&nbsp;&nbsp;&nbsp;<span class="smallnote">1 of 3</span></span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=25473" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=25473 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!-- <li id="subscribers" style="display: inline"><a target=_blank href=view_subscribers.aspx?id=25473 title='View users who have subscribed to email notifications for this item'><img src=telephone_edit.png border=0 align=top>&nbsp;subscribers</a></li> -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(25473)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=25473 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			<li id="send_email" style="display: inline"><a href="javascript:send_email(25473)" title="Send an email about this item"><img src="email_edit.png" border="0" align="top">&nbsp;send email</a></li>
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',25473,600,300)" title="Attach an image, document, or other file to this item">add attachment</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form method="post" action="./edit_deal.aspx?id=25473" id="ctl00" class="frm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="67F877FD">
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Query ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">25473</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=Balakrishna.DS@sc.com">1395839</a> on 2024-09-16 3:26 PM, 25 days ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option value="2667">Bret Woudstra</option>
+	<option value="2847">Bret Woudstra|Global Research</option>
+	<option value="2653">Business Tech Accounting</option>
+	<option value="2654">Country Risk</option>
+	<option value="2655">Credit Risk</option>
+	<option value="2878">Credit risk|Group Company Secretariat</option>
+	<option value="2865">Credit risk|Group Company Secretariat|Sustainability</option>
+	<option value="2873">Credit Risk|Human Resources</option>
+	<option value="2677">Finance Management</option>
+	<option value="2656">FP&amp;A</option>
+	<option value="2879">FP&amp;A|Investor Relations</option>
+	<option value="2864">FPandA</option>
+	<option value="2881">FPandA|Treasury</option>
+	<option selected="selected" value="2650">GFR</option>
+	<option value="2673">GFR|Country Risk|Credit Risk</option>
+	<option value="2683">GFR|Credit Risk</option>
+	<option value="2874">GFR|FP&amp;A</option>
+	<option value="2876">GFR|FPandA</option>
+	<option value="2870">GFR|Group Company Secretariat</option>
+	<option value="2681">GFR|Group Technical Accounting</option>
+	<option value="2682">GFR|Group Technical Accounting|Country Risk|Credit Risk</option>
+	<option value="2856">GFR|Group Technical Accounting|Credit Risk</option>
+	<option value="2763">GFR|Group Technical Accounting|Pensions</option>
+	<option value="2803">GFR|Group Technical Accounting|Tax</option>
+	<option value="2875">GFR|Investor Relations</option>
+	<option value="2871">GFR|Risk Finance</option>
+	<option value="2869">GFR|Treasury</option>
+	<option value="2676">Global Compliance</option>
+	<option value="2679">Global Research</option>
+	<option value="2657">Group Company Secretariat</option>
+	<option value="2867">Group Company Secretariat|Group Legal</option>
+	<option value="2862">Group Company Secretariat|Investor Relations</option>
+	<option value="2858">Group Company Secretariat|Sustainability</option>
+	<option value="2863">Group Company Secretariat|Sustainability|Human Resources</option>
+	<option value="2658">Group Finance Management</option>
+	<option value="2668">Group Legal</option>
+	<option value="2675">Group Reward</option>
+	<option value="2651">Group Technical Accounting</option>
+	<option value="2787">Group Technical Accounting|Bret Woudstra</option>
+	<option value="2857">Group Technical Accounting|Credit Risk</option>
+	<option value="2812">Group Technical Accounting|Credit Risk|Tax|Bret Woudstra</option>
+	<option value="2868">Group Technical Accounting|Group Company Secretariat</option>
+	<option value="2855">Group Technical Accounting|Group Reward</option>
+	<option value="2826">Group Technical Accounting|Pensions</option>
+	<option value="2840">Group Technical Accounting|Pensions|Risk Finance</option>
+	<option value="2819">Group Technical Accounting|Tax</option>
+	<option value="2678">Human Resources</option>
+	<option value="2666">Interest Rate Risk</option>
+	<option value="2669">Investor Relations</option>
+	<option value="2860">KPMG</option>
+	<option value="1">Not assigned</option>
+	<option value="2660">Pensions</option>
+	<option value="2833">Pensions|Tax</option>
+	<option value="2661">Project Management Team</option>
+	<option value="2652">Regulatory Accounting</option>
+	<option value="2672">Regulatory Accounting|Country Risk|Credit Risk|Group Company Secretariat</option>
+	<option value="2877">Regulatory Accounting|Credit Risk</option>
+	<option value="2671">Regulatory Accounting|Group Company Secretariat</option>
+	<option value="2662">Risk Finance</option>
+	<option value="2861">ShareOptions</option>
+	<option value="2663">Strategy</option>
+	<option value="2866">Strategy|FPandA</option>
+	<option value="2664">Sustainability</option>
+	<option value="2859">Sustainability|Human Resources</option>
+	<option value="2880">Sustainability|Investor Relations</option>
+	<option value="2665">Tax</option>
+	<option value="2771">Tax|Bret Woudstra</option>
+	<option value="2670">Treasury</option>
+	<option value="2882">Treasury|FPandA</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_org" class="stat"></span>
+			
+
+	<tr id="row3">
+		<td nowrap>
+			<span id="category_label" class="lbl">Category:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="category" id="category">
+	<option selected="selected" value="0">[no category]</option>
+
+</select>
+
+	<tr id="row4">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_priority" class="stat"></span>
+			
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			<span id="status_label" class="lbl">Status:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			
+			<select name="status" id="status">
+	<option value="0">[no status]</option>
+	<option value="17">Initial Upload</option>
+	<option value="1">Pending</option>
+	<option value="18">Cancelled</option>
+	<option selected="selected" value="19">Closed</option>
+	<option value="20">Locked</option>
+	<option value="21">Declined</option>
+	<option value="25">Declined - pending</option>
+	<option value="24">Pending Review</option>
+
+</select></td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			<span id="assigned_to_label" class="lbl">Initiated By:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			<select name="assigned_to" id="assigned_to">
+	<option selected="selected" value="0">[not assigned]</option>
+	<option value="689">Agarwal, Ashish - 1547778</option>
+	<option value="731">Ahmed, Palash - 1531201</option>
+	<option value="109">Aina, Samuel - 1303787</option>
+	<option value="735">Burrill, Peter - 1568839</option>
+	<option value="730">Chen, Nikita - 1260893</option>
+	<option value="677">Chigirov, Timur - 1531645</option>
+	<option value="675">Duenas1, Julius - 1151285</option>
+	<option value="208">Enefer, Steve - 1320195</option>
+	<option value="691">Haron, Daiyana - 1130368</option>
+	<option value="651">Hughes, Emma - 1553467</option>
+	<option value="652">Innes-wilson, Chris - 1208506</option>
+	<option value="698">Javvaji, Lohith - 1586807</option>
+	<option value="679">Koteswara Rao, Vundavalli - 1577599</option>
+	<option value="681">Krishnan, Baskaran - 1258831</option>
+	<option value="682">M2, Vignesh - 1318103</option>
+	<option value="680">Mahadevan, Ramakrishnan - 1172941</option>
+	<option value="692">Mansuri, Feroze - 1546145</option>
+	<option value="640">Newby-Fraser, Michael - 1544370</option>
+	<option value="639">Noble, Cameron - 1517621</option>
+	<option value="728">P, Lakshminarasimhan - 1200225</option>
+	<option value="693">Palani, Chandrasekaran - 1343302</option>
+	<option value="638">Quaintance, Alan - 1520884</option>
+	<option value="665">Qureshi, Rabia - 1574703</option>
+	<option value="686">Ramanujan, Srikanth - 1519904</option>
+	<option value="653">Roberts1, Martin - 1556269</option>
+	<option value="697">Sach, Eleanor - 1535387</option>
+	<option value="724">Sutton, Ben - 1569122</option>
+	<option value="741">Teja, Ravi.K - 1438994</option>
+	<option value="703">Venkata Mani Teja, Yakkala Udaya Naga - 1565397</option>
+	<option value="922">Abdul Halim, Nur Liyana - 2018161</option>
+	<option value="894">Abeijon Monjas, Samuel - 2007833</option>
+	<option value="812">Adetola, Olufunso - 1618392</option>
+	<option value="797">Ahmed, Ali - 1604443</option>
+	<option value="875">Aksoy, Kaan - 2001372</option>
+	<option value="780">Ali, Alameen - 1568529</option>
+	<option value="864">Arumugasamy, Roopini - 1650520</option>
+	<option value="834">B, Deepthi - 1604629</option>
+	<option value="898">B1, Yuvaraj - 1631328</option>
+	<option value="908">Bagary, Bal - 2005324</option>
+	<option value="876">Basis, Roy - 2002470</option>
+	<option value="899">Belai, Shifah - 2004210</option>
+	<option value="832">Bignell, Sam - 1632303</option>
+	<option value="877">Boppudi, Hymavathi - 1530825</option>
+	<option value="827">Ca, Sushil Mishra - 1619376</option>
+	<option value="779">Carneiro, Leticia - 1434347</option>
+	<option value="804">D, Sadasiva Sharma - 1623160</option>
+	<option value="891">D, Vikash - 1543015</option>
+	<option value="853">D S, Balakrishna - 1395839</option>
+	<option value="822">Duhaney, Vance - 1578768</option>
+	<option value="917">Ekudde, Isabellah - 1517566</option>
+	<option value="811">Epstein, Ariella - 1620249</option>
+	<option value="862">Ge, Jennifer - 1650087</option>
+	<option value="890">Goddard, Stephanie - 1539817</option>
+	<option value="837">Gs, RekhaBhargavi - 1202705</option>
+	<option value="823">Jackson, Leigh - 1620759</option>
+	<option value="866">Jain, Paran Kumar - 1657474</option>
+	<option value="919">Jain, Prachi - 2007753</option>
+	<option value="887">Jain, Rohit - 1613780</option>
+	<option value="844">Jovanovic, Stefan - 1647854</option>
+	<option value="856">K, Gokul - 1646397</option>
+	<option value="885">Krishnan, Subramanian - 1353436</option>
+	<option value="846">Kunle-salami, Feyi - 1311884</option>
+	<option value="910">Lacey, Evan - 2000544</option>
+	<option value="861">Lau, Grace - 1659268</option>
+	<option value="871">Lim, Vanessa Choon Theng - 1230216</option>
+	<option value="801">M, Vidhyalakshmi - 1586880</option>
+	<option value="785">M K, Anand Babu  - 1365042</option>
+	<option value="865">M1, Srikant - 1398099</option>
+	<option value="784">Makhino, Anne - 1600052</option>
+	<option value="799">Mauro, Micol - 1604464</option>
+	<option value="874">McRae, Alastair - 1643792</option>
+	<option value="792">Mohan, Ramachandran - 1384160</option>
+	<option value="886">N S, Aksharaa - 2002897</option>
+	<option value="753">Nagarajan, Prabhu - 1228246</option>
+	<option value="904">O'Connor, Darren - 8201063</option>
+	<option value="802">P V, Sai Madhav - 1623163</option>
+	<option value="798">Qazi, Mustafa - 1611583</option>
+	<option value="852">R, Sujatha - 1135449</option>
+	<option value="849">R, Sujatha - R, Sujatha</option>
+	<option value="896">Radia, Maiya - 1667496</option>
+	<option value="901">Ravikumar, Vasanth - 2011287</option>
+	<option value="845">Rizvi, Baqir - 1643789</option>
+	<option value="851">S, Ayyalusamy - 1404029</option>
+	<option value="805">S, Sailesh Gupta - 1623161</option>
+	<option value="765">Sarkar, Pritish Palash - 1476592</option>
+	<option value="795">Sarmah, Bidisha - 1613962</option>
+	<option value="880">Sarsfield, Dushianthi - 8188025</option>
+	<option value="761">Shah, Deepesh - 1175674</option>
+	<option value="749">Shah, Dolly - 1580698</option>
+	<option value="793">Sharma, Ashish Kumar - 1579331</option>
+	<option value="857">Shivkumar, Prakash - 1521553</option>
+	<option value="803">Srinivasan, Venkat - 1623162</option>
+	<option value="897">Stone, Ella - 2004419</option>
+	<option value="905">Stormer, Andrew - 1626288</option>
+	<option value="836">Surya Chakka, Bhagavan - 1641677</option>
+	<option value="854">Sutton, Neil - 1001237</option>
+	<option value="840">V2, SantoshKumar - 1544359</option>
+	<option value="859">Vignesh, Madan - 1474325</option>
+	<option value="800">Wang, Kenny - 1611590</option>
+	<option value="841">Yang, Connie - 1604467</option>
+
+</select>
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="ReviewPoint_row"><td nowrap=""><span id="ReviewPoint_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Required inputs               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">Review Point:</td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('ReviewPoint',8000)" wrap="hard" onkeyup="return count_chars('ReviewPoint',8000)" cols="120" rows="15" name="Review Point" id="ReviewPoint">Revaluation surplusand#39; has been added to the OCI during Q3. What movements/line items does this relate to? Which items 
+does SCB measure at FV that would give rise to a revaluation surplus? </textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="ReviewPoint_cnt">&nbsp;</div>
+</td></tr><tr id="Typeofissue_row"><td nowrap=""><span id="Typeofissue_label">Type of issue:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Typeofissue',255)" wrap="hard" onkeyup="return count_chars('Typeofissue',255)" cols="120" rows="2" name="Type of issue" id="Typeofissue">Medium</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Typeofissue_cnt">&nbsp;</div>
+</td></tr><tr id="Version_row"><td nowrap=""><span id="Version_label">Version:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Version',255)" wrap="hard" onkeyup="return count_chars('Version',255)" cols="120" rows="2" name="Version" id="Version">SC PLC</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Version_cnt">&nbsp;</div>
+</td></tr><tr id="Section_row"><td nowrap=""><span id="Section_label">Section:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Section',255)" wrap="hard" onkeyup="return count_chars('Section',255)" cols="120" rows="2" name="Section" id="Section">Condensed consolidated interim statement of comprehensive income</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Section_cnt">&nbsp;</div>
+</td></tr><tr id="Page_row"><td nowrap=""><span id="Page_label">Page:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Page',255)" wrap="hard" onkeyup="return count_chars('Page',255)" cols="120" rows="2" name="Page" id="Page">34</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Page_cnt">&nbsp;</div>
+</td></tr><tr id="Raisedby_row"><td nowrap=""><span id="Raisedby_label">Raised by:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Raisedby',255)" wrap="hard" onkeyup="return count_chars('Raisedby',255)" cols="120" rows="2" name="Raised by" id="Raisedby">FAAS</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Raisedby_cnt">&nbsp;</div>
+</td></tr><tr id="ARAimpacted?(Yes/No)_row"><td nowrap=""><span id="ARAimpacted?(Yes/No)_label">ARA impacted? (Yes/No):<i><span style="color:red;font-weight: 900;">*(mandatory)</span></i></span></td><td align="left"><select id="ARAimpacted?(Yes/No)" name="ARA impacted? (Yes/No)"><option selected=""></option><option>(none)</option><option>Yes</option><option>No</option></select>
+</td></tr><tr id="Response_row"><td nowrap=""><span id="Response_label">Response:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Response',2500)" wrap="hard" onkeyup="return count_chars('Response',2500)" cols="120" rows="15" name="Response" id="Response" style="color: red; background-color: lightyellow;">These are impact of fair valuation on reclass of PPE to investment Property. 
+
+In SOCI it will be shown as separate line and in SOCIE will be included under RE with a note. Similar to actuarial gains</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Response_cnt">&nbsp;</div>
+</td></tr><tr id="UserResponseStatus_row"><td nowrap=""><span id="UserResponseStatus_label">UserResponseStatus:</span><i><span style="color:red;font-weight: 900;">*(mandatory)</span></i></td><td align="left"><select id="UserResponseStatus" name="UserResponseStatus"><option>(Please make a selection)</option><option selected="">Submit</option><option>Resubmit</option></select>
+</td></tr><tr id="Team_row"><td nowrap=""><span id="Team_label">Team:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Team',255)" wrap="hard" onkeyup="return count_chars('Team',255)" cols="120" rows="2" name="Team" id="Team">GFR</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Team_cnt">&nbsp;</div>
+</td></tr><tr id="Owner_row"><td nowrap=""><span id="Owner_label">Owner:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Owner',255)" wrap="hard" onkeyup="return count_chars('Owner',255)" cols="120" rows="2" name="Owner" id="Owner">Pritish Palash Sarkar</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Owner_cnt">&nbsp;</div>
+</td></tr><tr id="Delegate_row"><td nowrap=""><span id="Delegate_label">Delegate:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Delegate',255)" wrap="hard" onkeyup="return count_chars('Delegate',255)" cols="120" rows="2" name="Delegate" id="Delegate"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Delegate_cnt">&nbsp;</div>
+</td></tr><tr id="AuditorIn-charge/Manager_row"><td nowrap=""><span id="AuditorIn-charge/Manager_label">Auditor In-charge/Manager:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('AuditorIn-charge/Manager',255)" wrap="hard" onkeyup="return count_chars('AuditorIn-charge/Manager',255)" cols="120" rows="2" name="Auditor In-charge/Manager" id="AuditorIn-charge/Manager"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="AuditorIn-charge/Manager_cnt">&nbsp;</div>
+</td></tr><tr id="DateClosed_row"><td nowrap=""><span id="DateClosed_label">DateClosed:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="DateClosed" id="DateClosed" value="2024-09-24 10:50 PM" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('DateClosed');">[select]</a>
+</td></tr><tr id="QueryType_row"><td nowrap=""><span id="QueryType_label">QueryType:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('QueryType',255)" wrap="hard" onkeyup="return count_chars('QueryType',255)" cols="120" rows="2" name="QueryType" id="QueryType">Proforma</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="QueryType_cnt">&nbsp;</div>
+</td></tr><tr id="ProjectName_row"><td nowrap=""><span id="ProjectName_label">ProjectName:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('ProjectName',255)" wrap="hard" onkeyup="return count_chars('ProjectName',255)" cols="120" rows="2" name="ProjectName" id="ProjectName"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="ProjectName_cnt">&nbsp;</div>
+</td></tr><tr id="AuditorNumber_row"><td nowrap=""><span id="AuditorNumber_label">Auditor Number:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('AuditorNumber',255)" wrap="hard" onkeyup="return count_chars('AuditorNumber',255)" cols="120" rows="2" name="Auditor Number" id="AuditorNumber"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="AuditorNumber_cnt">&nbsp;</div>
+</td></tr><tr id="AuditorStatus_row"><td nowrap=""><span id="AuditorStatus_label">Auditor Status:</span></td><td align="left"><select id="AuditorStatus" name="Auditor Status"><option selected="">(Please make a selection)</option><option>Accept</option><option>Decline</option></select>
+</td></tr><tr id="AuditorAssessment_row"><td nowrap=""><span id="AuditorAssessment_label">Auditor Assessment:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('AuditorAssessment',500)" wrap="hard" onkeyup="return count_chars('AuditorAssessment',500)" cols="120" rows="4" name="Auditor Assessment" id="AuditorAssessment"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="AuditorAssessment_cnt">&nbsp;</div>
+</td></tr><tr id="LockID_row"><td nowrap=""><span id="LockID_label">LockID:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="LockID" id="LockID" value="1554" class="txt">
+</td></tr><tr id="NotifyFlag_row"><td nowrap=""><span id="NotifyFlag_label">NotifyFlag:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="NotifyFlag" id="NotifyFlag" value="" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "queryid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="Proforma_2024-09-16">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="2650">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="GFR">
+	
+	<input name="prev_org_name" type="hidden" id="prev_org_name" value="UserSubmitter">
+	<input name="prev_category" type="hidden" id="prev_category" value="0">
+	
+	<input name="prev_assigned_to" type="hidden" id="prev_assigned_to" value="0">
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	<input name="prev_status" type="hidden" id="prev_status" value="19">
+	<input name="prev_udf" type="hidden" id="prev_udf" value="0">
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 03:06:05:780">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="System Admin">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="Tracker_GFR_InternalQuery">
+	
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_ARA impacted? (Yes/No)" value="">
+<input type="hidden" name="prev_Auditor Assessment" value="">
+<input type="hidden" name="prev_Auditor In-charge/Manager" value="">
+<input type="hidden" name="prev_Auditor Number" value="">
+<input type="hidden" name="prev_Auditor Status" value="(Please make a selection)">
+<input type="hidden" name="prev_DateClosed" value="2024-09-24 10:50 PM">
+<input type="hidden" name="prev_Delegate" value="">
+<input type="hidden" name="prev_LockID" value="1554">
+<input type="hidden" name="prev_NotifyFlag" value="">
+<input type="hidden" name="prev_Owner" value="Pritish Palash Sarkar">
+<input type="hidden" name="prev_Page" value="34">
+<input type="hidden" name="prev_ProjectName" value="">
+<input type="hidden" name="prev_QueryType" value="Proforma">
+<input type="hidden" name="prev_Raised by" value="FAAS">
+<input type="hidden" name="prev_Response" value="These are impact of fair valuation on reclass of PPE to investment Property. 
+
+In SOCI it will be shown as separate line and in SOCIE will be included under RE with a note. Similar to actuarial gains">
+<input type="hidden" name="prev_Review Point" value="Revaluation surplusand#39; has been added to the OCI during Q3. What movements/line items does this relate to? Which items 
+does SCB measure at FV that would give rise to a revaluation surplus? ">
+<input type="hidden" name="prev_Section" value="Condensed consolidated interim statement of comprehensive income">
+<input type="hidden" name="prev_Team" value="GFR">
+<input type="hidden" name="prev_Type of issue" value="Medium">
+<input type="hidden" name="prev_UserResponseStatus" value="Submit">
+<input type="hidden" name="prev_Version" value="SC PLC">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(25473)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(25473)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+
+<tbody><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=PritishpalashSarkar@sc.com">1476592</a> on 2024-09-24 10:50 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Auditor Status from "Accept" to "(Please make a selection)"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=PritishpalashSarkar@sc.com">1476592</a> on 2024-09-24 10:50 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed UserResponseStatus from "(Please make a selection)" to "Submit"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=PritishpalashSarkar@sc.com">1476592</a> on 2024-09-24 10:49 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Auditor Status from "" to "Accept"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=PritishpalashSarkar@sc.com">1476592</a> on 2024-09-24 10:49 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed UserResponseStatus from "(none)" to "(Please make a selection)"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=PritishpalashSarkar@sc.com">1476592</a> on 2024-09-24 10:49 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Response from "(none)" to "These are impact of fair valuation on reclass of PPE to investment Property. 
+<br>
+<br>In SOCI it will be shown as separate line and in SOCIE will be included under RE with a note. Similar to actuarial gains"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/GFR_InternalQuery/send_email.aspx?bg_id=25473&amp;to=PritishpalashSarkar@sc.com">1476592</a> on 2024-09-24 10:49 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Review Point from "Revaluation surplus&amp;#39; has been added to the OCI during Q3. What movements/line items does this relate to? Which items does SCB measure at FV that would give rise to a revaluation surplus?" to "Revaluation surplus&amp;#39; has been added to the OCI during Q3. What movements/line items does this relate to? Which items 
+<br>does SCB measure at FV that would give rise to a revaluation surplus?"</span>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">GFR Internal Query Tracker - 2022 Standard Chartered Bank</td>
+   <td width="1%" align="right" valign="top" style="margin:0; padding:0; vertical-align: top;"><img style="margin:0; padding:0; vertical-align: top;" src="custom/footer-img_07.gif" width="14" height="37"></td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    } else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org “PC Line Controller” only 
+    //i.e. disable the radio button “+” for this field only for PC Line Controller Org
+    myOrg = "System Admin";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+    //Apply Comment Collapse to array of fields from the database
+    $.each($("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) {
+            if (value != "") {
+                applyCommentCollapseBehaviour(value);
+            }
+        }
+        );
+
+    //Mark "UserResponseStatus" as mandatory
+    $("#UserResponseStatus_label").parent().append("<i><span style='color:red;font-weight: 900;'>*(mandatory)</span></i>");
+	
+	//Mark "ARA impacted? (Yes/No)" as mandatory
+	//can't treat "ARA impacted? (Yes/No)" same way as "UserResponseStatus"  b/c special characters
+	jQuery($("span:contains('ARA impacted?')")[1]).append("<i><span style='color:red;font-weight: 900;'>*(mandatory)</span></i>");
+	
+    var tesponseTextarea = document.getElementById('Response');
+    tesponseTextarea.style = "color: red; background-color: lightyellow";	
+</script>
+
+<script type="text/javascript">
+    //textareas should not contain crazy html character codes!!
+    $(document).ready(function () {
+        $("textarea").each(function (i, e) {
+            $(e).text($(e).text().replace(/&quot;/g, '"')
+                                 .replace(/&amp;/g, '&')
+                                 .replace(/&gt;/g, '>')
+                                 .replace(/&lt;/g, '<')
+                                 .replace(/andquot;/g, '"')
+                                 .replace(/and#160;/g, ' ')
+                                 .replace(/and#163;/g, '£'))
+        });
+    });
+</script>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>

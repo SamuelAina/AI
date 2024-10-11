@@ -1,0 +1,1197 @@
+<html><head>
+<title id="titl">Request ID 11100 [No Description]</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 11100
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+    if($("textarea.resizable:not(.processed)")[0]!==undefined){
+	  // $("textarea.resizable:not(.processed)").TextAreaResizer();
+    }
+	
+		
+}
+
+function disable_second_button()
+{
+
+	el = get_el("sub");
+	el.disabled = true;
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="Tracker_Employee_Travel_Request">
+
+
+
+<script type="text/javascript">
+/*
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+        current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+    }
+};
+*/
+</script>
+<div><b style="color:red;font-size:6pt;background-color: yellow;">SGWPAUPCD04</b></div><table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="160" valign="middle"><img width="86" src="custom/logo.jpg"><br><div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;">Employee Travel Request Tracker</div><b><font id="xcurrent_db_environment" color="green">(PRODUCTION)</font></b></td>
+
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Requests</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (PMO Leads)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Request</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray_link">prev</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="warn" href="edit_deal.aspx?id=11099">next<img src="arrow_down.png" border="0" align="top"></a>&nbsp;&nbsp;&nbsp;<span class="smallnote">1 of 108</span></span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=11100" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=11100 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(11100)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=11100 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',11100,600,300)" title="Attach an image, document, or other file to this item">add attachment (Max 11MB)</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form name="ctl00" method="post" action="./edit_deal.aspx?id=11100" id="ctl00" class="frm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E64E3D0B">
+
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+	
+		<div>
+				<span id="custom_field_msg2" class="err"></span>
+				<span id="msg2" class="err"></span>
+		</div>
+		 <div style="text-align: center;"> 
+			<input name="sub2" type="submit" id="sub2" class="btn" onclick="disable_me()" value="Update">
+		</div>			
+				
+	<table border="0" cellpadding="3" cellspacing="0" style="display: none;">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Request ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">11100</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 6:58 PM, 17 days ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option selected="selected" value="1">(none)</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			<span id="org_label" class="lbl">Organisation:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="org" id="org">
+	<option selected="selected" value="0">[no organization]</option>
+	<option value="50">CFO/CFO&#39;s Delegate</option>
+	<option value="53">Group FR</option>
+	<option value="54">Group MR</option>
+	<option value="55">IFRS JAW preparer</option>
+	<option value="52">MT Leads</option>
+	<option value="56">PMO</option>
+	<option value="51">PMO Leads</option>
+	<option value="58">regular user</option>
+	<option value="49">Requestor</option>
+	<option value="57">SPOC</option>
+	<option value="1">System Admin</option>
+
+</select>
+
+	<tr id="row3">
+		<td nowrap>
+			<span id="category_label" class="lbl">Category:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="category" id="category">
+	<option selected="selected" value="0">[no category]</option>
+
+</select>
+
+	<tr id="row4">
+		<td nowrap>
+			<span id="priority_label" class="lbl">Priority:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="priority" id="priority">
+	<option selected="selected" value="0">[no priority]</option>
+	<option value="1">high</option>
+	<option value="2">med</option>
+	<option value="3">low</option>
+
+</select>
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat"></span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="Traveller(PSID)_row"><td nowrap=""><span id="Traveller(PSID)_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Travel Details               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px"><font color="red">*</font>Traveller (PSID):</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Traveller (PSID)" id="Traveller(PSID)" value="1511688" class="txt">
+</td></tr><tr id="Traveller(Name)_row"><td nowrap=""><span id="Traveller(Name)_label">Traveller (Name):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="70" maxlength="70" name="Traveller (Name)" id="Traveller(Name)" value="Craig Turrell" class="txt">
+</td></tr><tr id="Grade_row"><td nowrap=""><font color="red">*</font>Grade:</td><td align="left"><select id="Grade" name="Grade" class="edit_bug_option" style="width: 389px;"><option></option><option>Band 1</option><option>Band 2</option><option>Band 3</option><option selected="">Band 4</option><option>Band 5</option><option>Band 6</option><option>Band 7</option><option>Band 8</option><option>Band 9</option><option>Band 10</option><option>Tier 0</option><option>Tier 1</option><option>Tier 2</option><option>Tier 3</option><option>Tier 4</option></select>
+</td></tr><tr id="LineManager(PSID)_row"><td nowrap=""><font color="red">*</font>Line Manager (PSID):</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Line Manager (PSID)" id="LineManager(PSID)" value="1304869" class="txt">
+</td></tr><tr id="LineManager(Name)_row"><td nowrap=""><span id="LineManager(Name)_label">Line Manager (Name):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="70" maxlength="70" name="Line Manager (Name)" id="LineManager(Name)" value="Honminbarry Khoo" class="txt">
+</td></tr><tr id="CostCenter_row"><td nowrap=""><font color="red">*</font>Cost Center:</td><td align="left"><select id="CostCenter" name="Cost Center" class="edit_bug_option" style="width: 389px;"><option></option><option>104-8125-109</option><option>110-8502-901</option><option>110-8966-901</option><option>110-9138-901</option><option selected="">150-8197-901</option><option>150-8455-901</option><option>238-6345-901</option><option>238-8098-901</option><option>265-9353-800</option><option>287-8930-800</option><option>287-8931-800</option><option>287-8932-800</option><option>287-8943-786</option><option>303-8120-800</option><option>303-8129-800</option><option>306-8030-800</option><option>306-8251-800</option><option>306-8253-800</option><option>306-8490-800</option><option>306-8931-800</option><option>339-8270-800</option><option>339-8271-800</option><option>339-8278-800</option><option>339-8281-800</option><option>339-8282-800</option><option>339-8283-800</option><option>339-8284-800</option><option>339-8414-800</option><option>339-8420-800</option><option>339-8454-800</option><option>339-8455-800</option><option>339-8456-800</option><option>339-8463-800</option><option>339-8464-800</option><option>339-8466-800</option><option>339-8482-800</option><option>339-8483-800</option><option>339-8484-800</option><option>339-8489-800</option><option>418-9138-800</option><option>436-9353-800</option><option>534-8128-800</option><option>928-8888-901</option><option>150-9263-901</option><option>339-9265-800</option><option>339-2053-800</option><option></option></select>
+</td></tr><tr id="Country-Origin_row"><td nowrap=""><font color="red">*</font>Country-Origin:</td><td align="left"><select id="Country-Origin" name="Country-Origin" class="edit_bug_option" style="width: 389px;"><option></option><option>Germany - Frankfurt/Main</option><option>Hong Kong - Central</option><option>Hong Kong - Kwun Tong</option><option>India - Bangalore</option><option>India - Chennai</option><option>Ireland - Dublin</option><option>Malaysia - Kuala Lumpur</option><option>Malaysia - Tsim Sha Tsui</option><option>Poland - Warsaw</option><option>Poland - Warszawa</option><option>Pakistan - Karachi</option><option selected="">Singapore</option><option>Thailand - Bangkok</option><option>United Arab Emirates - Dubai</option><option>United Kingdom - London</option><option>United States - New York</option><option>Vietnam - Ho Chi Minh</option><option>United States - Orlando Florida</option><option></option></select>
+</td></tr><tr id="Country-Destinantion_row"><td nowrap=""><font color="red">*</font>Country-Destinantion:</td><td align="left"><select id="Country-Destinantion" name="Country-Destinantion" class="edit_bug_option" style="width: 389px;"><option></option><option>Germany - Frankfurt/Main</option><option>Hong Kong - Central</option><option>Hong Kong - Kwun Tong</option><option>India - Bangalore</option><option>India - Chennai</option><option>India - Mumbai</option><option>Ireland - Dublin</option><option>Malaysia - Kuala Lumpur</option><option>Malaysia - Tsim Sha Tsui</option><option>Poland - Warsaw</option><option>Poland - Warszawa</option><option>Pakistan - Karachi</option><option>Singapore</option><option>Thailand - Bangkok</option><option>United Arab Emirates - Dubai</option><option>United Kingdom - London</option><option>United States - New York</option><option>Vietnam - Ho Chi Minh</option><option selected="">United States - Orlando Florida</option><option></option></select>
+</td></tr><tr id="FromDate_row"><td nowrap=""><font color="red">*</font>From Date:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="From Date" id="FromDate" value="2024-06-02" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('FromDate');">[select]</a>
+</td></tr><tr id="ToDate_row"><td nowrap=""><font color="red">*</font>To Date:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="To Date" id="ToDate" value="2024-06-08" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('ToDate');">[select]</a>
+</td></tr><tr id="DurationofStay(Days)_row"><td nowrap=""><font color="red">*</font>Duration of Stay (Days):</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Duration of Stay (Days)" id="DurationofStay(Days)" value="6" class="txt">
+</td></tr><tr id="FlightDuration(Hours)_row"><td nowrap=""><font color="red">*</font>Flight Duration (Hours):</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Flight Duration (Hours)" id="FlightDuration(Hours)" value="23" class="txt">
+</td></tr><tr id="Doestravellerhavedirectreportsindestinationcountry?_row"><td nowrap=""><span id="Doestravellerhavedirectreportsindestinationcountry?_label">Does traveller have direct reports in destination country?:</span></td><td align="left"><select id="Doestravellerhavedirectreportsindestinationcountry?" name="Does traveller have direct reports in destination country?" class="edit_bug_option" style="width: 389px;"><option></option><option>Yes</option><option selected="">No</option></select>
+</td></tr><tr id="TravelJustification_row"><td nowrap=""><font color="red">*</font>Travel Justification:</td><td align="left"><textarea class="txt resizable" onkeydown="return count_chars('TravelJustification',3000)" wrap="hard" onkeyup="return count_chars('TravelJustification',3000)" cols="120" rows="15" name="Travel Justification" id="TravelJustification">SAP Sapphire Speaking/BTP andamp; Business AI Product Heads Meeting. </textarea><div class="smallnote" id="TravelJustification_cnt">&nbsp;</div></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="Accommodation_row"><td nowrap=""><span id="Accommodation_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk3" type="button" value="[-]" onclick="toggle_visibility('tbl3', 'lnk3');"><strong>Cost Estimation (USD)               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl3" style="display: table;"><tbody><tr><td style="width:300px"><font color="red">*</font>Accommodation:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Accommodation" id="Accommodation" value="1200.00" class="txt">
+</td></tr><tr id="Flight_row"><td nowrap=""><font color="red">*</font>Flight:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Flight" id="Flight" value="8000.00" class="txt">
+</td></tr><tr id="LocalConveyance_row"><td nowrap=""><span id="LocalConveyance_label">Local Conveyance:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Local Conveyance" id="LocalConveyance" value="250.00" class="txt">
+</td></tr><tr id="Food_row"><td nowrap=""><font color="red">*</font>Food:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Food" id="Food" value="600.00" class="txt">
+</td></tr><tr id="Misc_row"><td nowrap=""><span id="Misc_label">Misc:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Misc" id="Misc" value="" class="txt">
+</td></tr><tr id="TotalCost_row"><td nowrap=""><font color="red">*</font>Total Cost:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Total Cost" id="TotalCost" value="10050.00" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="InitiativeName-1_row"><td nowrap=""><span id="InitiativeName-1_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk2" type="button" value="[-]" onclick="toggle_visibility('tbl2', 'lnk2');"><strong>RF (QPR) - Journey Details               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl2" style="display: table;"><tbody><tr><td style="width:300px"><font color="red">*</font>Initiative Name-1:</td><td align="left"><select id="InitiativeName-1" name="Initiative Name-1" class="edit_bug_option" style="width: 389px;"><option></option><option>Aspire Onboarding - 20000715</option><option>Basis Risk, PnL Explain, GIM Forecasting - 22000820</option><option>Collateral Task Force - 24000551</option><option>Data Quality Monitoring (DQM) - 22000093</option><option>Funding-in-Resolution,Recovery,Forecasting,Funding Planning - 20001643</option><option>Integrated Liquidity - 21001601</option><option>IRRBB - Strategic RCO - 22000057</option><option>Liquidity and IDL Product Enhancements - 20000061</option><option>Local Liquidity Reporting - 22000103</option><option selected="">Reporting and Analytics Initaitive - 23001692</option><option>SHARP and FTP Analytics, CandO Allocation - 22000049</option><option>Strategic FTP Matching Eng,Accruals Calc,Gen Ledger Posting - 22000058</option><option>Liquidity Regulatory Reporting s166 - 24001353</option></select>
+</td></tr><tr id="InitiativeName-2_row"><td nowrap=""><span id="InitiativeName-2_label">Initiative Name-2:</span></td><td align="left"><select id="InitiativeName-2" name="Initiative Name-2" class="edit_bug_option" style="width: 389px;"><option selected=""></option><option>Aspire Onboarding - 20000715</option><option>Basis Risk, PnL Explain, GIM Forecasting - 22000820</option><option>Collateral Task Force - 24000551</option><option>Data Quality Monitoring (DQM) - 22000093</option><option>Funding-in-Resolution,Recovery,Forecasting,Funding Planning - 20001643</option><option>Integrated Liquidity - 21001601</option><option>IRRBB - Strategic RCO - 22000057</option><option>Liquidity and IDL Product Enhancements - 20000061</option><option>Local Liquidity Reporting - 22000103</option><option>Reporting and Analytics Initaitive - 23001692</option><option>SHARP and FTP Analytics, CandO Allocation - 22000049</option><option>Strategic FTP Matching Eng,Accruals Calc,Gen Ledger Posting - 22000058</option><option>Liquidity Regulatory Reporting s166 - 24001353</option></select>
+</td></tr><tr id="InitiativeName-3_row"><td nowrap=""><span id="InitiativeName-3_label">Initiative Name-3:</span></td><td align="left"><select id="InitiativeName-3" name="Initiative Name-3" class="edit_bug_option" style="width: 389px;"><option selected=""></option><option>Aspire Onboarding - 20000715</option><option>Basis Risk, PnL Explain, GIM Forecasting - 22000820</option><option>Collateral Task Force - 24000551</option><option>Data Quality Monitoring (DQM) - 22000093</option><option>Funding-in-Resolution,Recovery,Forecasting,Funding Planning - 20001643</option><option>Integrated Liquidity - 21001601</option><option>IRRBB - Strategic RCO - 22000057</option><option>Liquidity and IDL Product Enhancements - 20000061</option><option>Local Liquidity Reporting - 22000103</option><option>Reporting and Analytics Initaitive - 23001692</option><option>SHARP and FTP Analytics, CandO Allocation - 22000049</option><option>Strategic FTP Matching Eng,Accruals Calc,Gen Ledger Posting - 22000058</option><option>Liquidity Regulatory Reporting s166 - 24001353</option></select>
+</td></tr><tr id="InitiativeName-4_row"><td nowrap=""><span id="InitiativeName-4_label">Initiative Name-4:</span></td><td align="left"><select id="InitiativeName-4" name="Initiative Name-4" class="edit_bug_option" style="width: 389px;"><option selected=""></option><option>Aspire Onboarding - 20000715</option><option>Basis Risk, PnL Explain, GIM Forecasting - 22000820</option><option>Collateral Task Force - 24000551</option><option>Data Quality Monitoring (DQM) - 22000093</option><option>Funding-in-Resolution,Recovery,Forecasting,Funding Planning - 20001643</option><option>Integrated Liquidity - 21001601</option><option>IRRBB - Strategic RCO - 22000057</option><option>Liquidity and IDL Product Enhancements - 20000061</option><option>Local Liquidity Reporting - 22000103</option><option>Reporting and Analytics Initaitive - 23001692</option><option>SHARP and FTP Analytics, CandO Allocation - 22000049</option><option>Strategic FTP Matching Eng,Accruals Calc,Gen Ledger Posting - 22000058</option><option>Liquidity Regulatory Reporting s166 - 24001353</option></select>
+</td></tr><tr id="InitiativeID-1_row"><td nowrap=""><span id="InitiativeID-1_label">Initiative ID-1:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Initiative ID-1" id="InitiativeID-1" value="23001692" class="txt">
+</td></tr><tr id="InitiativeID-2_row"><td nowrap=""><span id="InitiativeID-2_label">Initiative ID-2:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Initiative ID-2" id="InitiativeID-2" value="" class="txt">
+</td></tr><tr id="InitiativeID-3_row"><td nowrap=""><span id="InitiativeID-3_label">Initiative ID-3:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Initiative ID-3" id="InitiativeID-3" value="" class="txt">
+</td></tr><tr id="InitiativeID-4_row"><td nowrap=""><span id="InitiativeID-4_label">Initiative ID-4:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Initiative ID-4" id="InitiativeID-4" value="" class="txt">
+</td></tr><tr id="RefinementForum(QPR)_row"><td nowrap=""><span id="RefinementForum(QPR)_label">Refinement Forum (QPR):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="70" maxlength="70" name="Refinement Forum (QPR)" id="RefinementForum(QPR)" value="Reporting and Analytics" class="txt">
+</td></tr><tr id="RefinementForumMT(PSID)_row"><td nowrap=""><span id="RefinementForumMT(PSID)_label">Refinement Forum MT (PSID):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="20" maxlength="20" name="Refinement Forum MT (PSID)" id="RefinementForumMT(PSID)" value="1304869" class="txt">
+</td></tr><tr id="RefinementForumMT(Name)_row"><td nowrap=""><span id="RefinementForumMT(Name)_label">Refinement Forum MT (Name):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="70" maxlength="70" name="Refinement Forum MT (Name)" id="RefinementForumMT(Name)" value="Khoo1, Hon Min Barry" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="InitiativeID-1._row"><td nowrap=""><span id="InitiativeID-1._label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk4" type="button" value="[+]" onclick="toggle_visibility('tbl4', 'lnk4');"><strong>Actual Spent (USD)               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl4"><tbody><tr><td style="width:300px">Initiative ID-1.:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-1." id="InitiativeID-1." value="" class="txt">
+</td></tr><tr id="InitiativeID-2._row"><td nowrap=""><span id="InitiativeID-2._label">Initiative ID-2.:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-2." id="InitiativeID-2." value="" class="txt">
+</td></tr><tr id="InitiativeID-3._row"><td nowrap=""><span id="InitiativeID-3._label">Initiative ID-3.:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-3." id="InitiativeID-3." value="" class="txt">
+</td></tr><tr id="InitiativeID-4._row"><td nowrap=""><span id="InitiativeID-4._label">Initiative ID-4.:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-4." id="InitiativeID-4." value="" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="InitiativeID-1.._row"><td nowrap=""><span id="InitiativeID-1.._label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk5" type="button" value="[+]" onclick="toggle_visibility('tbl5', 'lnk5');"><strong>Budget (USD)               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl5"><tbody><tr><td style="width:300px">Initiative ID-1..:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-1.." id="InitiativeID-1.." value="0.00" class="txt">
+</td></tr><tr id="InitiativeID-2.._row"><td nowrap=""><span id="InitiativeID-2.._label">Initiative ID-2..:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-2.." id="InitiativeID-2.." value="" class="txt">
+</td></tr><tr id="InitiativeID-3.._row"><td nowrap=""><span id="InitiativeID-3.._label">Initiative ID-3..:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-3.." id="InitiativeID-3.." value="" class="txt">
+</td></tr><tr id="InitiativeID-4.._row"><td nowrap=""><span id="InitiativeID-4.._label">Initiative ID-4..:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-4.." id="InitiativeID-4.." value="" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="InitiativeID-1…_row"><td nowrap=""><span id="InitiativeID-1…_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk6" type="button" value="[+]" onclick="toggle_visibility('tbl6', 'lnk6');"><strong>Balance (USD)               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl6"><tbody><tr><td style="width:300px">Initiative ID-1…:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-1…" id="InitiativeID-1…" value="0.00" class="txt">
+</td></tr><tr id="InitiativeID-2…_row"><td nowrap=""><span id="InitiativeID-2…_label">Initiative ID-2…:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-2…" id="InitiativeID-2…" value="" class="txt">
+</td></tr><tr id="InitiativeID-3…_row"><td nowrap=""><span id="InitiativeID-3…_label">Initiative ID-3…:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-3…" id="InitiativeID-3…" value="" class="txt">
+</td></tr><tr id="InitiativeID-4…_row"><td nowrap=""><span id="InitiativeID-4…_label">Initiative ID-4…:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Initiative ID-4…" id="InitiativeID-4…" value="" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="RefinementForumMTApproval_row"><td nowrap=""><span id="RefinementForumMTApproval_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk7" type="button" value="[-]" onclick="toggle_visibility('tbl7', 'lnk7');"><strong>Approval Status and Comments               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl7" style="display: table;"><tbody><tr><td style="width:300px">Refinement Forum MT Approval:</td><td align="left"><select id="RefinementForumMTApproval" name="Refinement Forum MT Approval" class="edit_bug_option" style="width: 389px;"><option selected=""></option><option>Approved</option><option>Rejected</option><option>On-Hold</option><option>Re-Work</option></select>
+</td></tr><tr id="InvestmentHead(Tom)Approval_row"><td nowrap=""><span id="InvestmentHead(Tom)Approval_label">Investment Head (Tom) Approval:</span></td><td align="left"><select id="InvestmentHead(Tom)Approval" name="Investment Head (Tom) Approval" class="edit_bug_option" style="width: 389px;"><option selected=""></option><option>Approved</option><option>Rejected</option><option>On-Hold</option><option>Re-Work</option></select>
+</td></tr><tr id="ApproverComments_row"><td nowrap=""><span id="ApproverComments_label">Approver Comments:</span></td><td align="left"><textarea class="txt resizable" onkeydown="return count_chars('ApproverComments',3000)" wrap="hard" onkeyup="return count_chars('ApproverComments',3000)" cols="120" rows="15" name="Approver Comments" id="ApproverComments"></textarea><div class="smallnote" id="ApproverComments_cnt">&nbsp;</div></td></tr></tbody></table></td></tr></tbody></table>
+</span></td></tr><tr id="TravelCompleted_row"><td nowrap=""><span id="TravelCompleted_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk8" type="button" value="[+]" onclick="toggle_visibility('tbl8', 'lnk8');"><strong>Travel Completion Status               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl8"><tbody><tr><td style="width:300px">Travel Completed:</td><td align="left"><select id="TravelCompleted" name="Travel Completed" class="edit_bug_option" style="width: 389px;"><option></option><option>Yes</option><option selected="">No</option></select></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "Requestid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="[No Description]">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="1">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="(none)">
+	<input name="prev_org" type="hidden" id="prev_org" value="0">
+	<input name="prev_org_name" type="hidden" id="prev_org_name">
+	<input name="prev_category" type="hidden" id="prev_category" value="0">
+	<input name="prev_priority" type="hidden" id="prev_priority" value="0">
+	
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	
+	<input name="prev_udf" type="hidden" id="prev_udf" value="0">
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 01:38:53:327">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1|tbl2,lnk2|tbl3,lnk3|tbl7,lnk7">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="PMO Leads">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="Tracker_Employee_Travel_Request">
+	<input type="hidden" id="usp_Requestor_locked_fields_when_cfo_approved_json" value="Invalid column name 'CFO Approval'.">
+
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_Accommodation" value="1200.00">
+<input type="hidden" name="prev_Approver Comments" value="">
+<input type="hidden" name="prev_Cost Center" value="150-8197-901">
+<input type="hidden" name="prev_Country-Destinantion" value="United States - Orlando Florida">
+<input type="hidden" name="prev_Country-Origin" value="Singapore">
+<input type="hidden" name="prev_Does traveller have direct reports in destination country?" value="No">
+<input type="hidden" name="prev_Duration of Stay (Days)" value="6">
+<input type="hidden" name="prev_Flight" value="8000.00">
+<input type="hidden" name="prev_Flight Duration (Hours)" value="23">
+<input type="hidden" name="prev_Food" value="600.00">
+<input type="hidden" name="prev_From Date" value="2024-06-02">
+<input type="hidden" name="prev_Grade" value="Band 4">
+<input type="hidden" name="prev_Initiative ID-1" value="23001692">
+<input type="hidden" name="prev_Initiative ID-1." value="">
+<input type="hidden" name="prev_Initiative ID-1.." value="0.00">
+<input type="hidden" name="prev_Initiative ID-1…" value="0.00">
+<input type="hidden" name="prev_Initiative ID-2" value="">
+<input type="hidden" name="prev_Initiative ID-2." value="">
+<input type="hidden" name="prev_Initiative ID-2.." value="">
+<input type="hidden" name="prev_Initiative ID-2…" value="">
+<input type="hidden" name="prev_Initiative ID-3" value="">
+<input type="hidden" name="prev_Initiative ID-3." value="">
+<input type="hidden" name="prev_Initiative ID-3.." value="">
+<input type="hidden" name="prev_Initiative ID-3…" value="">
+<input type="hidden" name="prev_Initiative ID-4" value="">
+<input type="hidden" name="prev_Initiative ID-4." value="">
+<input type="hidden" name="prev_Initiative ID-4.." value="">
+<input type="hidden" name="prev_Initiative ID-4…" value="">
+<input type="hidden" name="prev_Initiative Name-1" value="Reporting and Analytics Initaitive - 23001692">
+<input type="hidden" name="prev_Initiative Name-2" value="">
+<input type="hidden" name="prev_Initiative Name-3" value="">
+<input type="hidden" name="prev_Initiative Name-4" value="">
+<input type="hidden" name="prev_Investment Head (Tom) Approval" value="">
+<input type="hidden" name="prev_Line Manager (Name)" value="Honminbarry Khoo">
+<input type="hidden" name="prev_Line Manager (PSID)" value="1304869">
+<input type="hidden" name="prev_Local Conveyance" value="250.00">
+<input type="hidden" name="prev_Misc" value="">
+<input type="hidden" name="prev_Refinement Forum (QPR)" value="Reporting and Analytics">
+<input type="hidden" name="prev_Refinement Forum MT (Name)" value="Khoo1, Hon Min Barry">
+<input type="hidden" name="prev_Refinement Forum MT (PSID)" value="1304869">
+<input type="hidden" name="prev_Refinement Forum MT Approval" value="">
+<input type="hidden" name="prev_To Date" value="2024-06-08">
+<input type="hidden" name="prev_Total Cost" value="10050.00">
+<input type="hidden" name="prev_Travel Completed" value="No">
+<input type="hidden" name="prev_Travel Justification" value="SAP Sapphire Speaking/BTP andamp; Business AI Product Heads Meeting. ">
+<input type="hidden" name="prev_Traveller (Name)" value="Craig Turrell">
+<input type="hidden" name="prev_Traveller (PSID)" value="1511688">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(11100)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(11100)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+
+<tbody><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 7:18 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed To Date from "2024-10-01" to "2024-10-02"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 7:18 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed To Date from "2024-10-02" to "2024-10-01"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 7:18 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Duration of Stay (Days) from "5" to "6"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 7:18 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed To Date from "2024-10-01" to "2024-10-02"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 7:00 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Country-Destinantion from "Germany - Frankfurt/Main" to "United States - Orlando Florida"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 6:58 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Country-Destinantion from "United States - Orlando Florida" to "Germany - Frankfurt/Main"</span>
+</td></tr></tbody></table>
+
+</td></tr><tr><td class="cmt">
+<table width="100%">
+<tbody><tr><td align="left"><img src="database.png" align="top">&nbsp;<span class="pst">changed by <a href="https://sgwpaupcd04.zone1.scb.net:2021/r2rlatejournals/send_email.aspx?bg_id=11100&amp;to=DeepakRajendra.Gungalkar@sc.com">1322898</a> on 2024-09-24 6:58 PM, 17 days ago</span></td><td align="right">&nbsp;
+</td></tr></tbody></table>
+<table border="0">
+<tbody><tr><td><span class="cmt_text">changed Line Manager (PSID) from "" to "1304869"</span>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">Employee Travel Request Tracker - 2023 Standard Chartered Bank</td>
+   <td width="1%" align="right" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    } else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+    /*
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+    */
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+    //Apply Comment Collapse to array of fields from the database
+    if($("#usp_CommentCollapse_fields").val()!==""){
+    $.each(
+        $("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) { applyCommentCollapseBehaviour(value); }
+        );
+    }
+		
+</script>
+
+<script type="text/javascript">
+  //Populate upper error message span
+	$("#msg2")[0].innerText=  $("#msg")[0].innerText;
+  
+  //CApproval, GFDFRApproval, FR/MR locking rules
+    var  CCApproval, GFDFRApproval, FR_MR;
+	if ($("#CCApproval").length) {
+		CCApproval = $($("#CCApproval:options")[0]).children("option:selected").val()
+	}
+	if ($("#CCApproval_static").length) {
+		CCApproval = $("#CCApproval_static").text()
+	}
+
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	if ($("#GFDFRApproval_static").length) {
+		GFDFRApproval = $("#GFDFRApproval_static").text();
+	} 
+	 
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	
+	if ($("select[id*=FR/MR]").length) {
+		FR_MR = $($('select[id*=FR/MR]:options')[0]).children("option:selected").val()
+	}
+	if ($("[id*=FR/MR_static]").length) {
+		FR_MR = $("[id*=FR/MR_static]").text();
+	}	
+	
+    //Lock fields based on CCM Approval/Rejection -- Affected fields: GFD MR Approval, GFD FR Approval
+	$("#GFDFRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDFRApproval").attr('disabled', true)
+		$("#GFDFRApproval").after("<font id=GFDFRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDFRApproval").attr('disabled', false)
+	}
+
+	$("#GFDMRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDMRApproval").attr('disabled', true)
+		$("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+
+    //Lock fields based on GFD FR Approval Approval/Rejection -- affected fields: GFD MR Approval 
+	//Include FR/MR exception
+	//If “MR” is selected from “FR/MR” field, tracker should skip Group FR approval and should only go for Group MR approval
+	$("#GFDMRApprovallockedtilFR").empty();
+	if (!(["Approved", "Rejected"].includes(GFDFRApproval))) {
+		if(!(FR_MR=="MR")){
+		     $("#GFDMRApproval").attr('disabled', true)
+		     $("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilFR  color=purple>.locked until FR Approval/Rejection</font>")
+         }		
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+</script>
+
+<script src="jquery/jquery-1.12.4.js"></script>
+<script src="jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="pcwebapp/js/pcwebapp.js"></script>
+<script type="text/javascript">
+//Rename fields...
+$("#CCNotification_label").text("Notify to (PSID only):");
+$("#PSGLJournalPoster_label").text("PSGL Journal Poster (PSID only):");
+$("#PSGLID_label").text("PSGL Journal ID:");
+$("#IFRSJAWPreparer_label").text("IFRS JAW Preparer (PSID only):");
+</script>
+
+<script>
+$("#InitiativeCode").change(
+function(){
+	$("[id='MTMember']").val("");
+	$("[id='Journey(Hive)']").val("");
+	$("[id='Sub-journey']").val("");
+	$("[id='RefinementForum']").val("");
+	result=JSON.parse(IB_runProc_with_paramvals("usp_get_values_from_Initiative_reference_Table", {Initiative_Code:$("#InitiativeCode").val()}).d);	
+	if(result.length > 0){
+		$("[id='MTMember']").val(result[0].MT_Member);
+		$("[id='Journey(Hive)']").val(result[0].Journey_Hive);
+		$("[id='Sub-journey']").val(result[0].Sub_Journey);
+		$("[id='RefinementForum']").val(result[0].Refinement_Forum);
+
+        $("[id='MTMember_static']").text(result[0].MT_Member);
+		$("[id='Journey(Hive)_static']").text(result[0].Journey_Hive);
+		$("[id='Sub-journey_static']").text(result[0].Sub_Journey);
+		$("[id='RefinementForum_static']").text(result[0].Refinement_Forum);
+	}
+});
+</script>	
+
+
+<script>
+    //New Joiner (Additional/New Ask/) fields should be greyed out when submitting.
+	window.addEventListener('load', function () {
+		if(document.getElementById("sub").value=="Create"){document.getElementById("NewJoinersPSID").disabled = true;}
+	});  
+</script>
+
+<script>
+$(function () {
+	$("#FromDate").datepicker({
+		beforeShowDay: function (date) {if (date.getDate() == 1) { return [true, '']; }  else { return [false, '', 'Unavailable']; }}
+	});
+});
+ 
+</script>
+
+<script src="rp.js"></script>
+
+<script>
+rpg2("usp_get_mandatory_fields",{}).then(
+function(x){
+       result=JSON.parse(x);
+	   result.forEach(
+	   function(itm){
+        label_id =itm.replace(/\s/g, '');
+        if(document.getElementById(label_id)){
+            document.getElementById(label_id).parentElement.parentElement.firstChild.innerHTML= "<font color=red>*</font>"+itm +":";
+        }
+	 });
+});
+</script>
+
+<script>
+   $("#ctl00 > table:nth-child(8)").hide()
+</script>
+
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>

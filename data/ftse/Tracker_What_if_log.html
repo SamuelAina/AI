@@ -1,0 +1,841 @@
+<html><head>
+<title id="titl">Question ID 10060 [No Description]</title>
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 10060
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'd M, yy'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+
+	el = get_el("sub");
+	el.disabled = true;
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+        <td width="86" valign="middle"><img width="86" src="custom/logo.jpg">
+            <div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:6pt;font-weight:normal;">
+                <b>What if log Tracker</b>
+            </div>
+        </td><td>            
+        </td><td>
+            <b><font color="green">(PRODUCTION)</font></b>
+        </td>
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Questions</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">queries</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (Case creator)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td valign="middle" align="left'"></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<a class="warn" href="edit_deal.aspx?id=0"><img src="add.png" border="0" align="top">&nbsp;add new Question</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="prev_next">&nbsp;</span>
+
+
+
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"><a class="warn" href="javascript:clone()" title="Create a copy of this item"><img src="paste_plain.png" border="0" align="top">&nbsp;create copy</a></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=10060" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=10060 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"><a href="delete_deal.aspx?id=10060" title="Delete this item"><img src="delete.png" border="0" align="top">&nbsp;delete</a></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!-- <li id="subscribers" style="display: inline"><a target=_blank href=view_subscribers.aspx?id=10060 title='View users who have subscribed to email notifications for this item'><img src=telephone_edit.png border=0 align=top>&nbsp;subscribers</a></li> -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(10060)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=10060 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			<li id="send_email" style="display: inline"><a href="javascript:send_email(10060)" title="Send an email about this item"><img src="email_edit.png" border="0" align="top">&nbsp;send email</a></li>
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',10060,600,300)" title="Attach an image, document, or other file to this item">add attachment</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form name="ctl00" method="post" action="./edit_deal.aspx?id=10060" id="ctl00" class="frm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="63E256CB">
+
+</div>
+   
+    <span id="Label1" style="display:inline-block;width:812px;"></span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+	
+		<div>
+				<span id="custom_field_msg2" class="err"></span>
+				<span id="msg2" class="err"></span>
+		</div>
+		 <div style="text-align: center;"> 
+			<input name="sub2" type="submit" id="sub2" class="btn" onclick="disable_me()" value="Submit" style="display: none;">
+		</div>			
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Question ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">10060</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="https://SGWPAUPCD04.ZONE1.SCB.NET:2021/ecl_adjustment/send_email.aspx?bg_id=10060&amp;to=kelvinchuanming.chew@sc.com">1452637</a> on 2024-10-09 9:18 AM, 2 days ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			<span id="static_project" class="stat"></span>
+
+			</td></tr>
+<!---->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_org" class="stat"></span>
+			
+
+	<tr id="row3">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_category" class="stat"></span>
+			
+
+	<tr id="row4">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_priority" class="stat"></span>
+			
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat"></span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="RequestCreator_row"><td nowrap=""><span id="RequestCreator_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Header               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">Request Creator:</td><td align="left"><span class="stat" id="RequestCreator_static">Chew, Kelvin Chuan Ming - 1452637</span>
+</td></tr><tr id="WhatdatedoyourequiretousetheWhatIfEnvironmentfrom_row"><td nowrap=""><span id="WhatdatedoyourequiretousetheWhatIfEnvironmentfrom_label">What date do you require to use the What If Environment from:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="What date do you require to use the What If Environment from" id="WhatdatedoyourequiretousetheWhatIfEnvironmentfrom" value="5 Oct, 2024" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('WhatdatedoyourequiretousetheWhatIfEnvironmentfrom');">[select]</a>
+</td></tr><tr id="WhatdatedoyourequiretousetheWhatIfEnvironmentto_row"><td nowrap=""><span id="WhatdatedoyourequiretousetheWhatIfEnvironmentto_label">What date do you require to use the What If Environment to:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="What date do you require to use the What If Environment to" id="WhatdatedoyourequiretousetheWhatIfEnvironmentto" value="7 Oct, 2024" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('WhatdatedoyourequiretousetheWhatIfEnvironmentto');">[select]</a>
+</td></tr><tr id="DoyourequireaspecificupdatedCodeBaseandDatasettorunyouranalysis?_row"><td nowrap=""><span id="DoyourequireaspecificupdatedCodeBaseandDatasettorunyouranalysis?_label">Do you require a specific updated Code Base and Dataset to run your analysis?:</span></td><td align="left"><select id="DoyourequireaspecificupdatedCodeBaseandDatasettorunyouranalysis?" name="Do you require a specific updated Code Base and Dataset to run your analysis?" class="edit_bug_option" style="width: 400px;"><option></option><option>Yes - Historical to be specified</option><option>Yes - Latest Production Code and Dataset</option><option selected="">No - Current What If Code Base and Dataset are acceptable</option></select>
+</td></tr><tr id="IfYes-Historicaltobespecified,pleasespecifywhatCodeBaseandDataseti_row"><td nowrap=""><span id="IfYes-Historicaltobespecified,pleasespecifywhatCodeBaseandDataseti_label">If Yes - Historical to be specified, please specify what Code Base and Dataset i:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('IfYes-Historicaltobespecified,pleasespecifywhatCodeBaseandDataseti',1000)" wrap="soft" onkeyup="return count_chars('IfYes-Historicaltobespecified,pleasespecifywhatCodeBaseandDataseti',1000)" cols="120" rows="8" name="If Yes - Historical to be specified, please specify what Code Base and Dataset i" id="IfYes-Historicaltobespecified,pleasespecifywhatCodeBaseandDataseti">N/A</textarea><div class="grippie" style="margin-right: 0px;"></div></span></div><div class="smallnote" id="IfYes-Historicaltobespecified,pleasespecifywhatCodeBaseandDataseti_cnt">&nbsp;</div>
+</td></tr><tr id="PleasedetailwhyyouneedtousetheWhat-IfEnvironment?_row"><td nowrap=""><span id="PleasedetailwhyyouneedtousetheWhat-IfEnvironment?_label">Please detail why you need to use the What-If Environment?:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('PleasedetailwhyyouneedtousetheWhat-IfEnvironment?',1000)" wrap="soft" onkeyup="return count_chars('PleasedetailwhyyouneedtousetheWhat-IfEnvironment?',1000)" cols="120" rows="8" name="Please detail why you need to use the What-If Environment?" id="PleasedetailwhyyouneedtousetheWhat-IfEnvironment?">Impact analysis on STAGE/ECL by running CIC postmip using a different version of PDO file </textarea><div class="grippie" style="margin-right: 0px;"></div></span></div><div class="smallnote" id="PleasedetailwhyyouneedtousetheWhat-IfEnvironment?_cnt">&nbsp;</div>
+</td></tr><tr id="WhatMIPModelSegmentwillyoubeusing?_row"><td nowrap=""><span id="WhatMIPModelSegmentwillyoubeusing?_label">What MIP Model Segment will you be using?:</span></td><td align="left"><select id="WhatMIPModelSegmentwillyoubeusing?" name="What MIP Model Segment will you be using?" class="edit_bug_option" style="width: 400px;"><option></option><option selected="">CCIB (CIC Models)</option><option>CPBB (Retail Models)</option><option>All Models</option></select>
+</td></tr><tr id="WilltheWhat-Ifoutputresultsbeusedforfinancialdisclosuresorintheadju_row"><td nowrap=""><span id="WilltheWhat-Ifoutputresultsbeusedforfinancialdisclosuresorintheadju_label">Will the What-If output results be used for financial disclosures or in the adju:</span></td><td align="left"><select id="WilltheWhat-Ifoutputresultsbeusedforfinancialdisclosuresorintheadju" name="Will the What-If output results be used for financial disclosures or in the adju" class="edit_bug_option" style="width: 400px;"><option></option><option>Yes</option><option selected="">No</option></select>
+</td></tr><tr id="WhatwilltheWhat-Ifoutputresultsbeusedfor?_row"><td nowrap=""><span id="WhatwilltheWhat-Ifoutputresultsbeusedfor?_label">What will the What-If output results be used for?:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('WhatwilltheWhat-Ifoutputresultsbeusedfor?',1000)" wrap="soft" onkeyup="return count_chars('WhatwilltheWhat-Ifoutputresultsbeusedfor?',1000)" cols="120" rows="8" name="What will the What-If output results be used for?" id="WhatwilltheWhat-Ifoutputresultsbeusedfor?">For impact analysis and documentation of the impact arising from our PDO file cleanup</textarea><div class="grippie" style="margin-right: 0px;"></div></span></div><div class="smallnote" id="WhatwilltheWhat-Ifoutputresultsbeusedfor?_cnt">&nbsp;</div>
+</td></tr><tr id="WhatIfusageapproval_row"><td nowrap=""><span id="WhatIfusageapproval_label">What If usage approval:</span></td><td align="left"><select id="WhatIfusageapproval" name="What If usage approval" class="edit_bug_option" style="width: 400px;"><option></option><option>Chia, Bryan-1143771</option><option selected="">Moses, Michael-1571231</option><option>Magkawas, Nestor-1117892</option></select>
+</td></tr><tr id="ApprovalStatus_row"><td nowrap=""><span id="ApprovalStatus_label">Approval Status:</span></td><td align="left"><span class="stat" id="ApprovalStatus_static"></span>
+</td></tr><tr id="ReasonForRejection_row"><td nowrap=""><span id="ReasonForRejection_label">Reason For Rejection:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('ReasonForRejection',1000)" wrap="soft" onkeyup="return count_chars('ReasonForRejection',1000)" cols="120" rows="8" name="Reason For Rejection" id="ReasonForRejection"></textarea><div class="grippie" style="margin-right: 0px;"></div></span></div><div class="smallnote" id="ReasonForRejection_cnt">&nbsp;</div>
+</td></tr><tr id="AdditionComments_row"><td nowrap=""><span id="AdditionComments_label">Addition Comments:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('AdditionComments',1000)" wrap="soft" onkeyup="return count_chars('AdditionComments',1000)" cols="120" rows="8" name="Addition Comments" id="AdditionComments"></textarea><div class="grippie" style="margin-right: 0px;"></div></span></div><div class="smallnote" id="AdditionComments_cnt">&nbsp;</div></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "questionid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Submit"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="[No Description]">
+	
+	
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="What-If">
+	
+	<input name="prev_org_name" type="hidden" id="prev_org_name" value="Case creator">
+	
+	
+	
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="1319770">
+	
+	<input name="prev_udf" type="hidden" id="prev_udf" value="0">
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 01:58:16:913">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1|tbl2,lnk2|tbl3,lnk3|tbl4,lnk4|tbl5,lnk5|tbl6,lnk6|tbl7,lnk7|tbl8,lnk8|tbl9,lnk9|tbl10,lnk10">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="Case creator">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input name="hdn_usp_get_commission_grid_json" type="hidden" id="hdn_usp_get_commission_grid_json" value="[{&quot;CreditGradeCG&quot;:&quot;10A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;10B&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;11A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;11B&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;11C&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;12A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;12B&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;12C&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;13&quot;,&quot;Commission&quot;:&quot;4.00&quot;},{&quot;CreditGradeCG&quot;:&quot;14&quot;,&quot;Commission&quot;:&quot;4.00&quot;},{&quot;CreditGradeCG&quot;:&quot;1A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;1B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;2A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;2B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;3A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;3B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;4A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;4B&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;5A&quot;,&quot;Commission&quot;:&quot;0.25&quot;},{&quot;CreditGradeCG&quot;:&quot;5B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;6A&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;6B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;7A&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;7B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;8A&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;8B&quot;,&quot;Commission&quot;:&quot;0.75&quot;},{&quot;CreditGradeCG&quot;:&quot;9A&quot;,&quot;Commission&quot;:&quot;1.25&quot;},{&quot;CreditGradeCG&quot;:&quot;9B&quot;,&quot;Commission&quot;:&quot;1.25&quot;}]">
+
+    <input name="hdn_userID" type="hidden" id="hdn_userID" value="109">
+    
+<input type="hidden" name="prev_Addition Comments" value="">
+<input type="hidden" name="prev_Approval Status" value="">
+<input type="hidden" name="prev_Do you require a specific updated Code Base and Dataset to run your analysis?" value="No - Current What If Code Base and Dataset are acceptable">
+<input type="hidden" name="prev_If Yes - Historical to be specified, please specify what Code Base and Dataset i" value="N/A">
+<input type="hidden" name="prev_Please detail why you need to use the What-If Environment?" value="Impact analysis on STAGE/ECL by running CIC postmip using a different version of PDO file ">
+<input type="hidden" name="prev_Reason For Rejection" value="">
+<input type="hidden" name="prev_Request Creator" value="2557">
+<input type="hidden" name="prev_What date do you require to use the What If Environment from" value="5 Oct, 2024">
+<input type="hidden" name="prev_What date do you require to use the What If Environment to" value="7 Oct, 2024">
+<input type="hidden" name="prev_What If usage approval" value="Moses, Michael-1571231">
+<input type="hidden" name="prev_What MIP Model Segment will you be using?" value="CCIB (CIC Models)">
+<input type="hidden" name="prev_What will the What-If output results be used for?" value="For impact analysis and documentation of the impact arising from our PDO file cleanup">
+<input type="hidden" name="prev_Will the What-If output results be used for financial disclosures or in the adju" value="No">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+
+<span id="toggle_images"><hr><a href="javascript:toggle_images2(10060)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(10060)"><span id="hideshow_history">show change history</span></a></span>
+
+
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+</table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="100%" class="footer-bg">What if log Tracker - 2023 Standard Chartered Bank </td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    /*Force all textareas to retain breaks when data is submited to the database*/
+    $("textarea").attr("wrap", "soft");
+</script>
+
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+		//Adjust the height of static textareas
+		var tah = document.getElementsByClassName("textarea_auto_hieght");
+		for (var i = 0; i < tah.length; i++) {
+		  tah[i].style.height=tah[i].scrollHeight
+		}
+		
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org “PC Line Controller” only 
+    //i.e. disable the radio button “+” for this field only for PC Line Controller Org
+    myOrg = "Case creator";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+
+<script type="text/jscript">
+ 
+    document.getElementsByName("Transaction Type")[0].addEventListener("change", amountsChanges);
+    //document.getElementsByName("Transfer Fee Amount")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Notional (LCCY)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Price (%)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Credit Grade (CG)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Commission Scheme")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Commission Non-Standard (%)")[0].addEventListener("change", amountsChanges);
+    document.getElementsByName("Distribution Type")[0].addEventListener("change", amountsChanges);
+
+    function amountsChanges() {
+        transactionType    = $("select[name='Transaction Type']").find(" option:selected").text();
+        CommissionScheme   = $("select[name='Commission Scheme']").find(" option:selected").text();
+        //TransferFee        = $("input[name='Transfer Fee Amount']").val();
+        NotionalLCCY       = $("input[name='Notional (LCCY)']").val();
+        Price              = $("input[name='Price (%)']").val();
+        CreditGradeCG      = $("select[name='Credit Grade (CG)']").find(" option:selected").text();
+        CommissionNonStd   = $("input[name='Commission Non-Standard (%)']").val();
+        DistributionType = $("select[name='Distribution Type']").find(" option:selected").text();
+        paramswithvals = {
+                transaction_type:  transactionType
+               ,Commission_Scheme: CommissionScheme
+               ,Notional_LCCY: ((NotionalLCCY == "") ? '0.0' : NotionalLCCY)
+               ,Price_pcnt: ((Price == "") ? '0.0' : Price)
+               ,Credit_Grade: CreditGradeCG     
+               ,Commission_Non_Standard_pcnt: ((CommissionNonStd == "") ? '0.0' : CommissionNonStd)
+               ,Distribution_Type: DistributionType
+        };
+        CommissionLCCY = IB_runProc_with_paramvals2("usp_Calculate_Commission_LCCY", paramswithvals);
+        console.log(CommissionLCCY);
+
+        if (CommissionLCCY[0].Commission_LCCY == null) {
+            $("#CommissionLCCY").val(0.00);
+            document.getElementById("CommissionLCCY").setAttribute("value",0.00)
+            $("#CommissionLCCY").attr("disabled", false);
+        } else {
+            $("#CommissionLCCY").attr("disabled", true);
+        }
+    }
+
+
+    //Apply calc as page loads   
+    //setTimeout(function () {
+    //    amountsChanges();
+    //}, 1000);
+    
+    function highlightLabel(labeltext) {
+        $($("td:contains('" + labeltext + "')")[3]).css("background-color", "#F0F0F0");
+    }
+
+    setTimeout(function () {
+        highlightLabel("Transaction Type:");
+        highlightLabel("Notional (LCCY):");
+        highlightLabel("Price (%):");
+        highlightLabel("Credit Grade (CG):");
+        highlightLabel("Commission Scheme:");
+        highlightLabel("Commission Non-Standard (%):");
+        highlightLabel("Distribution Type:");
+        highlightLabel("Commission LCCY:");
+    }, 1000);
+</script>
+
+
+<script type="text/javascript" src="pcwebapp/js/pcwebapp.js"></script>
+<script type="text/jscript">
+    //attach events to the sections
+    $("input[onclick*='toggle_visibility']").each(function (index, item) {
+        item.addEventListener("click", setSectionStates);
+    });
+
+    var us_id = $("#hdn_userID").val();
+    //as page loads, apply the state in hdn_sectionstate
+    /*
+    sectionstate0 = IB_runProc_with_paramvals2("usp_get_usersectionstate", { us_id: us_id });
+    if (sectionstate0[0].sectionstate != "") {
+        sectionstate0 = JSON.parse(sectionstate0[0].sectionstate.replaceAll("\\\"", "\""));
+        sectionstate0.forEach(function (item, index) {
+            if (item.value == "[-]") {
+                $("input[id=" + item.id + "]")[0].click();
+            }
+        });
+    }
+    */
+    function setSectionStates() {
+        var sectionstate = [];
+        $("input[onclick*='toggle_visibility']").each(function (index, item) { sectionstate.push({ id: item.id, value: item.value }) });
+        r = IB_runProc_with_paramvals2("usp_set_usersectionstate", { us_id: us_id, sectionstate: JSON.stringify(sectionstate).replace(/\"/g, "\\\"") })
+    }
+
+
+    //Section sublabels
+    function addSubsectionTitleAboveLabel(lblname, titleTxt) {
+        $("<tr><td><span style='color:green;text-decoration: underline;font-weight: bold;'>" + titleTxt + "</span></td><td>.</td></tr>").insertBefore($($("[name='" + lblname + "']")[0]).parent().parent());
+    }
+
+    setTimeout(function () {
+        addSubsectionTitleAboveLabel("Assigned to (for Business Approval)", "Business Approval");
+        addSubsectionTitleAboveLabel("Settlement Status", "Loan Settlements");
+        addSubsectionTitleAboveLabel("CPM Review", "CPM");
+        addSubsectionTitleAboveLabel("Recognition Month", "Admin");
+    }, 1000);
+	
+
+</script>
+<script>$("#sub2").hide()</script>
+
+<script>
+bg_id=$("#bugid")[0].innerText;
+actual_ticket_creator=IB_runProc_with_paramvals2("usp_get_actual_ticket_creator", { bg_id: bg_id} )[0].ActualTicketCreator
+$("#reported_by > a")[0].setAttribute("href","")
+$("#reported_by > a")[0].setAttribute("onclick","return false;")
+$("#reported_by > a")[0].innerText=actual_ticket_creator
+</script>
+
+<script>
+    previoustickets_sel = document.getElementById('Previoustickets(YesorNo)')
+
+    function PreviousmonthTicketnumberReadWrite() {
+        if (previoustickets_sel.value.toUpperCase() == "NO") {
+            document.getElementById('PreviousmonthTicketnumber').style.backgroundColor = 'lightgray';
+            document.getElementById('PreviousmonthTicketnumber').readOnly = true;
+        } else {
+            document.getElementById('PreviousmonthTicketnumber').style.backgroundColor = 'white';
+            document.getElementById('PreviousmonthTicketnumber').readOnly = false;
+        }
+    }
+
+
+    PreviousmonthTicketnumberReadWrite();
+
+    previoustickets_sel.addEventListener("change", function () {
+        PreviousmonthTicketnumberReadWrite();
+    });
+</script>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>

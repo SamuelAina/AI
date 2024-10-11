@@ -1,0 +1,1749 @@
+<html><head>
+<title id="titl">Query ID 18839 EDR - Q3 2024_EDR360_U110</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 18839
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+	$("textarea.resizable:not(.processed)").TextAreaResizer()
+	
+	$('textarea.resizable2:not(.processed)').TextAreaResizer()	
+}
+
+function disable_second_button()
+{
+
+	el = get_el("sub");
+	el.disabled = true;
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<div id="scbbar">
+    <div class="brand1"></div>
+    <div class="brand2"></div>
+    <div class="brand3"></div>
+    <div class="brand4"></div>
+    <div class="brand5"></div>
+   </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="Tracker_EDR">
+
+
+
+<script type="text/javascript">
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+        current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+    }
+};
+
+
+</script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="86" valign="middle"><img width="86" src="custom/logo.jpg"><br><div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:8pt;font-weight:normal;">EDR Tracker</div><b><font id="current_db_environment" color="red"><font color="green" size="1pt">(PRODUCTION)</font></font></b></td>
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Queries</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span class="smallnote">logged in as<br>1303787 (SuperUserApprover)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Query</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray_link">prev</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="warn" href="edit_deal.aspx?id=18838">next<img src="arrow_down.png" border="0" align="top"></a>&nbsp;&nbsp;&nbsp;<span class="smallnote">1 of 125</span></span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=18839" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=18839 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!-- <li id="subscribers" style="display: inline"><a target=_blank href=view_subscribers.aspx?id=18839 title='View users who have subscribed to email notifications for this item'><img src=telephone_edit.png border=0 align=top>&nbsp;subscribers</a></li> -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(18839)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=18839 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			<li id="send_email" style="display: inline"><a href="javascript:send_email(18839)" title="Send an email about this item"><img src="email_edit.png" border="0" align="top">&nbsp;send email</a></li>
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',18839,600,300)" title="Attach an image, document, or other file to this item">add attachment</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form method="post" action="./edit_deal.aspx?id=18839" id="ctl00" class="frm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F3BCAC24">
+	
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+	
+		<div>
+				<span id="custom_field_msg2" class="err"></span>
+				<span id="msg2" class="err"></span>
+		</div>
+		 <div style="text-align: center;"> 
+			<input name="sub2" type="submit" id="sub2" class="btn" onclick="disable_me()" value="Update">
+		</div>			
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Query ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">18839</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="https://sgwpaupcd04.zone1.scb.net:2021/edr_tracker/send_email.aspx?bg_id=18839&amp;to=Ramya.Srikanth@sc.com">2003867</a> on 2024-10-04 2:05 PM, 7 days ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option value="3">EDR001|UserApprover</option>
+	<option value="2">EDR001|UserSubmitter</option>
+	<option value="5">EDR002|UserApprover</option>
+	<option value="4">EDR002|UserSubmitter</option>
+	<option value="7">EDR003|UserApprover</option>
+	<option value="6">EDR003|UserSubmitter</option>
+	<option value="9">EDR004|UserApprover</option>
+	<option value="8">EDR004|UserSubmitter</option>
+	<option value="11">EDR005|UserApprover</option>
+	<option value="10">EDR005|UserSubmitter</option>
+	<option value="13">EDR006|UserApprover</option>
+	<option value="12">EDR006|UserSubmitter</option>
+	<option value="15">EDR007|UserApprover</option>
+	<option value="14">EDR007|UserSubmitter</option>
+	<option value="17">EDR008|UserApprover</option>
+	<option value="16">EDR008|UserSubmitter</option>
+	<option value="19">EDR009|UserApprover</option>
+	<option value="18">EDR009|UserSubmitter</option>
+	<option value="21">EDR010|UserApprover</option>
+	<option value="20">EDR010|UserSubmitter</option>
+	<option value="23">EDR011|UserApprover</option>
+	<option value="22">EDR011|UserSubmitter</option>
+	<option value="25">EDR012|UserApprover</option>
+	<option value="24">EDR012|UserSubmitter</option>
+	<option value="27">EDR013|UserApprover</option>
+	<option value="26">EDR013|UserSubmitter</option>
+	<option value="29">EDR014|UserApprover</option>
+	<option value="28">EDR014|UserSubmitter</option>
+	<option value="31">EDR015|UserApprover</option>
+	<option value="30">EDR015|UserSubmitter</option>
+	<option value="33">EDR016|UserApprover</option>
+	<option value="32">EDR016|UserSubmitter</option>
+	<option value="35">EDR017|UserApprover</option>
+	<option value="34">EDR017|UserSubmitter</option>
+	<option value="37">EDR018|UserApprover</option>
+	<option value="36">EDR018|UserSubmitter</option>
+	<option value="39">EDR019|UserApprover</option>
+	<option value="38">EDR019|UserSubmitter</option>
+	<option value="2761">EDR020_U011|UserApprover</option>
+	<option value="2760">EDR020_U011|UserSubmitter</option>
+	<option value="2763">EDR020_U022|UserApprover</option>
+	<option value="2762">EDR020_U022|UserSubmitter</option>
+	<option value="2765">EDR020_U023|UserApprover</option>
+	<option value="2764">EDR020_U023|UserSubmitter</option>
+	<option value="2767">EDR020_U030|UserApprover</option>
+	<option value="2766">EDR020_U030|UserSubmitter</option>
+	<option value="2769">EDR020_U110|UserApprover</option>
+	<option value="2768">EDR020_U110|UserSubmitter</option>
+	<option value="2771">EDR020_U142|UserApprover</option>
+	<option value="2770">EDR020_U142|UserSubmitter</option>
+	<option value="2773">EDR020_U152|UserApprover</option>
+	<option value="2772">EDR020_U152|UserSubmitter</option>
+	<option value="2775">EDR020_U238|UserApprover</option>
+	<option value="2774">EDR020_U238|UserSubmitter</option>
+	<option value="2777">EDR020_U243|UserApprover</option>
+	<option value="2776">EDR020_U243|UserSubmitter</option>
+	<option value="3040">EDR020_U248|UserApprover</option>
+	<option value="3039">EDR020_U248|UserSubmitter</option>
+	<option value="2779">EDR020_U250|UserApprover</option>
+	<option value="2778">EDR020_U250|UserSubmitter</option>
+	<option value="2781">EDR020_U270|UserApprover</option>
+	<option value="2780">EDR020_U270|UserSubmitter</option>
+	<option value="2783">EDR020_U287|UserApprover</option>
+	<option value="2782">EDR020_U287|UserSubmitter</option>
+	<option value="2946">EDR020_U288|UserApprover</option>
+	<option value="2945">EDR020_U288|UserSubmitter</option>
+	<option value="2785">EDR020_U303|UserApprover</option>
+	<option value="2784">EDR020_U303|UserSubmitter</option>
+	<option value="2787">EDR020_U345|UserApprover</option>
+	<option value="2786">EDR020_U345|UserSubmitter</option>
+	<option value="2789">EDR020_U399|UserApprover</option>
+	<option value="2788">EDR020_U399|UserSubmitter</option>
+	<option value="3021">EDR020_U436|UserApprover</option>
+	<option value="3022">EDR020_U436|UserSubmitter</option>
+	<option value="41">EDR020|UserApprover</option>
+	<option value="40">EDR020|UserSubmitter</option>
+	<option value="43">EDR021|UserApprover</option>
+	<option value="42">EDR021|UserSubmitter</option>
+	<option value="45">EDR022|UserApprover</option>
+	<option value="44">EDR022|UserSubmitter</option>
+	<option value="47">EDR023|UserApprover</option>
+	<option value="46">EDR023|UserSubmitter</option>
+	<option value="49">EDR024|UserApprover</option>
+	<option value="48">EDR024|UserSubmitter</option>
+	<option value="51">EDR025|UserApprover</option>
+	<option value="50">EDR025|UserSubmitter</option>
+	<option value="53">EDR026|UserApprover</option>
+	<option value="52">EDR026|UserSubmitter</option>
+	<option value="55">EDR027|UserApprover</option>
+	<option value="54">EDR027|UserSubmitter</option>
+	<option value="57">EDR028|UserApprover</option>
+	<option value="56">EDR028|UserSubmitter</option>
+	<option value="2759">EDR029_U023|UserApprover</option>
+	<option value="2758">EDR029_U023|UserSubmitter</option>
+	<option value="2757">EDR029_U035|UserApprover</option>
+	<option value="2756">EDR029_U035|UserSubmitter</option>
+	<option value="2731">EDR029_U085|UserApprover</option>
+	<option value="2730">EDR029_U085|UserSubmitter</option>
+	<option value="2703">EDR029_U110|UserApprover</option>
+	<option value="2702">EDR029_U110|UserSubmitter</option>
+	<option value="2733">EDR029_U238|UserApprover</option>
+	<option value="2732">EDR029_U238|UserSubmitter</option>
+	<option value="2693">EDR029_U243|UserApprover</option>
+	<option value="2692">EDR029_U243|UserSubmitter</option>
+	<option value="2735">EDR029_U250|UserApprover</option>
+	<option value="2734">EDR029_U250|UserSubmitter</option>
+	<option value="2727">EDR029_U261|UserApprover</option>
+	<option value="2726">EDR029_U261|UserSubmitter</option>
+	<option value="2705">EDR029_U270|UserApprover</option>
+	<option value="2704">EDR029_U270|UserSubmitter</option>
+	<option value="2691">EDR029_U300|UserApprover</option>
+	<option value="2690">EDR029_U300|UserSubmitter</option>
+	<option value="2707">EDR029_U310|UserApprover</option>
+	<option value="2706">EDR029_U310|UserSubmitter</option>
+	<option value="2729">EDR029_U311|UserApprover</option>
+	<option value="2728">EDR029_U311|UserSubmitter</option>
+	<option value="2709">EDR029_U320|UserApprover</option>
+	<option value="2708">EDR029_U320|UserSubmitter</option>
+	<option value="2711">EDR029_U321|UserApprover</option>
+	<option value="2710">EDR029_U321|UserSubmitter</option>
+	<option value="2713">EDR029_U322|UserApprover</option>
+	<option value="2712">EDR029_U322|UserSubmitter</option>
+	<option value="2715">EDR029_U325|UserApprover</option>
+	<option value="2714">EDR029_U325|UserSubmitter</option>
+	<option value="2737">EDR029_U333|UserApprover</option>
+	<option value="2736">EDR029_U333|UserSubmitter</option>
+	<option value="2695">EDR029_U341|UserApprover</option>
+	<option value="2694">EDR029_U341|UserSubmitter</option>
+	<option value="2739">EDR029_U342|UserApprover</option>
+	<option value="2738">EDR029_U342|UserSubmitter</option>
+	<option value="2751">EDR029_U345|UserApprover</option>
+	<option value="2750">EDR029_U345|UserSubmitter</option>
+	<option value="2717">EDR029_U346|UserApprover</option>
+	<option value="2716">EDR029_U346|UserSubmitter</option>
+	<option value="2697">EDR029_U349|UserApprover</option>
+	<option value="2696">EDR029_U349|UserSubmitter</option>
+	<option value="2719">EDR029_U351|UserApprover</option>
+	<option value="2718">EDR029_U351|UserSubmitter</option>
+	<option value="2721">EDR029_U358|UserApprover</option>
+	<option value="2720">EDR029_U358|UserSubmitter</option>
+	<option value="2699">EDR029_U372|UserApprover</option>
+	<option value="2698">EDR029_U372|UserSubmitter</option>
+	<option value="2753">EDR029_U373|UserApprover</option>
+	<option value="2752">EDR029_U373|UserSubmitter</option>
+	<option value="2723">EDR029_U374|UserApprover</option>
+	<option value="2722">EDR029_U374|UserSubmitter</option>
+	<option value="2755">EDR029_U388|UserApprover</option>
+	<option value="2754">EDR029_U388|UserSubmitter</option>
+	<option value="2741">EDR029_U390|UserApprover</option>
+	<option value="2740">EDR029_U390|UserSubmitter</option>
+	<option value="2743">EDR029_U393|UserApprover</option>
+	<option value="2742">EDR029_U393|UserSubmitter</option>
+	<option value="2725">EDR029_U398|UserApprover</option>
+	<option value="2724">EDR029_U398|UserSubmitter</option>
+	<option value="2701">EDR029_U399|UserApprover</option>
+	<option value="2700">EDR029_U399|UserSubmitter</option>
+	<option value="2745">EDR029_U413|UserApprover</option>
+	<option value="2744">EDR029_U413|UserSubmitter</option>
+	<option value="2747">EDR029_U430|UserApprover</option>
+	<option value="2746">EDR029_U430|UserSubmitter</option>
+	<option value="2749">EDR029_U437|UserApprover</option>
+	<option value="2748">EDR029_U437|UserSubmitter</option>
+	<option value="59">EDR029|UserApprover</option>
+	<option value="58">EDR029|UserSubmitter</option>
+	<option value="2651">EDR030_U004|UserApprover</option>
+	<option value="2650">EDR030_U004|UserSubmitter</option>
+	<option value="2879">EDR030_U110|UserApprover</option>
+	<option value="2878">EDR030_U110|UserSubmitter</option>
+	<option value="2883">EDR030_U148|UserApprover</option>
+	<option value="2882">EDR030_U148|UserSubmitter</option>
+	<option value="2653">EDR030_U150|UserApprover</option>
+	<option value="2652">EDR030_U150|UserSubmitter</option>
+	<option value="2655">EDR030_U238|UserApprover</option>
+	<option value="2654">EDR030_U238|UserSubmitter</option>
+	<option value="2881">EDR030_U239|UserApprover</option>
+	<option value="2880">EDR030_U239|UserSubmitter</option>
+	<option value="2986">EDR030_U261|UserApprover</option>
+	<option value="2953">EDR030_U261|UserSubmitter</option>
+	<option value="2792">EDR030_U287|UserApprover</option>
+	<option value="2793">EDR030_U287|UserSubmitter</option>
+	<option value="2947">EDR030_U288|UserApprover</option>
+	<option value="2948">EDR030_U288|UserSubmitter</option>
+	<option value="2987">EDR030_U346|UserApprover</option>
+	<option value="2954">EDR030_U346|UserSubmitter</option>
+	<option value="2659">EDR030_U412|UserApprover</option>
+	<option value="2658">EDR030_U412|UserSubmitter</option>
+	<option value="61">EDR030|UserApprover</option>
+	<option value="60">EDR030|UserSubmitter</option>
+	<option value="63">EDR031|UserApprover</option>
+	<option value="62">EDR031|UserSubmitter</option>
+	<option value="65">EDR032|UserApprover</option>
+	<option value="64">EDR032|UserSubmitter</option>
+	<option value="67">EDR033|UserApprover</option>
+	<option value="66">EDR033|UserSubmitter</option>
+	<option value="69">EDR034|UserApprover</option>
+	<option value="68">EDR034|UserSubmitter</option>
+	<option value="71">EDR035|UserApprover</option>
+	<option value="70">EDR035|UserSubmitter</option>
+	<option value="73">EDR036|UserApprover</option>
+	<option value="72">EDR036|UserSubmitter</option>
+	<option value="2809">EDR037_U008|UserApprover</option>
+	<option value="2808">EDR037_U008|UserSubmitter</option>
+	<option value="2811">EDR037_U011|UserApprover</option>
+	<option value="2810">EDR037_U011|UserSubmitter</option>
+	<option value="3010">EDR037_U076|UserApprover</option>
+	<option value="2977">EDR037_U076|UserSubmitter</option>
+	<option value="3001">EDR037_U083|UserApprover</option>
+	<option value="2968">EDR037_U083|UserSubmitter</option>
+	<option value="2813">EDR037_U104|UserApprover</option>
+	<option value="2812">EDR037_U104|UserSubmitter</option>
+	<option value="2814">EDR037_U110|UserApprover</option>
+	<option value="2840">EDR037_U110|UserSubmitter</option>
+	<option value="3002">EDR037_U133|UserApprover</option>
+	<option value="2969">EDR037_U133|UserSubmitter</option>
+	<option value="2815">EDR037_U135|UserApprover</option>
+	<option value="2841">EDR037_U135|UserSubmitter</option>
+	<option value="2842">EDR037_U135|UserSubmitter</option>
+	<option value="3003">EDR037_U138|UserApprover</option>
+	<option value="2970">EDR037_U138|UserSubmitter</option>
+	<option value="3004">EDR037_U140|UserApprover</option>
+	<option value="2971">EDR037_U140|UserSubmitter</option>
+	<option value="3005">EDR037_U141|UserApprover</option>
+	<option value="2972">EDR037_U141|UserSubmitter</option>
+	<option value="2816">EDR037_U142|UserApprover</option>
+	<option value="2843">EDR037_U142|UserSubmitter</option>
+	<option value="2817">EDR037_U143|UserApprover</option>
+	<option value="2844">EDR037_U143|UserSubmitter</option>
+	<option value="3011">EDR037_U144|UserApprover</option>
+	<option value="2978">EDR037_U144|UserSubmitter</option>
+	<option value="3012">EDR037_U147|UserApprover</option>
+	<option value="2979">EDR037_U147|UserSubmitter</option>
+	<option value="2818">EDR037_U148|UserApprover</option>
+	<option value="2845">EDR037_U148|UserSubmitter</option>
+	<option value="2819">EDR037_U150|UserApprover</option>
+	<option value="2846">EDR037_U150|UserSubmitter</option>
+	<option value="3013">EDR037_U151|UserApprover</option>
+	<option value="2980">EDR037_U151|UserSubmitter</option>
+	<option value="3006">EDR037_U152|UserApprover</option>
+	<option value="2973">EDR037_U152|UserSubmitter</option>
+	<option value="3007">EDR037_U154|UserApprover</option>
+	<option value="2974">EDR037_U154|UserSubmitter</option>
+	<option value="3008">EDR037_U159|UserApprover</option>
+	<option value="2975">EDR037_U159|UserSubmitter</option>
+	<option value="3014">EDR037_U160|UserApprover</option>
+	<option value="2981">EDR037_U160|UserSubmitter</option>
+	<option value="3015">EDR037_U161|UserApprover</option>
+	<option value="2982">EDR037_U161|UserSubmitter</option>
+	<option value="3016">EDR037_U162|UserApprover</option>
+	<option value="2983">EDR037_U162|UserSubmitter</option>
+	<option value="2820">EDR037_U168|UserApprover</option>
+	<option value="2847">EDR037_U168|UserSubmitter</option>
+	<option value="2984">EDR037_U174|UserSubmitter</option>
+	<option value="3009">EDR037_U190|UserApprover</option>
+	<option value="2976">EDR037_U190|UserSubmitter</option>
+	<option value="2821">EDR037_U238|UserApprover</option>
+	<option value="2848">EDR037_U238|UserSubmitter</option>
+	<option value="2822">EDR037_U241|UserApprover</option>
+	<option value="2849">EDR037_U241|UserSubmitter</option>
+	<option value="2823">EDR037_U243|UserApprover</option>
+	<option value="2850">EDR037_U243|UserSubmitter</option>
+	<option value="2824">EDR037_U248|UserApprover</option>
+	<option value="2851">EDR037_U248|UserSubmitter</option>
+	<option value="2825">EDR037_U265|UserApprover</option>
+	<option value="2852">EDR037_U265|UserSubmitter</option>
+	<option value="2826">EDR037_U270|UserApprover</option>
+	<option value="2853">EDR037_U270|UserSubmitter</option>
+	<option value="2827">EDR037_U287|UserApprover</option>
+	<option value="2854">EDR037_U287|UserSubmitter</option>
+	<option value="2828">EDR037_U288|UserApprover</option>
+	<option value="2855">EDR037_U288|UserSubmitter</option>
+	<option value="2829">EDR037_U303|UserApprover</option>
+	<option value="2856">EDR037_U303|UserSubmitter</option>
+	<option value="2830">EDR037_U324|UserApprover</option>
+	<option value="2857">EDR037_U324|UserSubmitter</option>
+	<option value="2833">EDR037_U345|UserApprover</option>
+	<option value="2834">EDR037_U345|UserApprover</option>
+	<option value="2861">EDR037_U345|UserSubmitter</option>
+	<option value="2863">EDR037_U345|UserSubmitter</option>
+	<option value="2835">EDR037_U349|UserApprover</option>
+	<option value="2864">EDR037_U349|UserSubmitter</option>
+	<option value="2865">EDR037_U349|UserSubmitter</option>
+	<option value="2831">EDR037_U373|UserApprover</option>
+	<option value="2858">EDR037_U373|UserSubmitter</option>
+	<option value="2859">EDR037_U373|UserSubmitter</option>
+	<option value="2832">EDR037_U388|UserApprover</option>
+	<option value="2860">EDR037_U388|UserSubmitter</option>
+	<option value="2866">EDR037_U412|UserSubmitter</option>
+	<option value="2867">EDR037_U414|UserSubmitter</option>
+	<option value="2838">EDR037_U415|UserApprover</option>
+	<option value="2868">EDR037_U415|UserSubmitter</option>
+	<option value="2869">EDR037_U416|UserSubmitter</option>
+	<option value="2839">EDR037_U454|UserApprover</option>
+	<option value="2884">EDR037_U454|UserSubmitter</option>
+	<option value="75">EDR037|UserApprover</option>
+	<option value="74">EDR037|UserSubmitter</option>
+	<option value="77">EDR038|UserApprover</option>
+	<option value="76">EDR038|UserSubmitter</option>
+	<option value="2871">EDR038A|UserApprover</option>
+	<option value="2870">EDR038A|UserSubmitter</option>
+	<option value="2873">EDR038B|UserApprover</option>
+	<option value="2872">EDR038B|UserSubmitter</option>
+	<option value="2875">EDR038C|UserApprover</option>
+	<option value="2874">EDR038C|UserSubmitter</option>
+	<option value="2914">EDR038D|UserApprover</option>
+	<option value="2913">EDR038D|UserSubmitter</option>
+	<option value="2916">EDR038E|UserApprover</option>
+	<option value="2915">EDR038E|UserSubmitter</option>
+	<option value="2918">EDR038F|UserApprover</option>
+	<option value="2917">EDR038F|UserSubmitter</option>
+	<option value="2988">EDR038G|UserApprover</option>
+	<option value="2955">EDR038G|UserSubmitter</option>
+	<option value="79">EDR039|UserApprover</option>
+	<option value="78">EDR039|UserSubmitter</option>
+	<option value="81">EDR040|UserApprover</option>
+	<option value="80">EDR040|UserSubmitter</option>
+	<option value="2877">EDR040B|UserApprover</option>
+	<option value="2876">EDR040B|UserSubmitter</option>
+	<option value="83">EDR041|UserApprover</option>
+	<option value="82">EDR041|UserSubmitter</option>
+	<option value="85">EDR042|UserApprover</option>
+	<option value="84">EDR042|UserSubmitter</option>
+	<option value="87">EDR043|UserApprover</option>
+	<option value="86">EDR043|UserSubmitter</option>
+	<option value="3037">EDR044_U011|UserApprover</option>
+	<option value="3038">EDR044_U011|UserSubmitter</option>
+	<option value="2791">EDR044_U104|UserApprover</option>
+	<option value="2790">EDR044_U104|UserSubmitter</option>
+	<option value="2901">EDR044_U110|UserApprover</option>
+	<option value="2902">EDR044_U110|UserSubmitter</option>
+	<option value="3024">EDR044_U138|UserApprover</option>
+	<option value="3023">EDR044_U138|UserSubmitter</option>
+	<option value="3043">EDR044_U142|UserApprover</option>
+	<option value="3044">EDR044_U142|UserSubmitter</option>
+	<option value="2989">EDR044_U143|UserApprover</option>
+	<option value="2956">EDR044_U143|UserSubmitter</option>
+	<option value="2903">EDR044_U148|UserApprover</option>
+	<option value="2904">EDR044_U148|UserSubmitter</option>
+	<option value="3050">EDR044_U154|UserApprover</option>
+	<option value="3049">EDR044_U154|UserSubmitter</option>
+	<option value="3042">EDR044_U159|UserApprover</option>
+	<option value="3041">EDR044_U159|UserSubmitter</option>
+	<option value="2905">EDR044_U168|UserApprover</option>
+	<option value="2906">EDR044_U168|UserSubmitter</option>
+	<option value="2907">EDR044_U174|UserApprover</option>
+	<option value="2908">EDR044_U174|UserSubmitter</option>
+	<option value="2795">EDR044_U190|UserApprover</option>
+	<option value="2794">EDR044_U190|UserSubmitter</option>
+	<option value="2909">EDR044_U238|UserApprover</option>
+	<option value="2910">EDR044_U238|UserSubmitter</option>
+	<option value="3026">EDR044_U241|UserApprover</option>
+	<option value="3025">EDR044_U241|UserSubmitter</option>
+	<option value="2911">EDR044_U261|UserApprover</option>
+	<option value="2912">EDR044_U261|UserSubmitter</option>
+	<option value="2797">EDR044_U265|UserApprover</option>
+	<option value="2796">EDR044_U265|UserSubmitter</option>
+	<option value="3018">EDR044_U287|UserApprover</option>
+	<option value="2985">EDR044_U287|UserSubmitter</option>
+	<option value="2990">EDR044_U288|UserApprover</option>
+	<option value="2957">EDR044_U288|UserSubmitter</option>
+	<option value="2799">EDR044_U345|UserApprover</option>
+	<option value="2798">EDR044_U345|UserSubmitter</option>
+	<option value="2801">EDR044_U372|UserApprover</option>
+	<option value="2800">EDR044_U372|UserSubmitter</option>
+	<option value="2803">EDR044_U373|UserApprover</option>
+	<option value="2802">EDR044_U373|UserSubmitter</option>
+	<option value="3019">EDR044_U415|UserApprover</option>
+	<option value="3020">EDR044_U415|UserSubmitter</option>
+	<option value="2889">EDR044_U430|UserApprover</option>
+	<option value="2890">EDR044_U430|UserSubmitter</option>
+	<option value="2805">EDR044_U433|UserApprover</option>
+	<option value="2804">EDR044_U433|UserSubmitter</option>
+	<option value="2991">EDR044_U452|UserApprover</option>
+	<option value="2958">EDR044_U452|UserSubmitter</option>
+	<option value="2891">EDR044_U453|UserApprover</option>
+	<option value="2892">EDR044_U453|UserSubmitter</option>
+	<option value="2893">EDR044_U454|UserApprover</option>
+	<option value="2894">EDR044_U454|UserSubmitter</option>
+	<option value="2895">EDR044_U687|UserApprover</option>
+	<option value="2896">EDR044_U687|UserSubmitter</option>
+	<option value="2920">EDR044_U734|UserApprover</option>
+	<option value="2919">EDR044_U734|UserSubmitter</option>
+	<option value="2922">EDR044_U735|UserApprover</option>
+	<option value="2921">EDR044_U735|UserSubmitter</option>
+	<option value="2951">EDR044_U736|UserApprover</option>
+	<option value="2949">EDR044_U736|UserSubmitter</option>
+	<option value="3047">EDR044_U739|UserApprover</option>
+	<option value="3048">EDR044_U739|UserSubmitter</option>
+	<option value="2952">EDR044_U762|UserApprover</option>
+	<option value="2950">EDR044_U762|UserSubmitter</option>
+	<option value="89">EDR044|UserApprover</option>
+	<option value="88">EDR044|UserSubmitter</option>
+	<option value="91">EDR045|UserApprover</option>
+	<option value="90">EDR045|UserSubmitter</option>
+	<option value="93">EDR046|UserApprover</option>
+	<option value="92">EDR046|UserSubmitter</option>
+	<option value="95">EDR047|UserApprover</option>
+	<option value="94">EDR047|UserSubmitter</option>
+	<option value="96">EDR048|UserSubmitter</option>
+	<option value="99">EDR049|UserApprover</option>
+	<option value="98">EDR049|UserSubmitter</option>
+	<option value="101">EDR050|UserApprover</option>
+	<option value="100">EDR050|UserSubmitter</option>
+	<option value="103">EDR051|UserApprover</option>
+	<option value="102">EDR051|UserSubmitter</option>
+	<option value="105">EDR052|UserApprover</option>
+	<option value="104">EDR052|UserSubmitter</option>
+	<option value="107">EDR053|UserApprover</option>
+	<option value="106">EDR053|UserSubmitter</option>
+	<option value="2661">EDR054_U006|UserApprover</option>
+	<option value="2660">EDR054_U006|UserSubmitter</option>
+	<option value="2663">EDR054_U011|UserApprover</option>
+	<option value="2662">EDR054_U011|UserSubmitter</option>
+	<option value="2665">EDR054_U023|UserApprover</option>
+	<option value="2664">EDR054_U023|UserSubmitter</option>
+	<option value="2667">EDR054_U024|UserApprover</option>
+	<option value="2666">EDR054_U024|UserSubmitter</option>
+	<option value="2669">EDR054_U025|UserApprover</option>
+	<option value="2668">EDR054_U025|UserSubmitter</option>
+	<option value="2671">EDR054_U027|UserApprover</option>
+	<option value="2670">EDR054_U027|UserSubmitter</option>
+	<option value="2673">EDR054_U030|UserApprover</option>
+	<option value="2672">EDR054_U030|UserSubmitter</option>
+	<option value="2675">EDR054_U236|UserApprover</option>
+	<option value="2674">EDR054_U236|UserSubmitter</option>
+	<option value="2677">EDR054_U240|UserApprover</option>
+	<option value="2676">EDR054_U240|UserSubmitter</option>
+	<option value="2679">EDR054_U241|UserApprover</option>
+	<option value="2678">EDR054_U241|UserSubmitter</option>
+	<option value="2681">EDR054_U265|UserApprover</option>
+	<option value="2680">EDR054_U265|UserSubmitter</option>
+	<option value="2683">EDR054_U338|UserApprover</option>
+	<option value="2682">EDR054_U338|UserSubmitter</option>
+	<option value="2685">EDR054_U424|UserApprover</option>
+	<option value="2684">EDR054_U424|UserSubmitter</option>
+	<option value="2687">EDR054_U454|UserApprover</option>
+	<option value="2686">EDR054_U454|UserSubmitter</option>
+	<option value="2924">EDR054_U460|UserApprover</option>
+	<option value="2923">EDR054_U460|UserSubmitter</option>
+	<option value="2689">EDR054_U687|UserApprover</option>
+	<option value="2688">EDR054_U687|UserSubmitter</option>
+	<option value="2897">EDR054_U739|UserApprover</option>
+	<option value="2898">EDR054_U739|UserSubmitter</option>
+	<option value="2899">EDR054_U777|UserApprover</option>
+	<option value="2900">EDR054_U777|UserSubmitter</option>
+	<option value="109">EDR054|UserApprover</option>
+	<option value="108">EDR054|UserSubmitter</option>
+	<option value="111">EDR055|UserApprover</option>
+	<option value="110">EDR055|UserSubmitter</option>
+	<option value="113">EDR056|UserApprover</option>
+	<option value="112">EDR056|UserSubmitter</option>
+	<option value="115">EDR057|UserApprover</option>
+	<option value="114">EDR057|UserSubmitter</option>
+	<option value="117">EDR058|UserApprover</option>
+	<option value="116">EDR058|UserSubmitter</option>
+	<option value="119">EDR059|UserApprover</option>
+	<option value="118">EDR059|UserSubmitter</option>
+	<option value="121">EDR060|UserApprover</option>
+	<option value="120">EDR060|UserSubmitter</option>
+	<option value="123">EDR061|UserApprover</option>
+	<option value="122">EDR061|UserSubmitter</option>
+	<option value="125">EDR062|UserApprover</option>
+	<option value="124">EDR062|UserSubmitter</option>
+	<option value="127">EDR063|UserApprover</option>
+	<option value="126">EDR063|UserSubmitter</option>
+	<option value="129">EDR064|UserApprover</option>
+	<option value="128">EDR064|UserSubmitter</option>
+	<option value="131">EDR065|UserApprover</option>
+	<option value="130">EDR065|UserSubmitter</option>
+	<option value="133">EDR066|UserApprover</option>
+	<option value="132">EDR066|UserSubmitter</option>
+	<option value="135">EDR067|UserApprover</option>
+	<option value="134">EDR067|UserSubmitter</option>
+	<option value="137">EDR068|UserApprover</option>
+	<option value="136">EDR068|UserSubmitter</option>
+	<option value="141">EDR070|UserApprover</option>
+	<option value="140">EDR070|UserSubmitter</option>
+	<option value="143">EDR071|UserApprover</option>
+	<option value="142">EDR071|UserSubmitter</option>
+	<option value="145">EDR072|UserApprover</option>
+	<option value="144">EDR072|UserSubmitter</option>
+	<option value="147">EDR073|UserApprover</option>
+	<option value="146">EDR073|UserSubmitter</option>
+	<option value="149">EDR074|UserApprover</option>
+	<option value="148">EDR074|UserSubmitter</option>
+	<option value="151">EDR075|UserApprover</option>
+	<option value="150">EDR075|UserSubmitter</option>
+	<option value="153">EDR076|UserApprover</option>
+	<option value="152">EDR076|UserSubmitter</option>
+	<option value="155">EDR077|UserApprover</option>
+	<option value="154">EDR077|UserSubmitter</option>
+	<option value="157">EDR078|UserApprover</option>
+	<option value="156">EDR078|UserSubmitter</option>
+	<option value="159">EDR079|UserApprover</option>
+	<option value="158">EDR079|UserSubmitter</option>
+	<option value="161">EDR080|UserApprover</option>
+	<option value="160">EDR080|UserSubmitter</option>
+	<option value="163">EDR081|UserApprover</option>
+	<option value="162">EDR081|UserSubmitter</option>
+	<option value="165">EDR082|UserApprover</option>
+	<option value="164">EDR082|UserSubmitter</option>
+	<option value="167">EDR083|UserApprover</option>
+	<option value="166">EDR083|UserSubmitter</option>
+	<option value="169">EDR084|UserApprover</option>
+	<option value="168">EDR084|UserSubmitter</option>
+	<option value="171">EDR085|UserApprover</option>
+	<option value="170">EDR085|UserSubmitter</option>
+	<option value="173">EDR086|UserApprover</option>
+	<option value="172">EDR086|UserSubmitter</option>
+	<option value="175">EDR087|UserApprover</option>
+	<option value="174">EDR087|UserSubmitter</option>
+	<option value="177">EDR088|UserApprover</option>
+	<option value="176">EDR088|UserSubmitter</option>
+	<option value="179">EDR089|UserApprover</option>
+	<option value="178">EDR089|UserSubmitter</option>
+	<option value="181">EDR090|UserApprover</option>
+	<option value="180">EDR090|UserSubmitter</option>
+	<option value="183">EDR091|UserApprover</option>
+	<option value="182">EDR091|UserSubmitter</option>
+	<option value="185">EDR092|UserApprover</option>
+	<option value="184">EDR092|UserSubmitter</option>
+	<option value="187">EDR093|UserApprover</option>
+	<option value="186">EDR093|UserSubmitter</option>
+	<option value="189">EDR094|UserApprover</option>
+	<option value="188">EDR094|UserSubmitter</option>
+	<option value="191">EDR095|UserApprover</option>
+	<option value="190">EDR095|UserSubmitter</option>
+	<option value="193">EDR096|UserApprover</option>
+	<option value="192">EDR096|UserSubmitter</option>
+	<option value="195">EDR097|UserApprover</option>
+	<option value="194">EDR097|UserSubmitter</option>
+	<option value="197">EDR098|UserApprover</option>
+	<option value="196">EDR098|UserSubmitter</option>
+	<option value="201">EDR100|UserApprover</option>
+	<option value="200">EDR100|UserSubmitter</option>
+	<option value="203">EDR101|UserApprover</option>
+	<option value="202">EDR101|UserSubmitter</option>
+	<option value="205">EDR102|UserApprover</option>
+	<option value="204">EDR102|UserSubmitter</option>
+	<option value="207">EDR103|UserApprover</option>
+	<option value="206">EDR103|UserSubmitter</option>
+	<option value="209">EDR104|UserApprover</option>
+	<option value="208">EDR104|UserSubmitter</option>
+	<option value="211">EDR105|UserApprover</option>
+	<option value="210">EDR105|UserSubmitter</option>
+	<option value="213">EDR106|UserApprover</option>
+	<option value="212">EDR106|UserSubmitter</option>
+	<option value="215">EDR107|UserApprover</option>
+	<option value="214">EDR107|UserSubmitter</option>
+	<option value="217">EDR108|UserApprover</option>
+	<option value="216">EDR108|UserSubmitter</option>
+	<option value="219">EDR109|UserApprover</option>
+	<option value="218">EDR109|UserSubmitter</option>
+	<option value="221">EDR110|UserApprover</option>
+	<option value="220">EDR110|UserSubmitter</option>
+	<option value="223">EDR111|UserApprover</option>
+	<option value="222">EDR111|UserSubmitter</option>
+	<option value="225">EDR112|UserApprover</option>
+	<option value="224">EDR112|UserSubmitter</option>
+	<option value="227">EDR113|UserApprover</option>
+	<option value="226">EDR113|UserSubmitter</option>
+	<option value="229">EDR114|UserApprover</option>
+	<option value="228">EDR114|UserSubmitter</option>
+	<option value="231">EDR115|UserApprover</option>
+	<option value="230">EDR115|UserSubmitter</option>
+	<option value="233">EDR116|UserApprover</option>
+	<option value="232">EDR116|UserSubmitter</option>
+	<option value="235">EDR117|UserApprover</option>
+	<option value="234">EDR117|UserSubmitter</option>
+	<option value="237">EDR118|UserApprover</option>
+	<option value="236">EDR118|UserSubmitter</option>
+	<option value="239">EDR119|UserApprover</option>
+	<option value="238">EDR119|UserSubmitter</option>
+	<option value="241">EDR120|UserApprover</option>
+	<option value="240">EDR120|UserSubmitter</option>
+	<option value="243">EDR121|UserApprover</option>
+	<option value="2885">EDR121|UserApprover</option>
+	<option value="2886">EDR121|UserSubmitter</option>
+	<option value="242">EDR121|UserSubmitter</option>
+	<option value="245">EDR122|UserApprover</option>
+	<option value="244">EDR122|UserSubmitter</option>
+	<option value="247">EDR123|UserApprover</option>
+	<option value="246">EDR123|UserSubmitter</option>
+	<option value="249">EDR124|UserApprover</option>
+	<option value="248">EDR124|UserSubmitter</option>
+	<option value="251">EDR125|UserApprover</option>
+	<option value="250">EDR125|UserSubmitter</option>
+	<option value="2938">EDR126_U413|UserApprover</option>
+	<option value="2937">EDR126_U413|UserSubmitter</option>
+	<option value="2942">EDR126_U415|UserApprover</option>
+	<option value="2941">EDR126_U415|UserSubmitter</option>
+	<option value="2944">EDR126_U416|UserApprover</option>
+	<option value="2943">EDR126_U416|UserSubmitter</option>
+	<option value="253">EDR126|UserApprover</option>
+	<option value="252">EDR126|UserSubmitter</option>
+	<option value="255">EDR127|UserApprover</option>
+	<option value="2992">EDR127|UserApprover</option>
+	<option value="2959">EDR127|UserSubmitter</option>
+	<option value="254">EDR127|UserSubmitter</option>
+	<option value="257">EDR128|UserApprover</option>
+	<option value="2993">EDR128|UserApprover</option>
+	<option value="2960">EDR128|UserSubmitter</option>
+	<option value="256">EDR128|UserSubmitter</option>
+	<option value="259">EDR129|UserApprover</option>
+	<option value="258">EDR129|UserSubmitter</option>
+	<option value="2994">EDR129A|UserApprover</option>
+	<option value="2961">EDR129A|UserSubmitter</option>
+	<option value="261">EDR130|UserApprover</option>
+	<option value="260">EDR130|UserSubmitter</option>
+	<option value="2995">EDR130A|UserApprover</option>
+	<option value="2962">EDR130A|UserSubmitter</option>
+	<option value="2996">EDR131|UserApprover</option>
+	<option value="263">EDR131|UserApprover</option>
+	<option value="262">EDR131|UserSubmitter</option>
+	<option value="2963">EDR131|UserSubmitter</option>
+	<option value="2997">EDR132|UserApprover</option>
+	<option value="265">EDR132|UserApprover</option>
+	<option value="264">EDR132|UserSubmitter</option>
+	<option value="2964">EDR132|UserSubmitter</option>
+	<option value="2999">EDR133|UserApprover</option>
+	<option value="267">EDR133|UserApprover</option>
+	<option value="266">EDR133|UserSubmitter</option>
+	<option value="2966">EDR133|UserSubmitter</option>
+	<option value="2998">EDR134|UserApprover</option>
+	<option value="269">EDR134|UserApprover</option>
+	<option value="268">EDR134|UserSubmitter</option>
+	<option value="2965">EDR134|UserSubmitter</option>
+	<option value="3000">EDR135|UserApprover</option>
+	<option value="271">EDR135|UserApprover</option>
+	<option value="270">EDR135|UserSubmitter</option>
+	<option value="2967">EDR135|UserSubmitter</option>
+	<option value="3028">EDR136|UserApprover</option>
+	<option value="273">EDR136|UserApprover</option>
+	<option value="272">EDR136|UserSubmitter</option>
+	<option value="3027">EDR136|UserSubmitter</option>
+	<option value="3030">EDR137_U425|UserApprover</option>
+	<option value="3029">EDR137_U425|UserSubmitter</option>
+	<option value="275">EDR137|UserApprover</option>
+	<option value="274">EDR137|UserSubmitter</option>
+	<option value="277">EDR138|UserApprover</option>
+	<option value="276">EDR138|UserSubmitter</option>
+	<option value="279">EDR139|UserApprover</option>
+	<option value="3032">EDR139|UserApprover</option>
+	<option value="3031">EDR139|UserSubmitter</option>
+	<option value="278">EDR139|UserSubmitter</option>
+	<option value="3034">EDR140_U238|UserApprover</option>
+	<option value="3033">EDR140_U238|UserSubmitter</option>
+	<option value="3036">EDR140_U351|UserApprover</option>
+	<option value="3035">EDR140_U351|UserSubmitter</option>
+	<option value="281">EDR140|UserApprover</option>
+	<option value="280">EDR140|UserSubmitter</option>
+	<option value="283">EDR141|UserApprover</option>
+	<option value="282">EDR141|UserSubmitter</option>
+	<option value="285">EDR142|UserApprover</option>
+	<option value="284">EDR142|UserSubmitter</option>
+	<option value="287">EDR143|UserApprover</option>
+	<option value="286">EDR143|UserSubmitter</option>
+	<option value="289">EDR144|UserApprover</option>
+	<option value="288">EDR144|UserSubmitter</option>
+	<option value="291">EDR145|UserApprover</option>
+	<option value="290">EDR145|UserSubmitter</option>
+	<option value="293">EDR146|UserApprover</option>
+	<option value="292">EDR146|UserSubmitter</option>
+	<option value="295">EDR147|UserApprover</option>
+	<option value="294">EDR147|UserSubmitter</option>
+	<option value="301">EDR150|UserApprover</option>
+	<option value="300">EDR150|UserSubmitter</option>
+	<option value="303">EDR151|UserApprover</option>
+	<option value="302">EDR151|UserSubmitter</option>
+	<option value="305">EDR152|UserApprover</option>
+	<option value="304">EDR152|UserSubmitter</option>
+	<option value="307">EDR153|UserApprover</option>
+	<option value="306">EDR153|UserSubmitter</option>
+	<option value="309">EDR154|UserApprover</option>
+	<option value="308">EDR154|UserSubmitter</option>
+	<option value="311">EDR155|UserApprover</option>
+	<option value="310">EDR155|UserSubmitter</option>
+	<option value="313">EDR156|UserApprover</option>
+	<option value="312">EDR156|UserSubmitter</option>
+	<option value="315">EDR157|UserApprover</option>
+	<option value="314">EDR157|UserSubmitter</option>
+	<option value="317">EDR158|UserApprover</option>
+	<option value="316">EDR158|UserSubmitter</option>
+	<option value="319">EDR159|UserApprover</option>
+	<option value="318">EDR159|UserSubmitter</option>
+	<option value="321">EDR160|UserApprover</option>
+	<option value="320">EDR160|UserSubmitter</option>
+	<option value="323">EDR161|UserApprover</option>
+	<option value="322">EDR161|UserSubmitter</option>
+	<option value="325">EDR162|UserApprover</option>
+	<option value="324">EDR162|UserSubmitter</option>
+	<option value="327">EDR163|UserApprover</option>
+	<option value="326">EDR163|UserSubmitter</option>
+	<option value="329">EDR164|UserApprover</option>
+	<option value="328">EDR164|UserSubmitter</option>
+	<option value="331">EDR165|UserApprover</option>
+	<option value="330">EDR165|UserSubmitter</option>
+	<option value="333">EDR166|UserApprover</option>
+	<option value="332">EDR166|UserSubmitter</option>
+	<option value="335">EDR167|UserApprover</option>
+	<option value="334">EDR167|UserSubmitter</option>
+	<option value="337">EDR168|UserApprover</option>
+	<option value="336">EDR168|UserSubmitter</option>
+	<option value="339">EDR169|UserApprover</option>
+	<option value="338">EDR169|UserSubmitter</option>
+	<option value="341">EDR170|UserApprover</option>
+	<option value="340">EDR170|UserSubmitter</option>
+	<option value="343">EDR171|UserApprover</option>
+	<option value="342">EDR171|UserSubmitter</option>
+	<option value="345">EDR172|UserApprover</option>
+	<option value="344">EDR172|UserSubmitter</option>
+	<option value="347">EDR173|UserApprover</option>
+	<option value="346">EDR173|UserSubmitter</option>
+	<option value="349">EDR174|UserApprover</option>
+	<option value="348">EDR174|UserSubmitter</option>
+	<option value="351">EDR175_U012P|UserApprover</option>
+	<option value="350">EDR175_U012S|UserSubmitter</option>
+	<option value="353">EDR176|UserApprover</option>
+	<option value="352">EDR176|UserSubmitter</option>
+	<option value="355">EDR177|UserApprover</option>
+	<option value="354">EDR177|UserSubmitter</option>
+	<option value="357">EDR178|UserApprover</option>
+	<option value="356">EDR178|UserSubmitter</option>
+	<option value="359">EDR179|UserApprover</option>
+	<option value="358">EDR179|UserSubmitter</option>
+	<option value="361">EDR180|UserApprover</option>
+	<option value="360">EDR180|UserSubmitter</option>
+	<option value="363">EDR181|UserApprover</option>
+	<option value="362">EDR181|UserSubmitter</option>
+	<option value="365">EDR182|UserApprover</option>
+	<option value="364">EDR182|UserSubmitter</option>
+	<option value="367">EDR183|UserApprover</option>
+	<option value="366">EDR183|UserSubmitter</option>
+	<option value="369">EDR184|UserApprover</option>
+	<option value="368">EDR184|UserSubmitter</option>
+	<option value="371">EDR185|UserApprover</option>
+	<option value="370">EDR185|UserSubmitter</option>
+	<option value="373">EDR186|UserApprover</option>
+	<option value="372">EDR186|UserSubmitter</option>
+	<option value="375">EDR187|UserApprover</option>
+	<option value="374">EDR187|UserSubmitter</option>
+	<option value="377">EDR188|UserApprover</option>
+	<option value="376">EDR188|UserSubmitter</option>
+	<option value="379">EDR189|UserApprover</option>
+	<option value="378">EDR189|UserSubmitter</option>
+	<option value="381">EDR190|UserApprover</option>
+	<option value="380">EDR190|UserSubmitter</option>
+	<option value="383">EDR191|UserApprover</option>
+	<option value="382">EDR191|UserSubmitter</option>
+	<option value="385">EDR192|UserApprover</option>
+	<option value="384">EDR192|UserSubmitter</option>
+	<option value="387">EDR193|UserApprover</option>
+	<option value="386">EDR193|UserSubmitter</option>
+	<option value="389">EDR194|UserApprover</option>
+	<option value="388">EDR194|UserSubmitter</option>
+	<option value="391">EDR195|UserApprover</option>
+	<option value="390">EDR195|UserSubmitter</option>
+	<option value="393">EDR196|UserApprover</option>
+	<option value="392">EDR196|UserSubmitter</option>
+	<option value="395">EDR197|UserApprover</option>
+	<option value="394">EDR197|UserSubmitter</option>
+	<option value="397">EDR198|UserApprover</option>
+	<option value="396">EDR198|UserSubmitter</option>
+	<option value="399">EDR199|UserApprover</option>
+	<option value="398">EDR199|UserSubmitter</option>
+	<option value="401">EDR200|UserApprover</option>
+	<option value="400">EDR200|UserSubmitter</option>
+	<option selected="selected" value="1">(none)</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_org" class="stat"></span>
+			
+
+	<tr id="row3">
+		<td nowrap>
+			<span id="category_label" class="lbl">Category:&nbsp;</span>
+		<td nowrap>
+			
+			<select name="category" id="category">
+	<option selected="selected" value="0">[no category]</option>
+
+</select>
+
+	<tr id="row4">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_priority" class="stat"></span>
+			
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			<span id="status_label" class="lbl">Status:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			
+			<select name="status" id="status">
+	<option value="0">[no status]</option>
+	<option value="17">Initial Upload</option>
+	<option selected="selected" value="1">Pending</option>
+	<option value="18">Cancelled</option>
+	<option value="19">Closed</option>
+	<option value="20">Locked</option>
+	<option value="25">Review</option>
+	<option value="26">Refer</option>
+	<option value="28">Submitted Pending Approval</option>
+	<option value="29">Provisional Submit - Pend Apprv</option>
+
+</select></td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			<span id="assigned_to_label" class="lbl">Initiated By:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			<select name="assigned_to" id="assigned_to">
+	<option selected="selected" value="0">[not assigned]</option>
+	<option value="109">Aina, Samuel - 1303787</option>
+	<option value="1071">B, Ganesh - 1516130</option>
+	<option value="208">Enefer, Steve - 1320195</option>
+	<option value="711">Saravanan, Malathi - 1412175</option>
+	<option value="762">Shivkumar, Prakash - 1521553</option>
+	<option value="1139">Tan, Carlos Martin - 1419468</option>
+	<option value="1395">,  - 2000851</option>
+	<option value="1572">,  - 1659371</option>
+	<option value="1464">Agarwal, Ankit Kumar - 1647745</option>
+	<option value="900">Agarwal, Ashish - 1547778</option>
+	<option value="1517">Agrawal1, Abhishek - 2008508</option>
+	<option value="1035">Ahmed, Palash - 1531201</option>
+	<option value="1248">B, Deepthi - 1604629</option>
+	<option value="1251">B, Rajaram - 1289039</option>
+	<option value="1538">C, Mohan - 1525951</option>
+	<option value="1347">Carneiro, Leticia - 1434347</option>
+	<option value="1286">Chakka Surya, Bhagavan - 1641677</option>
+	<option value="920">Chen, Nikita - 1260893</option>
+	<option value="908">Chigirov, Timur - 1531645</option>
+	<option value="1341">D S, Balakrishna - 1395839</option>
+	<option value="1371">Dhar, Barsha - 1658489</option>
+	<option value="1466">Gajula, Anusha - 1669816</option>
+	<option value="1287">Gs, RekhaBhargavi - 1202705</option>
+	<option value="1315">Hariharan, Ganesh - 1414991</option>
+	<option value="927">Haron, Daiyana - 1130368</option>
+	<option value="1359">Iyyappan, Rohith - 1654354</option>
+	<option value="1056">Jain, Anand - 1574280</option>
+	<option value="1326">Jain, Paran Kumar - 1657474</option>
+	<option value="1519">Jain1, Prachi - 2007753</option>
+	<option value="1374">Jain1, Rohit Kumar - 1613780</option>
+	<option value="1423">Jayakumar, Ramya - 1665171</option>
+	<option value="1313">K, Gokul - 1646397</option>
+	<option value="1357">K, Subramanian - 1353436</option>
+	<option value="1036">Krishnan, Baskaran - 1258831</option>
+	<option value="1342">M, Srikant - 1398099</option>
+	<option value="905">Mahadevan, Ramakrishnan - 1172941</option>
+	<option value="1520">Matumbai, Anne - 1520377</option>
+	<option value="1285">Menon, Bhaskar - 1610139</option>
+	<option value="1060">Michelle, Amey - 1225525</option>
+	<option value="1542">Mohammad Farook, Shaik - 1554832</option>
+	<option value="1567">Mohan, Sai Prasath - 2004685</option>
+	<option value="1469">Murugesan, Niraja - 2004261</option>
+	<option value="1414">N S, Aksharaa - 2002897</option>
+	<option value="1397">Nishanth, Michael - 1393812</option>
+	<option value="1568">Poongavanam, Mohan - 1657571</option>
+	<option value="1427">R, Harish - 2001445</option>
+	<option value="1518">R, Jayachandran - 2007601</option>
+	<option value="1555">R, Sujatha - 1135449</option>
+	<option value="1533">R, Venkatesh - 1648503</option>
+	<option value="1534">Rai, Amrita - 2007398</option>
+	<option value="1314">Rambala, Rajitha - 1565936</option>
+	<option value="1386">Ramkumar, Ashwin - 1411574</option>
+	<option value="1463">Rani, Alekhya - 1616135</option>
+	<option value="1467">Reddy, , Satti Somaanvitha - 1664841</option>
+	<option value="1539">S, Kothanda Raman - 1426218</option>
+	<option value="1559">S, Nithya Prabha - 1163551</option>
+	<option value="1468">S, Pandian - 2005526</option>
+	<option value="1288">S, Roopavani - 1642889</option>
+	<option value="961">Sanghavi, Amit Chetan - 1578588</option>
+	<option value="923">Sarkar, Pritishpalas - 1476592</option>
+	<option value="1465">Sarmah, Bidisha - 1613962</option>
+	<option value="1576">Srikanth, Ramya - 2003867</option>
+	<option value="1565">SU, Preethi - 1490932</option>
+	<option value="1051">Subramanian, Deivanai - 1561731</option>
+	<option value="1175">Sushil Mishra, Ca - 1619376</option>
+	<option value="1523">V, Alagiyanambi - 2009997</option>
+	<option value="1529">Vasanth, Ravikumar - 2011287</option>
+	<option value="1032">Venkata Mani Teja, Yakkala Udaya Naga - 1565397</option>
+	<option value="1338">Vignesh, Madan - 1474325</option>
+	<option value="1390">Wong, Adrena - 1506558</option>
+
+</select>
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="EDRType_row"><td nowrap=""><span id="EDRType_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Required inputs               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">EDRType:</td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="EDRType" id="EDRType" value="EDR - Q3 2024" class="txt">
+</td></tr><tr id="EDRNo._row"><td nowrap=""><span id="EDRNo._label">EDR No.:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="EDR No." id="EDRNo." value="EDR360_U110" class="txt">
+</td></tr><tr id="EDR_row"><td nowrap=""><span id="EDR_label">EDR:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="EDR" id="EDR" value="EDR360" class="txt">
+</td></tr><tr id="BU_row"><td nowrap=""><span id="BU_label">BU:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="BU" id="BU" value="U110" class="txt">
+</td></tr><tr id="Processowner_row"><td nowrap=""><span id="Processowner_label">Process owner:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Processowner',255)" wrap="hard" onkeyup="return count_chars('Processowner',255)" cols="120" rows="2" name="Process owner" id="Processowner">Mohan, Sai Prasath</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Processowner_cnt">&nbsp;</div>
+</td></tr><tr id="Reviewer_row"><td nowrap=""><span id="Reviewer_label">Reviewer:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Reviewer" id="Reviewer" value="Saravanan, Malathi" class="txt">
+</td></tr><tr id="UserSubmittedStatus_row"><td nowrap=""><span id="UserSubmittedStatus_label">UserSubmittedStatus:</span></td><td align="left"><select id="UserSubmittedStatus" name="UserSubmittedStatus"><option selected=""></option><option>Submitted</option></select>
+</td></tr><tr id="UserApprovalStatus_row"><td nowrap=""><span id="UserApprovalStatus_label">UserApprovalStatus:</span></td><td align="left"><select id="UserApprovalStatus" name="UserApprovalStatus"><option selected=""></option><option>Approved</option></select>
+</td></tr><tr id="Section_row"><td nowrap=""><span id="Section_label">Section:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Section" id="Section" value="Derivative Asset &amp; Derivative Liability - Recon adjustments" class="txt">
+</td></tr><tr id="FYNoteRef_row"><td nowrap=""><span id="FYNoteRef_label">FY Note Ref:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="FY Note Ref" id="FYNoteRef" value="" class="txt">
+</td></tr><tr id="Frequency_row"><td nowrap=""><span id="Frequency_label">Frequency:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Frequency" id="Frequency" value="Quarterly " class="txt">
+</td></tr><tr id="Duefrom_row"><td nowrap=""><span id="Duefrom_label">Due from:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Duefrom',1000)" wrap="hard" onkeyup="return count_chars('Duefrom',1000)" cols="120" rows="8" name="Due from" id="Duefrom">S, Sankaran;Murugan, Aravindsugan;Jayaraman, Karthikeyan;Pamujula, Madhu;</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Duefrom_cnt">&nbsp;</div>
+</td></tr><tr id="Escalation_row"><td nowrap=""><span id="Escalation_label">Escalation:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Escalation',1000)" wrap="hard" onkeyup="return count_chars('Escalation',1000)" cols="120" rows="8" name="Escalation" id="Escalation">Srinivasan, Venkateshan</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Escalation_cnt">&nbsp;</div>
+</td></tr><tr id="Responsetobesentto_row"><td nowrap=""><span id="Responsetobesentto_label">Response to be sent to:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Responsetobesentto',1000)" wrap="hard" onkeyup="return count_chars('Responsetobesentto',1000)" cols="120" rows="8" name="Response to be sent to" id="Responsetobesentto">FinrepReport, FR ; Saravanan, Malathi  ; Poongavanam, Mohan ; Jayakumar, Ramya; Reddy, Satti Somaanvitha ; Gogineni, Karuna </textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Responsetobesentto_cnt">&nbsp;</div>
+</td></tr><tr id="No.ofunits-individuals_row"><td nowrap=""><span id="No.ofunits-individuals_label">No. of units - individuals:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('No.ofunits-individuals',1000)" wrap="hard" onkeyup="return count_chars('No.ofunits-individuals',1000)" cols="120" rows="8" name="No. of units - individuals" id="No.ofunits-individuals">LE1100</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="No.ofunits-individuals_cnt">&nbsp;</div>
+</td></tr><tr id="DueDate(dd/mm/yy)_row"><td nowrap=""><span id="DueDate(dd/mm/yy)_label">Due Date (dd/mm/yy):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Due Date (dd/mm/yy)" id="DueDate(dd/mm/yy)" value="2024-10-15" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('DueDate(dd/mm/yy)');">[select]</a>
+</td></tr><tr id="EDRSent_row"><td nowrap=""><span id="EDRSent_label">EDR Sent:</span></td><td align="left"><select id="EDRSent" name="EDR Sent"><option selected=""></option><option>Yes</option><option>No</option></select>
+</td></tr><tr id="DateReceived(dd/mm/yy)_row"><td nowrap=""><span id="DateReceived(dd/mm/yy)_label">Date Received (dd/mm/yy):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Date Received (dd/mm/yy)" id="DateReceived(dd/mm/yy)" value="" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('DateReceived(dd/mm/yy)');">[select]</a>
+</td></tr><tr id="DelayStats_row"><td nowrap=""><span id="DelayStats_label">Delay Stats:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Delay Stats" id="DelayStats" value="" class="txt">
+</td></tr><tr id="Receivedfrom_row"><td nowrap=""><span id="Receivedfrom_label">Received from:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Receivedfrom',200)" wrap="hard" onkeyup="return count_chars('Receivedfrom',200)" cols="120" rows="1" name="Received from" id="Receivedfrom"></textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Receivedfrom_cnt">&nbsp;</div>
+</td></tr><tr id="Numberofsubmission_row"><td nowrap=""><span id="Numberofsubmission_label">Number of submission:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Number of submission" id="Numberofsubmission" value="" class="txt">
+</td></tr><tr id="Dueinnumberofdays_row"><td nowrap=""><span id="Dueinnumberofdays_label">Due in number of days:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Due in number of days" id="Dueinnumberofdays" value="" class="txt">
+</td></tr><tr id="Chaserrequired_row"><td nowrap=""><span id="Chaserrequired_label">Chaser required:</span></td><td align="left"><select id="Chaserrequired" name="Chaser required"><option selected=""></option><option>Yes</option><option>No</option></select>
+</td></tr><tr id="ReturnedLate_row"><td nowrap=""><span id="ReturnedLate_label">Returned Late:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Returned Late" id="ReturnedLate" value="" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('ReturnedLate');">[select]</a>
+</td></tr><tr id="ClosedDate_row"><td nowrap=""><span id="ClosedDate_label">ClosedDate:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="ClosedDate" id="ClosedDate" value="" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('ClosedDate');">[select]</a>
+</td></tr><tr id="LockID_row"><td nowrap=""><span id="LockID_label">LockID:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="LockID" id="LockID" value="259" class="txt">
+</td></tr><tr id="NotifyFlag_row"><td nowrap=""><span id="NotifyFlag_label">NotifyFlag:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="NotifyFlag" id="NotifyFlag" value="1" class="txt">
+</td></tr><tr id="Natureofinformationrequired_row"><td nowrap=""><span id="Natureofinformationrequired_label">Nature of information required:</span></td><td align="left"><div class="resizable-textarea"><span><textarea class="txt resizable processed" onkeydown="return count_chars('Natureofinformationrequired',2000)" wrap="hard" onkeyup="return count_chars('Natureofinformationrequired',2000)" cols="120" rows="15" name="Nature of information required" id="Natureofinformationrequired">Detailed trade level information for missing deals in FINREP UDM. FINREP adjustment template to be filled out with trade level information for the reported gaps  with correct LE ID, Customer name, Deal ID, ISIC code, FINREP counterparty, Domicile country(residence), Nace Code, carrying/provision amount in USD, ECL stage information.
+In addition, would request input for COA(GL based) for more than +/-200million</textarea><div class="grippie" style="margin-right: 63px;"></div></span></div><div class="smallnote" id="Natureofinformationrequired_cnt">&nbsp;</div>
+</td></tr><tr id="GFRProposedDuedate(dd/mm/yy)_row"><td nowrap=""><span id="GFRProposedDuedate(dd/mm/yy)_label">GFR Proposed Due date (dd/mm/yy):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="GFR Proposed Due date (dd/mm/yy)" id="GFRProposedDuedate(dd/mm/yy)" value="" class="txt date hasDatepicker"><a style="font-size: 8pt;" href="javascript:show_calendar('GFRProposedDuedate(dd/mm/yy)');">[select]</a>
+</td></tr><tr id="ReceivedStatus(Yes/No)_row"><td nowrap=""><span id="ReceivedStatus(Yes/No)_label">Received Status (Yes/No):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="10" maxlength="10" name="Received Status (Yes/No)" id="ReceivedStatus(Yes/No)" value="" class="txt">
+</td></tr><tr id="RAG_row"><td nowrap=""><span id="RAG_label">RAG:</span></td><td align="left"><select id="RAG" name="RAG"><option selected=""></option><option>R</option><option>A</option><option>G</option></select>
+</td></tr><tr id="Wasthedatausedinthereportingperiod?_row"><td nowrap=""><span id="Wasthedatausedinthereportingperiod?_label">Was the data used in the reporting period?:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Was the data used in the reporting period?" id="Wasthedatausedinthereportingperiod?" value="" class="txt"></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "queryid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc" value="EDR - Q3 2024_EDR360_U110">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="1">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="(none)">
+	
+	<input name="prev_org_name" type="hidden" id="prev_org_name" value="UserSubmitter">
+	<input name="prev_category" type="hidden" id="prev_category" value="0">
+	
+	<input name="prev_assigned_to" type="hidden" id="prev_assigned_to" value="0">
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	<input name="prev_status" type="hidden" id="prev_status" value="1">
+	<input name="prev_udf" type="hidden" id="prev_udf" value="0">
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 00:59:01:170">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="SuperUserApprover">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="Tracker_EDR">
+	
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_BU" value="U110">
+<input type="hidden" name="prev_Chaser required" value="">
+<input type="hidden" name="prev_ClosedDate" value="">
+<input type="hidden" name="prev_Date Received (dd/mm/yy)" value="">
+<input type="hidden" name="prev_Delay Stats" value="">
+<input type="hidden" name="prev_Due Date (dd/mm/yy)" value="2024-10-15">
+<input type="hidden" name="prev_Due from" value="S, Sankaran;Murugan, Aravindsugan;Jayaraman, Karthikeyan;Pamujula, Madhu;">
+<input type="hidden" name="prev_Due in number of days" value="">
+<input type="hidden" name="prev_EDR" value="EDR360">
+<input type="hidden" name="prev_EDR No." value="EDR360_U110">
+<input type="hidden" name="prev_EDR Sent" value="">
+<input type="hidden" name="prev_EDRType" value="EDR - Q3 2024">
+<input type="hidden" name="prev_Escalation" value="Srinivasan, Venkateshan">
+<input type="hidden" name="prev_Frequency" value="Quarterly ">
+<input type="hidden" name="prev_FY Note Ref" value="">
+<input type="hidden" name="prev_GFR Proposed Due date (dd/mm/yy)" value="">
+<input type="hidden" name="prev_LockID" value="259">
+<input type="hidden" name="prev_Nature of information required" value="Detailed trade level information for missing deals in FINREP UDM. FINREP adjustment template to be filled out with trade level information for the reported gaps  with correct LE ID, Customer name, Deal ID, ISIC code, FINREP counterparty, Domicile country(residence), Nace Code, carrying/provision amount in USD, ECL stage information.
+In addition, would request input for COA(GL based) for more than +/-200million">
+<input type="hidden" name="prev_No. of units - individuals" value="LE1100">
+<input type="hidden" name="prev_NotifyFlag" value="1">
+<input type="hidden" name="prev_Number of submission" value="">
+<input type="hidden" name="prev_Process owner" value="Mohan, Sai Prasath">
+<input type="hidden" name="prev_RAG" value="">
+<input type="hidden" name="prev_Received from" value="">
+<input type="hidden" name="prev_Received Status (Yes/No)" value="">
+<input type="hidden" name="prev_Response to be sent to" value="FinrepReport, FR ; Saravanan, Malathi  ; Poongavanam, Mohan ; Jayakumar, Ramya; Reddy, Satti Somaanvitha ; Gogineni, Karuna ">
+<input type="hidden" name="prev_Returned Late" value="">
+<input type="hidden" name="prev_Reviewer" value="Saravanan, Malathi">
+<input type="hidden" name="prev_Section" value="Derivative Asset &amp;amp; Derivative Liability - Recon adjustments">
+<input type="hidden" name="prev_UserApprovalStatus" value="">
+<input type="hidden" name="prev_UserSubmittedStatus" value="">
+<input type="hidden" name="prev_Was the data used in the reporting period?" value="">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(18839)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(18839)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+</table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">EDR Tracker - 2018 Standard Chartered Bank</td>
+   <td width="1%" align="right" valign="top" style="margin:0; padding:0; vertical-align: top;"><img style="margin:0; padding:0; vertical-align: top;" src="custom/footer-img_07.gif" width="14" height="37"></td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    } else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //Executive Summary should remain open at all times for Org “PC Line Controller” only 
+    //i.e. disable the radio button “+” for this field only for PC Line Controller Org
+    myOrg = "SuperUserApprover";
+    if (myOrg == "PC Line Controller") {
+        if ($("#lnk2").val()=="[+]") { 
+        toggle_visibility('tbl2', 'lnk2');
+        }
+        $("#lnk2").attr("disabled", true);
+    }    
+</script>
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+    //Apply Comment Collapse to array of fields from the database
+    $.each(
+        $("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) { applyCommentCollapseBehaviour(value); }
+        );
+
+		
+</script>
+
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>
