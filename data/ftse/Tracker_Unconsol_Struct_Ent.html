@@ -1,0 +1,980 @@
+<html><head>
+<title id="titl">Entity ID 42583 Initial Upload</title> 
+<link rel="StyleSheet" href="btnet.css" type="text/css">
+<link rel="StyleSheet" href="jquery/jquery-ui-1.7.2.custom.css" type="text/css">
+<!-- use btnet_edit_bug.css to control positioning on edit_bug.asp.  use btnet_search.css to control position on search.aspx  -->
+<link rel="StyleSheet" href="custom/btnet_edit_bug.css" type="text/css">
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="jquery/jquery-ui-1.7.2.custom.min.js"></script>
+
+<script type="text/javascript" language="JavaScript" src="jquery/jquery.textarearesizer.compressed.js"></script>
+
+<script type="text/javascript" language="JavaScript" src="edit_bug.js"></script>
+
+<script type="text/javascript">
+var this_bugid = 42583
+
+$(document).ready(do_doc_ready);
+
+function do_doc_ready()
+{
+	date_format = 'yy-mm-dd'
+	$(".date").datepicker({dateFormat: date_format, duration: 'fast'})
+	$(".date").change(mark_dirty)
+	$(".warn").click(warn_if_dirty) 
+    if($("textarea.resizable:not(.processed)")[0]!==undefined){
+	  // $("textarea.resizable:not(.processed)").TextAreaResizer();
+    }
+	
+		
+}
+
+function disable_second_button()
+{
+	
+}
+
+</script>
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").removeAttr("style");
+</script>
+
+
+
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 213px;
+        }
+    </style>
+
+<!--colapsing tables -->
+<style type="text/css">
+#tbl1,#tbl2,#tbl3,#tbl4,#tbl5,#tbl6,#tbl7,#tbl8,#tbl9,#tbl10,#tbl11,#tbl12,#tbl13,#tbl14,#tbl15,#tbl16,#tbl17,#tbl18,#tbl19,#tbl20 {display:none;}
+#lnk1,#lnk2,#lnk3,#lnk4,#lnk5,#lnk6,#lnk7,#lnk8,#lnk9,#lnk10,#lnk11,#lnk12,#lnk13,#lnk14,#lnk15,#lnk16,#lnk17,#lnk18,#lnk19,#lnk20 {border:none;background:none;width:20px;}
+td {FONT-SIZE: 75%; MARGIN: 0px; COLOR: #000000;}
+td {FONT-FAMILY: arial}
+a {TEXT-DECORATION: none;}
+    #bugform_div
+    {
+        width: 1021px;
+    }
+    p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";
+	}
+    .auto-style5
+    {
+        width: 911px;
+    }
+    .auto-style7
+    {
+        width: 606px;
+    }
+    .auto-style9
+    {
+        width: 872px;
+    }
+    .auto-style10
+    {
+        width: 872px;
+        height: 17px;
+    }
+    .auto-style11
+    {
+        width: 110px;
+    }
+    .auto-style12
+    {
+        width: 205px;
+    }
+    .auto-style13
+    {
+        width: 341px;
+        height:30px;
+    }
+    </style>
+<!--colapsing tables -->
+
+<style type="text/css">
+a.tip {
+    border-bottom: 1px dashed;
+    text-decoration: none
+}
+a.tip:hover {
+    cursor: help;
+    position: relative
+}
+a.tip span {
+    display: none
+}
+a.tip:hover span {
+    border: #c0c0c0 1px dotted;
+    padding: 5px 20px 5px 5px;
+    display: block;
+    z-index: 100;
+    background-color: black;
+    left: 0px;
+    margin: 10px;
+    width: 250px;
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color:white;
+    font-weight:bolder;
+    word-wrap: break-word;
+}
+</style>
+</head>
+
+<body onload="on_body_load()" onunload="on_body_unload()">
+<!-- Header - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+    <div id="scbbar">
+        <div class="brand1"></div>
+        <div class="brand2"></div>
+        <div class="brand3"></div>
+        <div class="brand4"></div>
+        <div class="brand5"></div>        
+    </div>
+<script>
+
+  checkVersion();
+
+function checkVersion() {
+
+    var msg = "You're not using Internet Explorer.";
+
+    var ver = getInternetExplorerVersion();
+
+ 
+
+    if (ver > -1) {
+
+        if (ver >= 8.0) {
+
+            msg = "You're using a recent copy of Internet Explorer.";
+
+        }
+
+        else {
+
+            msg = "This page cannot work with this version of Internet Explorer. Please notify the developer with your version if this check does not appear to be working correctly - your version is " + ver;
+
+            alert(msg);
+
+            window.location.href = "INCOMPATIBLE.html"
+
+        }
+
+    }
+
+}
+
+function getInternetExplorerVersion()
+
+    // Returns the version of Internet Explorer or a -1
+
+    // (indicating the use of another browser).
+
+{
+
+    var rv = -1; // Return value assumes failure.
+
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent;
+
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+
+        if (re.exec(ua) != null)
+
+            rv = parseFloat(RegExp.$1);
+
+    }
+
+    return rv;
+
+}
+
+</script>
+<span id="debug" style="position:absolute;top:0;left:0;"></span>
+<script>
+function dbg(s)
+{
+	document.getElementById('debug').innerHTML += (s + '<br>')
+}
+function on_submit_search()
+{
+	el = document.getElementById('lucene_input')
+	if (el.value == '')
+	{
+		alert('Enter the words you are search for.');
+		el.focus()
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
+
+</script>
+<input type="hidden" id="hdn_current_db_environment" value="Tracker_Unconsol_Struct_Ent">
+
+
+
+<script type="text/javascript">
+window.onload = function() {
+    hdn_current_db_environment_elem = document.getElementById('hdn_current_db_environment');
+    current_db_environment_elem = document.getElementById('current_db_environment');
+    if (hdn_current_db_environment_elem.value.toUpperCase().includes('UAT')) {
+        current_db_environment_elem.innerHTML = '<font color=red size=1pt>(UAT)</font>';
+    }
+    else {
+        current_db_environment_elem.innerHTML = '<font color=green size=1pt>(PRODUCTION)</font>';
+    }
+};
+
+
+</script>
+<div style="position: absolute;top: 0;left: 5px;z-index: 10;"><b style="color:red;font-size:6pt;background-color: yellow;">SGWPAUPCD04</b></div><table border="0" width="100%" cellpadding="0" cellspacing="0" class="menubar"><tbody><tr><!-- start logo -->
+<!-- If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+
+<td width="160" valign="middle" style="padding-left:5px;border-right:1px solid #ffffff;text-align:center;padding-right:5px;"><img width="95" src="custom/logo.png"><br><div nowrap="" class="logo" style="border:0px;margin:0px;padding:1px;font-size:12px;font-weight:normal;white-space:nowrap;font-weight:600;">Unconsolidated Structured Entities Tracker</div><b><font id="xcurrent_db_environment" style="display:block;" color="lightgreen">(PRODUCTION)</font></b></td>
+
+
+<!-- end logo -->
+<td width="20">&nbsp;</td><td class="menu_td"><a href="deals.aspx"><span class="selected_menu_item warn" style="margin-left:3px;">Entities</span></a></td><td class="menu_td"><a href="search.aspx"><span class="menu_item warn" style="margin-left:3px;">search</span></a></td><td class="menu_td"><a href="queries.aspx"><span class="menu_item warn" style="margin-left:3px;">lists setup</span></a></td><td class="menu_td"><a href="reports.aspx"><span class="menu_item warn" style="margin-left:3px;">reports</span></a></td><td class="menu_td"><a href="admin.aspx"><span class="menu_item warn" style="margin-left:3px;">admin</span></a></td>
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="edit_deal.aspx" method="get">
+        <input class="menubtn" type="submit" value="go to ID">
+        <input class="menuinput" size="4" type="text" name="id" accesskey="g">
+    </form>
+</td>
+
+<td nowrap="" valign="middle">
+    <form style="margin: 0px; padding: 0px;" action="search_text.aspx" method="get" onsubmit="return on_submit_search()">
+        <input class="menubtn" type="submit" value="search text">
+        <input class="menuinput" id="lucene_input" size="24" type="text" value="" name="query" accesskey="s">
+        <a href="lucene_syntax.html" target="_blank" style="font-size: 7pt;">advanced</a>
+    </form>
+</td><td nowrap="" valign="middle"><span id="loggedinas" class="smallnote">logged in as<br>1303787 (Security access)</span></td><td class="menu_td"><a href="edit_self.aspx"><span class="menu_item warn" style="margin-left:3px;">settings</span></a></td><td nowrap="" valign="middle"></td></tr></tbody></table><br>
+
+<div class="align main-layout">
+
+
+<!--
+<a class=warn href="edit_deal.aspx?id=0"><img src=add.png border=0 align=top>&nbsp;add new Entity</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+-->
+<span id="prev_next">&nbsp;</span>
+
+
+<br><br>
+
+<table border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td colspan="3">	<div id="edit_bug_menu">
+		<ul style="display: inline">
+			<li id="clone" style="display: inline"></li>
+			<li id="print" style="display: inline"><a target="_blank" href="print_deal.aspx?id=42583" title="Display this item in a printer-friendly format"><img src="printer.png" border="0" align="top">&nbsp;print</a></li>
+			<!-- <li id="merge_bug" style="display: inline"><a href=merge_deal.aspx?id=42583 title='Merge this item and another item together'><img src=database_refresh.png border=0 align=top>&nbsp;merge</a></li> -->
+			<li id="delete_bug" style="display: inline"></li>
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  -->
+			<!--  <li id="subscriptions" style="display: inline"><a id='notifications' title='Get or stop getting email notifications about changes to this item.' href='javascript:toggle_notifications(42583)'><img src=telephone.png border=0 align=top>&nbsp;<span id='get_stop_notifications'>get notifications</span></a></li>-->
+			<!--  -->
+			<!-- <li id="tasks" style="display: inline"><a target=_blank href=tasks_frame.aspx?bugid=42583 title='View sub-tasks/time-tracking entries related to this item'><img src=clock.png border=0 align=top>&nbsp;tasks/time(<span id=task_cnt>0</span>)</a></li> -->
+			
+			<li id="attachment" style="display: inline"><img src="attach.gif" align="top">&nbsp;<a href="javascript:open_popup_window('add_attachment.aspx','add attachment ',42583,600,300)" title="Attach an image, document, or other file to this item">add attachment (Max 11MB)</a></li> 
+			<!--  -->
+		</ul>
+	</div>
+
+    
+    </td></tr>
+<tr>
+
+<td nowrap="" valign="top"> <!-- links -->
+
+
+</td><td nowrap="" valign="top" class="auto-style5"> <!-- form -->
+
+<div id="bugform_div">
+<form method="post" action="./edit_deal.aspx?id=42583" id="ctl00" class="frm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl00'];
+if (!theForm) {
+    theForm = document.ctl00;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="11AEA65B">
+</div>
+    <span id="Label1" style="display:inline-block;width:812px;">...</span>
+    <a id="LinkButtonRefresh" href="javascript:__doPostBack('LinkButtonRefresh','')">Refresh</a>
+				
+	<table border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+  
+		<td nowrap="" valign="top" class="auto-style13">
+			<span id="bugid_label" class="lbl">Entity ID:&nbsp;</span>
+            <span id="bugid" class="bugid" style="vertical-align:top">42583</span> 
+       </td>
+ 
+		<td valign="top">			
+
+			
+
+
+			
+				&nbsp;&nbsp;&nbsp;
+				<span id="short_desc_err" class="err"></span>
+				
+			<div class="smallnote" id="short_desc_cnt">&nbsp;</div>
+    </td></tr>
+	</tbody></table>			
+	<table width="800px" border="0" cellpadding="3" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<span id="reported_by">Created by <a href="http://SGWPAPPCD01.ZONE1.SCB.NET/PembrokeLeaseTracker/send_email.aspx?bg_id=42583&amp;to=Vasanth.Ravikumar@sc.com">2011287</a> on 2024-08-02 8:52 PM, 71 days ago</span>
+<!--
+		
+
+		<td nowrap align=right id="presets" >Presets:
+			<a title="Use previously saved settings for project, category, priority, etc..."
+				href="javascript:get_presets()">use</a>
+			&nbsp;/&nbsp;
+			<a title="Save current settings for project, category, priority, etc., so that you can reuse later."
+				href="javascript:set_presets()">save</a>
+		
+        </td>
+-->
+        </td></tr>
+	</tbody></table>
+<table style="width: 798px">
+	<tbody><tr id="tags_row">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		
+		<td nowrap="nowrap">
+			
+			
+			</td></tr>
+<!--
+	<tr id="row1">
+		<td nowrap="nowrap" class="auto-style11" >
+			<span id="project_label" class="lbl">Booking Location (Mgmt):&nbsp;</span></td>
+		<td nowrap="nowrap" class="auto-style1" align="left">
+			
+
+			<select name="project" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;project\&#39;,\&#39;\&#39;)&#39;, 0)" id="project">
+	<option selected="selected" value="3096">Hong Kong</option>
+
+</select></td></tr>
+-->
+
+<!--
+	<tr id="row2">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_org" class="stat"></span>
+			
+
+	<tr id="row3">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_category" class="stat"></span>
+			
+
+	<tr id="row4">
+		<td nowrap>
+			
+		<td nowrap>
+			<span id="static_priority" class="stat"></span>
+			
+-->
+	<tr id="row5">
+		<td nowrap="nowrap" class="auto-style11" style="width:315px">
+			<span id="status_label" class="lbl">Status:&nbsp;</span></td>
+		<td nowrap="nowrap">
+			<span id="static_status" class="stat">completed</span>
+			</td></tr>
+
+	<tr id="row6">
+		<td nowrap="nowrap" class="auto-style11">
+			</td>
+		<td nowrap="nowrap">
+			<span id="static_assigned_to" class="stat"></span>
+			
+			&nbsp;
+			<span id="assigned_to_err" class="err"></span></td></tr>
+</tbody></table>
+	<table border="0" cellpadding="0" cellspacing="4" style="width: 867px">
+
+
+
+
+
+<tbody><tr id="Period_row"><td nowrap=""><span id="Period_label"><table width="1000" border="0" align="left" cellpadding="0" cellspacing="0" style="table-layout:fixed">
+  <tbody><tr height="1">
+   <td bgcolor="#727272" colspan="100"></td>
+  </tr>  
+  <tr bgcolor="#EEEEEE" height="20">
+   <td colspan="100"><input id="lnk1" type="button" value="[-]" onclick="toggle_visibility('tbl1', 'lnk1');"><strong>Required inputs               </strong></td>   
+  </tr>
+  <tr>
+   <td colspan="100" nowrap=""> 
+    <table width="100%" border="0" cellpadding="4" cellspacing="0" id="tbl1" style="display: table;"><tbody><tr><td style="width:300px">Period:</td><td align="left"><select id="Period" name="Period"><option></option><option selected="">HY 2024</option></select>
+</td></tr><tr id="Country_row"><td nowrap=""><span id="Country_label">Country:</span></td><td align="left"><select id="Country" name="Country"><option></option><option>Afghanistan</option><option>America</option><option>Angola</option><option>Australia</option><option>Bahrain</option><option>Bangladesh</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Cameroon</option><option>China</option><option>Cote DIvoire</option><option>DIFC</option><option>France</option><option>Gambia</option><option>Germany</option><option>Ghana</option><option selected="">Hong Kong</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Israel</option><option>Japan</option><option>Jordan</option><option>Kenya</option><option>Korea</option><option>Lebanon</option><option>Malaysia</option><option>Mauritius</option><option>Nepal</option><option>Nigeria</option><option>Oman</option><option>Pakistan</option><option>Palestine</option><option>Philippines</option><option>Qatar</option><option>Saudi Arabia</option><option>Sierra Leone</option><option>Singapore</option><option>South Africa</option><option>Sri Lanka</option><option>Taiwan</option><option>Tanzania</option><option>Thailand</option><option>Turkey</option><option>Uganda</option><option>UK</option><option>Vietnam</option><option>Zambia</option><option>Zimbabwe</option><option>Jersey</option><option>UAE</option></select>
+</td></tr><tr id="BusinessUnit_row"><td nowrap=""><span id="BusinessUnit_label">Business Unit:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Business Unit" id="BusinessUnit" value="238" class="txt">
+</td></tr><tr id="LEID_row"><td nowrap=""><span id="LEID_label">LEID:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="30" maxlength="30" name="LEID" id="LEID" value="" class="txt">
+</td></tr><tr id="Customername_row"><td nowrap=""><span id="Customername_label">Customer name:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Customer name" id="Customername" value="Total ABS" class="txt">
+</td></tr><tr id="AxiomUniqueKey_row"><td nowrap=""><span id="AxiomUniqueKey_label">Axiom Unique Key:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="100" maxlength="100" name="Axiom Unique Key" id="AxiomUniqueKey" value="" class="txt">
+</td></tr><tr id="Division_row"><td nowrap=""><span id="Division_label">Division:</span></td><td align="left"><select id="Division" name="Division"><option></option><option>Private Banking</option><option>PEF</option><option>Aviation Finance</option><option>CRE</option><option>Equity Derivatives</option><option>Shipping</option><option>Others</option><option>appendix 11</option><option>Appendix 11-ABS Credit</option><option>Korea Guaranteed</option><option>Appendix 11-ABS Treasury</option><option>Appendix 11-PCPF</option><option>Appendix 11-ABS India</option><option>Appendix 11-ABS India</option><option>Appendix 11-Korea Guaranteed</option><option>Appendix 11-Malaysia</option><option>Retail</option><option>Appendix 11-UK</option><option>Appendix 11-Bespoke Credit Solutions</option><option>Appendix 11-Corrasi</option><option selected="">Appendix 11-ABS Portfolio Management</option><option>Appendix 11 - UAE</option><option>Bespoke Credit Solutions</option></select>
+</td></tr><tr id="Spoc_row"><td nowrap=""><span id="Spoc_label">Spoc:</span></td><td align="left"><select id="Spoc" name="Spoc"><option selected=""></option><option>Andrew.Honey@Sc.com</option><option>ChinPeng.Tew@sc.com</option><option>Diarmuid.Kelly@sc.com</option><option>EuiRyum.Cho@sc.com</option><option>EuiRyum.Cho@sc.com</option><option>EuiRyum.Cho@sc.com</option><option>HarryYongChuan.Tan@sc.com</option><option>JunMing.Yan@sc.com</option><option>Karin.Phua@sc.com</option><option>Liberty.Ang@sc.com</option><option>Pallavi.Vasandani@sc.com</option><option>Poonam.Savla@sc.com</option><option>Priyanshu.Shukla@sc.com</option><option>sophiewq.chen@sc.com</option><option>Taimur.Zafar@sc.com</option><option>Teza.Chipeta@sc.com</option><option>ujjval.rungta@sc.com</option><option>Vaibhav.Khatri@sc.com</option><option>abc@sc.com</option><option>Phoebe.Farman@sc.com</option><option>Olufunso.Adetola@sc.com</option><option>Kailash.Ramakrishnan@sc.com</option></select>
+</td></tr><tr id="NatureofBusiness_row"><td nowrap=""><span id="NatureofBusiness_label">Nature of Business:</span></td><td align="left"><select id="NatureofBusiness" name="Nature of Business"><option></option><option>ABS</option><option selected="">Asset Backed Securities</option><option>Lending</option><option>Other activities</option><option>Principal finance</option><option>Structured finance</option></select>
+</td></tr><tr id="NatureofActivities_row"><td nowrap=""><span id="NatureofActivities_label">Nature of Activities:</span></td><td align="left"><select id="NatureofActivities" name="Nature of Activities"><option></option><option selected="">Securitisation</option><option>Asset Management</option><option>Others</option><option>Total Assets</option></select>
+</td></tr><tr id="OnBalanceSheet(USD)(Previousperiod)_row"><td nowrap=""><span id="OnBalanceSheet(USD)(Previousperiod)_label">On Balance Sheet (USD)(Previous period):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="On Balance Sheet (USD)(Previous period)" id="OnBalanceSheet(USD)(Previousperiod)" value="" class="txt">
+</td></tr><tr id="OnBalanceSheet(USD)(Currentperiod)_row"><td nowrap=""><span id="OnBalanceSheet(USD)(Currentperiod)_label">On Balance Sheet (USD)(Current period):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="On Balance Sheet (USD)(Current period)" id="OnBalanceSheet(USD)(Currentperiod)" value="" class="txt">
+</td></tr><tr id="OffBalanceSheet(USD)(PreviousPeriod)_row"><td nowrap=""><span id="OffBalanceSheet(USD)(PreviousPeriod)_label">Off Balance Sheet (USD)(Previous Period):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Off Balance Sheet (USD)(Previous Period)" id="OffBalanceSheet(USD)(PreviousPeriod)" value="" class="txt">
+</td></tr><tr id="OffBalanceSheet(USD)(Currentperiod)_row"><td nowrap=""><span id="OffBalanceSheet(USD)(Currentperiod)_label">Off Balance Sheet (USD)(Current period):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Off Balance Sheet (USD)(Current period)" id="OffBalanceSheet(USD)(Currentperiod)" value="" class="txt">
+</td></tr><tr id="TotalAssets(USD)(Currentperiod)_row"><td nowrap=""><span id="TotalAssets(USD)(Currentperiod)_label">Total Assets (USD) (Current period):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Total Assets (USD) (Current period)" id="TotalAssets(USD)(Currentperiod)" value="157594849447.3260" class="txt">
+</td></tr><tr id="TotalAssets(USD)(Previousperiod)_row"><td nowrap=""><span id="TotalAssets(USD)(Previousperiod)_label">Total Assets (USD) (Previous period):</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" name="Total Assets (USD) (Previous period)" id="TotalAssets(USD)(Previousperiod)" value="" class="txt">
+</td></tr><tr id="AssetClassication_row"><td nowrap=""><span id="AssetClassication_label">Asset Classication:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Asset Classication" id="AssetClassication" value="Investment securities" class="txt">
+</td></tr><tr id="IFRSPACKSCHREF_row"><td nowrap=""><span id="IFRSPACKSCHREF_label">IFRS PACK SCH REF:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="50" maxlength="50" name="IFRS PACK SCH REF" id="IFRSPACKSCHREF" value="1EA" class="txt">
+</td></tr><tr id="Classification_row"><td nowrap=""><span id="Classification_label">Classification:</span></td><td align="left"><input type="text" onkeydown="mark_dirty()" onkeyup="mark_dirty()" size="60" maxlength="60" name="Classification" id="Classification" value="FVTPL" class="txt">
+</td></tr><tr id="SPV(Yes/No)_row"><td nowrap=""><span id="SPV(Yes/No)_label">SPV (Yes/No):</span></td><td align="left"><select id="SPV(Yes/No)" name="SPV (Yes/No)"><option></option><option selected="">Yes</option><option>No</option></select>
+</td></tr><tr id="Sponsored(Yes/No)_row"><td nowrap=""><span id="Sponsored(Yes/No)_label">Sponsored (Yes/No):</span></td><td align="left"><select id="Sponsored(Yes/No)" name="Sponsored (Yes/No)"><option></option><option>Yes</option><option selected="">No</option></select></td></tr></tbody></table></td></tr></tbody></table>
+
+	</span></td></tr></tbody></table>
+
+
+	<table border="0" cellpadding="0" cellspacing="3" style="width: 87%">
+
+    <!--
+	<tr><td nowrap class="auto-style9">
+
+		&nbsp;
+		<span id="comment_label">Comment:</span>
+		
+		<span class="smallnote" style="margin-left: 170px">
+		Entering "entityid#999" in comment creates link to id 999		
+		</span>
+		<br>
+		<textarea name="comment" id="comment" rows="5" cols="100" class="txt resizable2" onkeydown="mark_dirty()" onkeyup="mark_dirty()"></textarea>
+    </td></tr>
+    -->
+	<tbody><tr><td nowrap="" class="auto-style9">
+		
+		</td></tr>
+
+
+	<tr><td nowrap="" align="left" class="auto-style10">
+		<span id="custom_field_msg" class="err"></span>
+		<span id="custom_validation_err_msg" class="err">&nbsp;</span>
+		<span id="msg" class="err"></span></td></tr>
+
+
+	<tr><td nowrap="" align="center" colspan="2" class="auto-style9">
+		<input name="sub" type="submit" id="sub" class="btn" onclick="disable_me()" value="Update"></td></tr>
+
+	</tbody></table>
+
+	<input name="new_id" type="hidden" id="new_id" value="0">
+	<input name="prev_short_desc" type="hidden" id="prev_short_desc">
+	
+	<input name="prev_project" type="hidden" id="prev_project" value="3096">
+	<input name="prev_project_name" type="hidden" id="prev_project_name" value="Hong Kong">
+	
+	<input name="prev_org_name" type="hidden" id="prev_org_name">
+	
+	
+	
+	<input name="prev_assigned_to_username" type="hidden" id="prev_assigned_to_username" value="[not assigned]">
+	<input name="prev_status" type="hidden" id="prev_status" value="17">
+	
+	<input name="prev_pcd1" type="hidden" id="prev_pcd1">
+	<input name="prev_pcd2" type="hidden" id="prev_pcd2">
+	<input name="prev_pcd3" type="hidden" id="prev_pcd3">
+	<input name="snapshot_timestamp" type="hidden" id="snapshot_timestamp" value="20241012 23:57:22:970">
+	<input name="clone_ignore_bugid" type="hidden" id="clone_ignore_bugid" value="0">
+
+    
+    <input name="usp_get_audit_comments" type="hidden" id="usp_get_audit_comments">
+
+    <input name="usp_get_deault_expand" type="hidden" id="usp_get_deault_expand" value="tbl1,lnk1">
+    <input name="usp_get_sections_list_no_spaces" type="hidden" id="usp_get_sections_list_no_spaces" value="The request for procedure '_settings_custom_sections' failed because '_settings_custom_sections' is a table object.">
+    <input name="hdn_org_name" type="hidden" id="hdn_org_name" value="Security access">
+    
+    <input name="hdn_disable_fields_list" type="hidden" id="hdn_disable_fields_list">
+    <input type="hidden" id="usp_CommentCollapse_fields" value="">
+	<input type="hidden" id="hdn_current_db_environment" value="Tracker_Unconsol_Struct_Ent">
+	<input type="hidden" id="usp_Requestor_locked_fields_when_cfo_approved_json" value="Could not find stored procedure 'usp_Requestor_locked_fields_when_cfo_approved_json'.">
+
+    <textarea id="usp_hover_context" style="display:none;">[]</textarea>
+<input type="hidden" name="prev_Asset Classication" value="Investment securities">
+<input type="hidden" name="prev_Axiom Unique Key" value="">
+<input type="hidden" name="prev_Business Unit" value="238">
+<input type="hidden" name="prev_Classification" value="FVTPL">
+<input type="hidden" name="prev_Country" value="Hong Kong">
+<input type="hidden" name="prev_Customer name" value="Total ABS">
+<input type="hidden" name="prev_Division" value="Appendix 11-ABS Portfolio Management">
+<input type="hidden" name="prev_IFRS PACK SCH REF" value="1EA">
+<input type="hidden" name="prev_LEID" value="">
+<input type="hidden" name="prev_Nature of Activities" value="Securitisation">
+<input type="hidden" name="prev_Nature of Business" value="Asset Backed Securities">
+<input type="hidden" name="prev_Off Balance Sheet (USD)(Current period)" value="">
+<input type="hidden" name="prev_Off Balance Sheet (USD)(Previous Period)" value="">
+<input type="hidden" name="prev_On Balance Sheet (USD)(Current period)" value="">
+<input type="hidden" name="prev_On Balance Sheet (USD)(Previous period)" value="">
+<input type="hidden" name="prev_Period" value="HY 2024">
+<input type="hidden" name="prev_Spoc" value="">
+<input type="hidden" name="prev_Sponsored (Yes/No)" value="No">
+<input type="hidden" name="prev_SPV (Yes/No)" value="Yes">
+<input type="hidden" name="prev_Total Assets (USD) (Current period)" value="157594849447.3260">
+<input type="hidden" name="prev_Total Assets (USD) (Previous period)" value="">
+</form>
+</div> <!-- bug form div -->
+</td></tr></tbody></table>
+
+<div style="float:left;width:1000px;">
+<span id="toggle_images"><a href="javascript:toggle_images2(42583)"><span id="hideshow_images">show inline images</span></a></span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span id="toggle_history"><a href="javascript:toggle_history2(42583)"><span id="hideshow_history">show change history</span></a></span>
+</div>
+<br>
+<div id="posts">
+
+	
+<table id="posts_table" border="0" cellpadding="0" cellspacing="3">
+</table>
+
+
+</div>
+
+</div>
+<!-- Footer - If you change this using admin, "Edit Custom HTML", changes take effect immediately, otherwise they don't take effect until you restart the IIS web application -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer" style="margin:0; padding:0; vertical-align: top;">
+  <tbody><tr>
+   <td width="1%" align="left" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+   <td width="98%" class="footer-bg">Unconsolidated Structured Entities Tracker - 2023 Standard Chartered Bank</td>
+   <td width="1%" align="right" valign="top" style="margin:0; padding:0; vertical-align: top;"></td>
+  </tr>
+ </tbody></table>
+    <div style="height:5px; clear:both;"></div>
+
+
+<script type="text/javascript">
+    //UAT or PROD
+    $("#current_db_environment").empty();
+    var_db_env = $("#hdn_current_db_environment").val();
+    if (var_db_env.toUpperCase().includes("UAT")) {
+        $("#current_db_environment").append("<font color='red'>(UAT)</font>");
+    } else {
+        $("#current_db_environment").append("<font color='blue'>(PRODUCTION)</font>");
+    }
+</script>	
+	
+<script type="text/javascript">
+    /* 
+    //This section of code was supposed to lock/disable some comment boxes until associated combos have been changed
+    //Some setback has been encountered, so it is WIP
+
+    $(document).ready(
+        function(){
+            //Set it up so that the Approval comment boxes are locked until the user has selected from the approval dropdown
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Product PC Head (< $1m)", "PC Approval Comments - Product PC Head")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - PC Head CF (>= $1m)", "PC Approval Comments - Head CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CF (>= $2m)", "PC Approval Comments - CFO CF")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - Global Head PC (>= $5m)", "PC Approval Comments - Global Head PC")
+            ApprovalCommentsLockedUntilCombosSelected("PC Approval - CFO CIB and Client Businesses (>= $10m)", "PC Approval Comments - CFO CIB")
+        }
+    )
+
+    function ApprovalCommentsLockedUntilCombosSelected(approval_field_name, comment_field_name) {
+        var txe = document.getElementById(comment_field_name.replace(/\s/g, ''));
+        txe.setAttribute("disabled", "disabled");
+
+        var cbo = document.getElementById(approval_field_name.replace(/\s/g, ''));
+        cbo.setAttribute("PCcustom", txe.id)
+
+        //The problem we're having with this that when the page completes loading, this event 
+        //ceases to function...
+        cbo.onchange = function () {
+            document.getElementById(cbo.getAttribute("PCcustom")).removeAttribute("disabled");
+        }
+    }
+*/
+</script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(tbid, lnkid) {
+        if (document.getElementById(tbid) != null) {
+            if (document.all) { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "block" ? "none" : "block"; }
+            else { document.getElementById(tbid).style.display = document.getElementById(tbid).style.display == "table" ? "none" : "table"; }
+            document.getElementById(lnkid).value = document.getElementById(lnkid).value == "[-]" ? "[+]" : "[-]";
+        }
+    }
+
+    //we used to use usp_generate_default_expand to generate this now its automated. Yay!!!
+    usp_get_deault_expand = document.getElementById("usp_get_deault_expand").value;
+    //if (usp_get_deault_expand != "") { 
+    for (var i = 0; i < (usp_get_deault_expand.split('|').length) ; i++) {
+        tbl = usp_get_deault_expand.split('|')[i].split(',')[0];
+        lnk = usp_get_deault_expand.split('|')[i].split(',')[1];
+        toggle_visibility(tbl, lnk);
+        //  }
+    }
+</script>
+
+<script type="text/javascript">
+    /*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0] + "_row";
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        $("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+    }
+	*/
+	//Cnaged - SAM - 27NOV2017 in respomse to comments bug
+	/*
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+        //$("[tr[id=" + fld + "]").find('td:eq(1)').append("<font size='1' color='red'>" + cmt + "</font>");
+
+        if (fld != "") {
+		  if ($gid(fld).val() !="") {
+            $("<font size='1' color='red'>" + cmt + "</font>").insertAfter($gid(fld));
+        }
+		}
+    }
+    */
+    /* 	
+    //SAM - thanks to stack overflow
+    //https://stackoverflow.com/questions/30749707/override-jquery-selector-to-support-dollar-sign-in-element-id
+    //Function that returns jquery object whose id contains characters like $,( etc
+    function $gid(id) {
+        var e = document.getElementById(id);
+        if (!e) {
+            return $();
+        }
+        if (e.id === id) {
+            return $(e);
+        }
+        // Fallback processing for old IE that matches name attributes
+        return $('[id="' + id.replace(/"/g, '\\"') + '"]').filter(function () {
+            return this.id === id;
+        }).first();
+    }
+    */
+	
+    /*
+	//Amended to capture static fields, also simplified the routine - SAM 07DEC2017
+    //Find approval fields and insert a comment in from to them
+    usp_get_audit_comments = document.getElementById("usp_get_audit_comments").value;
+    for (var i = 0; i < (usp_get_audit_comments.split('~').length) ; i++) {
+        fld = usp_get_audit_comments.split('~')[i].split('|')[0];
+        cmt = usp_get_audit_comments.split('~')[i].split('|')[1];        
+
+        if (fld != "") {
+
+            fld = fld.replace(",", "\\,");
+            fld = fld.replace("$", "\\$");
+            fld = fld.replace("(", "\\(");
+            fld = fld.replace(")", "\\)");
+            fld = fld.replace("<", "\\<");
+            fld = fld.replace(">", "\\>");
+            fld = fld.replace(".", "\\.");
+            fld = fld.replace("=", "\\=");
+
+            fld = '#' + fld;
+            console.log(fld);
+            if ($(fld).length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld);
+            }
+            if ($(fld+'_static').length != 0) {
+                $("<font size='1' color='red'>" + cmt + "</font>").insertAfter(fld + '_static');
+            }
+        }
+    }	
+    */
+</script>
+
+<script type="text/javascript">
+    //Find all tds with id=section_DealInformation and move then to table with id section_container_DealInformation
+         //$("#posts_table").find("tr[id=section_DealInformation]").each(function (index) {
+         //    $("#section_container_DealInformation").append(this)
+    //});   
+    
+    usp_get_sections_list_no_spaces = document.getElementById("usp_get_sections_list_no_spaces").value;
+    for (var i = 0; i < (usp_get_sections_list_no_spaces.split('|').length) ; i++) {
+        section = "";
+
+        section = usp_get_sections_list_no_spaces.split('|')[i].split('|')[0]
+
+        section_qry = "tr[id=section_" + section + "]";
+        section_container_qry = "#section_container_" + section;
+
+        $("#posts_table").find(section_qry).each(function (index) {
+            $(this).appendTo($(section_container_qry))
+        });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    //overide on the posts show/hide toggle
+    //This doesnt work yet!!!
+    $("#hideshow_history").click(function () {
+        if (this.innerText == "show change history") {
+            $("#posts").hide();
+           // console.log("should be hidden");
+        } else {
+            $("#posts").show();
+           // console.log("should be shown");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    //Disable some specified fields
+    var disable_fields =document.getElementById("hdn_disable_fields_list").value.split("|");
+
+    for (i = 0; i < disable_fields.length; i++) {
+        var field_name = disable_fields[i];
+        var txe = document.getElementById(field_name.replace(/\s/g, ''));
+        if (txe != null) {
+            txe.setAttribute("disabled", "disabled");
+            txe.setAttribute("style", "background-color: lightgray")
+
+
+            //If it is a date field, we also need to find the [select] anchor and disable that as well
+            if (txe.getAttribute("class") == "txt date") {
+                
+                var txd = txe.parentElement.getElementsByTagName("a")[0];
+                console.log(txd);
+                if (txd != null) {
+                    txd.setAttribute("href", "javascript:void(0);");
+                    txd.setAttribute("style", "color:gray;");
+                }
+            }
+        }
+    }
+</script>
+
+
+
+
+<script type="text/javascript">
+    //Fix for cases when select fields appear squashed
+    //Seen in the case of Org user type - Global Head PC
+    $(".edit_bug_option").css("width", "400px");
+
+    //Lazy approach as all else seems not to be working
+    //Just cant get the damn thing to wait for all the elemts to load before firing  
+    setTimeout(function () { $(".edit_bug_option").css("width", "400px"); }, 3000);
+</script>
+<script type="text/javascript">
+    function setHoverByTD3_Content(td3_content, hover_text) {
+        var serach_str = "td:contains('" + td3_content + ":')";
+        var content_str = "<td><a href='#' class='tip'>" + td3_content + "<span>" + hover_text + "</span></a>:</td>"
+        $(serach_str).eq(3).html(content_str);
+    }
+
+    var result = $("#usp_hover_context").val();
+    $.each(
+            JSON.parse(result),
+            function (index, value) {
+                console.log(value.field_name);
+                setHoverByTD3_Content(value.field_name, value.hover_text);
+            }
+        );
+     
+</script>
+
+<script type="text/javascript">
+    function applyCommentCollapseBehaviour(field_name) {
+        field_name = field_name.replace(/\s/g, '');
+        var fld_pattern = "#" + field_name;
+        var fld_option_selected_pattern = "#" + field_name + " option:selected"
+        var fld_row_pattern = "#" + field_name + "Comment_row";
+        $(fld_pattern).bind("click", function () {
+            if ($(fld_option_selected_pattern).text() == "No") {
+                $(fld_row_pattern).show()
+            } else {
+                $(fld_row_pattern).hide()
+            }
+        });
+        $(fld_pattern).trigger("click");
+    }
+
+    //Apply Comment Collapse to array of fields from the database
+    if($("#usp_CommentCollapse_fields").val()!==""){
+    $.each(
+        $("#usp_CommentCollapse_fields").val().split('|'),
+        function (index, value) { applyCommentCollapseBehaviour(value); }
+        );
+    }
+		
+</script>
+
+<script type="text/javascript">
+  //Populate upper error message span
+	$("#msg2")[0].innerText=  $("#msg")[0].innerText;
+  
+  //CApproval, GFDFRApproval, FR/MR locking rules
+    var  CCApproval, GFDFRApproval, FR_MR;
+	if ($("#CCApproval").length) {
+		CCApproval = $($("#CCApproval:options")[0]).children("option:selected").val()
+	}
+	if ($("#CCApproval_static").length) {
+		CCApproval = $("#CCApproval_static").text()
+	}
+
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	if ($("#GFDFRApproval_static").length) {
+		GFDFRApproval = $("#GFDFRApproval_static").text();
+	} 
+	 
+	if ($("#GFDFRApproval").length) {
+		GFDFRApproval = $($("#GFDFRApproval:options")[0]).children("option:selected").val();
+	}
+	
+	if ($("select[id*=FR/MR]").length) {
+		FR_MR = $($('select[id*=FR/MR]:options')[0]).children("option:selected").val()
+	}
+	if ($("[id*=FR/MR_static]").length) {
+		FR_MR = $("[id*=FR/MR_static]").text();
+	}	
+	
+    //Lock fields based on CCM Approval/Rejection -- Affected fields: GFD MR Approval, GFD FR Approval
+	$("#GFDFRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDFRApproval").attr('disabled', true)
+		$("#GFDFRApproval").after("<font id=GFDFRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDFRApproval").attr('disabled', false)
+	}
+
+	$("#GFDMRApprovallockedtilcca").empty();
+	if (!(["Approved", "Rejected"].includes(CCApproval))) {
+		$("#GFDMRApproval").attr('disabled', true)
+		$("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilcca  color=red>.locked until CC Approval/Rejection</font>")
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+
+    //Lock fields based on GFD FR Approval Approval/Rejection -- affected fields: GFD MR Approval 
+	//Include FR/MR exception
+	//If “MR” is selected from “FR/MR” field, tracker should skip Group FR approval and should only go for Group MR approval
+	$("#GFDMRApprovallockedtilFR").empty();
+	if (!(["Approved", "Rejected"].includes(GFDFRApproval))) {
+		if(!(FR_MR=="MR")){
+		     $("#GFDMRApproval").attr('disabled', true)
+		     $("#GFDMRApproval").after("<font id=GFDMRApprovallockedtilFR  color=purple>.locked until FR Approval/Rejection</font>")
+         }		
+	} else {
+		$("#GFDMRApproval").attr('disabled', false)
+	}
+</script>
+
+<script src="jquery/jquery-1.12.4.js"></script>
+<script src="jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="pcwebapp/js/pcwebapp.js"></script>
+<script type="text/javascript">
+//Rename fields...
+$("#CCNotification_label").text("Notify to (PSID only):");
+$("#PSGLJournalPoster_label").text("PSGL Journal Poster (PSID only):");
+$("#PSGLID_label").text("PSGL Journal ID:");
+$("#IFRSJAWPreparer_label").text("IFRS JAW Preparer (PSID only):");
+</script>
+
+<script>
+$("#InitiativeCode").change(
+function(){
+	$("[id='MTMember']").val("");
+	$("[id='Journey(Hive)']").val("");
+	$("[id='Sub-journey']").val("");
+	$("[id='RefinementForum']").val("");
+	result=JSON.parse(IB_runProc_with_paramvals("usp_get_values_from_Initiative_reference_Table", {Initiative_Code:$("#InitiativeCode").val()}).d);	
+	if(result.length > 0){
+		$("[id='MTMember']").val(result[0].MT_Member);
+		$("[id='Journey(Hive)']").val(result[0].Journey_Hive);
+		$("[id='Sub-journey']").val(result[0].Sub_Journey);
+		$("[id='RefinementForum']").val(result[0].Refinement_Forum);
+
+        $("[id='MTMember_static']").text(result[0].MT_Member);
+		$("[id='Journey(Hive)_static']").text(result[0].Journey_Hive);
+		$("[id='Sub-journey_static']").text(result[0].Sub_Journey);
+		$("[id='RefinementForum_static']").text(result[0].Refinement_Forum);
+	}
+});
+</script>	
+<script>
+	 result=JSON.parse(IB_runProc_with_paramvals("usp_get_mandatory_fields", {}).d);
+	 console.log("MANDATORY FIELDS", result)
+
+	 //result.forEach(
+	 //  function(itm){
+	//	 $($("span[id='"+itm.mandatory_field.replace(/\s/g, '')+"_label']")).html("<font color=red>*</font>"+itm.mandatory_field)
+	 //  }
+	 //);
+	 
+	 result.forEach(
+	   function(itm){
+        label_id =itm.mandatory_field.replace(/\s/g, '');
+        if(document.getElementById(label_id)){
+            document.getElementById(label_id).parentElement.parentElement.firstChild.innerHTML= "<font color=red>*</font>"+itm.mandatory_field +":";
+        }
+	 });	 
+</script>
+
+<script>
+    //New Joiner (Additional/New Ask/) fields should be greyed out when submitting.
+	window.addEventListener('load', function () {
+		if(document.getElementById("sub").value=="Create"){document.getElementById("NewJoinersPSID").disabled = true;}
+	});  
+</script>
+
+<script>
+//$("#ctl00 > table:nth-child(6)").hide()
+</script>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible"></div></body></html>
