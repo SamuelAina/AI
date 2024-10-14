@@ -1,1 +1,38 @@
+        [HttpGet("gspc_tbl")]
+        public DataTable gspc_tbl(string procName, string paramsWithValues)
+        {
+            TextReader reader = new StringReader(paramsWithValues);
+            JsonReader jsonReader = new JsonTextReader(reader);
+            Dictionary<string, string> objParamsWithValues = (new JsonSerializer()).Deserialize<Dictionary<string, string>>(jsonReader)!;
 
+            List<DatabaseParameter> param = new List<DatabaseParameter>();
+            foreach (string k in objParamsWithValues.Keys)
+                param.Add(new DatabaseParameter(k.ToString(), objParamsWithValues[k].ToString()));
+
+            DataTable dt = SqlDatabaseManager.ExecuteProcedure(_context.Database.GetConnectionString()!, procName, param);
+
+            // Temporary during migration - Start
+            if (procName.Equals("usp_common_getPageStructureData", StringComparison.InvariantCultureIgnoreCase))
+            {
+                foreach (DataRow dr in dt.Rows)
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        string? value = dr[dc].ToString();
+
+                        if (value != null && value.Contains("WebServices/PCWorkbenchService.svc", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            HttpRequest request = HttpContext.Request;
+                            string baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
+                            value = value.Replace("\"/WebServices/PCWorkbenchService.svc", "\"" + baseUrl + "/api/Workbench/Generic", StringComparison.InvariantCultureIgnoreCase);
+                            value = value.Replace("\"WebServices/PCWorkbenchService.svc", "\"" + baseUrl + "/api/Workbench/Generic", StringComparison.InvariantCultureIgnoreCase);
+
+                            dr.BeginEdit();
+                            dr[dc] = value;
+                            dr.EndEdit();
+                        }
+                    }
+            }
+            // Temporary during migration - End
+
+            return dt;
+        }
