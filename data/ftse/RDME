@@ -1,9 +1,9 @@
 
-I checked the process and couldn’t find anything amiss.
 
-You should use the log table CascadeDB.dbo.tbl_posweb_ratan_log to monitor file download attempts by the general download script.
+I reviewed the process and didn’t find any issues.
 
-You should also check in your script whether the file is empty (0 bytes) before proceeding with processing. 
+To monitor file download attempts by the general download script, you can use the log table *CascadeDB.dbo.tbl_posweb_ratan_log*. Additionally, ensure that your script checks if the file is empty (0 bytes) before proceeding with processing.
 
-Regarding “randomly occurring issue”, It is best to determine the problem for each occurrence when it happens, as the cause can be different each time some of which may not even be related to the download script.
+As for the "randomly occurring issue," it’s best to diagnose the problem each time it occurs, as the cause may vary and may not always be related to the download script.
+
 
