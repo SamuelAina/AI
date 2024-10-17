@@ -1,1 +1,8 @@
+Thanks for your response to my email.
+
+In preparation for the migration can you please check if it is possible to connect the reporting system to SGWPAUPCD04.[Tracker_DPL_AvF].dbo.[sp_Report_DPL_AvF_BreakDetail_svr] instead of SGWPAPPCD01.[Tracker_DPL_AvF].dbo.[sp_Report_DPL_AvF_BreakDetail] ?
+
+sp_Report_DPL_AvF_BreakDetail_svr has an additional parameter @SVR for switching between SGWPAPPCD01 and SGWPAUPCD04, defaulted to SGWPAPPCD01. This would facilitate seamless change following the migration.
+
+Please let me know if the connection to SGWPAUPCD04.[Tracker_DPL_AvF].dbo.[sp_Report_DPL_AvF_BreakDetail_svr] works so that I can apply the scheme to the stored procedures.
 
