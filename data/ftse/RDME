@@ -1,3 +1,7 @@
+							if (decoded_option == decoded_selected_value)
+							{
+								Response.Write (" selected ");
+							}							if (decoded_option == decoded_selected_value)
 							{
 								Response.Write (" selected ");
 							}
