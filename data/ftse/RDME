@@ -1,7 +1,4 @@
-							if (decoded_option == decoded_selected_value)
-							{
-								Response.Write (" selected ");
-							}							if (decoded_option == decoded_selected_value)
-							{
-								Response.Write (" selected ");
-							}
+if (decoded_option.Trim().Equals(decoded_selected_value.Trim(), StringComparison.OrdinalIgnoreCase))
+{
+    Response.Write(" selected ");
+}
