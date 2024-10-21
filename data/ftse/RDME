@@ -1,14 +1,42 @@
-fetch('http://localhost:5127/api/Workbench/Generic/gspc_tbl_large_params', {
-  method: 'POST',
-  headers: {
-    'accept': 'text/plain',
-    'Content-Type': 'application/json-patch+json'
-  },
-  body: JSON.stringify({
-    procName: 'usp_gspc_testing',
-    paramswithvalues: "{input:'testing',us_id:700}"
-  })
-})
-.then(response => response.text())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+function runProc_async(procName, paramswithvalues) {   
+    console.log(paramswithvalues);
+    var outresult = null;    
+    var data = new FormData();    
+    data.append("procName", procName);    
+    data.append("paramswithvalues", JSON.stringify(paramswithvalues));*/
+	
+    var ajaxRequest = $.ajax({    
+        type: "POST",    
+        async: true,    
+        dataType: "json",    
+        contentType: false,    
+        url: "http://localhost:5127/api/Workbench/Generic/gspc_tbls_large_params",    
+        cache: false,    
+        processData: false,    
+        data: data,    
+    
+        success: function (result) {    
+            outresult = result;  
+  
+   console.log(result);  
+   if(result.length > 0){  
+    if(result[0][0].result=="OK"){  
+     alert("Thank you\\nYour record has been successfully submitted");  
+    }else{  
+     alert("Update was failed:"+result[0][0].result);  
+    }  
+   }else{  
+    alert("Error coccured while updating the database");  
+   }  
+   $("#LabelPleaseWait").hide();  
+   $("#UpdateButton").prop("disabled", false);  
+        },    
+        error: function (e) {    
+      $("#UpdateButton").prop("disabled", false);  
+            console.log(e.responseText);    
+            console.log("ERROR-001");    
+            outresult = null    
+        },    
+    });    
+    return outresult    
+}    
