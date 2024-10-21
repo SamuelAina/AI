@@ -1,4 +1,8 @@
-if (decoded_option.Trim().Equals(decoded_selected_value.Trim(), StringComparison.OrdinalIgnoreCase))
-{
-    Response.Write(" selected ");
-}
+curl -X 'POST' \
+  'http://localhost:5127/api/Workbench/Generic/gspc_tbl_large_params' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json-patch+json' \
+  -d '{
+  "procName": "usp_gspc_testing",
+  "paramswithvalues": "{input:'\''testing'\'',us_id:700}"
+}'
