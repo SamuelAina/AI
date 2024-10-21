@@ -1,8 +1,14 @@
-curl -X 'POST' \
-  'http://localhost:5127/api/Workbench/Generic/gspc_tbl_large_params' \
-  -H 'accept: text/plain' \
-  -H 'Content-Type: application/json-patch+json' \
-  -d '{
-  "procName": "usp_gspc_testing",
-  "paramswithvalues": "{input:'\''testing'\'',us_id:700}"
-}'
+fetch('http://localhost:5127/api/Workbench/Generic/gspc_tbl_large_params', {
+  method: 'POST',
+  headers: {
+    'accept': 'text/plain',
+    'Content-Type': 'application/json-patch+json'
+  },
+  body: JSON.stringify({
+    procName: 'usp_gspc_testing',
+    paramswithvalues: "{input:'testing',us_id:700}"
+  })
+})
+.then(response => response.text())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
